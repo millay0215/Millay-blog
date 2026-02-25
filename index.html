@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Millay Blog</title>
+    <meta name="description" content="Millay 的个人博客 - 思考、记录、分享">
+    <meta name="author" content="Millay">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Millay Blog">
+    <meta property="og:description" content="Millay 的个人博客">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://millay-blog.pages.dev">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Millay Blog">
+    <meta name="twitter:description" content="Millay 的个人博客">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Millay Blog",
+        "description": "Millay 的个人博客",
+        "url": "https://millay-blog.pages.dev",
+        "author": {
+            "@type": "Person",
+            "name": "Millay"
+        }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text: #1f2937;
+            --bg: #ffffff;
+            --gray: #6b7280;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        header {
+            background: var(--bg);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+        }
+        
+        nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+        }
+        
+        .posts {
+            padding: 2rem 0;
+        }
+        
+        .posts h2 {
+            margin-bottom: 2rem;
+        }
+        
+        .post-card {
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+        
+        .post-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .post-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .post-card h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .post-card time {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        .post-card p {
+            margin-top: 1rem;
+            color: var(--gray);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #e5e7eb;
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        footer a {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Millay Blog</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/posts/hello.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1>欢迎来到 Millay Blog</h1>
+            <p>思考、记录、分享</p>
+        </section>
+        
+        <section class="posts">
+            <h2>最新文章</h2>
+            
+            <article class="post-card">
+                <h3><a href="/posts/hello.html">欢迎来到 Millay Blog</a></h3>
+                <time>2026年2月25日</time>
+                <p>这是我的第一篇博客文章。这个博客使用 Hugo 构建，部署在 Cloudflare Pages 上，实现了全自动发布流程...</p>
+            </article>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Millay. Built with Hugo & Cloudflare Pages.</p>
+    </footer>
+</body>
+</html>
