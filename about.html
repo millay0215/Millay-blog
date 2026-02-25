@@ -3,32 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于 | Millay Blog</title>
+    <title>关于 | Millay</title>
     <meta name="description" content="关于 Millay Blog">
     <meta name="author" content="Millay">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="关于 | Millay Blog">
-    <meta property="og:description" content="关于 Millay Blog">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://millay-blog.pages.dev/about.html">
-    
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "关于 Millay Blog",
-        "url": "https://millay-blog.pages.dev/about.html"
-    }
-    </script>
-    
     <style>
         :root {
-            --primary: #2563eb;
-            --text: #1f2937;
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
             --bg: #ffffff;
-            --gray: #6b7280;
+            --bg-light: #f6f8fa;
+            --border: #e5e9ec;
         }
         
         * {
@@ -39,26 +26,29 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.8;
+            line-height: 1.6;
             color: var(--text);
             background: var(--bg);
         }
         
         header {
             background: var(--bg);
-            border-bottom: 1px solid #e5e7eb;
-            padding: 1rem 0;
-            position: sticky;
+            border-bottom: 1px solid var(--border);
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
         }
         
         nav {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 72px;
         }
         
         .logo {
@@ -70,57 +60,89 @@
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
         
         .nav-links a {
             color: var(--text);
             text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            background: var(--primary);
+            color: white;
+            padding: 140px 2rem 100px;
+            margin-top: 72px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
         
         main {
             max-width: 800px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 80px 2rem;
         }
         
-        .post {
-            max-width: 700px;
-            margin: 0 auto;
+        .content-section {
+            margin-bottom: 3rem;
         }
         
-        .post-header {
-            margin-bottom: 2rem;
-        }
-        
-        .post-title {
-            font-size: 2rem;
+        .content-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
             margin-bottom: 1rem;
         }
         
-        .post-content {
-            font-size: 1.125rem;
+        .content-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
         
-        .post-content p {
-            margin-bottom: 1.5rem;
+        .content-section ul {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
         }
         
         footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
             text-align: center;
-            padding: 2rem;
-            border-top: 1px solid #e5e7eb;
-            color: var(--gray);
+        }
+        
+        footer p {
+            opacity: 0.7;
             font-size: 0.875rem;
-            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="/" class="logo">Millay Blog</a>
+            <a href="/" class="logo">Millay</a>
             <ul class="nav-links">
                 <li><a href="/">首页</a></li>
                 <li><a href="/supply-chain/">供应链前沿</a></li>
@@ -130,30 +152,38 @@
         </nav>
     </header>
     
+    <section class="hero">
+        <div class="hero-content">
+            <h1>关于</h1>
+        </div>
+    </section>
+    
     <main>
-        <article class="post">
-            <header class="post-header">
-                <h1 class="post-title">关于</h1>
-            </header>
-            
-            <div class="post-content">
-                <p>你好，我是 Millay。</p>
-                
-                <p>这是我的个人博客，用于记录学习、思考和分享。</p>
-                
-                <h2>技术栈</h2>
-                
-                <p>这个博客使用 Hugo 构建，部署在 Cloudflare Pages 上，实现了全自动发布流程。</p>
-                
-                <h2>联系方式</h2>
-                
-                <p>邮箱：millay0215@gmail.com</p>
-            </div>
-        </article>
+        <div class="content-section">
+            <h2>关于我</h2>
+            <p>你好，我是 Millay。</p>
+            <p>这是我的个人博客，用于记录学习、思考和分享。主要关注供应链管理和AI工具应用两个领域。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>关于本站</h2>
+            <p>这个博客使用以下技术构建：</p>
+            <ul>
+                <li><strong>Hugo</strong> - 静态网站生成器</li>
+                <li><strong>Cloudflare Pages</strong> - 部署和托管</li>
+                <li><strong>OpenClaw</strong> - 自动化发布</li>
+            </ul>
+            <p>实现了全自动发布流程：在 Obsidian 中撰写文章，保存后系统自动完成润色、SEO优化、推送和部署。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>联系方式</h2>
+            <p>邮箱：millay0215@gmail.com</p>
+        </div>
     </main>
     
     <footer>
-        <p>&copy; 2026 Millay. Built with Hugo & Cloudflare Pages.</p>
+        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
     </footer>
 </body>
 </html>
