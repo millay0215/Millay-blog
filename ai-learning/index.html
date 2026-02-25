@@ -3,35 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Millay Blog</title>
-    <meta name="description" content="Millay 的个人博客 - 思考、记录、分享">
+    <title>AI学习应用 | Millay Blog</title>
+    <meta name="description" content="记录AI工具学习与应用实践，分享Kimi、OpenClaw等AI助手的使用经验">
     <meta name="author" content="Millay">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Millay Blog">
-    <meta property="og:description" content="Millay 的个人博客">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://millay-blog.pages.dev">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Millay Blog">
-    <meta name="twitter:description" content="Millay 的个人博客">
-    
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "Millay Blog",
-        "description": "Millay 的个人博客",
-        "url": "https://millay-blog.pages.dev",
-        "author": {
-            "@type": "Person",
-            "name": "Millay"
-        }
-    }
-    </script>
     
     <style>
         :root {
@@ -101,32 +75,37 @@
         
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 2rem;
         }
         
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
         
         .hero p {
-            font-size: 1.25rem;
-            color: var(--gray);
+            font-size: 1rem;
+            opacity: 0.9;
         }
         
         .posts {
-            padding: 2rem 0;
+            padding: 1rem 0;
         }
         
         .posts h2 {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
         }
         
         .post-card {
             padding: 1.5rem;
             border: 1px solid #e5e7eb;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             transition: box-shadow 0.2s;
         }
         
@@ -139,7 +118,7 @@
         }
         
         .post-card h3 a {
-            color: var(--text);
+            color: var(--primary);
             text-decoration: none;
         }
         
@@ -149,8 +128,18 @@
         }
         
         .post-card p {
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             color: var(--gray);
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #f3f4f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-right: 0.5rem;
         }
         
         footer {
@@ -159,10 +148,7 @@
             border-top: 1px solid #e5e7eb;
             color: var(--gray);
             font-size: 0.875rem;
-        }
-        
-        footer a {
-            color: var(--primary);
+            margin-top: 2rem;
         }
     </style>
 </head>
@@ -181,39 +167,42 @@
     
     <main>
         <section class="hero">
-            <h1>欢迎来到 Millay Blog</h1>
-            <p>思考、记录、分享</p>
+            <h1>🤖 AI学习应用</h1>
+            <p>记录AI工具学习与应用实践</p>
         </section>
         
         <section class="posts">
-            <h2>专栏</h2>
+            <h2>文章列表</h2>
             
             <article class="post-card">
-                <h3><a href="/supply-chain/">📦 供应链前沿日报</a></h3>
-                <time>每日更新</time>
-                <p>聚焦供应链领域的最新方法、工具、AI 技术，每日精选前沿信息。</p>
-            </article>
-            
-            <article class="post-card">
-                <h3><a href="/ai-learning/">🤖 AI学习应用</a></h3>
-                <time>持续更新</time>
-                <p>记录AI工具学习与应用实践，分享Kimi、OpenClaw等AI助手的使用经验。</p>
-            </article>
-        </section>
-        
-        <section class="posts">
-            <h2>最新文章</h2>
-            
-            <article class="post-card">
-                <h3><a href="/posts/hello.html">欢迎来到 Millay Blog</a></h3>
+                <h3><a href="/ai-learning/2026-02-25-website.html">🚀 用 Kimi + OpenClaw 搭建个人网站</a></h3>
                 <time>2026年2月25日</time>
-                <p>这是我的第一篇博客文章。这个博客使用 Hugo 构建，部署在 Cloudflare Pages 上，实现了全自动发布流程...</p>
+                <p>今天通过对话方式，零代码基础完成了个人博客网站的搭建和部署...</p>
+                <span class="tag">Kimi</span>
+                <span class="tag">OpenClaw</span>
+                <span class="tag">Cloudflare</span>
             </article>
+        </section>
+        
+        <section class="posts">
+            <h2>关于本专栏</h2>
+            
+            <div class="post-card">
+                <h3>专栏定位</h3>
+                <p>记录使用AI工具（Kimi、OpenClaw、ChatGPT等）的学习过程和实践心得，分享AI如何提升工作效率。</p>
+            </div>
+            
+            <div class="post-card">
+                <h3>内容方向</h3>
+                <p><span class="tag">AI工具测评</span>各种AI产品的使用体验</p>
+                <p><span class="tag">实践案例</span>AI解决实际问题的过程</p>
+                <p><span class="tag">学习笔记</span>AI相关知识和技能积累</p>
+            </div>
         </section>
     </main>
     
     <footer>
-        <p>&copy; 2026 Millay. Built with Hugo & Cloudflare Pages.</p>
+        <p>&copy; 2026 Millay. AI学习应用专栏</p>
     </footer>
 </body>
 </html>
