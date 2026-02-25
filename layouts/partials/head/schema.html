@@ -1,0 +1,35 @@
+{{ $scratch := newScratch }}
+{{ $scratch.Set "title" .Title }}
+{{ $scratch.Set "description" (.Description | default .Summary | default .Site.Params.description) }}
+{{ $scratch.Set "image" (.Params.image | default "/images/default.jpg" | absURL) }}
+{{ $scratch.Set "author" (.Params.author | default .Site.Params.author) }}
+{{ $scratch.Set "datePublished" .Date.Format "2006-01-02T15:04:05-07:00" }}
+{{ $scratch.Set "dateModified" .Lastmod.Format "2006-01-02T15:04:05-07:00" }}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ $scratch.Get "title" }}",
+  "description": "{{ $scratch.Get "description" }}",
+  "image": "{{ $scratch.Get "image" }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ $scratch.Get "author" }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ "/images/logo.png" | absURL }}"
+    }
+  },
+  "datePublished": "{{ $scratch.Get "datePublished" }}",
+  "dateModified": "{{ $scratch.Get "dateModified" }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  }
+}
+</script>

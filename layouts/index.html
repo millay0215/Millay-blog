@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="home">
+  <section class="hero">
+    <h1>{{ .Site.Title }}</h1>
+    <p>{{ .Site.Params.description }}</p>
+  </section>
+  
+  <section class="recent-posts">
+    <h2>最新文章</h2>
+    <div class="posts-grid">
+      {{ range first 6 .Site.RegularPages }}
+      <article class="post-card">
+        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        <time>{{ .Date.Format "2006-01-02" }}</time>
+        <p>{{ .Summary | truncate 100 }}</p>
+      </article>
+      {{ end }}
+    </div>
+    
+    <a href="/posts/" class="view-all">查看全部文章 →</a>
+  </section>
+</div>
+{{ end }}

@@ -1,0 +1,90 @@
+name: Blog Auto-Publisher
+version: "1.0"
+
+triggers:
+  - type: file_watch
+    path: ~/Obsidian/Blog
+    pattern: "*.md"
+    
+  - type: cron
+    schedule: "0 * * * *"  # 每小时检查
+
+tasks:
+  detect:
+    name: "检测新文章"
+    action: find_new_files
+    input:
+      source: ~/Obsidian/Blog
+      target: /root/.openclaw/workspace/millay-blog/content/posts
+      
+  process:
+    name: "AI 处理"
+    action: ai_process
+    model: kimi-coding/k2p5
+    steps:
+      - name: "润色内容"
+        prompt: |
+          润色以下博客文章，使其更加流畅、专业。
+          保持原意，改善表达方式，修正语法错误。
+          
+          原文：
+          {{ content }}
+          
+          润色后的文章：
+        
+      - name: "生成标题"
+        prompt: |
+          为以下文章生成一个吸引人的标题（不超过20字）：
+          
+          {{ content }}
+          
+          标题：
+          
+      - name: "生成摘要"
+        prompt: |
+          为以下文章生成一段摘要（100字以内）：
+          
+          {{ content }}
+          
+          摘要：
+          
+      - name: "生成标签"
+        prompt: |
+          为以下文章生成3-5个标签，用逗号分隔：
+          
+          {{ content }}
+          
+          标签：
+          
+      - name: "生成 Schema 数据"
+        action: generate_schema
+        template: |
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "{{ title }}",
+            "description": "{{ summary }}",
+            "author": {
+              "@type": "Person",
+              "name": "Millay"
+            },
+            "datePublished": "{{ date }}",
+            "keywords": "{{ tags }}"
+          }
+          
+  publish:
+    name: "发布到 GitHub"
+    action: git_push
+    repo: millay/millay-blog
+    branch: main
+    commit_message: "Auto-publish: {{ title }}"
+    
+  notify:
+    name: "通知完成"
+    action: send_message
+    message: |
+      🎉 新文章已发布！
+      
+      标题：{{ title }}
+      链接：https://millay.pages.dev/posts/{{ slug }}/
+      发布时间：{{ date }}

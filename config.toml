@@ -1,0 +1,42 @@
+baseURL = 'https://millay.pages.dev'
+languageCode = 'zh-CN'
+title = 'Millay Blog'
+theme = 'paper'
+
+[params]
+  author = 'Millay'
+  description = 'Millay 的个人博客 - 思考、记录、分享'
+  keywords = ['博客', '思考', '技术', '生活']
+  
+[params.seo]
+  enableJSONLD = true
+  enableOpenGraph = true
+  enableTwitterCards = true
+
+[params.features]
+  disqusOnDemand = true
+  math = true
+  
+[menu]
+  [[menu.main]]
+    name = '首页'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = '文章'
+    url = '/posts/'
+    weight = 2
+  [[menu.main]]
+    name = '关于'
+    url = '/about/'
+    weight = 3
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  page = ['HTML']
+  section = ['HTML', 'RSS']
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediatype = 'application/rss+xml'
+    baseName = 'feed'
