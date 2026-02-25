@@ -1,7 +1,7 @@
 baseURL = 'https://millay.pages.dev'
 languageCode = 'zh-CN'
 title = 'Millay Blog'
-theme = 'paper'
+# theme = 'paper'
 
 [params]
   author = 'Millay'
