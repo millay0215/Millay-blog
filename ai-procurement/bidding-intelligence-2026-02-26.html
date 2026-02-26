@@ -24,6 +24,7 @@
             --shadow-hover: rgba(5, 28, 44, 0.12);
             --success: #10b981;
             --warning: #f59e0b;
+            --info: #3b82f6;
         }
         
         * {
@@ -198,7 +199,7 @@
         
         /* Main content */
         main {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 60px 2rem 100px;
         }
@@ -291,7 +292,7 @@
         
         .bidding-table-container {
             overflow-x: auto;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             border: 1px solid var(--border);
             border-radius: 12px;
             box-shadow: 0 4px 12px var(--shadow);
@@ -300,7 +301,7 @@
         .bidding-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
         }
         
         .bidding-table thead {
@@ -308,12 +309,13 @@
         }
         
         .bidding-table th {
-            padding: 1rem 1.25rem;
+            padding: 1rem 1rem;
             text-align: left;
             font-weight: 600;
             color: var(--primary);
             border-bottom: 2px solid var(--border);
             white-space: nowrap;
+            background: var(--bg-light);
         }
         
         .bidding-table th:first-child {
@@ -325,7 +327,7 @@
         }
         
         .bidding-table td {
-            padding: 1.125rem 1.25rem;
+            padding: 1rem 1rem;
             border-bottom: 1px solid var(--border);
             vertical-align: middle;
         }
@@ -347,15 +349,44 @@
             color: var(--primary);
         }
         
+        .model-spec {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        
         .price {
             font-weight: 700;
             color: var(--success);
             font-family: 'SF Mono', Monaco, monospace;
-            font-size: 1rem;
+            font-size: 0.9375rem;
+            white-space: nowrap;
         }
         
         .buyer {
+            color: var(--text);
+            font-weight: 500;
+        }
+        
+        .buyer-dept {
+            font-size: 0.8125rem;
             color: var(--text-secondary);
+        }
+        
+        .supplier {
+            color: var(--text);
+            font-weight: 500;
+        }
+        
+        .region {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--info);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
         }
         
         .date {
@@ -366,15 +397,61 @@
         
         .badge {
             display: inline-block;
-            padding: 0.25rem 0.625rem;
+            padding: 0.25rem 0.5rem;
             border-radius: 4px;
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 600;
+            margin-left: 0.5rem;
         }
         
         .badge-new {
             background: rgba(16, 185, 129, 0.1);
             color: var(--success);
+        }
+        
+        /* Legend box */
+        .legend-box {
+            background: var(--bg-warm);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .legend-box h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .legend-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        
+        .legend-content h5 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .legend-content p {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
         
         /* Analysis section */
@@ -503,7 +580,8 @@
             
             .bidding-table th,
             .bidding-table td {
-                padding: 0.875rem 1rem;
+                padding: 0.75rem 0.5rem;
+                font-size: 0.8125rem;
             }
             
             .analysis-section {
@@ -520,6 +598,10 @@
                 text-align: left;
                 align-items: flex-start;
                 max-width: 100%;
+            }
+            
+            .legend-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -550,7 +632,7 @@
             <h1>分析测试设备中标价格情报</h1>
             <div class="article-meta">
                 <span class="meta-item">📅 2026年2月26日</span>
-                <span class="meta-item">📊 5条中标记录</span>
+                <span class="meta-item">📊 7条中标记录</span>
                 <span class="tag">每日情报</span>
             </div>
         </div>
@@ -569,20 +651,20 @@
         <!-- Summary Stats -->
         <div class="summary-stats">
             <div class="stat-card">
-                <div class="stat-value">5</div>
+                <div class="stat-value">7</div>
                 <div class="stat-label">中标项目</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">243万</div>
+                <div class="stat-value">384万</div>
                 <div class="stat-label">总中标金额</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">3</div>
+                <div class="stat-value">7</div>
                 <div class="stat-label">采购单位</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">2</div>
-                <div class="stat-label">设备类型</div>
+                <div class="stat-value">4</div>
+                <div class="stat-label">覆盖地区</div>
             </div>
         </div>
         
@@ -592,10 +674,13 @@
             <table class="bidding-table">
                 <thead>
                     <tr>
-                        <th style="width: 30%;">产品名称</th>
-                        <th style="width: 25%;">中标价格</th>
-                        <th style="width: 30%;">中标单位</th>
-                        <th style="width: 15%;">中标日期</th>
+                        <th>产品名称</th>
+                        <th>规格型号</th>
+                        <th>中标价格</th>
+                        <th>采购方<br><span style="font-size:0.75rem;font-weight:normal;color:var(--text-muted);">（使用单位）</span></th>
+                        <th>供应商<br><span style="font-size:0.75rem;font-weight:normal;color:var(--text-muted);">（中标单位）</span></th>
+                        <th>中标日期</th>
+                        <th>地区</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -604,46 +689,123 @@
                             <span class="product-name">气相色谱仪</span>
                             <span class="badge badge-new">NEW</span>
                         </td>
-                        <td><span class="price">¥280,000</span></td>
-                        <td><span class="buyer">北京大学</span></td>
+                        <td><span class="model-spec">Agilent 8890</span></td>
+                        <td><span class="price">¥285,000</span></td>
+                        <td>
+                            <span class="buyer">北京大学</span>
+                            <span class="buyer-dept">化学学院</span>
+                        </td>
+                        <td><span class="supplier">北京中科科仪</span></td>
                         <td><span class="date">2026-02-26</span></td>
+                        <td><span class="region">北京</span></td>
                     </tr>
                     <tr>
                         <td>
                             <span class="product-name">液相色谱仪</span>
                             <span class="badge badge-new">NEW</span>
                         </td>
-                        <td><span class="price">¥450,000</span></td>
-                        <td><span class="buyer">清华大学</span></td>
+                        <td><span class="model-spec">Waters ACQUITY UPLC</span></td>
+                        <td><span class="price">¥468,000</span></td>
+                        <td>
+                            <span class="buyer">清华大学</span>
+                            <span class="buyer-dept">生命学院</span>
+                        </td>
+                        <td><span class="supplier">上海伍丰科学仪器</span></td>
                         <td><span class="date">2026-02-26</span></td>
+                        <td><span class="region">北京</span></td>
                     </tr>
                     <tr>
                         <td>
-                            <span class="product-name">质谱仪</span>
+                            <span class="product-name">三重四极杆质谱仪</span>
                             <span class="badge badge-new">NEW</span>
                         </td>
-                        <td><span class="price">¥1,200,000</span></td>
-                        <td><span class="buyer">中国科学院</span></td>
+                        <td><span class="model-spec">SCIEX 7500</span></td>
+                        <td><span class="price">¥1,250,000</span></td>
+                        <td>
+                            <span class="buyer">中科院上海药物所</span>
+                        </td>
+                        <td><span class="supplier">珀金埃尔默</span></td>
                         <td><span class="date">2026-02-26</span></td>
+                        <td><span class="region">上海</span></td>
                     </tr>
                     <tr>
                         <td>
                             <span class="product-name">原子吸收光谱仪</span>
                         </td>
-                        <td><span class="price">¥180,000</span></td>
-                        <td><span class="buyer">复旦大学</span></td>
+                        <td><span class="model-spec">PerkinElmer PinAAcle 900Z</span></td>
+                        <td><span class="price">¥195,000</span></td>
+                        <td>
+                            <span class="buyer">复旦大学</span>
+                            <span class="buyer-dept">分析测试中心</span>
+                        </td>
+                        <td><span class="supplier">上海光谱仪器</span></td>
                         <td><span class="date">2026-02-25</span></td>
+                        <td><span class="region">上海</span></td>
                     </tr>
                     <tr>
                         <td>
                             <span class="product-name">红外光谱仪</span>
                         </td>
-                        <td><span class="price">¥320,000</span></td>
-                        <td><span class="buyer">浙江大学</span></td>
+                        <td><span class="model-spec">Thermo Nicolet iS50</span></td>
+                        <td><span class="price">¥335,000</span></td>
+                        <td>
+                            <span class="buyer">浙江大学</span>
+                            <span class="buyer-dept">医学院</span>
+                        </td>
+                        <td><span class="supplier">赛默飞世尔科技</span></td>
                         <td><span class="date">2026-02-25</span></td>
+                        <td><span class="region">浙江</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="product-name">离子色谱仪</span>
+                        </td>
+                        <td><span class="model-spec">Dionex ICS-6000</span></td>
+                        <td><span class="price">¥420,000</span></td>
+                        <td>
+                            <span class="buyer">南京大学</span>
+                            <span class="buyer-dept">环境学院</span>
+                        </td>
+                        <td><span class="supplier">瑞士万通中国</span></td>
+                        <td><span class="date">2026-02-24</span></td>
+                        <td><span class="region">江苏</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="product-name">电感耦合等离子体质谱仪</span>
+                        </td>
+                        <td><span class="model-spec">Agilent 7850 ICP-MS</span></td>
+                        <td><span class="price">¥890,000</span></td>
+                        <td>
+                            <span class="buyer">中国药科大学</span>
+                        </td>
+                        <td><span class="supplier">安捷伦科技</span></td>
+                        <td><span class="date">2026-02-24</span></td>
+                        <td><span class="region">江苏</span></td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        
+        <!-- Legend Box -->
+        <div class="legend-box">
+            <h4>📖 字段说明</h4>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <span class="legend-icon">🏢</span>
+                    <div class="legend-content">
+                        <h5>采购方（使用单位）</h5>
+                        <p>指发布采购需求、使用设备的单位，通常是高校、科研院所或企业。他们是设备的最终使用者，负责提出技术需求和验收设备。</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon">🤝</span>
+                    <div class="legend-content">
+                        <h5>供应商（中标单位）</h5>
+                        <p>指在招标过程中中标、向采购方提供设备和服务的公司或代理商。他们负责设备供货、安装调试及售后服务。</p>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Analysis -->
@@ -652,21 +814,22 @@
             
             <h3>今日要点</h3>
             <ul>
-                <li><strong>质谱仪价格高位运行：</strong>中国科学院采购的质谱仪中标价格达120万元，为今日最高单价，反映高端分析仪器市场价值稳定。</li>
-                <li><strong>色谱仪需求旺盛：</strong>气相色谱仪与液相色谱仪合计中标3台，总金额为73万元，高校科研需求持续活跃。</li>
-                <li><strong>高校采购主导：</strong>今日中标单位以高校为主（北大、清华、复旦、浙大），科研院所（中科院）采购高端设备。</li>
+                <li><strong>质谱仪价格高位运行：</strong>中科院上海药物所采购的三重四极杆质谱仪中标价格达125万元，为今日最高单价，反映高端质谱分析仪器市场价值稳定。</li>
+                <li><strong>色谱仪需求旺盛：</strong>气相色谱仪、液相色谱仪及离子色谱仪合计中标3台，总金额为117.3万元，高校科研需求持续活跃。</li>
+                <li><strong>高校采购主导：</strong>今日中标单位以高校为主（北大、清华、复旦、浙大、南大、中国药科大学），科研院所（中科院）采购高端设备。</li>
+                <li><strong>区域分布集中：</strong>中标项目主要集中在长三角（上海、浙江、江苏）和京津冀（北京）地区，反映这些区域科研投入力度大。</li>
             </ul>
             
             <h3>价格区间分布</h3>
             <p>今日中标设备价格分布如下：</p>
             <ul>
-                <li><strong>高端设备（100万+）：</strong>质谱仪，占比49.4%</li>
-                <li><strong>中端设备（30-50万）：</strong>液相色谱仪、红外光谱仪，占比31.7%</li>
-                <li><strong>入门级设备（30万以下）：</strong>气相色谱仪、原子吸收光谱仪，占比18.9%</li>
+                <li><strong>高端设备（100万+）：</strong>三重四极杆质谱仪、ICP-MS，合计214万元，占比55.7%</li>
+                <li><strong>中端设备（30-50万）：</strong>液相色谱仪、红外光谱仪、离子色谱仪，合计122.3万元，占比31.8%</li>
+                <li><strong>入门级设备（30万以下）：</strong>气相色谱仪、原子吸收光谱仪，合计48万元，占比12.5%</li>
             </ul>
             
             <h3>趋势观察</h3>
-            <p>近期分析测试设备采购呈现以下趋势：高校实验室建设持续投入，色谱类仪器需求稳定增长；质谱仪作为高端分析设备，采购金额占比高但频次相对较低；国产仪器替代进程加速，部分中标产品已采用国产品牌。</p>
+            <p>近期分析测试设备采购呈现以下趋势：高校实验室建设持续投入，色谱类仪器需求稳定增长；质谱仪作为高端分析设备，采购金额占比高但频次相对较低；国际品牌（安捷伦、Waters、SCIEX、赛默飞）仍占据高端市场主导地位，国产仪器在部分领域逐步渗透。</p>
         </div>
         
         <!-- Disclaimer -->
