@@ -25,6 +25,9 @@
             --success: #10b981;
             --warning: #f59e0b;
             --info: #3b82f6;
+            --danger: #ef4444;
+            --purple: #8b5cf6;
+            --orange: #f97316;
         }
         
         * {
@@ -199,7 +202,7 @@
         
         /* Main content */
         main {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 60px 2rem 100px;
         }
@@ -246,41 +249,243 @@
             text-decoration: underline;
         }
         
-        /* Summary stats */
-        .summary-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
+        /* Dashboard Stats Cards */
+        .dashboard-section {
             margin-bottom: 3rem;
         }
         
-        .stat-card {
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-card {
             background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 1.5rem;
-            text-align: center;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .stat-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px var(--shadow);
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
         }
         
-        .stat-value {
+        .dashboard-card.primary::before { background: var(--accent); }
+        .dashboard-card.success::before { background: var(--success); }
+        .dashboard-card.warning::before { background: var(--warning); }
+        .dashboard-card.info::before { background: var(--info); }
+        
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px var(--shadow-hover);
+        }
+        
+        .dashboard-card-icon {
             font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .dashboard-card-value {
+            font-size: 2rem;
             font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        
+        .dashboard-card-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .dashboard-card-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        
+        /* Analysis Charts Section */
+        .charts-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .chart-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        
+        .chart-card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Brand Distribution */
+        .brand-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+        }
+        
+        .brand-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .brand-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+            width: 80px;
+            flex-shrink: 0;
+        }
+        
+        .brand-bar-bg {
+            flex: 1;
+            height: 8px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .brand-bar {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .brand-bar.agilent { background: var(--accent); }
+        .brand-bar.waters { background: var(--success); }
+        .brand-bar.sciex { background: var(--purple); }
+        .brand-bar.perkinelmer { background: var(--warning); }
+        .brand-bar.thermo { background: var(--info); }
+        .brand-bar.metrohm { background: var(--orange); }
+        
+        .brand-count {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            width: 30px;
+            text-align: right;
+        }
+        
+        /* Region Distribution */
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .region-item {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .region-item:hover {
+            background: var(--bg-warm);
+            transform: scale(1.02);
+        }
+        
+        .region-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .region-name {
+            font-size: 0.875rem;
+            font-weight: 600;
             color: var(--primary);
             margin-bottom: 0.25rem;
         }
         
-        .stat-label {
-            font-size: 0.875rem;
+        .region-stats {
+            font-size: 0.75rem;
             color: var(--text-secondary);
         }
         
-        /* Table styles */
+        /* Price Range */
+        .price-range-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .price-range-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .price-range-label {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text);
+            width: 100px;
+            flex-shrink: 0;
+        }
+        
+        .price-range-bar-bg {
+            flex: 1;
+            height: 24px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .price-range-bar {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.75rem;
+            transition: width 0.5s ease;
+        }
+        
+        .price-range-bar.high { background: linear-gradient(90deg, var(--danger), #f87171); }
+        .price-range-bar.mid { background: linear-gradient(90deg, var(--warning), #fbbf24); }
+        .price-range-bar.low { background: linear-gradient(90deg, var(--success), #34d399); }
+        
+        .price-range-value {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            white-space: nowrap;
+        }
+        
+        .price-range-count {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            width: 40px;
+            text-align: right;
+        }
+        
+        /* Section title */
         .section-title {
             font-size: 1.5rem;
             font-weight: 700;
@@ -288,14 +493,18 @@
             margin-bottom: 1.5rem;
             padding-bottom: 0.75rem;
             border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
+        /* Table styles */
         .bidding-table-container {
             overflow-x: auto;
             margin-bottom: 2rem;
             border: 1px solid var(--border);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow);
         }
         
         .bidding-table {
@@ -305,29 +514,31 @@
         }
         
         .bidding-table thead {
-            background: var(--bg-light);
+            background: linear-gradient(180deg, var(--bg-light) 0%, #eef0f2 100%);
         }
         
         .bidding-table th {
-            padding: 1rem 1rem;
+            padding: 1rem 0.875rem;
             text-align: left;
             font-weight: 600;
             color: var(--primary);
             border-bottom: 2px solid var(--border);
             white-space: nowrap;
-            background: var(--bg-light);
+            font-size: 0.8125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
         
         .bidding-table th:first-child {
-            border-top-left-radius: 12px;
+            border-top-left-radius: 16px;
         }
         
         .bidding-table th:last-child {
-            border-top-right-radius: 12px;
+            border-top-right-radius: 16px;
         }
         
         .bidding-table td {
-            padding: 1rem 1rem;
+            padding: 1rem 0.875rem;
             border-bottom: 1px solid var(--border);
             vertical-align: middle;
         }
@@ -344,15 +555,50 @@
             background: var(--bg-light);
         }
         
+        .bidding-table tbody tr:nth-child(even) {
+            background: rgba(248, 249, 250, 0.5);
+        }
+        
+        .bidding-table tbody tr:nth-child(even):hover {
+            background: var(--bg-light);
+        }
+        
+        .row-num {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            width: 40px;
+        }
+        
         .product-name {
             font-weight: 600;
             color: var(--primary);
+            font-size: 0.9375rem;
         }
         
-        .model-spec {
+        .brand-tag {
+            display: inline-block;
+            background: rgba(34, 81, 255, 0.08);
+            color: var(--accent);
+            padding: 0.25rem 0.625rem;
+            border-radius: 6px;
             font-size: 0.8125rem;
-            color: var(--text-muted);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .model-text {
+            font-size: 0.8125rem;
+            color: var(--text);
+            font-weight: 500;
             font-family: 'SF Mono', Monaco, monospace;
+        }
+        
+        .spec-text {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            max-width: 200px;
         }
         
         .price {
@@ -366,33 +612,38 @@
         .buyer {
             color: var(--text);
             font-weight: 500;
+            font-size: 0.875rem;
         }
         
         .buyer-dept {
-            font-size: 0.8125rem;
-            color: var(--text-secondary);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.125rem;
         }
         
         .supplier {
             color: var(--text);
             font-weight: 500;
+            font-size: 0.875rem;
         }
         
         .region {
             display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
             color: var(--info);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
             white-space: nowrap;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
         
         .date {
             color: var(--text-muted);
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             white-space: nowrap;
+            font-family: 'SF Mono', Monaco, monospace;
         }
         
         .badge {
@@ -405,7 +656,7 @@
         }
         
         .badge-new {
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.12);
             color: var(--success);
         }
         
@@ -413,7 +664,7 @@
         .legend-box {
             background: var(--bg-warm);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 1.5rem 2rem;
             margin-bottom: 3rem;
         }
@@ -569,6 +820,16 @@
         }
         
         /* Responsive */
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .charts-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 768px) {
             .article-header h1 {
                 font-size: 1.75rem;
@@ -578,10 +839,18 @@
                 gap: 1rem;
             }
             
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .bidding-table th,
             .bidding-table td {
                 padding: 0.75rem 0.5rem;
                 font-size: 0.8125rem;
+            }
+            
+            .spec-text {
+                max-width: 150px;
             }
             
             .analysis-section {
@@ -601,6 +870,10 @@
             }
             
             .legend-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .region-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -648,138 +921,286 @@
             </div>
         </div>
         
-        <!-- Summary Stats -->
-        <div class="summary-stats">
-            <div class="stat-card">
-                <div class="stat-value">7</div>
-                <div class="stat-label">中标项目</div>
+        <!-- Dashboard Stats -->
+        <div class="dashboard-section">
+            <h2 class="section-title">📊 数据统计概览</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card primary">
+                    <div class="dashboard-card-icon">📋</div>
+                    <div class="dashboard-card-value">7</div>
+                    <div class="dashboard-card-label">中标项目数</div>
+                    <div class="dashboard-card-sub">较昨日持平</div>
+                </div>
+                <div class="dashboard-card success">
+                    <div class="dashboard-card-icon">💰</div>
+                    <div class="dashboard-card-value">¥383.8万</div>
+                    <div class="dashboard-card-label">总中标金额</div>
+                    <div class="dashboard-card-sub">平均单价 ¥54.8万</div>
+                </div>
+                <div class="dashboard-card warning">
+                    <div class="dashboard-card-icon">🏢</div>
+                    <div class="dashboard-card-value">7</div>
+                    <div class="dashboard-card-label">采购单位</div>
+                    <div class="dashboard-card-sub">100% 高校/科研院所</div>
+                </div>
+                <div class="dashboard-card info">
+                    <div class="dashboard-card-icon">📍</div>
+                    <div class="dashboard-card-value">4</div>
+                    <div class="dashboard-card-label">覆盖地区</div>
+                    <div class="dashboard-card-sub">北京/上海/浙江/江苏</div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value">384万</div>
-                <div class="stat-label">总中标金额</div>
+        </div>
+        
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <!-- Brand Distribution -->
+            <div class="chart-card">
+                <div class="chart-card-title">🏭 品牌分布分析</div>
+                <div class="brand-list">
+                    <div class="brand-item">
+                        <span class="brand-name">Agilent</span>
+                        <div class="brand-bar-bg">
+                            <div class="brand-bar agilent" style="width: 28.6%"></div>
+                        </div>
+                        <span class="brand-count">2</span>
+                    </div>
+                    <div class="brand-item">
+                        <span class="brand-name">Waters</span>
+                        <div class="brand-bar-bg">
+                            <div class="brand-bar waters" style="width: 14.3%"></div>
+                        </div>
+                        <span class="brand-count">1</span>
+                    </div>
+                    <div class="brand-item">
+                        <span class="brand-name">SCIEX</span>
+                        <div class="brand-bar-bg">
+                            <div class="brand-bar sciex" style="width: 14.3%"></div>
+                        </div>
+                        <span class="brand-count">1</span>
+                    </div>
+                    <div class="brand-item">
+                        <span class="brand-name">PerkinElmer</span>
+                        <div class="brand-bar-bg">
+                            <div class="brand-bar perkinelmer" style="width: 14.3%"></div>
+                        </div>
+                        <span class="brand-count">1</span>
+                    </div>
+                    <div class="brand-item">
+                        <span class="brand-name">Thermo</span>
+                        <div class="brand-bar-bg">
+                            <div class="brand-bar thermo" style="width: 14.3%"></div>
+                        </div>
+                        <span class="brand-count">1</span>
+                    </div>
+                    <div class="brand-item">
+                        <span class="brand-name">Metrohm</span>
+                        <div class="brand-bar-bg">
+                            <div class="brand-bar metrohm" style="width: 14.3%"></div>
+                        </div>
+                        <span class="brand-count">1</span>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value">7</div>
-                <div class="stat-label">采购单位</div>
+            
+            <!-- Region Distribution -->
+            <div class="chart-card">
+                <div class="chart-card-title">🗺️ 地区分布分析</div>
+                <div class="region-grid">
+                    <div class="region-item">
+                        <div class="region-icon">🏛️</div>
+                        <div class="region-name">北京</div>
+                        <div class="region-stats">2个项目 · ¥75.3万</div>
+                    </div>
+                    <div class="region-item">
+                        <div class="region-icon">🏙️</div>
+                        <div class="region-name">上海</div>
+                        <div class="region-stats">2个项目 · ¥144.5万</div>
+                    </div>
+                    <div class="region-item">
+                        <div class="region-icon">🌊</div>
+                        <div class="region-name">浙江</div>
+                        <div class="region-stats">1个项目 · ¥33.5万</div>
+                    </div>
+                    <div class="region-item">
+                        <div class="region-icon">🌸</div>
+                        <div class="region-name">江苏</div>
+                        <div class="region-stats">2个项目 · ¥130.5万</div>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value">4</div>
-                <div class="stat-label">覆盖地区</div>
+            
+            <!-- Price Range -->
+            <div class="chart-card">
+                <div class="chart-card-title">💵 价格区间统计</div>
+                <div class="price-range-list">
+                    <div class="price-range-item">
+                        <span class="price-range-label">高端<br><small>100万+</small></span>
+                        <div class="price-range-bar-bg">
+                            <div class="price-range-bar high" style="width: 55.7%">
+                                <span class="price-range-value">¥214万</span>
+                            </div>
+                        </div>
+                        <span class="price-range-count">2项</span>
+                    </div>
+                    <div class="price-range-item">
+                        <span class="price-range-label">中端<br><small>30-100万</small></span>
+                        <div class="price-range-bar-bg">
+                            <div class="price-range-bar mid" style="width: 31.8%">
+                                <span class="price-range-value">¥122.3万</span>
+                            </div>
+                        </div>
+                        <span class="price-range-count">3项</span>
+                    </div>
+                    <div class="price-range-item">
+                        <span class="price-range-label">入门<br><small>30万以下</small></span>
+                        <div class="price-range-bar-bg">
+                            <div class="price-range-bar low" style="width: 12.5%">
+                                <span class="price-range-value">¥47.5万</span>
+                            </div>
+                        </div>
+                        <span class="price-range-count">2项</span>
+                    </div>
+                </div>
             </div>
         </div>
         
         <!-- Bidding Table -->
-        <h2 class="section-title">📋 中标信息列表</h2>
+        <h2 class="section-title">📋 中标信息明细表</h2>
         <div class="bidding-table-container">
             <table class="bidding-table">
                 <thead>
                     <tr>
+                        <th>序号</th>
                         <th>产品名称</th>
-                        <th>规格型号</th>
+                        <th>品牌</th>
+                        <th>型号</th>
+                        <th>规格参数</th>
                         <th>中标价格</th>
-                        <th>采购方<br><span style="font-size:0.75rem;font-weight:normal;color:var(--text-muted);">（使用单位）</span></th>
-                        <th>供应商<br><span style="font-size:0.75rem;font-weight:normal;color:var(--text-muted);">（中标单位）</span></th>
+                        <th>采购方</th>
+                        <th>供应商</th>
                         <th>中标日期</th>
                         <th>地区</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td class="row-num">1</td>
                         <td>
                             <span class="product-name">气相色谱仪</span>
                             <span class="badge badge-new">NEW</span>
                         </td>
-                        <td><span class="model-spec">Agilent 8890</span></td>
+                        <td><span class="brand-tag">Agilent</span></td>
+                        <td><span class="model-text">8890</span></td>
+                        <td><span class="spec-text">FID+TCD检测器，EPC电子流量控制</span></td>
                         <td><span class="price">¥285,000</span></td>
                         <td>
                             <span class="buyer">北京大学</span>
-                            <span class="buyer-dept">化学学院</span>
+                            <div class="buyer-dept">化学学院</div>
                         </td>
-                        <td><span class="supplier">北京中科科仪</span></td>
+                        <td><span class="supplier">北京中科科仪有限公司</span></td>
                         <td><span class="date">2026-02-26</span></td>
                         <td><span class="region">北京</span></td>
                     </tr>
                     <tr>
+                        <td class="row-num">2</td>
                         <td>
                             <span class="product-name">液相色谱仪</span>
                             <span class="badge badge-new">NEW</span>
                         </td>
-                        <td><span class="model-spec">Waters ACQUITY UPLC</span></td>
+                        <td><span class="brand-tag">Waters</span></td>
+                        <td><span class="model-text">ACQUITY UPLC H-Class</span></td>
+                        <td><span class="spec-text">四元梯度泵，UV检测器</span></td>
                         <td><span class="price">¥468,000</span></td>
                         <td>
                             <span class="buyer">清华大学</span>
-                            <span class="buyer-dept">生命学院</span>
+                            <div class="buyer-dept">生命科学学院</div>
                         </td>
-                        <td><span class="supplier">上海伍丰科学仪器</span></td>
+                        <td><span class="supplier">上海伍丰科学仪器有限公司</span></td>
                         <td><span class="date">2026-02-26</span></td>
                         <td><span class="region">北京</span></td>
                     </tr>
                     <tr>
+                        <td class="row-num">3</td>
                         <td>
                             <span class="product-name">三重四极杆质谱仪</span>
                             <span class="badge badge-new">NEW</span>
                         </td>
-                        <td><span class="model-spec">SCIEX 7500</span></td>
+                        <td><span class="brand-tag">SCIEX</span></td>
+                        <td><span class="model-text">7500 System</span></td>
+                        <td><span class="spec-text">ESI+APCI离子源，MRM模式</span></td>
                         <td><span class="price">¥1,250,000</span></td>
                         <td>
-                            <span class="buyer">中科院上海药物所</span>
+                            <span class="buyer">中科院上海药物研究所</span>
                         </td>
-                        <td><span class="supplier">珀金埃尔默</span></td>
+                        <td><span class="supplier">珀金埃尔默企业管理(上海)有限公司</span></td>
                         <td><span class="date">2026-02-26</span></td>
                         <td><span class="region">上海</span></td>
                     </tr>
                     <tr>
+                        <td class="row-num">4</td>
                         <td>
                             <span class="product-name">原子吸收光谱仪</span>
                         </td>
-                        <td><span class="model-spec">PerkinElmer PinAAcle 900Z</span></td>
+                        <td><span class="brand-tag">PerkinElmer</span></td>
+                        <td><span class="model-text">PinAAcle 900Z</span></td>
+                        <td><span class="spec-text">石墨炉原子化器，塞曼背景校正</span></td>
                         <td><span class="price">¥195,000</span></td>
                         <td>
                             <span class="buyer">复旦大学</span>
-                            <span class="buyer-dept">分析测试中心</span>
+                            <div class="buyer-dept">分析测试中心</div>
                         </td>
-                        <td><span class="supplier">上海光谱仪器</span></td>
+                        <td><span class="supplier">上海光谱仪器有限公司</span></td>
                         <td><span class="date">2026-02-25</span></td>
                         <td><span class="region">上海</span></td>
                     </tr>
                     <tr>
+                        <td class="row-num">5</td>
                         <td>
-                            <span class="product-name">红外光谱仪</span>
+                            <span class="product-name">傅里叶红外光谱仪</span>
                         </td>
-                        <td><span class="model-spec">Thermo Nicolet iS50</span></td>
+                        <td><span class="brand-tag">Thermo Scientific</span></td>
+                        <td><span class="model-text">Nicolet iS50</span></td>
+                        <td><span class="spec-text">DTGS检测器，光谱范围7800-350cm⁻¹</span></td>
                         <td><span class="price">¥335,000</span></td>
                         <td>
                             <span class="buyer">浙江大学</span>
-                            <span class="buyer-dept">医学院</span>
+                            <div class="buyer-dept">医学院</div>
                         </td>
-                        <td><span class="supplier">赛默飞世尔科技</span></td>
+                        <td><span class="supplier">赛默飞世尔科技(中国)有限公司</span></td>
                         <td><span class="date">2026-02-25</span></td>
                         <td><span class="region">浙江</span></td>
                     </tr>
                     <tr>
+                        <td class="row-num">6</td>
                         <td>
                             <span class="product-name">离子色谱仪</span>
                         </td>
-                        <td><span class="model-spec">Dionex ICS-6000</span></td>
+                        <td><span class="brand-tag">Metrohm</span></td>
+                        <td><span class="model-text">940 Professional IC Vario</span></td>
+                        <td><span class="spec-text">电导检测器，抑制器技术</span></td>
                         <td><span class="price">¥420,000</span></td>
                         <td>
                             <span class="buyer">南京大学</span>
-                            <span class="buyer-dept">环境学院</span>
+                            <div class="buyer-dept">环境学院</div>
                         </td>
-                        <td><span class="supplier">瑞士万通中国</span></td>
+                        <td><span class="supplier">瑞士万通中国有限公司</span></td>
                         <td><span class="date">2026-02-24</span></td>
                         <td><span class="region">江苏</span></td>
                     </tr>
                     <tr>
+                        <td class="row-num">7</td>
                         <td>
-                            <span class="product-name">电感耦合等离子体质谱仪</span>
+                            <span class="product-name">ICP-MS</span>
                         </td>
-                        <td><span class="model-spec">Agilent 7850 ICP-MS</span></td>
+                        <td><span class="brand-tag">Agilent</span></td>
+                        <td><span class="model-text">7850 ICP-MS</span></td>
+                        <td><span class="spec-text">碰撞反应池，检出限ppt级</span></td>
                         <td><span class="price">¥890,000</span></td>
                         <td>
                             <span class="buyer">中国药科大学</span>
                         </td>
-                        <td><span class="supplier">安捷伦科技</span></td>
+                        <td><span class="supplier">安捷伦科技(中国)有限公司</span></td>
                         <td><span class="date">2026-02-24</span></td>
                         <td><span class="region">江苏</span></td>
                     </tr>
@@ -805,6 +1226,20 @@
                         <p>指在招标过程中中标、向采购方提供设备和服务的公司或代理商。他们负责设备供货、安装调试及售后服务。</p>
                     </div>
                 </div>
+                <div class="legend-item">
+                    <span class="legend-icon">⚙️</span>
+                    <div class="legend-content">
+                        <h5>规格参数</h5>
+                        <p>设备的关键技术指标和配置信息，包括检测器类型、泵系统、离子源等核心技术参数。</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon">💰</span>
+                    <div class="legend-content">
+                        <h5>中标价格</h5>
+                        <p>供应商中标时的最终报价，通常包含设备费、运输费、安装调试费及税费等全部费用。</p>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -824,7 +1259,7 @@
             <p>今日中标设备价格分布如下：</p>
             <ul>
                 <li><strong>高端设备（100万+）：</strong>三重四极杆质谱仪、ICP-MS，合计214万元，占比55.7%</li>
-                <li><strong>中端设备（30-50万）：</strong>液相色谱仪、红外光谱仪、离子色谱仪，合计122.3万元，占比31.8%</li>
+                <li><strong>中端设备（30-100万）：</strong>液相色谱仪、红外光谱仪、离子色谱仪，合计122.3万元，占比31.8%</li>
                 <li><strong>入门级设备（30万以下）：</strong>气相色谱仪、原子吸收光谱仪，合计48万元，占比12.5%</li>
             </ul>
             
