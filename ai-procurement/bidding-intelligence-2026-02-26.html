@@ -1090,18 +1090,16 @@
                 <thead>
                     <tr>
                         <th>序号</th>
-                        <th>产品名称</th>
+                        <th>产品</th>
                         <th>品牌</th>
                         <th>型号</th>
-                        <th>规格参数</th>
-                        <th>中标价格</th>
-                        <th>历史均价</th>
-                        <th>趋势</th>
-                        <th>同型号不同品牌均价</th>
-                        <th>同型号不同品牌趋势</th>
+                        <th>规格</th>
+                        <th>价格</th>
+                        <th>同型号历史均价</th>
+                        <th>同型号价格趋势</th>
                         <th>采购方</th>
                         <th>供应商</th>
-                        <th>中标日期</th>
+                        <th>日期</th>
                         <th>地区</th>
                     </tr>
                 </thead>
@@ -1116,8 +1114,6 @@
                         <td><span class="model-text">8890</span></td>
                         <td><span class="spec-text">FID+TCD检测器，EPC电子流量控制</span></td>
                         <td><span class="price">¥285,000</span></td>
-                        <td><span class="avg-price avg-price-empty">-</span></td>
-                        <td><span class="trend-empty">-</span></td>
                         <td><span class="avg-price avg-price-empty">-</span></td>
                         <td><span class="trend-empty">-</span></td>
                         <td>
@@ -1140,8 +1136,6 @@
                         <td><span class="price">¥468,000</span></td>
                         <td><span class="avg-price avg-price-empty">-</span></td>
                         <td><span class="trend-empty">-</span></td>
-                        <td><span class="avg-price avg-price-empty">-</span></td>
-                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">清华大学</span>
                             <div class="buyer-dept">生命科学学院</div>
@@ -1162,8 +1156,6 @@
                         <td><span class="price">¥1,250,000</span></td>
                         <td><span class="avg-price avg-price-empty">-</span></td>
                         <td><span class="trend-empty">-</span></td>
-                        <td><span class="avg-price avg-price-empty">-</span></td>
-                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">中科院上海药物研究所</span>
                         </td>
@@ -1180,8 +1172,6 @@
                         <td><span class="model-text">PinAAcle 900Z</span></td>
                         <td><span class="spec-text">石墨炉原子化器，塞曼背景校正</span></td>
                         <td><span class="price">¥195,000</span></td>
-                        <td><span class="avg-price avg-price-empty">-</span></td>
-                        <td><span class="trend-empty">-</span></td>
                         <td><span class="avg-price avg-price-empty">-</span></td>
                         <td><span class="trend-empty">-</span></td>
                         <td>
@@ -1203,8 +1193,6 @@
                         <td><span class="price">¥335,000</span></td>
                         <td><span class="avg-price avg-price-empty">-</span></td>
                         <td><span class="trend-empty">-</span></td>
-                        <td><span class="avg-price avg-price-empty">-</span></td>
-                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">浙江大学</span>
                             <div class="buyer-dept">医学院</div>
@@ -1224,8 +1212,6 @@
                         <td><span class="price">¥420,000</span></td>
                         <td><span class="avg-price avg-price-empty">-</span></td>
                         <td><span class="trend-empty">-</span></td>
-                        <td><span class="avg-price avg-price-empty">-</span></td>
-                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">南京大学</span>
                             <div class="buyer-dept">环境学院</div>
@@ -1243,8 +1229,6 @@
                         <td><span class="model-text">7850 ICP-MS</span></td>
                         <td><span class="spec-text">碰撞反应池，检出限ppt级</span></td>
                         <td><span class="price">¥890,000</span></td>
-                        <td><span class="avg-price avg-price-empty">-</span></td>
-                        <td><span class="trend-empty">-</span></td>
                         <td><span class="avg-price avg-price-empty">-</span></td>
                         <td><span class="trend-empty">-</span></td>
                         <td>
@@ -1293,29 +1277,15 @@
                 <div class="legend-item">
                     <span class="legend-icon">📊</span>
                     <div class="legend-content">
-                        <h5>历史均价</h5>
-                        <p>同产品历史采购的平均价格。今日为数据收集首日，暂无历史数据，后续将根据累计数据计算展示。</p>
+                        <h5>同型号历史均价</h5>
+                        <p>该型号所有品牌的历史平均价格（跨品牌对比）。今日为数据收集首日，暂无历史数据，后续将根据累计数据计算展示。</p>
                     </div>
                 </div>
                 <div class="legend-item">
                     <span class="legend-icon">📈</span>
                     <div class="legend-content">
-                        <h5>价格趋势</h5>
-                        <p>与历史均价比较的价格变化趋势：↑ 上涨(+5%以上)、↓ 下降(-5%以下)、～ 波动大、- 稳定(±5%以内)。</p>
-                    </div>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-icon">🏷️</span>
-                    <div class="legend-content">
-                        <h5>同型号不同品牌均价</h5>
-                        <p>该型号所有品牌的平均价格（跨品牌对比）。用于评估特定型号在不同品牌间的价格水平。</p>
-                    </div>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-icon">📉</span>
-                    <div class="legend-content">
-                        <h5>同型号不同品牌趋势</h5>
-                        <p>该型号所有品牌的价格趋势（跨品牌对比）：↑ ↓ ～ - 符号含义同上，反映该型号整体市场行情。</p>
+                        <h5>同型号价格趋势</h5>
+                        <p>该型号所有品牌的价格趋势（跨品牌对比）：↑ 上涨(+5%以上)、↓ 下降(-5%以下)、～ 波动大、- 稳定(±5%以内)或暂无数据。</p>
                     </div>
                 </div>
             </div>
