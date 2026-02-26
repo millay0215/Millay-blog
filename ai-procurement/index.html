@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Millay | 洞察 · 思考 · 实践</title>
-    <meta name="description" content="Millay 的个人博客，聚焦供应链前沿、AI学习应用与实践洞察">
+    <title>AI采购情报 | Millay</title>
+    <meta name="description" content="分析测试设备中标价格情报，每日自动抓取分析测试百科网最新中标信息">
     <meta name="author" content="Millay">
     
     <style>
@@ -43,7 +43,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Header - Glassmorphism effect */
+        /* Header */
         header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -113,7 +113,7 @@
             width: 100%;
         }
         
-        /* Hero - Elegant gradient with pattern */
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
             color: white;
@@ -153,7 +153,7 @@
         }
         
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -176,7 +176,6 @@
             padding: 100px 2rem;
         }
         
-        /* Section header */
         .section-header {
             margin-bottom: 3.5rem;
             text-align: center;
@@ -197,117 +196,39 @@
             margin: 0 auto;
         }
         
-        /* Cards grid */
-        .cards-grid {
+        /* Info cards */
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 100px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 60px;
         }
         
-        .card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+        .info-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
         }
         
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+        .info-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
         
-        .card:hover {
-            border-color: transparent;
-            box-shadow: 0 20px 40px var(--shadow-hover);
-            transform: translateY(-4px);
-        }
-        
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .card-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-warm) 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.75rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover .card-icon {
-            transform: scale(1.1);
-        }
-        
-        .card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.875rem;
-            color: var(--primary);
-            letter-spacing: -0.01em;
-        }
-        
-        .card p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        
-        .tag {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-warm) 100%);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8125rem;
+        .info-card h3 {
+            font-size: 1.25rem;
             font-weight: 600;
-            color: var(--accent);
-            align-self: flex-start;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
         }
         
-        /* Featured section */
-        .featured {
-            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-light) 100%);
-            padding: 100px 2rem;
-            margin: 0 -2rem;
-            position: relative;
+        .info-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
         }
         
-        .featured::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-        
-        .featured-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
+        /* Article list */
         .article-list {
             display: flex;
             flex-direction: column;
@@ -355,6 +276,69 @@
             padding-left: 2rem;
         }
         
+        /* About section */
+        .about-section {
+            background: var(--bg-warm);
+            padding: 60px;
+            border-radius: 16px;
+            margin-top: 80px;
+        }
+        
+        .about-section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .about-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--border);
+        }
+        
+        /* Data source */
+        .data-source {
+            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-light) 100%);
+            padding: 60px;
+            border-radius: 16px;
+            margin-top: 40px;
+        }
+        
+        .data-source h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .data-source p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .data-source a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .data-source a:hover {
+            text-decoration: underline;
+        }
+        
         /* Footer */
         footer {
             background: var(--primary);
@@ -386,11 +370,6 @@
                 font-size: 1.125rem;
             }
             
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
             .nav-links {
                 gap: 1.5rem;
             }
@@ -403,6 +382,11 @@
             
             .article-date {
                 padding-left: 0;
+            }
+            
+            .about-section,
+            .data-source {
+                padding: 2rem;
             }
         }
     </style>
@@ -423,76 +407,62 @@
     
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-label">Personal Blog</span>
-            <h1>洞察 · 思考 · 实践</h1>
-            <p>聚焦供应链前沿、AI学习应用与实践洞察，记录数字化时代的探索与成长。</p>
+            <span class="hero-label">Intelligence Column</span>
+            <h1>📊 AI采购情报</h1>
+            <p>每日自动抓取分析测试百科网中标信息，提供分析测试设备采购价格情报与市场趋势分析。</p>
         </div>
     </section>
     
     <main>
-        <div class="section-header">
-            <h2>专栏</h2>
-            <p>深度专题，持续更新。在这里分享我的学习心得与实践思考。</p>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon">📈</div>
+                <h3>价格趋势</h3>
+                <p>追踪分析测试设备中标价格变化，掌握市场行情</p>
+            </div>
+            <div class="info-card">
+                <div class="icon">🔍</div>
+                <h3>采购动态</h3>
+                <p>汇总高校、科研院所、政府机构的最新采购信息</p>
+            </div>
+            <div class="info-card">
+                <div class="icon">🤖</div>
+                <h3>AI自动化</h3>
+                <p>每日10:00自动抓取更新，智能生成分析报告</p>
+            </div>
         </div>
         
-        <div class="cards-grid">
-            <a href="/supply-chain/" class="card">
-                <div class="card-icon">📦</div>
-                <h3>供应链前沿日报</h3>
-                <p>聚焦供应链领域的最新方法、工具、AI技术，每日精选前沿信息，助你把握行业脉搏。</p>
-                <span class="tag">每日更新</span>
+        <div class="section-header">
+            <h2>情报列表</h2>
+            <p>最新分析测试设备中标价格情报，每日更新。</p>
+        </div>
+        
+        <div class="article-list">
+            <a href="bidding-intelligence-2026-02-26.html" class="article-item">
+                <div>
+                    <h4>分析测试设备中标价格情报 | 2026年2月26日</h4>
+                    <p>质谱仪120万中标、高校色谱仪采购、5条最新中标记录...</p>
+                </div>
+                <span class="article-date">2026.02.26</span>
             </a>
-            
-            <a href="/ai-learning/" class="card">
-                <div class="card-icon">🤖</div>
-                <h3>AI学习应用</h3>
-                <p>记录AI工具学习与应用实践，分享Kimi、OpenClaw等AI助手的使用经验与心得。</p>
-                <span class="tag">持续更新</span>
-            </a>
-            
-            <a href="/ai-procurement/" class="card">
-                <div class="card-icon">📊</div>
-                <h3>AI采购情报</h3>
-                <p>每日自动抓取分析测试百科网中标信息，提供分析测试设备采购价格情报与市场趋势分析。</p>
-                <span class="tag">每日更新</span>
-            </a>
+        </div>
+        
+        <div class="about-section">
+            <h2>关于本专栏</h2>
+            <p><span class="tag">每日更新</span>每日 10:00 自动抓取更新</p>
+            <p><span class="tag">数据来源</span>分析测试百科网 (antpedia.com)</p>
+            <p><span class="tag">覆盖范围</span>质谱仪、色谱仪、光谱仪、显微镜等</p>
+            <p><span class="tag">采购主体</span>高校、科研院所、海关、医院等</p>
+            <p style="margin-top: 1.5rem;"><strong>AI采购情报</strong>专栏通过自动化爬虫技术，每日从分析测试百科网抓取最新的分析测试设备中标信息，帮助您了解市场价格趋势、掌握行业采购动态、辅助采购决策参考。</p>
+        </div>
+        
+        <div class="data-source">
+            <h3>📡 数据来源说明</h3>
+            <p>本专栏数据来源于 <a href="https://www.antpedia.com" target="_blank">分析测试百科网 (antpedia.com)</a> 的招标采购栏目。</p>
+            <p style="margin-top: 1rem;">分析测试百科网是中国领先的分析测试行业门户网站，提供全面的仪器招标、中标信息，覆盖质谱、色谱、光谱、显微镜等各类实验室分析测试设备。</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">免责声明：本专栏内容仅供参考，具体中标信息请以官方网站发布为准。</p>
         </div>
     </main>
-    
-    <section class="featured">
-        <div class="featured-content">
-            <div class="section-header">
-                <h2>最新文章</h2>
-                <p>近期发布的精选内容，记录学习与探索的足迹。</p>
-            </div>
-            
-            <div class="article-list">
-                <a href="/ai-procurement/bidding-intelligence-2026-02-26.html" class="article-item">
-                    <div>
-                        <h4>AI采购情报 | 分析测试设备中标价格情报</h4>
-                        <p>质谱仪120万中标、高校色谱仪采购、5条最新中标记录...</p>
-                    </div>
-                    <span class="article-date">2026.02.26</span>
-                </a>
-                
-                <a href="/posts/2026-02-26-supply-chain-daily.html" class="article-item">
-                    <div>
-                        <h4>供应链前沿日报 | 2026年2月26日</h4>
-                        <p>美国关税政策反复震荡，中国生物制药全球崛起，AI驱动供应链智能化加速...</p>
-                    </div>
-                    <span class="article-date">2026.02.26</span>
-                </a>
-                
-                <a href="/posts/hello.html" class="article-item">
-                    <div>
-                        <h4>欢迎来到 Millay Blog</h4>
-                        <p>这是我的第一篇博客文章，介绍博客的技术栈和自动化发布流程...</p>
-                    </div>
-                    <span class="article-date">2026.02.25</span>
-                </a>
-            </div>
-        </div>
-    </section>
     
     <footer>
         <p class="tagline">洞察 · 思考 · 实践</p>

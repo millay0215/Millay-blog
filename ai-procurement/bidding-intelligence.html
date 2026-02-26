@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析测试设备中标价格情报 | 2026年2月26日 | Millay</title>
+    <meta name="description" content="分析测试百科网中标信息，分析测试设备采购价格情报">
+    <meta name="author" content="Millay">
+    
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: opacity 0.2s;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            color: white;
+            padding: 160px 2rem 100px;
+            margin-top: 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(34, 81, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(34, 81, 255, 0.08) 0%, transparent 40%);
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero .meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.01em;
+        }
+        
+        /* Info box */
+        .info-box {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-warm) 100%);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+        
+        .info-box p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin: 1.5rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9375rem;
+        }
+        
+        th, td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background: var(--bg-light);
+        }
+        
+        td {
+            color: var(--text-secondary);
+        }
+        
+        td:first-child {
+            font-weight: 600;
+            color: var(--primary);
+            width: 60px;
+            text-align: center;
+        }
+        
+        /* Detail items */
+        .detail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .detail-item {
+            background: var(--bg-light);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .detail-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .detail-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            line-height: 1.5;
+        }
+        
+        .detail-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .detail-meta span {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+        
+        .detail-meta strong {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: all 0.2s;
+        }
+        
+        .source-link:hover {
+            color: var(--accent-light);
+        }
+        
+        /* Analysis section */
+        .analysis-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .analysis-list li {
+            padding: 1rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .analysis-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .analysis-list li::before {
+            content: "▸";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .analysis-list strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* About section */
+        .about-content {
+            background: var(--bg-warm);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        
+        .about-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Tags */
+        .tag {
+            display: inline-block;
+            background: white;
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.5rem;
+            border: 1px solid var(--border);
+        }
+        
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-light);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.7;
+            font-size: 0.875rem;
+        }
+        
+        footer .disclaimer {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .hero .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            table {
+                font-size: 0.875rem;
+            }
+            
+            th, td {
+                padding: 0.75rem;
+            }
+            
+            .detail-meta {
+                grid-template-columns: 1fr;
+            }
+            
+            .detail-item {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Millay</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>📊 分析测试设备中标价格情报</h1>
+            <div class="meta">
+                <span>📡 来源：分析测试百科网</span>
+                <span>🕐 更新：2026-02-26 10:00</span>
+            </div>
+        </div>
+    </section>
+    
+    <main>
+        <a href="./" class="back-link">← 返回专栏首页</a>
+        
+        <div class="info-box">
+            <p>📈 <strong>数据说明：</strong>本报告通过 AI 自动抓取分析测试百科网招标采购栏目，汇总最新分析测试设备中标信息。</p>
+            <p>🔍 <strong>覆盖范围：</strong>质谱仪、色谱仪、光谱仪、显微镜等实验室分析测试设备</p>
+        </div>
+        
+        <section class="section">
+            <h2>中标概览表</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>产品名称</th>
+                            <th>中标价格</th>
+                            <th>中标单位</th>
+                            <th>中标日期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>原子荧光光度计</td>
+                            <td>400万+ (13台)</td>
+                            <td>海关总署</td>
+                            <td>2025-12</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>质谱仪 TQ8100</td>
+                            <td>待定</td>
+                            <td>海关总署</td>
+                            <td>2025-12</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>微波消解仪</td>
+                            <td>743万 (74台)</td>
+                            <td>海关总署</td>
+                            <td>2025-12-30</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>透射电镜</td>
+                            <td>待定</td>
+                            <td>浙江大学</td>
+                            <td>2026-01-28</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>教学科研仪器</td>
+                            <td>待定</td>
+                            <td>宁夏大学</td>
+                            <td>2026-01-27</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>碳氢分析仪</td>
+                            <td>待定</td>
+                            <td>待定</td>
+                            <td>2026-02-05</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>流动分析仪</td>
+                            <td>待定</td>
+                            <td>待定</td>
+                            <td>2025年度</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>超高效液相色谱</td>
+                            <td>数千万元</td>
+                            <td>科诺美</td>
+                            <td>2026-01</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>液相色谱仪</td>
+                            <td>待定</td>
+                            <td>大连海关</td>
+                            <td>2026-01</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>信息化设备</td>
+                            <td>待定</td>
+                            <td>待定</td>
+                            <td>2026-02</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>详细情报</h2>
+            <div class="detail-list">
+                <div class="detail-item">
+                    <h4>1. 海光独揽海关总署13台原子荧光光度计采购项目，总价超400万</h4>
+                    <div class="detail-meta">
+                        <span><strong>产品：</strong>原子荧光光度计</span>
+                        <span><strong>价格：</strong>400万+ (13台)</span>
+                        <span><strong>单位：</strong>海关总署</span>
+                        <span><strong>日期：</strong>2025-12</span>
+                    </div>
+                    <a href="https://www.antpedia.com/news/734" target="_blank" class="source-link">查看详情 →</a>
+                </div>
+                
+                <div class="detail-item">
+                    <h4>2. 独家中标！安益谱 TQ8100 拿下海关总署 17 台质谱大单</h4>
+                    <div class="detail-meta">
+                        <span><strong>产品：</strong>质谱仪 TQ8100</span>
+                        <span><strong>价格：</strong>待定</span>
+                        <span><strong>单位：</strong>海关总署</span>
+                        <span><strong>日期：</strong>2025-12</span>
+                    </div>
+                    <a href="https://www.antpedia.com/news/734" target="_blank" class="source-link">查看详情 →</a>
+                </div>
+                
+                <div class="detail-item">
+                    <h4>3. 743万元海关总署74台微波消解仪中标结果公布</h4>
+                    <div class="detail-meta">
+                        <span><strong>产品：</strong>微波消解仪</span>
+                        <span><strong>价格：</strong>743万元 (74台)</span>
+                        <span><strong>单位：</strong>海关总署</span>
+                        <span><strong>日期：</strong>2025-12-30</span>
+                    </div>
+                    <a href="https://www.antpedia.com/news/734" target="_blank" class="source-link">查看详情 →</a>
+                </div>
+                
+                <div class="detail-item">
+                    <h4>4. 浙江大学透射电镜采购项目</h4>
+                    <div class="detail-meta">
+                        <span><strong>产品：</strong>透射电镜</span>
+                        <span><strong>价格：</strong>待定</span>
+                        <span><strong>单位：</strong>浙江大学</span>
+                        <span><strong>日期：</strong>2026-01-28</span>
+                    </div>
+                    <a href="https://www.antpedia.com/news/734" target="_blank" class="source-link">查看详情 →</a>
+                </div>
+                
+                <div class="detail-item">
+                    <h4>5. 宁夏大学教学科研仪器设备更新项目（二期）十二中标结果出炉</h4>
+                    <div class="detail-meta">
+                        <span><strong>产品：</strong>教学科研仪器设备</span>
+                        <span><strong>价格：</strong>待定</span>
+                        <span><strong>单位：</strong>宁夏大学</span>
+                        <span><strong>日期：</strong>2026-01-27</span>
+                    </div>
+                    <a href="https://www.antpedia.com/news/734" target="_blank" class="source-link">查看详情 →</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>市场趋势分析</h2>
+            <ul class="analysis-list">
+                <li><strong>政府采购活跃：</strong>海关总署等政府机构是分析测试设备的主要采购方，采购规模大、频次高，单次采购量可达数十台。</li>
+                <li><strong>国产替代加速：</strong>海光、安益谱等国产仪器品牌在中标中的占比逐步提升，国产仪器从"潜力股"向"主力军"跨越。</li>
+                <li><strong>热门设备类型：</strong>质谱仪、色谱仪、光谱仪、原子荧光光度计等分析测试设备需求旺盛。</li>
+                <li><strong>高校科研投入：</strong>浙江大学、宁夏大学等高校持续加大科研仪器设备投入，透射电镜等高端设备采购需求增长。</li>
+                <li><strong>价格区间广泛：</strong>中标价格从数十万元到数千万元不等，反映不同设备的技术含量和应用领域差异。</li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>关于本专栏</h2>
+            <div class="about-content">
+                <p><span class="tag">AI采购情报</span>专栏通过自动化爬虫技术，每日从分析测试百科网抓取最新的分析测试设备中标信息。</p>
+                <p>帮助您：📈 了解市场价格趋势、🔍 掌握行业采购动态、💡 辅助采购决策参考</p>
+                <p style="font-size: 0.875rem; opacity: 0.8;"><strong>发布频率：</strong>每日 10:00 自动更新 | <strong>数据来源：</strong>分析测试百科网 (antpedia.com)</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
+        <p class="disclaimer">本报告由 AI 自动生成，数据仅供参考。如有疑问请以官方网站发布为准。</p>
+    </footer>
+</body>
+</html>
