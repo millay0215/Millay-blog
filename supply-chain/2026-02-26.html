@@ -4,52 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>供应链前沿日报 | 2026年2月26日 | Millay Blog</title>
-    <meta name="description" content="2026年2月26日供应链前沿日报：Agentic AI从实验走向企业级部署，多智能体协作重塑供应链决策模式，数字孪生实现实时优化">
+    <meta name="description" content="本期聚焦：关税重塑全球贸易格局、AI决策支持普及率达94%、供应链软件市场Oracle与SAP主导">
     <meta name="author" content="Millay">
-    <meta name="keywords" content="供应链, Agentic AI, 数字孪生, 智能体, 供应链编排">
+    <meta name="keywords" content="供应链, 关税, AI, Oracle, SAP, 全球贸易">
     
     <!-- Open Graph -->
     <meta property="og:title" content="供应链前沿日报 | 2026年2月26日">
-    <meta property="og:description" content="Agentic AI从实验走向企业级部署，多智能体协作重塑供应链决策模式">
+    <meta property="og:description" content="关税重塑全球贸易格局、AI决策支持普及率达94%">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://millay-blog.pages.dev/supply-chain/2026-02-26.html">
     
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="供应链前沿日报 | 2026年2月26日">
-    <meta name="twitter:description" content="Agentic AI从实验走向企业级部署，多智能体协作重塑供应链决策模式">
-    
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema.org -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "NewsArticle",
         "headline": "供应链前沿日报 | 2026年2月26日",
-        "description": "Agentic AI从实验走向企业级部署，多智能体协作重塑供应链决策模式，数字孪生实现实时优化",
-        "author": {
-            "@type": "Person",
-            "name": "Millay"
-        },
-        "datePublished": "2026-02-26",
-        "url": "https://millay-blog.pages.dev/supply-chain/2026-02-26.html",
-        "keywords": ["供应链", "Agentic AI", "数字孪生", "智能体", "供应链编排"]
+        "description": "关税重塑全球贸易格局、AI决策支持普及率达94%",
+        "author": {"@type": "Person", "name": "Millay"},
+        "datePublished": "2026-02-26"
     }
     </script>
     
     <style>
         :root {
-            --primary: #051c2c;
-            --primary-light: #0a2942;
-            --accent: #2251ff;
-            --accent-light: #4b71ff;
-            --text: #051c2c;
-            --text-secondary: #5a6872;
-            --text-muted: #8a96a0;
+            --primary: #2563eb;
+            --text: #1f2937;
             --bg: #ffffff;
-            --bg-light: #f8f9fa;
-            --bg-warm: #faf9f7;
-            --border: #e8eaed;
-            --shadow: rgba(5, 28, 44, 0.08);
+            --gray: #6b7280;
+            --light-bg: #f9fafb;
         }
         
         * {
@@ -59,54 +42,46 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.8;
             color: var(--text);
             background: var(--bg);
-            -webkit-font-smoothing: antialiased;
         }
         
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            position: fixed;
+            background: var(--bg);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+            z-index: 100;
         }
         
         nav {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 72px;
         }
         
         .logo {
-            font-size: 1.625rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
-            letter-spacing: -0.02em;
         }
         
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
         
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text);
             text-decoration: none;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            transition: color 0.2s;
         }
         
         .nav-links a:hover {
@@ -116,254 +91,317 @@
         main {
             max-width: 800px;
             margin: 0 auto;
-            padding: 120px 2rem 4rem;
+            padding: 2rem 1rem;
         }
         
-        .post-header {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
         }
         
-        .post-label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1rem;
+        .hero h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
         }
         
-        .post-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+        .hero p {
+            opacity: 0.9;
+            font-size: 1rem;
         }
         
-        .post-meta {
-            color: var(--text-muted);
-            font-size: 0.9375rem;
+        .section {
+            margin-bottom: 2.5rem;
         }
         
-        .post-content {
-            font-size: 1.0625rem;
-            line-height: 1.9;
-        }
-        
-        .post-content h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 2.5rem 0 1rem;
+        .section h2 {
             color: var(--primary);
-            letter-spacing: -0.01em;
-        }
-        
-        .post-content h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 2rem 0 0.75rem;
-            color: var(--primary);
-        }
-        
-        .post-content p {
             margin-bottom: 1.5rem;
-            color: var(--text-secondary);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
         }
         
-        .post-content ul, .post-content ol {
-            margin: 1rem 0 1.5rem 1.5rem;
-            color: var(--text-secondary);
+        .section h3 {
+            margin: 1.5rem 0 1rem;
+            color: var(--text);
         }
         
-        .post-content li {
-            margin-bottom: 0.75rem;
+        .section h4 {
+            margin: 1rem 0 0.5rem;
+            color: var(--gray);
         }
         
-        .highlight-box {
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-warm) 100%);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem 2rem;
-            margin: 2rem 0;
-            border-radius: 0 12px 12px 0;
+        .section p {
+            margin-bottom: 1rem;
         }
         
-        .highlight-box h3 {
+        .section ul, .section ol {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+        
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .section a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .section a:hover {
+            text-decoration: underline;
+        }
+        
+        .highlight {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .news-item {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .news-item h3 {
+            margin-top: 0;
+        }
+        
+        .source {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .tool-card h3 {
             margin-top: 0;
             color: var(--primary);
         }
         
-        .tag-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-        
-        .tag {
-            display: inline-block;
-            background: var(--bg-light);
-            padding: 0.375rem 0.875rem;
-            border-radius: 20px;
-            font-size: 0.8125rem;
-            font-weight: 500;
-            color: var(--accent);
+        blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--gray);
         }
         
         footer {
-            background: var(--primary);
-            color: white;
-            padding: 3rem 2rem;
             text-align: center;
-            margin-top: 4rem;
+            padding: 2rem;
+            border-top: 1px solid #e5e7eb;
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-top: 3rem;
         }
         
-        footer p {
-            opacity: 0.7;
-            font-size: 0.9375rem;
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-decoration: none;
         }
         
-        @media (max-width: 768px) {
-            .post-title {
-                font-size: 1.75rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            main {
-                padding: 100px 1.5rem 3rem;
-            }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-card {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="/" class="logo">Millay</a>
+            <a href="/" class="logo">Millay Blog</a>
             <ul class="nav-links">
                 <li><a href="/">首页</a></li>
                 <li><a href="/supply-chain/">供应链前沿</a></li>
-                <li><a href="/ai-learning/">AI学习应用</a></li>
                 <li><a href="/about.html">关于</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <article>
-            <header class="post-header">
-                <span class="post-label">供应链前沿日报</span>
-                <h1 class="post-title">供应链前沿日报 | 2026年2月26日</h1>
-                <div class="post-meta">2026年2月26日 · 阅读时间约 8 分钟</div>
-            </header>
+        <a href="/supply-chain/" class="back-link">← 返回专栏</a>
+        
+        <section class="hero">
+            <h1>📦 供应链前沿日报</h1>
+            <p>2026年2月26日 | 本期聚焦：关税重塑全球贸易格局、AI决策支持普及率达94%</p>
+        </section>
+        
+        <section class="section">
+            <h2>今日要点</h2>
             
-            <div class="post-content">
-                <p>2026年，供应链领域正在经历一场由Agentic AI驱动的深刻变革。从概念验证走向企业级部署，从被动响应转向主动编排，从单点自动化进化到多智能体协作——供应链管理的底层逻辑正在被重新定义。</p>
+            <div class="news-item">
+                <h3>1. 2026年供应链六大趋势：从韧性到"总价值"战略</h3>
+                <p class="source"><a href="https://kpmg.com/se/en/insights/2026/supply-chain-trends-2026.html">KPMG</a> · 2026年2月</p>
+                <p>领先供应链运营正从单纯的韧性关注转向追求<strong>"总价值"(Total Value)</strong>战略，整合<strong>全体验</strong>与<strong>全绩效</strong>，将供应链从被动应对中断转变为主动追求企业价值最大化。同时，供应链职能正加速向全球商业服务(GBS)组织集中化迁移。</p>
+            </div>
+            
+            <div class="news-item">
+                <h3>2. 关税重塑全球贸易：82%企业供应链受影响</h3>
+                <p class="source"><a href="https://www.mckinsey.com/capabilities/operations/our-insights/supply-chain-risk-survey">McKinsey</a> · 2025年12月</p>
+                <p>麦肯锡年度供应链风险调查显示，<strong>82%的受访者表示其供应链受到新关税影响</strong>，20-40%的供应链活动受到波及。39%的企业面临供应商和材料成本上涨，30%报告客户需求下降。消费品行业受影响最严重(43%的供应链活动)，化工行业影响最小(23%)。</p>
+            </div>
+            
+            <div class="news-item">
+                <h3>3. 美国供应链"大重组"加速：中国进口份额跌至9%</h3>
+                <p class="source"><a href="https://cepr.org/voxeu/columns/update-great-reallocation-us-supply-chain-trade">CEPR</a> · 2026年1月</p>
+                <p>数据显示，2025年4月"解放日"关税后，美国进口模式重组显著加速。中国在美国进口中的份额从2017年的21%峰值降至2025年底的<strong>约9%</strong>，回到2001年中国加入WTO时的水平。墨西哥、加拿大和台湾成为主要受益者。</p>
+            </div>
+            
+            <div class="news-item">
+                <h3>4. AI在供应链中的应用：94%企业计划用于决策支持</h3>
+                <p class="source"><a href="https://www.abiresearch.com/blog/artificial-intelligence-ai-in-supply-chain-survey-results">ABI Research</a> · 2025年10月</p>
+                <p>对490位供应链专业人士的调查显示，<strong>64%的供应链领导者将AI/GenAI能力视为评估新技术投资的重要因素</strong>。94%计划在未来两年使用AI进行决策支持，91%用于客户服务，91%用于需求预测，85%用于库存管理。76%认为Agentic AI可用于供应商关系管理。</p>
+            </div>
+            
+            <div class="news-item">
+                <h3>5. 供应链软件市场格局：Oracle与SAP主导</h3>
+                <p class="source"><a href="https://futurumgroup.com/press-release/supply-chain-software-dominated-by-oracle-sap-and-blue-yonder/">Futurum Group</a> · 2026年1月</p>
+                <p>2025年上半年IT决策者调查显示，Oracle SCM Cloud以53.8%的采用率位居首位，SAP Ariba和S/4HANA Cloud合计达57.2%。Blue Yonder(22.1%)和IBM Sterling(20.4%)紧随其后。企业采购SCM软件的三大驱动因素：<strong>功能特性(18.7%)、生成式AI能力(13.2%)、成本定价(8.9%)</strong>。</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>前沿技术</h2>
+            
+            <h3>Agentic AI：从辅助到自主的供应链智能</h3>
+            <p>2026年，供应链AI正从"证明价值"的概念验证阶段，迈向<strong>嵌入式智能</strong>和<strong>自主代理</strong>的新阶段。根据KPMG和ABI Research的研究，Agentic AI正在以下领域实现突破：</p>
+            
+            <div class="highlight">
+                <h4>智能采购代理</h4>
+                <ul>
+                    <li>自主发布和管理RFP</li>
+                    <li>评估供应商响应并触发入驻流程</li>
+                    <li>实时监控供应商风险</li>
+                    <li>生成谈判脚本并执行预批准合同方案</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <h4>供应链编排代理</h4>
+                <ul>
+                    <li>监控预测偏差和入库可变性</li>
+                    <li>管理安全库存阈值</li>
+                    <li>推荐库存重新平衡方案</li>
+                    <li>在人工监督下执行经批准的决策</li>
+                </ul>
+            </div>
+            
+            <p><strong>关键洞察</strong>：最成功的AI部署集中在<strong>定义明确、范围狭窄</strong>的运营瓶颈上，而非追求全面自动化。数据显示，AI辅助的路线优化和负载匹配可将规划时间缩短60%以上，而文档智能处理可将跨境贸易合规审查时间减少70%。</p>
+        </section>
+        
+        <section class="section">
+            <h2>方法工具</h2>
+            
+            <div class="tool-card">
+                <h3>🔧 推荐工具：Logility Decision Intelligence Platform</h3>
+                <p><strong>适用场景</strong>：中大型企业寻求AI优先的供应链规划工具</p>
                 
-                <h2>今日要点</h2>
+                <h4>核心能力</h4>
+                <ul>
+                    <li><strong>AI优先决策智能</strong>：内置AI能力，提供跨供应链的可执行洞察</li>
+                    <li><strong>端到端规划</strong>：整合需求规划、库存优化和供应部署</li>
+                    <li><strong>情景规划与网络优化</strong>：建模潜在情景，改善运营响应和风险缓解</li>
+                </ul>
                 
-                <div class="highlight-box">
-                    <h3>核心洞察</h3>
-                    <ul>
-                        <li><strong>Agentic AI成为团队成员</strong>：2026年，40%的企业应用将嵌入任务型AI智能体，这一比例在2025年还不足5%</li>
-                        <li><strong>从灭火到编排</strong>：领先企业正从被动应对危机转向主动供应链编排，实现端到端实时协同</li>
-                        <li><strong>人机协作新模式</strong>：AI智能体不是替代人类，而是作为"数字同事"增强决策能力</li>
-                        <li><strong>持续规划时代</strong>：静态规划周期被打破，实时优化成为新常态</li>
-                    </ul>
+                <h4>差异化优势</h4>
+                <ul>
+                    <li>被Gartner评为2024年供应链规划解决方案领导者</li>
+                    <li>在2025年SPARK Matrix供应链网络设计分析中被评为技术领导者</li>
+                    <li>提供可解释AI能力，清晰展示预测变化和数据影响</li>
+                </ul>
+                
+                <p><strong>适用行业</strong>：消费品、工业制造、生命科学等</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>深度洞察</h2>
+            
+            <h3>关税时代的供应链战略重构</h3>
+            
+            <p>2025年的关税浪潮不仅是一次成本冲击，更是<strong>供应链战略的根本性重构</strong>。McKinsey的研究揭示了企业的应对模式：</p>
+            
+            <h4>短期战术响应</h4>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">45%</div>
+                    <div class="stat-label">增加库存作为缓解措施</div>
                 </div>
-                
-                <h2>前沿技术</h2>
-                
-                <h3>1. Agentic AI：从任务自动化到自主决策</h3>
-                <p>传统AI系统专注于自动化单个任务，如需求预测或库存预警。Agentic AI则更进一步，具备目标、约束和决策权限，能够评估场景、权衡利弊，并在无需持续人工干预的情况下采取行动。</p>
-                
-                <p>在供应链场景中，这意味着AI智能体可以：</p>
-                <ul>
-                    <li>自主重新平衡库存</li>
-                    <li>实时重新规划运输路线</li>
-                    <li>动态调整供应商订单</li>
-                    <li>即时响应供应链中断</li>
-                </ul>
-                
-                <p>决策不再等待仪表板或审批，而是在企业政策和业务目标的指导下，以机器速度发生。</p>
-                
-                <h3>2. 多智能体协作：供应链的"交响乐"</h3>
-                <p>2026年最显著的趋势之一是跨供应链的多智能体系统兴起。企业不再部署单一的庞大AI系统，而是为采购、物流、制造、质量和财务部署专业化智能体，每个智能体都有自己的职责和智能。</p>
-                
-                <p>这些智能体相互通信和协作，动态协商优先级并解决冲突。采购智能体与供应商协商交货时间，同时物流智能体基于成本、排放和交付风险优化运输路线——两者协同工作，实现真正的自主供应链编排。</p>
-                
-                <h3>3. 数字孪生：实时优化的基础设施</h3>
-                <p>静态规划周期正在过时。Agentic AI在条件持续变化的环境中蓬勃发展，而供应链是企业中最动态的系统之一。</p>
-                
-                <p>领先组织正在使用数字孪生技术，结合Agentic AI持续优化供应链绩效。AI智能体监控实时数据流，检测中断的早期信号，并在问题升级前主动调整计划。这种从被动到预测和自主运营的转变带来了可衡量的收益：减少缺货、降低持有成本、提高服务水平。</p>
-                
-                <h2>方法工具</h2>
-                
-                <h3>供应链编排框架</h3>
-                <p>供应链编排被定义为"使多个孤岛和部门更加和谐地协作的中央智能，以实现更好的决策、更快的响应时间和最终更好的业务成果"。</p>
-                
-                <p>实现编排的关键要素：</p>
-                <ol>
-                    <li><strong>统一数据基础</strong>：连接规划、物流、采购、制造和扩展业务网络的实时数据</li>
-                    <li><strong>AI驱动的影响分析</strong>：模拟决策的上游和下游后果，使成本、服务、风险和可持续性之间的权衡变得明确和可衡量</li>
-                    <li><strong>跨部门流程同步</strong>：从需求感知到最后一公里交付的端到端协同</li>
-                    <li><strong>嵌入式治理</strong>：将人在回路治理直接嵌入AI智能体，确保合规性和可审计性</li>
-                </ol>
-                
-                <h3>人机协作最佳实践</h3>
-                <p>最成功的实施不是关于替代人类，而是通过数字副驾驶增强人类能力。Agentic AI作为供应链领导者、规划者和操作员的数字副驾驶，解释决策、呈现替代方案，并将需要人类判断的异常情况升级。</p>
-                
-                <p>关键原则：</p>
-                <ul>
-                    <li>投资可解释AI，建立信任</li>
-                    <li>设计人在回路治理机制</li>
-                    <li>专注于重复性分析的自动化，释放人类专注于场景选择和利益相关者沟通</li>
-                    <li>将运营KPI直接与财务和ESG成果挂钩</li>
-                </ul>
-                
-                <h2>深度洞察</h2>
-                
-                <h3>韧性与成本的平衡艺术</h3>
-                <p>过去几年最显著的紧张关系之一是在韧性和成本之间的钟摆摆动。在经历了一段"不惜代价的韧性"时期后，董事会再次开始质疑盈利能力，即使气候事件、网络攻击和地缘政治碎片化的风险仍在增加。</p>
-                
-                <p>2026年的新范式是：供应链将根据"交付的总价值"来衡量，而不仅仅是单位成本或库存周转。这意味着在工作资本、服务水平、风险敞口和可持续性成果之间取得平衡，并将供应链贡献用增长、利润保护和市场份额的语言来表达。</p>
-                
-                <h3>三个"R"：区域化、韧性、合规化</h3>
-                <p>关于回流、近岸外包和多源采购的辩论不会在2026年结束，但会变得更加细致。许多公司已经开始将关键价值链区域化，但结构性举措的经济性和时间线仍然具有挑战性。</p>
-                
-                <p>预计会出现更多混合模式：核心生产或关键库存放置在更靠近需求的地方，由数字风险评估和双源采购策略支持，当 disruption 阈值被突破时可以激活。同时，贸易法规、关税和合规要求将变得更加复杂，使税务和监管优化成为网络设计的组成部分，而不是后期的检查。</p>
-                
-                <h3>可持续性的运营化</h3>
-                <p>可持续性已从营销幻灯片转变为董事会使命，但许多组织仍难以将其纳入日常供应链决策。2026年的趋势是：排放和循环性正在成为规划、物流和采购的原生参数，而不是事后报告。</p>
-                
-                <p>路线选择、采购决策和生产计划将越来越多地不仅针对成本和服务进行优化，还针对碳强度和资源利用进行优化。连接买家、供应商、物流提供商和合作伙伴的数字网络将改善范围3排放的数据质量，并实现跨价值链的减排、再利用和回收协作计划。</p>
-                
-                <h2>展望未来</h2>
-                <p>IDC预测，到2030年，60%的大型企业将部署分布式AI来保护供应链。这一预测的背后是对供应链本质的重新认识：供应链不再是后台职能，而是客户承诺、品牌信任和可持续增长的交付场所——或失去场所。</p>
-                
-                <p>2026年的赢家将是那些将AI视为团队成员、使用统一规划预见未来、在成本和可持续性之间平衡韧性，并在连接扩展价值链的云数字核心上运行所有这些的组织。现在采取行动的企业将最有能力将不确定性转化为竞争优势。</p>
-                
-                <div class="tag-list">
-                    <span class="tag">供应链</span>
-                    <span class="tag">Agentic AI</span>
-                    <span class="tag">数字孪生</span>
-                    <span class="tag">智能体</span>
-                    <span class="tag">供应链编排</span>
-                    <span class="tag">人机协作</span>
-                    <span class="tag">可持续性</span>
+                <div class="stat-card">
+                    <div class="stat-number">39%</div>
+                    <div class="stat-label">推行双源采购策略</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">33%</div>
+                    <div class="stat-label">制定近岸/回流计划</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">17%</div>
+                    <div class="stat-label">计划将80%以上成本转嫁给客户</div>
                 </div>
             </div>
-        </article>
+            
+            <h4>长期结构性转变</h4>
+            <ul>
+                <li><strong>43%</strong>的企业计划未来三年将更多供应链布局转移至美国(较去年增长25个百分点)</li>
+                <li>东欧、墨西哥和东南亚扩张意愿增强</li>
+                <li><strong>38%</strong>计划减少在中国的供应链存在</li>
+            </ul>
+            
+            <div class="highlight">
+                <h4>深层挑战</h4>
+                <p>企业在现金流压力与供应链韧性之间面临张力。虽然关税缓解计划推动了库存增加，但现金流压力促使许多组织寻求更动态的库存策略——根据需求预测和供应链绩效持续调整库存目标。</p>
+            </div>
+            
+            <blockquote>
+                <p><strong>关键结论</strong>：关税的初始影响是<strong>加速现有韧性战略</strong>，而非根本性转向。真正的考验在于如何在不确定性中平衡成本、韧性和服务水平——这需要更深层的多层级供应商可见性、更快的分析能力和更智能的自动化。</p>
+            </blockquote>
+        </section>
+        
+        <footer>
+            <p>&copy; 2026 Millay. 供应链前沿日报</p>
+            <p>信息来源：KPMG、McKinsey、ABI Research、Futurum Group、CEPR 等权威机构</p>
+            <p style="margin-top: 1rem; font-size: 0.75rem;">明日预告：欧盟碳边境调节机制(CBAM)2026年全面实施对全球供应链的影响分析</p>
+        </footer>
     </main>
-    
-    <footer>
-        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
-    </footer>
 </body>
 </html>
