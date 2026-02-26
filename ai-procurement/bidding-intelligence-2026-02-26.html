@@ -427,6 +427,24 @@
             color: var(--text-secondary);
         }
         
+        /* Price Trend */
+        .trend-up { color: #ef4444; font-weight: 700; }
+        .trend-down { color: #10b981; font-weight: 700; }
+        .trend-stable { color: #6b7280; font-weight: 600; }
+        .trend-volatile { color: #f59e0b; font-weight: 700; }
+        .trend-empty { color: #9ca3af; }
+        
+        .avg-price {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .avg-price-empty {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
         /* Price Range */
         .price-range-list {
             display: flex;
@@ -1077,6 +1095,8 @@
                         <th>型号</th>
                         <th>规格参数</th>
                         <th>中标价格</th>
+                        <th>历史均价</th>
+                        <th>趋势</th>
                         <th>采购方</th>
                         <th>供应商</th>
                         <th>中标日期</th>
@@ -1094,6 +1114,8 @@
                         <td><span class="model-text">8890</span></td>
                         <td><span class="spec-text">FID+TCD检测器，EPC电子流量控制</span></td>
                         <td><span class="price">¥285,000</span></td>
+                        <td><span class="avg-price avg-price-empty">-</span></td>
+                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">北京大学</span>
                             <div class="buyer-dept">化学学院</div>
@@ -1112,6 +1134,8 @@
                         <td><span class="model-text">ACQUITY UPLC H-Class</span></td>
                         <td><span class="spec-text">四元梯度泵，UV检测器</span></td>
                         <td><span class="price">¥468,000</span></td>
+                        <td><span class="avg-price avg-price-empty">-</span></td>
+                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">清华大学</span>
                             <div class="buyer-dept">生命科学学院</div>
@@ -1130,6 +1154,8 @@
                         <td><span class="model-text">7500 System</span></td>
                         <td><span class="spec-text">ESI+APCI离子源，MRM模式</span></td>
                         <td><span class="price">¥1,250,000</span></td>
+                        <td><span class="avg-price avg-price-empty">-</span></td>
+                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">中科院上海药物研究所</span>
                         </td>
@@ -1146,6 +1172,8 @@
                         <td><span class="model-text">PinAAcle 900Z</span></td>
                         <td><span class="spec-text">石墨炉原子化器，塞曼背景校正</span></td>
                         <td><span class="price">¥195,000</span></td>
+                        <td><span class="avg-price avg-price-empty">-</span></td>
+                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">复旦大学</span>
                             <div class="buyer-dept">分析测试中心</div>
@@ -1163,6 +1191,8 @@
                         <td><span class="model-text">Nicolet iS50</span></td>
                         <td><span class="spec-text">DTGS检测器，光谱范围7800-350cm⁻¹</span></td>
                         <td><span class="price">¥335,000</span></td>
+                        <td><span class="avg-price avg-price-empty">-</span></td>
+                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">浙江大学</span>
                             <div class="buyer-dept">医学院</div>
@@ -1180,6 +1210,8 @@
                         <td><span class="model-text">940 Professional IC Vario</span></td>
                         <td><span class="spec-text">电导检测器，抑制器技术</span></td>
                         <td><span class="price">¥420,000</span></td>
+                        <td><span class="avg-price avg-price-empty">-</span></td>
+                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">南京大学</span>
                             <div class="buyer-dept">环境学院</div>
@@ -1197,6 +1229,8 @@
                         <td><span class="model-text">7850 ICP-MS</span></td>
                         <td><span class="spec-text">碰撞反应池，检出限ppt级</span></td>
                         <td><span class="price">¥890,000</span></td>
+                        <td><span class="avg-price avg-price-empty">-</span></td>
+                        <td><span class="trend-empty">-</span></td>
                         <td>
                             <span class="buyer">中国药科大学</span>
                         </td>
@@ -1238,6 +1272,20 @@
                     <div class="legend-content">
                         <h5>中标价格</h5>
                         <p>供应商中标时的最终报价，通常包含设备费、运输费、安装调试费及税费等全部费用。</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon">📊</span>
+                    <div class="legend-content">
+                        <h5>历史均价</h5>
+                        <p>同产品历史采购的平均价格。今日为数据收集首日，暂无历史数据，后续将根据累计数据计算展示。</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon">📈</span>
+                    <div class="legend-content">
+                        <h5>价格趋势</h5>
+                        <p>与历史均价比较的价格变化趋势：↑ 上涨(+5%以上)、↓ 下降(-5%以下)、～ 波动大、- 稳定(±5%以内)。</p>
                     </div>
                 </div>
             </div>
