@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI链习生 | 洞察 · 思考 · 实践</title>
-    <meta name="description" content="Millay 的个人博客，聚焦供应链前沿、AI学习应用与实践洞察">
+    <title>链·全球 | 中国企业出海资讯</title>
+    <meta name="description" content="聚焦中国企业出海动态，提供行业要讯、出海政策、建议洞察等一手资讯">
     <meta name="author" content="Millay">
     
     <style>
@@ -22,6 +22,8 @@
             --border: #e8eaed;
             --shadow: rgba(5, 28, 44, 0.08);
             --shadow-hover: rgba(5, 28, 44, 0.12);
+            --global-accent: #0d7377;
+            --global-accent-light: #14a085;
         }
         
         * {
@@ -101,7 +103,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: var(--global-accent);
             transition: width 0.3s ease;
         }
         
@@ -113,9 +115,9 @@
             width: 100%;
         }
         
-        /* Hero - Elegant gradient with pattern */
+        /* Hero - Global theme gradient */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            background: linear-gradient(135deg, #051c2c 0%, #0d3a5c 50%, #0d7377 100%);
             color: white;
             padding: 180px 2rem 140px;
             margin-top: 72px;
@@ -131,8 +133,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(34, 81, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(34, 81, 255, 0.08) 0%, transparent 40%);
+                radial-gradient(circle at 20% 50%, rgba(13, 115, 119, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(20, 160, 133, 0.15) 0%, transparent 40%);
         }
         
         .hero-content {
@@ -153,7 +155,7 @@
         }
         
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -197,117 +199,7 @@
             margin: 0 auto;
         }
         
-        /* Cards grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 100px;
-        }
-        
-        .card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        
-        .card:hover {
-            border-color: transparent;
-            box-shadow: 0 20px 40px var(--shadow-hover);
-            transform: translateY(-4px);
-        }
-        
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .card-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-warm) 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.75rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover .card-icon {
-            transform: scale(1.1);
-        }
-        
-        .card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.875rem;
-            color: var(--primary);
-            letter-spacing: -0.01em;
-        }
-        
-        .card p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        
-        .tag {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-warm) 100%);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--accent);
-            align-self: flex-start;
-        }
-        
-        /* Featured section */
-        .featured {
-            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-light) 100%);
-            padding: 100px 2rem;
-            margin: 0 -2rem;
-            position: relative;
-        }
-        
-        .featured::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-        
-        .featured-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
+        /* Article list */
         .article-list {
             display: flex;
             flex-direction: column;
@@ -328,7 +220,7 @@
         }
         
         .article-item:hover {
-            border-color: transparent;
+            border-color: var(--global-accent);
             box-shadow: 0 8px 24px var(--shadow);
             transform: translateX(4px);
         }
@@ -353,6 +245,76 @@
             font-weight: 500;
             white-space: nowrap;
             padding-left: 2rem;
+        }
+        
+        .article-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(13, 115, 119, 0.1) 0%, rgba(20, 160, 133, 0.1) 100%);
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--global-accent);
+            margin-right: 0.5rem;
+        }
+        
+        /* About section */
+        .about-section {
+            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-light) 100%);
+            padding: 100px 2rem;
+            margin: 0 -2rem;
+            position: relative;
+        }
+        
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .about-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .about-card:hover {
+            border-color: var(--global-accent);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+        
+        .about-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .about-card h3 span {
+            font-size: 1.5rem;
+        }
+        
+        .about-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         /* Footer */
@@ -384,11 +346,6 @@
             
             .hero p {
                 font-size: 1.125rem;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
             
             .nav-links {
@@ -423,96 +380,44 @@
     
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-label">Personal Blog</span>
-            <h1>洞察 · 思考 · 实践</h1>
-            <p>聚焦供应链前沿、AI学习应用与实践洞察，记录数字化时代的探索与成长。</p>
+            <span class="hero-label">Global Chain</span>
+            <h1>链·全球</h1>
+            <p>聚焦中国企业出海动态，提供行业要讯、出海政策、建议洞察等一手资讯，助力企业全球化布局。</p>
         </div>
     </section>
     
     <main>
         <div class="section-header">
-            <h2>专栏</h2>
-            <p>深度专题，持续更新。在这里分享我的学习心得与实践思考。</p>
+            <h2>出海日报</h2>
+            <p>每日精选中国企业出海最新动态，医疗行业优先，政策与洞察并重。</p>
         </div>
         
-        <div class="cards-grid">
-            <a href="/supply-chain/" class="card">
-                <div class="card-icon">📦</div>
-                <h3>供应链前沿日报</h3>
-                <p>聚焦供应链领域的最新方法、工具、AI技术，每日精选前沿信息，助你把握行业脉搏。</p>
-                <span class="tag">每日更新</span>
-            </a>
-            
-            <a href="/ai-learning/" class="card">
-                <div class="card-icon">🤖</div>
-                <h3>AI学习应用</h3>
-                <p>记录AI工具学习与应用实践，分享Kimi、OpenClaw等AI助手的使用经验与心得。</p>
-                <span class="tag">持续更新</span>
-            </a>
-            
-            <a href="/ai-procurement/" class="card">
-                <div class="card-icon">📊</div>
-                <h3>AI采购情报</h3>
-                <p>每日自动抓取分析测试百科网中标信息，提供分析测试设备采购价格情报与市场趋势分析。</p>
-                <span class="tag">每日更新</span>
-            </a>
-            
-            <a href="/global-chain/" class="card">
-                <div class="card-icon">🌍</div>
-                <h3>链·全球</h3>
-                <p>聚焦中国企业出海动态，提供行业要讯、出海政策、建议洞察等一手资讯，助力企业全球化布局。</p>
-                <span class="tag">每日更新</span>
+        <div class="article-list">
+            <a href="/global-chain/2026-02-27.html" class="article-item">
+                <div>
+                    <h4><span class="article-tag">首发</span>链·全球 | 2026年2月27日 | 中国企业出海日报</h4>
+                    <p>中国医疗企业出海规模突破1300亿美元，创新药BD交易持续活跃，FDA无预警飞检新政生效...</p>
+                </div>
+                <span class="article-date">2026.02.27</span>
             </a>
         </div>
     </main>
     
-    <section class="featured">
-        <div class="featured-content">
-            <div class="section-header">
-                <h2>最新文章</h2>
-                <p>近期发布的精选内容，记录学习与探索的足迹。</p>
+    <section class="about-section">
+        <div class="about-content">
+            <div class="about-card">
+                <h3><span>📰</span>行业要讯</h3>
+                <p>每日追踪中国企业出海最新动态，重点关注医疗、科技、制造等优势行业，精选高价值资讯。</p>
             </div>
             
-            <div class="article-list">
-                <a href="/global-chain/2026-02-27.html" class="article-item">
-                    <div>
-                        <h4>链·全球 | 2026年2月27日 | 中国企业出海日报</h4>
-                        <p>中国医疗企业出海规模突破1300亿美元，创新药BD交易持续活跃，FDA无预警飞检新政生效...</p>
-                    </div>
-                    <span class="article-date">2026.02.27</span>
-                </a>
-                
-                <a href="/ai-learning/2026-02-27-kimi-agent-swarm.html" class="article-item">
-                    <div>
-                        <h4>AI学习应用 | 用 Kimi K2.5 Agent Swarm 实现多智能体协作</h4>
-                        <p>深入了解 Agent Swarm 功能，从单兵作战到团队协作的AI工作方式革命...</p>
-                    </div>
-                    <span class="article-date">2026.02.27</span>
-                </a>
-                
-                <a href="/supply-chain/2026-02-27.html" class="article-item">
-                    <div>
-                        <h4>供应链前沿日报 | 2026年2月27日</h4>
-                        <p>AI智能体重塑供应链、2026全球物流展望、中国出口退税新政、生命科学采购趋势...</p>
-                    </div>
-                    <span class="article-date">2026.02.27</span>
-                </a>
-                
-                <a href="/ai-procurement/bidding-intelligence-2026-02-27.html" class="article-item">
-                    <div>
-                        <h4>AI采购情报 | 分析测试设备中标价格情报</h4>
-                        <p>质谱仪120万中标、高校色谱仪采购、8条最新中标记录...</p>
-                    </div>
-                    <span class="article-date">2026.02.27</span>
-                </a>
-                
-                <a href="/supply-chain/2026-02-26.html" class="article-item">
-                    <div>
-                        <h4>供应链前沿日报 | 2026年2月26日</h4>
-                        <p>美国关税政策反复震荡，中国生物制药全球崛起，AI驱动供应链智能化加速...</p>
-                    </div>
-                    <span class="article-date">2026.02.26</span>
-                </a>
+            <div class="about-card">
+                <h3><span>📋</span>出海政策</h3>
+                <p>解读中国"走出去"政策导向，梳理海外主要市场准入规则，为企业出海提供政策导航。</p>
+            </div>
+            
+            <div class="about-card">
+                <h3><span>💡</span>建议洞察</h3>
+                <p>基于资讯分析，提供战略建议与风险提示，助力企业把握机遇、规避风险。</p>
             </div>
         </div>
     </section>
