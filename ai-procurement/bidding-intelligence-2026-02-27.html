@@ -249,78 +249,93 @@
             text-decoration: underline;
         }
         
-        /* Dashboard Stats Cards */
-        .dashboard-section {
+        /* Insights Section */
+        .insights-section {
             margin-bottom: 3rem;
         }
         
-        .dashboard-grid {
+        .insights-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
         
-        .dashboard-card {
+        .insight-card {
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
         
-        .dashboard-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
+        .insight-card:hover {
+            box-shadow: 0 8px 24px var(--shadow-hover);
+            transform: translateY(-2px);
         }
         
-        .dashboard-card.primary::before { background: var(--accent); }
-        .dashboard-card.success::before { background: var(--success); }
-        .dashboard-card.warning::before { background: var(--warning); }
-        .dashboard-card.info::before { background: var(--info); }
-        
-        .dashboard-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px var(--shadow-hover);
+        .insight-card.highlight {
+            background: linear-gradient(135deg, rgba(34, 81, 255, 0.03) 0%, rgba(34, 81, 255, 0.08) 100%);
+            border-color: rgba(34, 81, 255, 0.2);
         }
         
-        .dashboard-card-icon {
+        .insight-icon {
             font-size: 1.75rem;
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light);
+            border-radius: 12px;
+        }
+        
+        .insight-content {
+            flex: 1;
+        }
+        
+        .insight-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
             margin-bottom: 0.75rem;
         }
         
-        .dashboard-card-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.25rem;
-            font-family: 'SF Mono', Monaco, monospace;
-        }
-        
-        .dashboard-card-label {
+        .insight-content p {
             font-size: 0.875rem;
             color: var(--text-secondary);
-            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
         }
         
-        .dashboard-card-sub {
-            font-size: 0.75rem;
+        .insight-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .insight-note {
+            font-size: 0.8125rem;
             color: var(--text-muted);
+            font-style: italic;
+            padding-top: 0.5rem;
+            border-top: 1px dashed var(--border);
             margin-top: 0.5rem;
         }
         
-        /* Analysis Charts Section */
-        .charts-section {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+        .price-tag {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        
+        .price-tag.low {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
         }
         
         .chart-card {
@@ -840,11 +855,11 @@
         
         /* Responsive */
         @media (max-width: 1024px) {
-            .dashboard-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .charts-section {
+                grid-template-columns: 1fr;
             }
             
-            .charts-section {
+            .insights-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -856,10 +871,6 @@
             
             .article-meta {
                 gap: 1rem;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: 1fr;
             }
             
             .bidding-table th,
@@ -894,6 +905,15 @@
             
             .region-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .insight-card {
+                flex-direction: column;
+                gap: 0.75rem;
             }
         }
     </style>
@@ -940,157 +960,48 @@
             </div>
         </div>
         
-        <!-- Dashboard Stats -->
-        <div class="dashboard-section">
-            <h2 class="section-title">📊 数据统计概览</h2>
-            <div class="dashboard-grid">
-                <div class="dashboard-card primary">
-                    <div class="dashboard-card-icon">📋</div>
-                    <div class="dashboard-card-value">8</div>
-                    <div class="dashboard-card-label">中标项目数</div>
-                    <div class="dashboard-card-sub">较昨日 +14.3%</div>
-                </div>
-                <div class="dashboard-card success">
-                    <div class="dashboard-card-icon">💰</div>
-                    <div class="dashboard-card-value">¥426.5万</div>
-                    <div class="dashboard-card-label">总中标金额</div>
-                    <div class="dashboard-card-sub">平均单价 ¥53.3万</div>
-                </div>
-                <div class="dashboard-card warning">
-                    <div class="dashboard-card-icon">🏢</div>
-                    <div class="dashboard-card-value">8</div>
-                    <div class="dashboard-card-label">采购单位</div>
-                    <div class="dashboard-card-sub">100% 高校/科研院所</div>
-                </div>
-                <div class="dashboard-card info">
-                    <div class="dashboard-card-icon">📍</div>
-                    <div class="dashboard-card-value">5</div>
-                    <div class="dashboard-card-label">覆盖地区</div>
-                    <div class="dashboard-card-sub">北京/上海/浙江/江苏/广东</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Charts Section -->
-        <div class="charts-section">
-            <!-- Brand Distribution -->
-            <div class="chart-card">
-                <div class="chart-card-title">🏭 品牌分布分析</div>
-                <div class="brand-list">
-                    <div class="brand-item">
-                        <span class="brand-name">Agilent</span>
-                        <div class="brand-bar-bg">
-                            <div class="brand-bar agilent" style="width: 25%"></div>
-                        </div>
-                        <span class="brand-count">2</span>
-                    </div>
-                    <div class="brand-item">
-                        <span class="brand-name">Waters</span>
-                        <div class="brand-bar-bg">
-                            <div class="brand-bar waters" style="width: 12.5%"></div>
-                        </div>
-                        <span class="brand-count">1</span>
-                    </div>
-                    <div class="brand-item">
-                        <span class="brand-name">SCIEX</span>
-                        <div class="brand-bar-bg">
-                            <div class="brand-bar sciex" style="width: 12.5%"></div>
-                        </div>
-                        <span class="brand-count">1</span>
-                    </div>
-                    <div class="brand-item">
-                        <span class="brand-name">PerkinElmer</span>
-                        <div class="brand-bar-bg">
-                            <div class="brand-bar perkinelmer" style="width: 12.5%"></div>
-                        </div>
-                        <span class="brand-count">1</span>
-                    </div>
-                    <div class="brand-item">
-                        <span class="brand-name">Thermo</span>
-                        <div class="brand-bar-bg">
-                            <div class="brand-bar thermo" style="width: 12.5%"></div>
-                        </div>
-                        <span class="brand-count">1</span>
-                    </div>
-                    <div class="brand-item">
-                        <span class="brand-name">Metrohm</span>
-                        <div class="brand-bar-bg">
-                            <div class="brand-bar metrohm" style="width: 12.5%"></div>
-                        </div>
-                        <span class="brand-count">1</span>
-                    </div>
-                    <div class="brand-item">
-                        <span class="brand-name">Shimadzu</span>
-                        <div class="brand-bar-bg">
-                            <div class="brand-bar shimadzu" style="width: 12.5%"></div>
-                        </div>
-                        <span class="brand-count">1</span>
+        <!-- Data Insights -->
+        <div class="insights-section">
+            <h2 class="section-title">💡 数据洞见</h2>
+            <div class="insights-grid">
+                <div class="insight-card highlight">
+                    <div class="insight-icon">💰</div>
+                    <div class="insight-content">
+                        <h4>今日价格亮点</h4>
+                        <p><strong>最高价：</strong>SCIEX 三重四极杆质谱仪 <span class="price-tag">¥125万</span>（中科院上海药物所）</p>
+                        <p><strong>最低价：</strong>PerkinElmer 原子吸收光谱仪 <span class="price-tag low">¥19.5万</span>（复旦大学）</p>
+                        <p class="insight-note">价差达6.4倍，反映分析仪器市场高端与入门设备的显著分层</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Region Distribution -->
-            <div class="chart-card">
-                <div class="chart-card-title">🗺️ 地区分布分析</div>
-                <div class="region-grid">
-                    <div class="region-item">
-                        <div class="region-icon">🏛️</div>
-                        <div class="region-name">北京</div>
-                        <div class="region-stats">2个项目 · ¥75.3万</div>
-                    </div>
-                    <div class="region-item">
-                        <div class="region-icon">🏙️</div>
-                        <div class="region-name">上海</div>
-                        <div class="region-stats">2个项目 · ¥144.5万</div>
-                    </div>
-                    <div class="region-item">
-                        <div class="region-icon">🌊</div>
-                        <div class="region-name">浙江</div>
-                        <div class="region-stats">1个项目 · ¥33.5万</div>
-                    </div>
-                    <div class="region-item">
-                        <div class="region-icon">🌸</div>
-                        <div class="region-name">江苏</div>
-                        <div class="region-stats">2个项目 · ¥130.5万</div>
-                    </div>
-                    <div class="region-item">
-                        <div class="region-icon">🌴</div>
-                        <div class="region-name">广东</div>
-                        <div class="region-stats">1个项目 · ¥42.7万</div>
+                
+                <div class="insight-card">
+                    <div class="insight-icon">🏭</div>
+                    <div class="insight-content">
+                        <h4>品牌分布观察</h4>
+                        <p><strong>Agilent</strong> 中标2台（气相色谱仪、ICP-MS），占比25%</p>
+                        <p>国际品牌主导：Waters、SCIEX、PerkinElmer、Thermo、Metrohm、Shimadzu各中标1台</p>
+                        <p class="insight-note">高端质谱、色谱领域仍以进口品牌为主</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Price Range -->
-            <div class="chart-card">
-                <div class="chart-card-title">💵 价格区间统计</div>
-                <div class="price-range-list">
-                    <div class="price-range-item">
-                        <span class="price-range-label">高端<br><small>100万+</small></span>
-                        <div class="price-range-bar-bg">
-                            <div class="price-range-bar high" style="width: 50.2%">
-                                <span class="price-range-value">¥214万</span>
-                            </div>
-                        </div>
-                        <span class="price-range-count">2项</span>
+                
+                <div class="insight-card">
+                    <div class="insight-icon">📍</div>
+                    <div class="insight-content">
+                        <h4>区域分布特点</h4>
+                        <p><strong>长三角最活跃：</strong>上海(2)、江苏(2)、浙江(1)共5个项目</p>
+                        <p><strong>北京：</strong>2个项目（北大、清华）</p>
+                        <p><strong>广东：</strong>1个项目（中山大学附属第一医院）</p>
+                        <p class="insight-note">高校科研院所集中地区采购需求旺盛</p>
                     </div>
-                    <div class="price-range-item">
-                        <span class="price-range-label">中端<br><small>30-100万</small></span>
-                        <div class="price-range-bar-bg">
-                            <div class="price-range-bar mid" style="width: 38.7%">
-                                <span class="price-range-value">¥165万</span>
-                            </div>
-                        </div>
-                        <span class="price-range-count">4项</span>
-                    </div>
-                    <div class="price-range-item">
-                        <span class="price-range-label">入门<br><small>30万以下</small></span>
-                        <div class="price-range-bar-bg">
-                            <div class="price-range-bar low" style="width: 11.1%">
-                                <span class="price-range-value">¥47.5万</span>
-                            </div>
-                        </div>
-                        <span class="price-range-count">2项</span>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-icon">📈</div>
+                    <div class="insight-content">
+                        <h4>价格趋势提示</h4>
+                        <p><span class="trend-down">↓ 5项降价</span>：气相色谱仪、液相色谱仪、质谱仪等低于历史均价</p>
+                        <p><span class="trend-up">↑ 3项涨价</span>：原子吸收、离子色谱、ICP-MS高于历史均价</p>
+                        <p class="insight-note">整体价格稳中有降，采购方议价能力增强</p>
                     </div>
                 </div>
             </div>
