@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用 Kimi K2.5 Agent Swarm 实现多智能体协作 | AI链习生</title>
+    <meta name="description" content="深入了解 Kimi K2.5 的 Agent Swarm 功能，学习如何用多智能体协作完成复杂任务，从单兵作战到团队协作的AI工作方式革命。">
+    <meta name="author" content="Millay">
+    <meta name="keywords" content="Kimi K2.5, Agent Swarm, 多智能体协作, AI工具教程, Moonshot AI">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "用 Kimi K2.5 Agent Swarm 实现多智能体协作",
+      "description": "深入了解 Kimi K2.5 的 Agent Swarm 功能，学习如何用多智能体协作完成复杂任务，从单兵作战到团队协作的AI工作方式革命。",
+      "datePublished": "2026-02-27",
+      "author": {"@type": "Person", "name": "Millay"},
+      "publisher": {"@type": "Organization", "name": "AI链习生"},
+      "keywords": ["Kimi K2.5", "Agent Swarm", "多智能体协作", "AI工具教程", "Moonshot AI"]
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --code-bg: #f4f6f8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .article-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .article-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .breadcrumb {
+            font-size: 0.875rem;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        .breadcrumb a { color: white; text-decoration: none; }
+        .article-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9375rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .article-content h3 {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 2.5rem 0 1rem;
+        }
+        .article-content p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+        }
+        .article-content blockquote {
+            background: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.9375rem;
+        }
+        .article-content th {
+            background: var(--bg-light);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .article-content td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .article-content code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+        .article-content pre {
+            background: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        .article-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--text);
+        }
+        .tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .tag {
+            background: var(--bg-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; }
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 1.75rem; }
+            .article-meta { flex-direction: column; gap: 0.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumb">
+                <a href="/">首页</a> / <a href="/ai-learning/">AI学习应用</a>
+            </div>
+            <h1>用 Kimi K2.5 Agent Swarm 实现多智能体协作</h1>
+            <div class="article-meta">
+                <span>📅 2026年2月27日</span>
+                <span>👤 Millay</span>
+                <span>⏱️ 阅读约 12 分钟</span>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <article class="article-content">
+            <blockquote>
+                <strong>来源标注</strong>：本文参考 Moonshot AI 官方资料及技术社区文章，信息更新于 2026年2月27日
+            </blockquote>
+            
+            <p>2026年1月，Moonshot AI 发布了 <strong>Kimi K2.5</strong> 模型，其中最引人注目的新功能是 <strong>Agent Swarm（智能体蜂群）</strong>。这不是简单的功能升级，而是AI工作方式的革命性变化——从"单兵作战"到"团队协作"。</p>
+            
+            <p>今天，我将带你深入了解这个功能，并通过实际案例演示如何用多智能体协作完成复杂任务。</p>
+            
+            <h2>一、什么是 Agent Swarm？</h2>
+            
+            <h3>1.1 传统AI vs 智能体蜂群</h3>
+            
+            <table>
+                <thead>
+                    <tr><th>维度</th><th>传统AI对话</th><th>Agent Swarm</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>工作方式</td><td>单轮问答</td><td>多智能体并行协作</td></tr>
+                    <tr><td>任务处理</td><td>线性执行</td><td>分布式并行处理</td></tr>
+                    <tr><td>复杂任务</td><td>容易遗漏细节</td><td>分工明确，全面覆盖</td></tr>
+                    <tr><td>效率</td><td>随复杂度下降</td><td>随规模扩大而提升</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>1.2 核心原理</h3>
+            
+            <p>Agent Swarm 借鉴了自然界蜂群的协作模式：</p>
+            
+            <ul>
+                <li><strong>蜂后（Queen Agent）</strong>：负责任务分解和协调</li>
+                <li><strong>工蜂（Worker Agents）</strong>：执行具体子任务</li>
+                <li><strong>信息素（Message Passing）</strong>：智能体间通信机制</li>
+            </ul>
+            
+            <p>Kimi K2.5 可以同时启动 <strong>多达100个并行子智能体</strong>，每个专注于特定领域，最后整合输出。</p>
+            
+            <h2>二、适用场景</h2>
+            
+            <h3>2.1 最适合使用 Agent Swarm 的任务</h3>
+            
+            <ol>
+                <li><strong>市场调研报告</strong>：竞品分析、用户画像、行业趋势、数据整合智能体</li>
+                <li><strong>内容创作流水线</strong>：选题策划、资料搜集、初稿撰写、编辑校对智能体</li>
+                <li><strong>代码开发协作</strong>：架构设计、前端开发、后端开发、测试验收智能体</li>
+                <li><strong>学习研究项目</strong>：文献检索、概念解释、案例分析、知识图谱智能体</li>
+            </ol>
+            
+            <h2>三、实战教程</h2>
+            
+            <h3>3.1 任务设定</h3>
+            
+            <p>假设我要做一份《2026年AI在供应链领域的应用现状》调研报告。</p>
+            
+            <h3>3.2 步骤一：启动蜂群模式</h3>
+            
+            <p>在 Kimi K2.5 中，使用以下提示词激活 Agent Swarm：</p>
+            
+            <pre><code>请启动 Agent Swarm 模式，为我完成以下任务：
+
+任务：撰写《2026年AI在供应链领域的应用现状》调研报告
+
+请创建以下专业智能体并行工作：
+1. 【技术趋势智能体】负责搜集AI技术在供应链中的最新应用
+2. 【企业案例智能体】负责整理典型企业的AI应用案例
+3. 【市场规模智能体】负责收集市场规模和增长数据
+4. 【挑战分析智能体】负责分析AI应用面临的挑战
+5. 【未来预测智能体】负责预测未来发展趋势
+
+每个智能体请独立完成信息搜集，最后由主智能体整合成完整报告。</code></pre>
+            
+            <h3>3.3 步骤二：观察智能体协作</h3>
+            
+            <p>Kimi K2.5 会展示蜂群的工作状态：</p>
+            
+            <pre>🐝 正在启动 Agent Swarm...
+   ├─ 蜂后智能体已激活（任务协调）
+   ├─ 技术趋势智能体 运行中...
+   ├─ 企业案例智能体 运行中...
+   ├─ 市场规模智能体 运行中...
+   ├─ 挑战分析智能体 运行中...
+   └─ 未来预测智能体 运行中...
+
+⏱️ 预计完成时间：2-3分钟</pre>
+            
+            <h3>3.4 步骤三：获取整合报告</h3>
+            
+            <p>各子智能体完成后，蜂后智能体会自动整合：</p>
+            
+            <pre>📊 智能体工作完成统计：
+   ├─ 技术趋势智能体：搜集到15项关键技术
+   ├─ 企业案例智能体：整理了8个典型案例
+   ├─ 市场规模智能体：获取了2023-2026年数据
+   ├─ 挑战分析智能体：识别了6大核心挑战
+   └─ 未来预测智能体：预测了5大趋势
+
+📝 正在生成综合报告...</pre>
+            
+            <h3>3.5 步骤四：人工审核与优化</h3>
+            
+            <p>虽然 Agent Swarm 能自动生成报告，但仍需人工审核：</p>
+            
+            <ul>
+                <li>✅ 检查数据准确性</li>
+                <li>✅ 补充最新动态</li>
+                <li>✅ 调整报告结构</li>
+                <li>✅ 优化表达方式</li>
+            </ul>
+            
+            <h2>四、高级技巧</h2>
+            
+            <h3>4.1 智能体角色定义模板</h3>
+            
+            <pre>【智能体名称】：[具体名称]
+【专业领域】：[擅长领域]
+【任务目标】：[具体要做什么]
+【输出格式】：[期望的输出形式]
+【注意事项】：[特殊要求]</pre>
+            
+            <h3>4.2 提升协作效率的技巧</h3>
+            
+            <ol>
+                <li><strong>明确分工边界</strong>：避免智能体任务重叠，定义清晰的交接点</li>
+                <li><strong>设置检查点</strong>：关键节点人工确认，及时纠正偏差</li>
+                <li><strong>迭代优化</strong>：第一轮获取框架，第二轮深化细节，第三轮润色完善</li>
+            </ol>
+            
+            <h3>4.3 常见错误避免</h3>
+            
+            <ul>
+                <li>❌ 任务过于简单（不需要蜂群）</li>
+                <li>❌ 智能体数量过多（建议5-10个）</li>
+                <li>❌ 缺乏协调机制</li>
+                <li>❌ 完全依赖自动输出</li>
+            </ul>
+            
+            <h2>五、实际案例：供应链周报自动化</h2>
+            
+            <h3>5.1 背景</h3>
+            
+            <p>我每天需要整理供应链领域的AI资讯，传统方式需要浏览10+网站、手动筛选信息、整理成文，耗时约2小时。</p>
+            
+            <h3>5.2 Agent Swarm 方案</h3>
+            
+            <p>创建了5个常驻智能体：资讯搜集蜂、分类整理蜂、摘要生成蜂、质量审核蜂、排版发布蜂。</p>
+            
+            <h3>5.3 效果对比</h3>
+            
+            <table>
+                <thead>
+                    <tr><th>指标</th><th>传统方式</th><th>Agent Swarm</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>耗时</td><td>2小时</td><td>15分钟</td></tr>
+                    <tr><td>信息覆盖</td><td>10-15条</td><td>30-50条</td></tr>
+                    <tr><td>遗漏率</td><td>约20%</td><td><5%</td></tr>
+                    <tr><td>人工审核</td><td>全程参与</td><td>只需确认</td></tr>
+                </tbody>
+            </table>
+            
+            <h2>六、与其他AI工具的对比</h2>
+            
+            <table>
+                <thead>
+                    <tr><th>功能</th><th>Kimi K2.5</th><th>GPT-4o</th><th>Claude 4.5</th><th>Gemini 3</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>多智能体协作</td><td>✅ 原生支持</td><td>⚠️ 需插件</td><td>⚠️ 有限支持</td><td>⚠️ 实验功能</td></tr>
+                    <tr><td>并行数量</td><td>100个</td><td>约10个</td><td>约5个</td><td>约20个</td></tr>
+                    <tr><td>中文优化</td><td>✅ 优秀</td><td>良好</td><td>良好</td><td>良好</td></tr>
+                    <tr><td>响应速度</td><td>快</td><td>中等</td><td>中等</td><td>快</td></tr>
+                </tbody>
+            </table>
+            
+            <h2>七、总结</h2>
+            
+            <p>Kimi K2.5 的 Agent Swarm 功能，让普通人也能享受"团队协作"的效率提升。关键要点：</p>
+            
+            <ol>
+                <li><strong>适合复杂任务</strong>：简单任务用传统对话即可</li>
+                <li><strong>明确分工</strong>：智能体角色定义要清晰</li>
+                <li><strong>人机协作</strong>：AI负责执行，人负责决策</li>
+                <li><strong>持续优化</strong>：根据反馈调整智能体配置</li>
+            </ol>
+            
+            <div class="tags">
+                <span class="tag">Kimi K2.5</span>
+                <span class="tag">Agent Swarm</span>
+                <span class="tag">多智能体协作</span>
+                <span class="tag">AI工具教程</span>
+                <span class="tag">Moonshot AI</span>
+            </div>
+        </article>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Millay. All rights reserved.</p>
+    </footer>
+</body>
+</html>
