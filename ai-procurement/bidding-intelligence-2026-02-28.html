@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析测试设备中标价格情报 | 2026年02月28日 | Millay</title>
+    <meta name="description" content="分析测试百科网真实中标数据，分析测试设备采购价格情报">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --bg: #ffffff;
+            --bg-light: #f6f8fa;
+            --border: #e5e9ec;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, #051c2c 0%, #0a2942 100%);
+            color: white;
+            padding: 140px 2rem 100px;
+            margin-top: 72px;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .info-box {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .info-box p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.875rem;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.8125rem;
+        }
+        tr:hover { background: var(--bg-light); }
+        .row-num { color: var(--text-secondary); font-weight: 500; }
+        .product-name { font-weight: 500; color: var(--primary); }
+        .brand-tag {
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        .model-text { color: var(--text-secondary); font-size: 0.8125rem; }
+        .spec-text { color: var(--text-secondary); font-size: 0.75rem; }
+        .price { color: #ea4335; font-weight: 600; }
+        .avg-price { color: var(--text-secondary); font-size: 0.8125rem; }
+        .trend-up { color: #ea4335; }
+        .trend-down { color: #34a853; }
+        .trend-neutral { color: var(--text-secondary); }
+        .buyer { color: var(--primary); }
+        .buyer-dept { color: var(--text-secondary); font-size: 0.75rem; }
+        .supplier { color: var(--text-secondary); }
+        .date { color: var(--text-secondary); font-size: 0.8125rem; }
+        .region { color: var(--text-secondary); font-size: 0.8125rem; }
+        .badge {
+            display: inline-block;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .badge-new { background: #e8f0fe; color: #1967d2; }
+        .detail-item {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .detail-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        .detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .detail-meta span {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+        .source-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .source-link:hover { text-decoration: underline; }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; font-size: 0.875rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.75rem; }
+            table { font-size: 0.75rem; }
+            th, td { padding: 0.5rem 0.25rem; }
+            .detail-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Millay</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>📊 分析测试设备中标价格情报</h1>
+            <p class="meta">数据来源：分析测试百科网（真实数据）| 更新时间：2026-02-28 01:23</p>
+        </div>
+    </section>
+    
+    <main>
+        <div class="info-box">
+            <p>📈 <strong>数据说明：</strong>本报告数据来源于 <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank">分析测试百科网</a>，每日自动抓取最新真实中标信息。</p>
+            <p>✅ <strong>数据真实性：</strong>所有数据均为公开可查的真实中标记录，非AI生成。</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">10</div>
+                <div class="stat-label">今日中标数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">56.6万</div>
+                <div class="stat-label">平均价格</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">200万</div>
+                <div class="stat-label">最高价格</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">0.4万</div>
+                <div class="stat-label">最低价格</div>
+            </div>
+        </div>
+        
+        <section class="section">
+            <h2>中标概览表</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>产品名称</th>
+                            <th>品牌</th>
+                            <th>型号</th>
+                            <th>规格</th>
+                            <th>中标价格</th>
+                            <th>市场均价</th>
+                            <th>趋势</th>
+                            <th>采购单位</th>
+                            <th>中标单位</th>
+                            <th>日期</th>
+                            <th>地区</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    <tr>
+                        <td class="row-num">1</td>
+                        <td>
+                            <span class="product-name">Milli-Q IQ Element 痕量元素分析...</span>
+                            <span class="badge badge-new">NEW</span>
+                        </td>
+                        <td><span class="brand-tag">Merck</span></td>
+                        <td><span class="model-text">Milli-Q IQ Element</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥30万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">西南大学</span>
+                        </td>
+                        <td><span class="supplier">重庆夏耘科技有限公司</span></td>
+                        <td><span class="date">2026-02-27</span></td>
+                        <td><span class="region">重庆</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">2</td>
+                        <td>
+                            <span class="product-name">蔡司大尺寸材料显微镜 Axio Imager 2 ...</span>
+                            <span class="badge badge-new">NEW</span>
+                        </td>
+                        <td><span class="brand-tag">卡尔蔡司</span></td>
+                        <td><span class="model-text">蔡司Axio Imager 2 Vari</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥200万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">山西省运城市中心医院</span>
+                        </td>
+                        <td><span class="supplier">山西华美欣医疗科技有限公司</span></td>
+                        <td><span class="date">2026-02-27</span></td>
+                        <td><span class="region">山西省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">3</td>
+                        <td>
+                            <span class="product-name">奥林巴斯IX73高级活细胞成像用倒置显微镜系统</span>
+                            <span class="badge badge-new">NEW</span>
+                        </td>
+                        <td><span class="brand-tag">EVIDENT/OLYMPUS</span></td>
+                        <td><span class="model-text">奥林巴斯IX73</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥90万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">南方医科大学南方医院</span>
+                        </td>
+                        <td><span class="supplier">广州北腾生物科技有限公司</span></td>
+                        <td><span class="date">2026-02-27</span></td>
+                        <td><span class="region">广东省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">4</td>
+                        <td>
+                            <span class="product-name">GC-7920网络气相色谱</span>
+                            
+                        </td>
+                        <td><span class="brand-tag">中教金源</span></td>
+                        <td><span class="model-text">GC-7920</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥3万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">东南大学企业信息</span>
+                        </td>
+                        <td><span class="supplier">北京中教金源科技有限公司企业信息</span></td>
+                        <td><span class="date">2026-02-27</span></td>
+                        <td><span class="region">江苏省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">5</td>
+                        <td>
+                            <span class="product-name">奥林巴斯BX53生物显微镜/半电动荧光显微镜</span>
+                            
+                        </td>
+                        <td><span class="brand-tag">EVIDENT/OLYMPUS</span></td>
+                        <td><span class="model-text">奥林巴斯BX53</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥100万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">南方医科大学南方医院</span>
+                        </td>
+                        <td><span class="supplier">广州北腾生物科技有限公司</span></td>
+                        <td><span class="date">2026-02-27</span></td>
+                        <td><span class="region">广东省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">6</td>
+                        <td>
+                            <span class="product-name">LEICA_CM1950标准型冷冻切片机</span>
+                            
+                        </td>
+                        <td><span class="brand-tag">Leica</span></td>
+                        <td><span class="model-text">LEICA_CM1950</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥4,000元[人民币]</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">中山医学院</span>
+                        </td>
+                        <td><span class="supplier">广州市德修仪器检测服务有限公司</span></td>
+                        <td><span class="date">2026-02-27</span></td>
+                        <td><span class="region">广东省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">7</td>
+                        <td>
+                            <span class="product-name">美谷分子多功能酶标仪SpectraMaxiD3s</span>
+                            
+                        </td>
+                        <td><span class="brand-tag">美谷分子</span></td>
+                        <td><span class="model-text">色谱自动进样器（多功能）</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥25万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">类器官芯片与仿生微系统创新中心</span>
+                        </td>
+                        <td><span class="supplier">深圳博兴生物科技有限公司</span></td>
+                        <td><span class="date">2026-02-26</span></td>
+                        <td><span class="region">山东省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">8</td>
+                        <td>
+                            <span class="product-name">LIIR-20型结石红外光谱自动分析系统</span>
+                            
+                        </td>
+                        <td><span class="brand-tag">蓝莫德</span></td>
+                        <td><span class="model-text">LIIR-20</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥22万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">甘肃省人民医院</span>
+                        </td>
+                        <td><span class="supplier">国药集团甘肃医疗器械有限公司</span></td>
+                        <td><span class="date">2026-02-26</span></td>
+                        <td><span class="region">甘肃省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">9</td>
+                        <td>
+                            <span class="product-name">Autof ms1000全自动微生物质谱检测系统</span>
+                            
+                        </td>
+                        <td><span class="brand-tag">安图生物</span></td>
+                        <td><span class="model-text">Autof ms1000</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥91万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">甘肃省人民医院</span>
+                        </td>
+                        <td><span class="supplier">国药集团甘肃医疗器械有限公司</span></td>
+                        <td><span class="date">2026-02-26</span></td>
+                        <td><span class="region">甘肃省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">10</td>
+                        <td>
+                            <span class="product-name">蔡司正置显微镜Primostar 3</span>
+                            
+                        </td>
+                        <td><span class="brand-tag">蔡司</span></td>
+                        <td><span class="model-text">Primostar 3</span></td>
+                        <td><span class="spec-text">-</span></td>
+                        <td><span class="price">¥5万</span></td>
+                        <td><span class="avg-price">-</span></td>
+                        <td><span class="trend-neutral">-</span></td>
+                        <td>
+                            <span class="buyer">甘肃省人民医院</span>
+                        </td>
+                        <td><span class="supplier">国药集团甘肃医疗器械有限公司</span></td>
+                        <td><span class="date">2026-02-26</span></td>
+                        <td><span class="region">甘肃省</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>详细情报</h2>
+            
+                <div class="detail-item">
+                    <h4>1. Milli-Q IQ Element 痕量元素分析专用超纯水(Milli-Q)</h4>
+                    <div class="detail-meta">
+                        <span><strong>品牌：</strong>Merck</span>
+                        <span><strong>型号：</strong>Milli-Q IQ Element</span>
+                        <span><strong>价格：</strong>¥30万</span>
+                        <span><strong>采购单位：</strong>西南大学</span>
+                        <span><strong>中标单位：</strong>重庆夏耘科技有限公司</span>
+                        <span><strong>日期：</strong>2026-02-27</span>
+                    </div>
+                    <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
+                </div>
+                <div class="detail-item">
+                    <h4>2. 蔡司大尺寸材料显微镜 Axio Imager 2 Vario</h4>
+                    <div class="detail-meta">
+                        <span><strong>品牌：</strong>卡尔蔡司</span>
+                        <span><strong>型号：</strong>蔡司Axio Imager 2 Vario</span>
+                        <span><strong>价格：</strong>¥200万</span>
+                        <span><strong>采购单位：</strong>山西省运城市中心医院</span>
+                        <span><strong>中标单位：</strong>山西华美欣医疗科技有限公司</span>
+                        <span><strong>日期：</strong>2026-02-27</span>
+                    </div>
+                    <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
+                </div>
+                <div class="detail-item">
+                    <h4>3. 奥林巴斯IX73高级活细胞成像用倒置显微镜系统</h4>
+                    <div class="detail-meta">
+                        <span><strong>品牌：</strong>EVIDENT/OLYMPUS</span>
+                        <span><strong>型号：</strong>奥林巴斯IX73</span>
+                        <span><strong>价格：</strong>¥90万</span>
+                        <span><strong>采购单位：</strong>南方医科大学南方医院</span>
+                        <span><strong>中标单位：</strong>广州北腾生物科技有限公司</span>
+                        <span><strong>日期：</strong>2026-02-27</span>
+                    </div>
+                    <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
+                </div>
+                <div class="detail-item">
+                    <h4>4. GC-7920网络气相色谱</h4>
+                    <div class="detail-meta">
+                        <span><strong>品牌：</strong>中教金源</span>
+                        <span><strong>型号：</strong>GC-7920</span>
+                        <span><strong>价格：</strong>¥3万</span>
+                        <span><strong>采购单位：</strong>东南大学企业信息</span>
+                        <span><strong>中标单位：</strong>北京中教金源科技有限公司企业信息</span>
+                        <span><strong>日期：</strong>2026-02-27</span>
+                    </div>
+                    <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
+                </div>
+                <div class="detail-item">
+                    <h4>5. 奥林巴斯BX53生物显微镜/半电动荧光显微镜</h4>
+                    <div class="detail-meta">
+                        <span><strong>品牌：</strong>EVIDENT/OLYMPUS</span>
+                        <span><strong>型号：</strong>奥林巴斯BX53</span>
+                        <span><strong>价格：</strong>¥100万</span>
+                        <span><strong>采购单位：</strong>南方医科大学南方医院</span>
+                        <span><strong>中标单位：</strong>广州北腾生物科技有限公司</span>
+                        <span><strong>日期：</strong>2026-02-27</span>
+                    </div>
+                    <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
+                </div>
+        </section>
+        
+        <section class="section">
+            <h2>关于本专栏</h2>
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+                <strong>AI采购情报</strong>专栏通过自动化爬虫技术，每日从分析测试百科网抓取最新的真实分析测试设备中标信息，
+                帮助您了解市场价格趋势、掌握行业采购动态、辅助采购决策参考。
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                <strong>数据更新：</strong>每日自动更新 | <strong>数据来源：</strong>分析测试百科网 | <strong>数据类型：</strong>100%真实中标数据
+            </p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">本报告数据来源于分析测试百科网，仅供参考</p>
+    </footer>
+</body>
+</html>
