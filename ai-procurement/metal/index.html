@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金属原料价格情报 | AI采购情报 | Millay</title>
+    <meta name="description" content="贵金属及有色金属价格情报，涵盖白银、钯粉、铑粉、铱粉等稀有金属材料">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, #051c2c 0%, #0a2942 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            opacity: 0.85;
+            font-size: 1.125rem;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+        .coming-soon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #1a45e0;
+            transform: translateY(-2px);
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>⚙️ 金属原料价格情报</h1>
+        <p>贵金属及有色金属市场价格情报</p>
+    </section>
+
+    <main>
+        <div class="coming-soon">🚧</div>
+        <h2>即将上线</h2>
+        <p>金属原料价格情报板块正在建设中，将提供白银、钯粉、铑粉、铱粉等贵金属及有色金属的最新价格行情与市场分析。</p>
+        <p>预计上线时间：2026年3月中旬</p>
+        <a href="/ai-procurement/" class="btn">返回专栏首页</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学原料市场价格情报 | 2026年3月2日 | Millay</title>
+    <meta name="description" content="化学原料市场价格情报，涵盖能源、化工、金属、工业气体等板块最新价格行情与市场分析">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --success: #34a853;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            color: white;
+            padding: 160px 2rem 100px;
+            margin-top: 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 81, 255, 0.1) 0%, transparent 50%);
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        .alert-banner {
+            background: linear-gradient(90deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-icon {
+            font-size: 1.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.75rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+        .stat-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-value.up { color: var(--danger); }
+        .stat-value.down { color: var(--success); }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-top: 0.5rem;
+        }
+        .stat-change {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+        .stat-change.up { color: var(--danger); }
+        .stat-change.down { color: var(--success); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+            background: var(--bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.875rem;
+        }
+        tr:hover { background: var(--bg-light); }
+        .product-name { font-weight: 600; color: var(--primary); }
+        .price { font-weight: 700; color: var(--primary); }
+        .trend-up { color: var(--danger); font-weight: 600; }
+        .trend-down { color: var(--success); font-weight: 600; }
+        .trend-neutral { color: var(--text-muted); }
+        .unit { color: var(--text-secondary); font-size: 0.875rem; }
+        .region-tag {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .analysis-box {
+            background: var(--bg-warm);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .analysis-box h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .analysis-box p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .highlight-box h4 {
+            color: #e65100;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .highlight-box p {
+            color: #bf360c;
+            line-height: 1.7;
+        }
+        .recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .rec-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .rec-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .rec-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .tag-buy { background: #e8f5e9; color: #2e7d32; }
+        .tag-sell { background: #ffebee; color: #c62828; }
+        .tag-hold { background: #fff3e0; color: #ef6c00; }
+        .tag-watch { background: #e3f2fd; color: #1565c0; }
+        .data-source {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+        .data-source h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .data-source p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; font-size: 0.9375rem; }
+        footer .tagline {
+            font-size: 1.25rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 0.75rem;
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.75rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            table { font-size: 0.8125rem; }
+            th, td { padding: 0.75rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="alert-banner">
+        ⚠️ 市场预警：受中东地缘冲突影响，国际油价今日大涨超10%，化工原料价格随之波动，建议密切关注市场动态
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Chemical Market Intelligence</span>
+            <h1>🧪 化学原料市场价格情报</h1>
+            <p class="meta">数据更新时间：2026年3月2日 16:00 | 数据来源：隆众资讯、金属资讯网、上海有色网</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- 市场概览 -->
+        <section class="section">
+            <h2><span class="section-icon">📊</span>市场概览</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value up">$75.00</div>
+                    <div class="stat-label">WTI原油（美元/桶）</div>
+                    <div class="stat-change up">↑ 10.5%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value up">$81.57</div>
+                    <div class="stat-label">布伦特原油（美元/桶）</div>
+                    <div class="stat-change up">↑ 11.9%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">¥24,515</div>
+                    <div class="stat-label">1号白银（元/千克）</div>
+                    <div class="stat-change up">↑ 5.5%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">¥2,990</div>
+                    <div class="stat-label">铑粉（元/克）</div>
+                    <div class="stat-change neutral">→ 持平</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 能源板块 -->
+        <section class="section">
+            <h2><span class="section-icon">⛽</span>能源板块</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格</th>
+                        <th>价格</th>
+                        <th>涨跌</th>
+                        <th>单位</th>
+                        <th>地区</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">WTI原油</td>
+                        <td>期货主力</td>
+                        <td class="price">75.00</td>
+                        <td class="trend-up">+10.5%</td>
+                        <td class="unit">美元/桶</td>
+                        <td><span class="region-tag">国际</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">布伦特原油</td>
+                        <td>期货主力</td>
+                        <td class="price">81.57</td>
+                        <td class="trend-up">+11.9%</td>
+                        <td class="unit">美元/桶</td>
+                        <td><span class="region-tag">国际</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">天然气</td>
+                        <td>NYMEX期货</td>
+                        <td class="price">3.26</td>
+                        <td class="trend-up">+5.2%</td>
+                        <td class="unit">美元/百万英热</td>
+                        <td><span class="region-tag">美国</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">动力煤</td>
+                        <td>Q5500</td>
+                        <td class="price">680</td>
+                        <td class="trend-up">+2.1%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">秦皇岛</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">焦煤</td>
+                        <td>主焦煤</td>
+                        <td class="price">1,580</td>
+                        <td class="trend-neutral">0.0%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">山西</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 化工板块 -->
+        <section class="section">
+            <h2><span class="section-icon">🧪</span>化工板块</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格</th>
+                        <th>价格</th>
+                        <th>涨跌</th>
+                        <th>单位</th>
+                        <th>地区</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">乙烯</td>
+                        <td>CFR东北亚</td>
+                        <td class="price">850</td>
+                        <td class="trend-up">+3.5%</td>
+                        <td class="unit">美元/吨</td>
+                        <td><span class="region-tag">东北亚</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">丙烯</td>
+                        <td>山东市场</td>
+                        <td class="price">6,800</td>
+                        <td class="trend-up">+2.8%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">山东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">纯苯</td>
+                        <td>华东市场</td>
+                        <td class="price">7,200</td>
+                        <td class="trend-up">+4.2%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">甲醇</td>
+                        <td>华东市场</td>
+                        <td class="price">2,550</td>
+                        <td class="trend-up">+5.4%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">苯乙烯</td>
+                        <td>华东市场</td>
+                        <td class="price">8,500</td>
+                        <td class="trend-up">+3.2%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">乙二醇</td>
+                        <td>华东市场</td>
+                        <td class="price">4,200</td>
+                        <td class="trend-up">+2.5%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">醋酸</td>
+                        <td>华东市场</td>
+                        <td class="price">2,900</td>
+                        <td class="trend-up">+1.8%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">正丁醇</td>
+                        <td>工业级</td>
+                        <td class="price">7,800</td>
+                        <td class="trend-up">+2.1%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 贵金属板块 -->
+        <section class="section">
+            <h2><span class="section-icon">💎</span>贵金属板块</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格</th>
+                        <th>价格</th>
+                        <th>涨跌</th>
+                        <th>单位</th>
+                        <th>市场</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">1号白银</td>
+                        <td>Ag99.95</td>
+                        <td class="price">24,515</td>
+                        <td class="trend-up">+1,290</td>
+                        <td class="unit">元/千克</td>
+                        <td><span class="region-tag">上金所</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">2号白银</td>
+                        <td>Ag99.90</td>
+                        <td class="price">24,500</td>
+                        <td class="trend-up">+1,290</td>
+                        <td class="unit">元/千克</td>
+                        <td><span class="region-tag">上金所</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">钯粉</td>
+                        <td>Pd99.95</td>
+                        <td class="price">451.5</td>
+                        <td class="trend-up">+5.0</td>
+                        <td class="unit">元/克</td>
+                        <td><span class="region-tag">上海</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">铑粉</td>
+                        <td>Rh99.95</td>
+                        <td class="price">2,990</td>
+                        <td class="trend-neutral">0</td>
+                        <td class="unit">元/克</td>
+                        <td><span class="region-tag">全国</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">铱粉</td>
+                        <td>Ir99.95</td>
+                        <td class="price">6,690</td>
+                        <td class="trend-neutral">0</td>
+                        <td class="unit">元/克</td>
+                        <td><span class="region-tag">国际</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">铂金</td>
+                        <td>Pt99.95</td>
+                        <td class="price">604</td>
+                        <td class="trend-down">-4</td>
+                        <td class="unit">元/克</td>
+                        <td><span class="region-tag">上海</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 工业气体板块 -->
+        <section class="section">
+            <h2><span class="section-icon">💨</span>工业气体板块</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格</th>
+                        <th>价格</th>
+                        <th>涨跌</th>
+                        <th>单位</th>
+                        <th>地区</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">液氧</td>
+                        <td>≥99.6%</td>
+                        <td class="price">380</td>
+                        <td class="trend-down">-20</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">液氮</td>
+                        <td>≥99.999%</td>
+                        <td class="price">420</td>
+                        <td class="trend-down">-30</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">液氩</td>
+                        <td>≥99.999%</td>
+                        <td class="price">680</td>
+                        <td class="trend-down">-50</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">二氧化碳</td>
+                        <td>工业级</td>
+                        <td class="price">280</td>
+                        <td class="trend-neutral">0</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">氦气</td>
+                        <td>≥99.999%</td>
+                        <td class="price">850</td>
+                        <td class="trend-down">-20</td>
+                        <td class="unit">元/立方米</td>
+                        <td><span class="region-tag">进口</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 市场分析 -->
+        <section class="section">
+            <h2><span class="section-icon">📈</span>市场分析</h2>
+            
+            <div class="analysis-box">
+                <h3>🔥 能源板块：地缘冲突推升油价</h3>
+                <p>受美伊局势升级影响，3月2日国际油价大幅跳涨。WTI原油开盘报75.00美元/桶，涨幅超10%；布伦特原油一度冲高至82美元/桶，涨幅约13%。霍尔木兹海峡作为全球能源运输"咽喉要道"，其航运安全牵动整个油市。据EIA统计，该海峡承载全球约20%的石油贸易量。</p>
+                <p>煤炭市场方面，动力煤价格稳中有升，焦煤价格维持稳定。随着原油价格上涨，煤化工产业链成本支撑增强。</p>
+            </div>
+
+            <div class="analysis-box">
+                <h3>🧪 化工板块：成本推动价格上行</h3>
+                <p>受原油价格上涨带动，化工原料价格普遍走强。甲醇期货主力合约涨幅达8.04%，现货价格跟涨；烯烃类产品（乙烯、丙烯）价格随油价同步上涨；芳烃类产品（纯苯、苯乙烯）受成本支撑价格上行。</p>
+                <p>醋酸、正丁醇等下游产品受原料成本推动，价格小幅上涨。预计短期内化工品价格将维持偏强震荡格局。</p>
+            </div>
+
+            <div class="analysis-box">
+                <h3>💎 贵金属板块：避险情绪升温</h3>
+                <p>地缘冲突引发避险情绪，白银价格大幅反弹。1号白银（Ag99.95）报价24,515元/千克，单日上涨1,290元，涨幅约5.5%。国际现货白银突破93美元/盎司，创年内新高。</p>
+                <p>铂族金属方面，钯粉价格小幅上涨至451.5元/克；铑粉价格稳定在2,990元/克；铱粉报价6,690元/克。铂金价格小幅回落，报604元/克。</p>
+            </div>
+
+            <div class="analysis-box">
+                <h3>💨 工业气体板块：需求偏弱价格下行</h3>
+                <p>工业气体市场整体偏弱运行。液氧、液氮、液氩价格延续跌势，主要受下游钢铁、化工行业开工率不足影响。液氩跌幅较深，华东市场价格跌至680元/吨。</p>
+                <p>二氧化碳价格维持稳定，氦气价格小幅回落。预计随着下游需求恢复，工业气体价格有望在3月中下旬企稳回升。</p>
+            </div>
+        </section>
+
+        <!-- 趋势预测 -->
+        <section class="section">
+            <h2><span class="section-icon">🔮</span>趋势预测</h2>
+            <div class="highlight-box">
+                <h4>⚠️ 短期风险提示</h4>
+                <p>中东地缘局势仍存在较大不确定性，若霍尔木兹海峡航运持续受阻，国际油价可能进一步冲高。建议密切关注局势发展，做好风险对冲准备。</p>
+            </div>
+            <div class="analysis-box">
+                <p><strong>能源：</strong>预计短期内油价将维持高位震荡，布伦特原油或在75-85美元/桶区间运行。若地缘冲突缓和，油价存在回调风险。</p>
+                <p><strong>化工：</strong>成本推动型上涨为主，烯烃、芳烃类产品价格随油价联动。建议关注下游需求恢复情况。</p>
+                <p><strong>贵金属：</strong>避险需求支撑银价，短期或维持强势。铂族金属价格预计保持稳定。</p>
+                <p><strong>工业气体：</strong>3月中下旬随着下游复工，价格有望企稳回升。液氩价格已处于低位，下行空间有限。</p>
+            </div>
+        </section>
+
+        <!-- 采购建议 -->
+        <section class="section">
+            <h2><span class="section-icon">💡</span>采购建议</h2>
+            <div class="recommendation-grid">
+                <div class="rec-card">
+                    <h4><span class="tag tag-buy">建议买入</span> 液氩</h4>
+                    <p>价格已跌至历史低位（680元/吨），下游需求逐步恢复，当前为较好的采购窗口期。建议刚需用户适量备货。</p>
+                </div>
+                <div class="rec-card">
+                    <h4><span class="tag tag-hold">谨慎观望</span> 甲醇</h4>
+                    <p>受油价上涨推动，甲醇价格短期偏强。但下游MTO装置利润承压，建议观望为主，等待回调机会。</p>
+                </div>
+                <div class="rec-card">
+                    <h4><span class="tag tag-sell">建议减持</span> 白银</h4>
+                    <p>地缘冲突推升银价至高位，短期存在回调风险。建议高位减持，锁定利润。</p>
+                </div>
+                <div class="rec-card">
+                    <h4><span class="tag tag-watch">密切关注</span> 原油</h4>
+                    <p>地缘因素主导油价走势，波动风险较大。建议密切关注局势发展，灵活调整采购策略。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 数据来源 -->
+        <div class="data-source">
+            <h3>📡 数据来源说明</h3>
+            <p>本报告数据来源于：<a href="https://www.oilchem.net" target="_blank" style="color: var(--accent);">隆众资讯</a>、<a href="http://www.i001.com" target="_blank" style="color: var(--accent);">金属资讯网</a>、<a href="https://www.smm.cn" target="_blank" style="color: var(--accent);">上海有色网</a>、<a href="https://www.sge.com.cn" target="_blank" style="color: var(--accent);">上海黄金交易所</a>。</p>
+            <p style="margin-top: 0.75rem; font-size: 0.875rem;">免责声明：本报告内容仅供参考，不构成投资建议。具体价格请以实际交易为准。</p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="tagline">洞察 · 思考 · 实践</p>
+        <p>&copy; 2026 Millay. All rights reserved.</p>
+    </footer>
+</body>
+</html>

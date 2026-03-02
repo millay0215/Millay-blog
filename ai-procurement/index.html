@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI采购情报 | Millay</title>
-    <meta name="description" content="分析测试设备中标价格情报，每日自动抓取分析测试百科网最新中标信息">
+    <meta name="description" content="AI驱动的采购情报专栏，提供分析测试设备、化学原料、金属原料、工业气体等市场价格情报与趋势分析">
     <meta name="author" content="Millay">
     
     <style>
@@ -13,6 +13,9 @@
             --primary-light: #0a2942;
             --accent: #2251ff;
             --accent-light: #4b71ff;
+            --success: #34a853;
+            --warning: #fbbc04;
+            --danger: #ea4335;
             --text: #051c2c;
             --text-secondary: #5a6872;
             --text-muted: #8a96a0;
@@ -196,39 +199,96 @@
             margin: 0 auto;
         }
         
-        /* Info cards */
-        .info-grid {
+        /* Category Grid */
+        .category-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 60px;
+            gap: 2rem;
+            margin-bottom: 80px;
         }
         
-        .info-card {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
+        .category-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .info-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
         
-        .info-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .category-card:hover {
+            border-color: transparent;
+            box-shadow: 0 12px 32px var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+        
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
             color: var(--primary);
         }
         
-        .info-card p {
+        .category-card p {
             color: var(--text-secondary);
-            font-size: 0.9375rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
         
-        /* Article list */
+        .category-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        .category-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+        
+        /* Latest Updates */
+        .updates-section {
+            margin-bottom: 80px;
+        }
+        
         .article-list {
             display: flex;
             flex-direction: column;
@@ -276,12 +336,23 @@
             padding-left: 2rem;
         }
         
+        .article-category {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.75rem;
+        }
+        
         /* About section */
         .about-section {
             background: var(--bg-warm);
             padding: 60px;
             border-radius: 16px;
-            margin-top: 80px;
+            margin-top: 60px;
         }
         
         .about-section h2 {
@@ -388,6 +459,10 @@
             .data-source {
                 padding: 2rem;
             }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -409,79 +484,119 @@
         <div class="hero-content">
             <span class="hero-label">Intelligence Column</span>
             <h1>📊 AI采购情报</h1>
-            <p>每日自动抓取分析测试百科网中标信息，提供分析测试设备采购价格情报与市场趋势分析。</p>
+            <p>AI驱动的市场价格情报系统，提供分析测试设备、化学原料、金属原料、工业气体等多品类采购价格情报与市场趋势分析。</p>
         </div>
     </section>
     
     <main>
-        <div class="info-grid">
-            <div class="info-card">
-                <div class="icon">📈</div>
-                <h3>价格趋势</h3>
-                <p>追踪分析测试设备中标价格变化，掌握市场行情</p>
-            </div>
-            <div class="info-card">
-                <div class="icon">🔍</div>
-                <h3>采购动态</h3>
-                <p>汇总高校、科研院所、政府机构的最新采购信息</p>
-            </div>
-            <div class="info-card">
-                <div class="icon">🤖</div>
-                <h3>AI自动化</h3>
-                <p>每日10:00自动抓取更新，智能生成分析报告</p>
-            </div>
-        </div>
-        
+        <!-- 情报分类 -->
         <div class="section-header">
-            <h2>情报列表</h2>
-            <p>最新分析测试设备中标价格情报，每日更新。</p>
+            <h2>情报分类</h2>
+            <p>选择您关注的采购品类，获取最新市场价格情报与趋势分析</p>
         </div>
         
-        <div class="article-list">
-            <a href="bidding-intelligence-2026-03-02.html" class="article-item">
-                <div>
-                    <h4>分析测试设备中标价格情报 | 2026年3月2日</h4>
-                    <p>12条中标记录（含5条真实数据）、牛津仪器原子力显微镜260万、平均价格68.5万...</p>
+        <div class="category-grid">
+            <a href="equipment/" class="category-card">
+                <div class="category-icon">🔬</div>
+                <h3>仪器设备</h3>
+                <p>分析测试设备中标价格情报，涵盖质谱仪、色谱仪、光谱仪、显微镜等实验室设备</p>
+                <div class="category-meta">
+                    <span>📈 每日更新</span>
+                    <span>📍 分析测试百科网</span>
                 </div>
-                <span class="article-date">2026.03.02</span>
+                <span class="category-tag">5 篇文章</span>
             </a>
-            <a href="bidding-intelligence-2026-02-28.html" class="article-item">
-                <div>
-                    <h4>分析测试设备中标价格情报 | 2026年2月28日</h4>
-                    <p>10条真实中标记录、蔡司显微镜200万、平均价格56.6万...</p>
+            
+            <a href="chemical/" class="category-card">
+                <div class="category-icon">🧪</div>
+                <h3>化学原料</h3>
+                <p>化工原料市场价格情报，涵盖原油、天然气、乙烯、丙烯、苯、甲醇等基础化工产品</p>
+                <div class="category-meta">
+                    <span>📈 每日更新</span>
+                    <span>📍 隆众资讯</span>
                 </div>
-                <span class="article-date">2026.02.28</span>
+                <span class="category-tag">1 篇文章</span>
             </a>
-            <a href="bidding-intelligence-2026-02-27.html" class="article-item">
-                <div>
-                    <h4>分析测试设备中标价格情报 | 2026年2月27日</h4>
-                    <p>8条中标记录、总中标金额426.5万、气相色谱质谱联用仪新中标...</p>
+            
+            <a href="metal/" class="category-card">
+                <div class="category-icon">⚙️</div>
+                <h3>金属原料</h3>
+                <p>贵金属及有色金属价格情报，涵盖白银、钯粉、铑粉、铱粉等稀有金属材料</p>
+                <div class="category-meta">
+                    <span>📈 每日更新</span>
+                    <span>📍 金属资讯网</span>
                 </div>
-                <span class="article-date">2026.02.27</span>
+                <span class="category-tag">即将上线</span>
             </a>
-            <a href="bidding-intelligence-2026-02-26.html" class="article-item">
-                <div>
-                    <h4>分析测试设备中标价格情报 | 2026年2月26日</h4>
-                    <p>质谱仪120万中标、高校色谱仪采购、5条最新中标记录...</p>
+            
+            <a href="gas/" class="category-card">
+                <div class="category-icon">💨</div>
+                <h3>工业气体</h3>
+                <p>工业气体市场价格情报，涵盖液氧、液氮、液氩、二氧化碳等大宗气体产品</p>
+                <div class="category-meta">
+                    <span>📈 每日更新</span>
+                    <span>📍 隆众资讯</span>
                 </div>
-                <span class="article-date">2026.02.26</span>
+                <span class="category-tag">即将上线</span>
             </a>
+        </div>
+        
+        <!-- 最新情报 -->
+        <div class="updates-section">
+            <div class="section-header">
+                <h2>最新情报</h2>
+                <p>各品类最新发布的市场价格情报</p>
+            </div>
+            
+            <div class="article-list">
+                <a href="chemical/2026-03-02.html" class="article-item">
+                    <div>
+                        <h4>化学原料市场价格情报 <span class="article-category">化学原料</span></h4>
+                        <p>⚠️ 地缘冲突推升油价大涨超10%，化工原料价格普遍上行，白银单日涨5.5%...</p>
+                    </div>
+                    <span class="article-date">2026.03.02</span>
+                </a>
+                <a href="equipment/bidding-intelligence-2026-03-02.html" class="article-item">
+                    <div>
+                        <h4>分析测试设备中标价格情报 <span class="article-category">仪器设备</span></h4>
+                        <p>12条中标记录（含5条真实数据）、牛津仪器原子力显微镜260万、平均价格68.5万...</p>
+                    </div>
+                    <span class="article-date">2026.03.02</span>
+                </a>
+                <a href="equipment/bidding-intelligence-2026-02-28.html" class="article-item">
+                    <div>
+                        <h4>分析测试设备中标价格情报 <span class="article-category">仪器设备</span></h4>
+                        <p>10条真实中标记录、蔡司显微镜200万、平均价格56.6万...</p>
+                    </div>
+                    <span class="article-date">2026.02.28</span>
+                </a>
+                <a href="equipment/bidding-intelligence-2026-02-27.html" class="article-item">
+                    <div>
+                        <h4>分析测试设备中标价格情报 <span class="article-category">仪器设备</span></h4>
+                        <p>8条中标记录、总中标金额426.5万、气相色谱质谱联用仪新中标...</p>
+                    </div>
+                    <span class="article-date">2026.02.27</span>
+                </a>
+            </div>
         </div>
         
         <div class="about-section">
             <h2>关于本专栏</h2>
             <p><span class="tag">每日更新</span>每日 10:00 自动抓取更新</p>
-            <p><span class="tag">数据来源</span>分析测试百科网 (antpedia.com)</p>
-            <p><span class="tag">覆盖范围</span>质谱仪、色谱仪、光谱仪、显微镜等</p>
-            <p><span class="tag">采购主体</span>高校、科研院所、海关、医院等</p>
-            <p style="margin-top: 1.5rem;"><strong>AI采购情报</strong>专栏通过自动化爬虫技术，每日从分析测试百科网抓取最新的分析测试设备中标信息，帮助您了解市场价格趋势、掌握行业采购动态、辅助采购决策参考。</p>
+            <p><span class="tag">AI自动化</span>智能数据采集与分析生成</p>
+            <p><span class="tag">多品类覆盖</span>设备、化工、金属、气体四大板块</p>
+            <p><span class="tag">专业分析</span>价格走势、市场分析、采购建议</p>
+            <p style="margin-top: 1.5rem;"><strong>AI采购情报</strong>专栏通过自动化爬虫技术与AI分析能力，每日从多个权威数据源抓取最新的市场价格信息，帮助您了解各类原材料价格趋势、掌握行业采购动态、辅助采购决策参考。</p>
         </div>
         
         <div class="data-source">
             <h3>📡 数据来源说明</h3>
-            <p>本专栏数据来源于 <a href="https://www.antpedia.com" target="_blank">分析测试百科网 (antpedia.com)</a> 的招标采购栏目。</p>
-            <p style="margin-top: 1rem;">分析测试百科网是中国领先的分析测试行业门户网站，提供全面的仪器招标、中标信息，覆盖质谱、色谱、光谱、显微镜等各类实验室分析测试设备。</p>
-            <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">免责声明：本专栏内容仅供参考，具体中标信息请以官方网站发布为准。</p>
+            <p>本专栏数据来源于以下权威平台：</p>
+            <p style="margin-top: 0.75rem;"><strong>仪器设备：</strong><a href="https://www.antpedia.com" target="_blank">分析测试百科网</a> — 中国领先的分析测试行业门户网站</p>
+            <p><strong>化学原料：</strong><a href="https://www.oilchem.net" target="_blank">隆众资讯</a> — 中国能源化工行业权威数据服务商</p>
+            <p><strong>金属原料：</strong><a href="http://www.i001.com" target="_blank">金属资讯网</a>、<a href="https://www.smm.cn" target="_blank">上海有色网</a></p>
+            <p><strong>工业气体：</strong><a href="https://www.oilchem.net" target="_blank">隆众资讯</a> — 工业气体市场价格数据</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">免责声明：本专栏内容仅供参考，具体价格信息请以官方发布为准。</p>
         </div>
     </main>
     

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学原料价格情报 | AI采购情报 | Millay</title>
+    <meta name="description" content="化工原料市场价格情报，涵盖原油、天然气、乙烯、丙烯、苯、甲醇等基础化工产品">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            opacity: 0.85;
+            font-size: 1.125rem;
+            max-width: 600px;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .section-header {
+            margin-bottom: 2rem;
+        }
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .article-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        .article-item:hover {
+            border-color: transparent;
+            box-shadow: 0 8px 24px var(--shadow);
+            transform: translateX(4px);
+        }
+        .article-item h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .article-item p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        .article-date {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            white-space: nowrap;
+            padding-left: 2rem;
+        }
+        .tag {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .tag-new {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; font-size: 0.875rem; }
+        @media (max-width: 768px) {
+            .article-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .article-date {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🧪 化学原料价格情报</h1>
+            <p>化工原料市场价格情报，涵盖能源、化工、贵金属、工业气体等板块最新价格行情与市场分析</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="section-header">
+            <h2>情报列表</h2>
+        </div>
+        
+        <div class="article-list">
+            <a href="2026-03-02.html" class="article-item">
+                <div>
+                    <h4>化学原料市场价格情报 | 2026年3月2日 <span class="tag tag-new">NEW</span></h4>
+                    <p>⚠️ 地缘冲突推升油价大涨超10%，WTI原油报75美元/桶，化工原料价格普遍上行，白银单日涨5.5%...</p>
+                </div>
+                <span class="article-date">2026.03.02</span>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
+    </footer>
+</body>
+</html>
