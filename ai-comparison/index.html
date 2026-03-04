@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年AI大模型对比 | AI Model Comparison | Millay</title>
+    <meta name="description" content="2026年主流AI大模型全面对比：Claude、Kimi、Gemini、GPT、MiniMax、DeepSeek等第一梯队模型性能、价格、适用场景对比">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .model-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .score-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .score-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .comparison-table th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f9fafb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">2026年 AI 大模型对比</h1>
+                <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                    第一梯队大模型全面对比：Claude、Kimi、Gemini、GPT、MiniMax、DeepSeek
+                </p>
+                <div class="mt-6 text-sm text-white/60">
+                    数据更新时间：2026年3月 | 基于最新基准测试和行业评测
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 核心维度对比 -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">六维能力雷达图</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 雷达图 -->
+                <div class="bg-gray-50 rounded-2xl p-6">
+                    <canvas id="radarChart"></canvas>
+                </div>
+                
+                <!-- 维度说明 -->
+                <div class="space-y-4">
+                    <div class="bg-blue-50 rounded-xl p-4 border-l-4 border-blue-500">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-brain text-blue-600"></i>
+                            <h3 class="font-semibold text-gray-900">逻辑推理</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">数学推理、逻辑分析、复杂问题拆解能力。Claude 和 Kimi 表现突出。</p>
+                    </div>
+                    
+                    <div class="bg-green-50 rounded-xl p-4 border-l-4 border-green-500">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-code text-green-600"></i>
+                            <h3 class="font-semibold text-gray-900">代码能力</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">编程、调试、代码审查、技术文档理解。Claude Opus 4.5 领先，GLM-5 紧随其后。</p>
+                    </div>
+                    
+                    <div class="bg-purple-50 rounded-xl p-4 border-l-4 border-purple-500">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-image text-purple-600"></i>
+                            <h3 class="font-semibold text-gray-900">多模态</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">图像理解、生成、视频、音频处理。GPT-5.2 和 Gemini 3 最强。</p>
+                    </div>
+                    
+                    <div class="bg-orange-50 rounded-xl p-4 border-l-4 border-orange-500">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-book text-orange-600"></i>
+                            <h3 class="font-semibold text-gray-900">长上下文</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">处理长文档、代码库、多轮对话能力。Gemini 3 的 100万+ token 领先。</p>
+                    </div>
+                    
+                    <div class="bg-red-50 rounded-xl p-4 border-l-4 border-red-500">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-dollar-sign text-red-600"></i>
+                            <h3 class="font-semibold text-gray-900">性价比</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">DeepSeek 免费/低价，GLM-5 性价比高，Claude 和 GPT 较贵。</p>
+                    </div>
+                    
+                    <div class="bg-indigo-50 rounded-xl p-4 border-l-4 border-indigo-500">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-bolt text-indigo-600"></i>
+                            <h3 class="font-semibold text-gray-900">响应速度</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">Gemini Flash 最快，DeepSeek 和 GPT 也较快，Claude 相对慢一些。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 详细对比表 -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">详细参数对比</h2>
+            
+            <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                <table class="comparison-table w-full">
+                    <thead>
+                        <tr>
+                            <th>模型</th>
+                            <th>公司</th>
+                            <th>上下文窗口</th>
+                            <th>代码能力</th>
+                            <th>推理能力</th>
+                            <th>多模态</th>
+                            <th>价格/月</th>
+                            <th>最佳场景</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="model-logo bg-orange-500 text-white">C</div>
+                                    <div>
+                                        <div class="font-semibold">Claude Opus 4.5</div>
+                                        <div class="text-xs text-gray-500">Anthropic</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Anthropic</td>
+                            <td>200K tokens</td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-yellow-100 text-yellow-700">⭐⭐⭐</span></td>
+                            <td>$20 (~¥145)</td>
+                            <td>编程、复杂推理</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="model-logo bg-blue-600 text-white">K</div>
+                                    <div>
+                                        <div class="font-semibold">Kimi K2.5</div>
+                                        <div class="text-xs text-gray-500">月之暗面</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>月之暗面</td>
+                            <td>256K tokens</td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-yellow-100 text-yellow-700">⭐⭐⭐</span></td>
+                            <td>¥99</td>
+                            <td>创意写作、长文本</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="model-logo bg-gradient-to-br from-blue-500 to-green-500 text-white">G</div>
+                                    <div>
+                                        <div class="font-semibold">Gemini 3 Pro</div>
+                                        <div class="text-xs text-gray-500">Google</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Google</td>
+                            <td><span class="tag bg-purple-100 text-purple-700">100万+ tokens</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐⭐</span></td>
+                            <td>$22 (~¥160)</td>
+                            <td>长文档、多模态</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="model-logo bg-green-500 text-white">GPT</div>
+                                    <div>
+                                        <div class="font-semibold">GPT-5.2</div>
+                                        <div class="text-xs text-gray-500">OpenAI</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>OpenAI</td>
+                            <td>128K tokens</td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐⭐</span></td>
+                            <td>$20 (~¥145)</td>
+                            <td>全能型、多模态</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="model-logo bg-indigo-600 text-white">M</div>
+                                    <div>
+                                        <div class="font-semibold">MiniMax-M2</div>
+                                        <div class="text-xs text-gray-500">MiniMax</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>MiniMax</td>
+                            <td>128K tokens</td>
+                            <td><span class="tag bg-yellow-100 text-yellow-700">⭐⭐⭐</span></td>
+                            <td><span class="tag bg-yellow-100 text-yellow-700">⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td>免费/低价</td>
+                            <td>音乐、语音、多模态</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="model-logo bg-red-600 text-white">D</div>
+                                    <div>
+                                        <div class="font-semibold">DeepSeek V3.2</div>
+                                        <div class="text-xs text-gray-500">DeepSeek</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>DeepSeek</td>
+                            <td>128K tokens</td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-yellow-100 text-yellow-700">⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">免费/极低</span></td>
+                            <td>性价比首选、代码</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="model-logo bg-pink-600 text-white">GLM</div>
+                                    <div>
+                                        <div class="font-semibold">GLM-5</div>
+                                        <div class="text-xs text-gray-500">智谱AI</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>智谱AI</td>
+                            <td>200K tokens</td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-green-100 text-green-700">⭐⭐⭐⭐</span></td>
+                            <td><span class="tag bg-yellow-100 text-yellow-700">⭐⭐⭐</span></td>
+                            <td>¥20 (Claude 平替)</td>
+                            <td>编程、Claude 平替</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 选购建议 -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">选购建议</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 程序员首选 -->
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 card-hover">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-code text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">程序员首选</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">预算充足</span>
+                            <span class="font-semibold text-orange-600">Claude Opus 4.5</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">性价比</span>
+                            <span class="font-semibold text-orange-600">GLM-5</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">免费</span>
+                            <span class="font-semibold text-orange-600">DeepSeek</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 全能型 -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 card-hover">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-crown text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">全能型（只选一个）</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">综合最强</span>
+                            <span class="font-semibold text-green-600">GPT-5.2</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-2">
+                            六边形战士，任何方向都能用，多模态能力最强
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 长文档处理 -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 card-hover">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-file-alt text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">长文档/代码库</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">超长上下文</span>
+                            <span class="font-semibold text-purple-600">Gemini 3 Pro</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-2">
+                            100万+ tokens 上下文，可处理整本书或大型代码库
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 创意写作 -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 card-hover">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-pen-fancy text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">创意写作</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">中文创作</span>
+                            <span class="font-semibold text-blue-600">Kimi K2.5</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-2">
+                            诗歌、艺术创作、创意内容生成能力强
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 性价比 -->
+                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 card-hover">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-piggy-bank text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">性价比首选</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">免费</span>
+                            <span class="font-semibold text-red-600">DeepSeek</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">低价高质</span>
+                            <span class="font-semibold text-red-600">GLM-5 (¥20)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 多模态 -->
+                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl p-6 card-hover">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-images text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">多模态</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">图像+视频</span>
+                            <span class="font-semibold text-indigo-600">GPT-5.2</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">音乐+语音</span>
+                            <span class="font-semibold text-indigo-600">MiniMax</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">数据来源：Artificial Analysis、各厂商官方数据、行业评测报告</p>
+            <p class="text-gray-500 text-sm mt-2">最后更新：2026年3月 | AI技术发展迅速，数据仅供参考</p>
+            <div class="mt-4">
+                <a href="/" class="text-blue-400 hover:text-blue-300">← 返回首页</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 雷达图
+        const ctx = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['逻辑推理', '代码能力', '多模态', '长上下文', '性价比', '响应速度'],
+                datasets: [{
+                    label: 'Claude Opus 4.5',
+                    data: [95, 98, 70, 85, 60, 70],
+                    borderColor: 'rgb(249, 115, 22)',
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                }, {
+                    label: 'Kimi K2.5',
+                    data: [95, 85, 65, 90, 75, 80],
+                    borderColor: 'rgb(37, 99, 235)',
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                }, {
+                    label: 'Gemini 3 Pro',
+                    data: [85, 85, 98, 100, 70, 95],
+                    borderColor: 'rgb(34, 197, 94)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                }, {
+                    label: 'GPT-5.2',
+                    data: [88, 88, 95, 75, 65, 85],
+                    borderColor: 'rgb(16, 185, 129)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                }, {
+                    label: 'DeepSeek V3.2',
+                    data: [85, 88, 70, 75, 100, 85],
+                    borderColor: 'rgb(220, 38, 38)',
+                    backgroundColor: 'rgba(220, 38, 38, 0.2)',
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
