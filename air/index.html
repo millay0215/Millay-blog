@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球空运实时航线图 | Millay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        body { overflow: hidden; }
+        #map { height: 100vh; width: 100%; background: #0f172a; }
+        .glass { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-light { background: rgba(30, 41, 59, 0.9); backdrop-filter: blur(8px); }
+        .route-line { stroke-dasharray: 8, 6; animation: flow 15s linear infinite; }
+        @keyframes flow { to { stroke-dashoffset: -400; } }
+        .plane-marker { animation: fly 2s ease-in-out infinite; }
+        @keyframes fly { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+        .status-normal { background: #10b981; box-shadow: 0 0 8px #10b981; }
+        .status-warning { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+        .status-danger { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #1e293b; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+        .risk-zone-air { fill: rgba(239, 68, 68, 0.12); stroke: #ef4444; stroke-width: 1.5; stroke-dasharray: 6, 3; }
+    </style>
+</head>
+<body class="bg-slate-900">
+    <header class="fixed top-0 left-0 right-0 h-16 glass z-[2000] flex items-center justify-between px-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-violet-600 rounded-xl flex items-center justify-center">
+                <i class="fas fa-plane text-white text-lg"></i>
+            </div>
+            <div>
+                <h1 class="text-white font-bold text-lg">全球空运实时航线图</h1>
+                <p class="text-slate-400 text-xs">Global Air Freight Routes Monitor</p>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-red-500/20 rounded-lg border border-red-500/30">
+                <span class="status-dot status-danger animate-pulse"></span>
+                <span class="text-red-400 text-sm font-medium">4个空域受限</span>
+            </div>
+            <a href="/shipping/" class="px-3 py-1.5 glass-light hover:bg-slate-700 text-white text-xs rounded-lg">
+                <i class="fas fa-ship mr-1"></i>海运图
+            </a>
+        </div>
+    </header>
+
+    <div id="map"></div>
+
+    <aside class="fixed left-4 top-20 bottom-4 w-80 glass rounded-xl z-[1500] flex flex-col overflow-hidden">
+        <div class="p-4 border-b border-slate-700">
+            <h2 class="text-white font-bold flex items-center gap-2 mb-3">
+                <i class="fas fa-plane-departure text-violet-500"></i>
+                空运航线监控
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-2">
+                <div class="bg-violet-500/10 border border-violet-500/20 rounded-lg p-3">
+                    <div class="text-2xl font-bold text-white">24</div>
+                    <div class="text-xs text-slate-400">活跃货运航线</div>
+                </div>
+                <div class="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                    <div class="text-2xl font-bold text-red-400">4</div>
+                    <div class="text-xs text-slate-400">空域受限</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto custom-scroll p-4 space-y-4">
+            
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fas fa-exclamation-triangle text-red-500"></i>
+                    <span class="text-red-400 font-semibold text-sm">实时空域警报</span>
+                </div>
+                <div class="space-y-2 text-xs text-slate-300">
+                    <div class="flex items-start gap-2">
+                        <span class="status-dot status-danger mt-0.5"></span>
+                        <span><strong class="text-white">中东空域：</strong>多国关闭领空</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="status-dot status-danger mt-0.5"></span>
+                        <span><strong class="text-white">乌克兰周边：</strong>持续禁飞区</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="status-dot status-warning mt-0.5"></span>
+                        <span><strong class="text-white">俄罗斯西部：</strong>欧盟航司禁飞</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-slate-400 text-xs font-semibold uppercase mb-3">主要货运航线</h3>
+                
+                <div class="space-y-2">
+                    <div class="glass-light rounded-lg p-3 cursor-pointer hover:bg-slate-800">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-white font-medium text-sm">中国→欧洲（北线）</span>
+                            <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded">推荐</span>
+                        </div>
+                        <div class="text-xs text-slate-400">上海→阿斯塔纳→法兰克福</div>
+                        <div class="text-xs text-slate-500 mt-1">10-12小时 · 8,500km</div>
+                    </div>
+
+                    <div class="glass-light rounded-lg p-3 cursor-pointer hover:bg-slate-800">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-white font-medium text-sm">中国→欧洲（南线）</span>
+                            <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 text-xs rounded">改道</span>
+                        </div>
+                        <div class="text-xs text-slate-400">上海→迪拜→伊斯坦布尔→欧洲</div>
+                        <div class="text-xs text-slate-500 mt-1">14-16小时 · 11,200km</div>
+                        <div class="mt-1 text-xs text-yellow-400">中东局势导致改道</div>
+                    </div>
+
+                    <div class="glass-light rounded-lg p-3 cursor-pointer hover:bg-slate-800">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-white font-medium text-sm">中国→美国（西线）</span>
+                            <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded">正常</span>
+                        </div>
+                        <div class="text-xs text-slate-400">上海→安克雷奇→洛杉矶</div>
+                        <div class="text-xs text-slate-500 mt-1">12-14小时 · 10,800km</div>
+                    </div>
+
+                    <div class="glass-light rounded-lg p-3 cursor-pointer hover:bg-slate-800">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-white font-medium text-sm">欧洲→亚太（经俄罗斯）</span>
+                            <span class="px-2 py-0.5 bg-red-500/20 text-red-400 text-xs rounded">中断</span>
+                        </div>
+                        <div class="text-xs text-slate-400">法兰克福→莫斯科→北京</div>
+                        <div class="text-xs text-slate-500 mt-1">9-11小时 · 7,800km</div>
+                        <div class="mt-1 text-xs text-red-400">欧盟航司禁飞俄罗斯领空</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-light rounded-lg p-3">
+                <h3 class="text-slate-400 text-xs font-semibold uppercase mb-3">图例</h3>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-0.5 bg-green-500"></div>
+                        <span class="text-slate-400">正常航线</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-0.5 bg-yellow-500"></div>
+                        <span class="text-slate-400">改道航线</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-0.5 bg-red-500"></div>
+                        <span class="text-slate-400">中断航线</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-violet-500"></div>
+                        <span class="text-slate-400">货运机场</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="fixed bottom-4 left-4 right-4 md:left-96 md:right-8 glass rounded-xl p-4 z-[1500]">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="text-xs text-slate-400">
+                    <div class="text-white font-semibold">2026年3月4日</div>
+                    <div>数据更新: 12:06 CST</div>
+                </div>
+                <div class="h-8 w-px bg-slate-700"></div>
+                <div class="flex items-center gap-4 text-xs">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        <span class="text-slate-400">正常: 18条</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                        <span class="text-slate-400">改道: 4条</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                        <span class="text-slate-400">中断: 2条</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <a href="/" class="px-3 py-1.5 glass-light hover:bg-slate-700 text-white text-xs rounded-lg">
+                    <i class="fas fa-home mr-1"></i>返回首页
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const map = L.map('map', { center: [30, 20], zoom: 2, zoomControl: false });
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+        
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; CARTO', subdomains: 'abcd', maxZoom: 19
+        }).addTo(map);
+
+        const airports = [
+            { name: '香港国际机场 HKG', coords: [22.3080, 113.9185], type: 'major', throughput: '全球第1' },
+            { name: '上海浦东 PVG', coords: [31.1443, 121.8083], type: 'major', throughput: '中国第1' },
+            { name: '广州白云 CAN', coords: [23.3959, 113.2988], type: 'major', throughput: '中国第2' },
+            { name: '北京首都 PEK', coords: [40.0799, 116.6031], type: 'major', throughput: '中国第3' },
+            { name: '法兰克福 FRA', coords: [50.0379, 8.5622], type: 'major', throughput: '欧洲第1' },
+            { name: '阿姆斯特丹 AMS', coords: [52.3105, 4.7683], type: 'major', throughput: '欧洲第2' },
+            { name: '洛杉矶 LAX', coords: [33.9416, -118.4085], type: 'major', throughput: '北美第1' },
+            { name: '芝加哥 ORD', coords: [41.9742, -87.9073], type: 'major', throughput: '北美第2' },
+            { name: '安克雷奇 ANC', coords: [61.1743, -149.9962], type: 'major', throughput: '转运枢纽' },
+            { name: '迪拜 DXB', coords: [25.2532, 55.3657], type: 'warning', throughput: '中东枢纽' },
+            { name: '新加坡 SIN', coords: [1.3644, 103.9915], type: 'major', throughput: '东南亚枢纽' },
+            { name: '东京成田 NRT', coords: [35.7647, 140.3864], type: 'major', throughput: '日本第1' },
+            { name: '首尔仁川 ICN', coords: [37.4602, 126.4407], type: 'major', throughput: '韩国第1' },
+            { name: '阿斯塔纳 TSE', coords: [51.0222, 71.4669], type: 'alternative', throughput: '中亚枢纽' },
+            { name: '伊斯坦布尔 IST', coords: [41.2753, 28.7519], type: 'warning', throughput: '欧亚枢纽' }
+        ];
+
+        airports.forEach(airport => {
+            const color = airport.type === 'major' ? '#8b5cf6' : airport.type === 'warning' ? '#f59e0b' : '#3b82f6';
+            const size = airport.type === 'major' ? 14 : 10;
+            
+            L.circleMarker(airport.coords, {
+                radius: size, fillColor: color, color: '#fff', weight: 2, opacity: 1, fillOpacity: 0.9
+            }).addTo(map).bindPopup(`<div style="color:white;background:#0f172a;padding:8px;border-radius:6px;">
+                <div style="font-weight:bold;">${airport.name}</div>
+                <div style="font-size:12px;color:#94a3b8;">货运量: ${airport.throughput}</div>
+            </div>`);
+        });
+
+        const routes = [
+            { coords: [[31.1443, 121.8083], [51.0222, 71.4669], [50.0379, 8.5622]], color: '#10b981', status: 'normal', name: '中国-欧洲北线' },
+            { coords: [[31.1443, 121.8083], [25.2532, 55.3657], [41.2753, 28.7519], [50.0379, 8.5622]], color: '#f59e0b', status: 'detour', name: '中国-欧洲南线' },
+            { coords: [[31.1443, 121.8083], [61.1743, -149.9962], [33.9416, -118.4085]], color: '#10b981', status: 'normal', name: '中国-美国西线' },
+            { coords: [[50.0379, 8.5622], [55.7558, 37.6173], [31.1443, 121.8083]], color: '#ef4444', status: 'blocked', name: '欧洲-中国（经俄罗斯）' }
+        ];
+
+        routes.forEach(route => {
+            L.polyline(route.coords, {
+                color: route.color, weight: 3, opacity: 0.8,
+                dashArray: route.status === 'blocked' ? '8, 6' : route.status === 'detour' ? '12, 4' : null,
+                className: route.status !== 'normal' ? 'route-line' : ''
+            }).addTo(map);
+        });
+
+        const riskZones = [
+            { center: [35, 50], radius: 800000, name: '中东空域', reason: '多国关闭领空' },
+            { center: [50, 35], radius: 600000, name: '乌克兰周边', reason: '持续禁飞区' },
+            { center: [55, 40], radius: 1200000, name: '俄罗斯西部', reason: '欧盟航司禁飞' },
+            { center: [32, 53], radius: 400000, name: '伊朗领空', reason: '多国航司绕行' }
+        ];
+
+        riskZones.forEach(zone => {
+            L.circle(zone.center, {
+                radius: zone.radius, className: 'risk-zone-air'
+            }).addTo(map).bindPopup(`<div style="color:white;background:#0f172a;padding:8px;border-radius:6px;">
+                <div style="color:#ef4444;font-weight:bold;">⚠️ ${zone.name}</div>
+                <div style="font-size:12px;color:#94a3b8;">${zone.reason}</div>
+            </div>`);
+        });
+
+        function addPlane(route, progress) {
+            const path = route.coords;
+            const index = Math.floor(progress * (path.length - 1));
+            const nextIndex = Math.min(index + 1, path.length - 1);
+            const segmentProgress = (progress * (path.length - 1)) - index;
+            
+            const lat = path[index][0] + (path[nextIndex][0] - path[index][0]) * segmentProgress;
+            const lng = path[index][1] + (path[nextIndex][1] - path[index][1]) * segmentProgress;
+            
+            const icon = L.divIcon({
+                className: 'plane-marker',
+                html: '<i class="fas fa-plane text-white text-lg" style="transform:rotate(45deg);"></i>',
+                iconSize: [24, 24], iconAnchor: [12, 12]
+            });
+            
+            L.marker([lat, lng], { icon }).addTo(map);
+        }
+
+        addPlane(routes[0], 0.4);
+        addPlane(routes[0], 0.7);
+        addPlane(routes[2], 0.5);
+    </script>
+</body>
+</html>
