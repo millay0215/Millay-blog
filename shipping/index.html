@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全球航运动态航线图 | 2026年3月4日 | Millay</title>
-    <meta name="description" content="结合全球局势信息的动态航运航线图，实时显示主要航线、风险区域和替代路线">
+    <title>全球航运实时航线图 | Global Shipping Routes | Millay</title>
+    <meta name="description" content="专业级全球航运实时航线图，结合AIS数据与地缘政治风险，为进出口贸易提供航线规划与风险评估">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -12,79 +12,64 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
-        * {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        
+        body { overflow: hidden; }
+        
+        #map { 
+            height: 100vh; 
+            width: 100%; 
+            background: #0a1628;
         }
         
-        #map {
-            height: calc(100vh - 80px);
-            width: 100%;
-            z-index: 1;
-        }
+        /* 自定义滚动条 */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #1e293b; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #64748b; }
         
-        .sidebar {
-            position: fixed;
-            right: 0;
-            top: 80px;
-            width: 380px;
-            height: calc(100vh - 80px);
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-left: 1px solid #e5e7eb;
-            z-index: 1000;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-        }
-        
-        .sidebar.collapsed {
-            transform: translateX(100%);
-        }
-        
+        /* 动画效果 */
         .route-line {
-            stroke-dasharray: 10, 10;
-            animation: dash 30s linear infinite;
+            stroke-dasharray: 15, 10;
+            animation: flow 20s linear infinite;
         }
         
-        @keyframes dash {
-            to {
-                stroke-dashoffset: -1000;
-            }
+        @keyframes flow {
+            to { stroke-dashoffset: -500; }
         }
         
-        .pulse-marker {
-            animation: pulse 2s ease-in-out infinite;
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
         }
         
-        .risk-zone {
-            fill: rgba(239, 68, 68, 0.2);
-            stroke: #ef4444;
-            stroke-width: 2;
-            stroke-dasharray: 5, 5;
+        .vessel-marker {
+            animation: vessel-move 3s ease-in-out infinite;
         }
         
-        .alert-badge {
-            animation: blink 2s ease-in-out infinite;
+        @keyframes vessel-move {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
         
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        /* 玻璃态效果 */
+        .glass {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .route-card {
-            transition: all 0.2s ease;
+        .glass-light {
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        .route-card:hover {
-            transform: translateX(-4px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
+        /* 状态指示器 */
         .status-dot {
             width: 8px;
             height: 8px;
@@ -93,277 +78,492 @@
             margin-right: 6px;
         }
         
-        .status-normal { background: #10b981; }
-        .status-warning { background: #f59e0b; }
-        .status-danger { background: #ef4444; }
+        .status-normal { background: #10b981; box-shadow: 0 0 8px #10b981; }
+        .status-warning { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+        .status-danger { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+        .status-info { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
         
-        .legend-item {
+        /* 航线类型标签 */
+        .route-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        /* 船舶类型图标 */
+        .vessel-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
         
-        .legend-line {
-            width: 24px;
-            height: 3px;
-            border-radius: 2px;
+        /* 风险区域 */
+        .risk-zone {
+            fill: rgba(239, 68, 68, 0.15);
+            stroke: #ef4444;
+            stroke-width: 2;
+            stroke-dasharray: 8, 4;
         }
         
-        .legend-dot {
-            width: 12px;
-            height: 12px;
+        /* 工具提示 */
+        .custom-tooltip {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-size: 13px;
+            max-width: 280px;
+        }
+        
+        /* 搜索框 */
+        .search-input {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            background: rgba(30, 41, 59, 1);
+            border-color: #3b82f6;
+            outline: none;
+        }
+        
+        /* 时间轴 */
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
+            background: #3b82f6;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background: rgba(59, 130, 246, 0.3);
+        }
+        
+        .timeline-item:last-child::after { display: none; }
+        
+        /* 统计卡片 */
+        .stat-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        /* 加载动画 */
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* 地图覆盖层 */
+        .map-overlay {
+            pointer-events: none;
+        }
+        
+        .map-overlay > * {
+            pointer-events: auto;
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 h-20 bg-slate-900 text-white z-[2000] shadow-lg">
-        <div class="h-full px-6 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <i class="fas fa-ship text-2xl text-blue-400"></i>
-                <div>
-                    <h1 class="text-xl font-bold">全球航运动态航线图</h1>
-                    <p class="text-sm text-slate-400">实时更新 · 2026年3月4日</p>
-                </div>
+<body class="bg-slate-900">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-16 glass z-[2000] flex items-center justify-between px-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                <i class="fas fa-ship text-white text-lg"></i>
+            </div>
+            <div>
+                <h1 class="text-white font-bold text-lg">全球航运实时航线图</h1>
+                <p class="text-slate-400 text-xs">Global Shipping Routes Monitor</p>
+            </div>
+        </div>
+        
+        <!-- 搜索框 -->
+        <div class="hidden md:flex items-center gap-2">
+            <div class="relative">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="text" 
+                       placeholder="搜索港口、航线或船舶..." 
+                       class="search-input w-80 h-10 pl-10 pr-4 rounded-lg text-white text-sm"
+                       id="searchInput">
+            </div>
+            <button class="h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
+                    onclick="performSearch()">
+                搜索
+            </button>
+        </div>
+        
+        <!-- 右侧控制区 -->
+        <div class="flex items-center gap-3">
+            <!-- 实时状态 -->
+            <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-red-500/20 rounded-lg border border-red-500/30">
+                <span class="status-dot status-danger animate-pulse"></span>
+                <span class="text-red-400 text-sm font-medium">3个高风险区域</span>
             </div>
             
-            <div class="flex items-center gap-4">
-                <div class="flex items-center gap-2 px-4 py-2 bg-red-500/20 rounded-lg border border-red-500/30">
-                    <span class="status-dot status-danger alert-badge"></span>
-                    <span class="text-sm font-medium text-red-400">3个高风险区域</span>
-                </div>
-                <button onclick="toggleSidebar()" class="p-2 hover:bg-slate-800 rounded-lg transition-colors">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
+            <!-- 图层控制 -->
+            <button onclick="toggleLayerPanel()" class="w-10 h-10 glass-light rounded-lg flex items-center justify-center text-white hover:bg-slate-700 transition-colors">
+                <i class="fas fa-layer-group"></i>
+            </button>
+            
+            <!-- 全屏 -->
+            <button onclick="toggleFullscreen()" class="w-10 h-10 glass-light rounded-lg flex items-center justify-center text-white hover:bg-slate-700 transition-colors">
+                <i class="fas fa-expand"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Map -->
+    <!-- 地图容器 -->
     <div id="map"></div>
 
-    <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar">
-        <div class="p-6">
-            <!-- 实时警报 -->
-            <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-                <div class="flex items-center gap-2 mb-3">
-                    <i class="fas fa-exclamation-triangle text-red-500"></i>
-                    <span class="font-bold text-red-700">实时风险警报</span>
+    <!-- 左侧控制面板 -->
+    <aside id="leftPanel" class="fixed left-4 top-20 bottom-4 w-80 glass rounded-xl z-[1500] flex flex-col overflow-hidden">
+        <!-- 面板头部 -->
+        <div class="p-4 border-b border-slate-700">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-white font-bold flex items-center gap-2">
+                    <i class="fas fa-chart-line text-blue-500"></i>
+                    航线监控
+                </h2>
+                <button onclick="toggleLeftPanel()" class="text-slate-400 hover:text-white">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <!-- 统计概览 -->
+            <div class="grid grid-cols-2 gap-2">
+                <div class="stat-card rounded-lg p-3">
+                    <div class="text-2xl font-bold text-white">12</div>
+                    <div class="text-xs text-slate-400">活跃航线</div>
                 </div>
-                <div class="space-y-2 text-sm">
-                    <div class="flex items-start gap-2">
-                        <span class="status-dot status-danger mt-1.5"></span>
-                        <span class="text-red-800"><strong>霍尔木兹海峡：</strong>军事冲突导致航运中断，建议绕行好望角</span>
+                <div class="stat-card rounded-lg p-3">
+                    <div class="text-2xl font-bold text-red-400">3</div>
+                    <div class="text-xs text-slate-400">风险区域</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 滚动内容区 -->
+        <div class="flex-1 overflow-y-auto custom-scroll p-4 space-y-4">
+            
+            <!-- 实时警报 -->
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fas fa-exclamation-triangle text-red-500"></i>
+                    <span class="text-red-400 font-semibold text-sm">实时风险警报</span>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-start gap-2 text-slate-300">
+                        <span class="status-dot status-danger mt-0.5"></span>
+                        <span><strong class="text-white">霍尔木兹海峡：</strong>军事冲突，航运中断</span>
                     </div>
-                    <div class="flex items-start gap-2">
-                        <span class="status-dot status-danger mt-1.5"></span>
-                        <span class="text-red-800"><strong>红海/苏伊士：</strong>胡塞武装威胁，多家船司暂停航线</span>
+                    <div class="flex items-start gap-2 text-slate-300">
+                        <span class="status-dot status-danger mt-0.5"></span>
+                        <span><strong class="text-white">红海/苏伊士：</strong>胡塞武装威胁</span>
                     </div>
-                    <div class="flex items-start gap-2">
-                        <span class="status-dot status-warning mt-1.5"></span>
-                        <span class="text-amber-800"><strong>巴拿马运河：</strong>政治风波，港口运营权变更</span>
+                    <div class="flex items-start gap-2 text-slate-300">
+                        <span class="status-dot status-warning mt-0.5"></span>
+                        <span><strong class="text-white">巴拿马运河：</strong>政治风波</span>
                     </div>
                 </div>
             </div>
 
-            <!-- 主要航线状态 -->
-            <div class="mb-6">
-                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                    <i class="fas fa-route text-blue-500"></i>
-                    主要航线状态
-                </h3>
+            <!-- 主要航线 -->
+            <div>
+                <h3 class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-3">主要航线状态</h3>
                 
-                <div class="space-y-3">
-                    <!-- 航线卡片 -->
-                    <div class="route-card p-4 bg-white rounded-xl border border-gray-200 cursor-pointer" onclick="focusRoute('asia-europe')">
+                <div class="space-y-2">
+                    <!-- 航线卡片 1 -->
+                    <div class="glass-light rounded-lg p-3 cursor-pointer hover:bg-slate-800 transition-all group" onclick="focusRoute('asia-europe-alt')">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="font-semibold text-gray-800">亚洲 → 欧洲</span>
-                            <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full font-medium">中断</span>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                <span class="text-white font-medium text-sm">亚洲 → 欧洲</span>
+                            </div>
+                            <span class="route-badge bg-green-500/20 text-green-400">推荐</span>
                         </div>
-                        <div class="text-sm text-gray-600 mb-2">
-                            <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>上海 → 新加坡 → 苏伊士 → 鹿特丹
+                        <div class="text-xs text-slate-400 mb-2">上海 → 新加坡 → 好望角 → 鹿特丹</div>
+                        <div class="flex items-center gap-4 text-xs">
+                            <span class="text-slate-500"><i class="far fa-clock mr-1"></i>40-45天</span>
+                            <span class="text-slate-500"><i class="fas fa-route mr-1"></i>13,500海里</span>
                         </div>
-                        <div class="flex items-center gap-4 text-xs text-gray-500">
-                            <span><i class="fas fa-clock mr-1"></i>30-35天</span>
-                            <span><i class="fas fa-ship mr-1"></i>10,500海里</span>
-                        </div>
-                        <div class="mt-2 p-2 bg-red-50 rounded-lg text-xs text-red-700">
-                            <i class="fas fa-exclamation-circle mr-1"></i>红海危机：建议改走好望角，航程+10-14天
-                        </div>
-                    </div>
-
-                    <div class="route-card p-4 bg-white rounded-xl border border-gray-200 cursor-pointer" onclick="focusRoute('asia-europe-alt')">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="font-semibold text-gray-800">亚洲 → 欧洲（替代）</span>
-                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">正常</span>
-                        </div>
-                        <div class="text-sm text-gray-600 mb-2">
-                            <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>上海 → 新加坡 → 好望角 → 鹿特丹
-                        </div>
-                        <div class="flex items-center gap-4 text-xs text-gray-500">
-                            <span><i class="fas fa-clock mr-1"></i>40-45天</span>
-                            <span><i class="fas fa-ship mr-1"></i>13,500海里</span>
-                        </div>
-                        <div class="mt-2 p-2 bg-green-50 rounded-lg text-xs text-green-700">
+                        <div class="mt-2 text-xs text-green-400 bg-green-500/10 rounded px-2 py-1">
                             <i class="fas fa-check-circle mr-1"></i>当前推荐航线，避开红海风险
                         </div>
                     </div>
 
-                    <div class="route-card p-4 bg-white rounded-xl border border-gray-200 cursor-pointer" onclick="focusRoute('transpacific')">
+                    <!-- 航线卡片 2 -->
+                    <div class="glass-light rounded-lg p-3 cursor-pointer hover:bg-slate-800 transition-all group" onclick="focusRoute('asia-europe')">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="font-semibold text-gray-800">跨太平洋</span>
-                            <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full font-medium">注意</span>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                <span class="text-white font-medium text-sm">亚洲 → 欧洲（经苏伊士）</span>
+                            </div>
+                            <span class="route-badge bg-red-500/20 text-red-400">中断</span>
                         </div>
-                        <div class="text-sm text-gray-600 mb-2">
-                            <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>上海 → 洛杉矶/长滩
+                        <div class="text-xs text-slate-400 mb-2">上海 → 新加坡 → 苏伊士 → 鹿特丹</div>
+                        <div class="flex items-center gap-4 text-xs">
+                            <span class="text-slate-500"><i class="far fa-clock mr-1"></i>30-35天</span>
+                            <span class="text-slate-500"><i class="fas fa-route mr-1"></i>10,500海里</span>
                         </div>
-                        <div class="flex items-center gap-4 text-xs text-gray-500">
-                            <span><i class="fas fa-clock mr-1"></i>14-18天</span>
-                            <span><i class="fas fa-ship mr-1"></i>6,000海里</span>
-                        </div>
-                        <div class="mt-2 p-2 bg-yellow-50 rounded-lg text-xs text-yellow-700">
-                            <i class="fas fa-info-circle mr-1"></i>巴拿马运河通行受限，关注替代方案
+                        <div class="mt-2 text-xs text-red-400 bg-red-500/10 rounded px-2 py-1">
+                            <i class="fas fa-ban mr-1"></i>红海危机，建议改走好望角
                         </div>
                     </div>
 
-                    <div class="route-card p-4 bg-white rounded-xl border border-gray-200 cursor-pointer" onclick="focusRoute('asia-middle-east')">
+                    <!-- 航线卡片 3 -->
+                    <div class="glass-light rounded-lg p-3 cursor-pointer hover:bg-slate-800 transition-all group" onclick="focusRoute('transpacific')">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="font-semibold text-gray-800">亚洲 → 中东</span>
-                            <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full font-medium">高风险</span>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                                <span class="text-white font-medium text-sm">跨太平洋</span>
+                            </div>
+                            <span class="route-badge bg-yellow-500/20 text-yellow-400">注意</span>
                         </div>
-                        <div class="text-sm text-gray-600 mb-2">
-                            <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>中国 → 霍尔木兹海峡 → 迪拜
+                        <div class="text-xs text-slate-400 mb-2">上海 → 洛杉矶/长滩</div>
+                        <div class="flex items-center gap-4 text-xs">
+                            <span class="text-slate-500"><i class="far fa-clock mr-1"></i>14-18天</span>
+                            <span class="text-slate-500"><i class="fas fa-route mr-1"></i>6,000海里</span>
                         </div>
-                        <div class="flex items-center gap-4 text-xs text-gray-500">
-                            <span><i class="fas fa-clock mr-1"></i>12-15天</span>
-                            <span><i class="fas fa-ship mr-1"></i>4,500海里</span>
+                        <div class="mt-2 text-xs text-yellow-400 bg-yellow-500/10 rounded px-2 py-1">
+                            <i class="fas fa-info-circle mr-1"></i>巴拿马运河通行受限
                         </div>
-                        <div class="mt-2 p-2 bg-red-50 rounded-lg text-xs text-red-700">
-                            <i class="fas fa-ban mr-1"></i>霍尔木兹海峡封锁，暂停通航
+                    </div>
+                </div>
+            </div>
+
+            <!-- 港口状态 -->
+            <div>
+                <h3 class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-3">主要港口状态</h3>
+                
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between glass-light rounded-lg p-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-blue-600/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-anchor text-blue-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-white text-sm font-medium">新加坡港</div>
+                                <div class="text-xs text-slate-500">正常运营 · 拥堵指数: 中等</div>
+                            </div>
                         </div>
+                        <span class="status-dot status-normal"></span>
+                    </div>
+
+                    <div class="flex items-center justify-between glass-light rounded-lg p-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-red-600/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-anchor text-red-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-white text-sm font-medium">迪拜杰贝阿里港</div>
+                                <div class="text-xs text-slate-500">暂停运营 · 受冲突影响</div>
+                            </div>
+                        </div>
+                        <span class="status-dot status-danger"></span>
                     </div>
                 </div>
             </div>
 
             <!-- 图例 -->
-            <div class="mb-6">
-                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                    <i class="fas fa-info-circle text-blue-500"></i>
-                    图例说明
-                </h3>
-                
-                <div class="p-4 bg-gray-50 rounded-xl">
-                    <div class="legend-item">
-                        <div class="legend-line bg-green-500"></div>
-                        <span class="text-sm text-gray-600">正常航线</span>
+            <div class="glass-light rounded-lg p-3">
+                <h3 class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-3">图例</h3>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-0.5 bg-green-500"></div>
+                        <span class="text-slate-400">正常航线</span>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-line bg-yellow-500"></div>
-                        <span class="text-sm text-gray-600">替代航线</span>
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-0.5 bg-yellow-500"></div>
+                        <span class="text-slate-400">替代航线</span>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-line bg-red-500"></div>
-                        <span class="text-sm text-gray-600">中断/高风险航线</span>
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-0.5 bg-red-500"></div>
+                        <span class="text-slate-400">中断/高风险</span>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-dot bg-red-500"></div>
-                        <span class="text-sm text-gray-600">高风险区域</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-dot bg-blue-500 pulse-marker"></div>
-                        <span class="text-sm text-gray-600">主要港口</span>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                        <span class="text-slate-400">主要港口</span>
                     </div>
                 </div>
-            </div>
-
-            <!-- 数据来源 -->
-            <div class="text-xs text-gray-400 text-center">
-                <p>数据来源：MarineTraffic AIS、Lloyd's List、Reuters</p>
-                <p>最后更新：2026年3月4日 10:55 CST</p>
             </div>
         </div>
     </aside>
 
+    <!-- 右侧详情面板 -->
+    <aside id="rightPanel" class="fixed right-4 top-20 w-72 glass rounded-xl z-[1500] hidden">
+        <div class="p-4 border-b border-slate-700 flex items-center justify-between">
+            <h3 class="text-white font-bold">航线详情</h3>
+            <button onclick="closeRightPanel()" class="text-slate-400 hover:text-white">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="routeDetails" class="p-4">
+            <!-- 动态内容 -->
+        </div>
+    </aside>
+
+    <!-- 底部时间轴 -->
+    <div class="fixed bottom-4 left-4 right-4 md:left-96 md:right-80 glass rounded-xl p-4 z-[1500]">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="text-xs text-slate-400">
+                    <div class="text-white font-semibold">2026年3月4日</div>
+                    <div>数据更新: 10:55 CST</div>
+                </div>
+                <div class="h-8 w-px bg-slate-700"></div>
+                <div class="flex items-center gap-4 text-xs">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        <span class="text-slate-400">正常: 8条</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                        <span class="text-slate-400">注意: 2条</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                        <span class="text-slate-400">中断: 3条</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <button class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-lg transition-colors"
+                        onclick="refreshData()">
+                    <i class="fas fa-sync-alt mr-1"></i>刷新数据
+                </button>
+                <a href="/" class="px-3 py-1.5 glass-light hover:bg-slate-700 text-white text-xs rounded-lg transition-colors">
+                    <i class="fas fa-home mr-1"></i>返回首页
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 初始化地图
+        // 初始化地图 - 使用深色主题
         const map = L.map('map', {
-            center: [20, 0],
+            center: [25, 10],
             zoom: 2,
             minZoom: 2,
-            maxZoom: 10,
-            worldCopyJump: true
+            zoomControl: false,
+            attributionControl: false
         });
 
-        // 添加地图图层
+        // 添加缩放控件到右下角
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+        // 使用深色地图主题
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            attribution: '&copy; CARTO',
             subdomains: 'abcd',
-            maxZoom: 20
+            maxZoom: 19
         }).addTo(map);
 
         // 主要港口数据
         const ports = [
-            { name: '上海', coords: [31.2304, 121.4737], type: 'major' },
-            { name: '新加坡', coords: [1.3521, 103.8198], type: 'major' },
-            { name: '鹿特丹', coords: [51.9244, 4.4777], type: 'major' },
-            { name: '洛杉矶', coords: [33.7362, -118.2922], type: 'major' },
-            { name: '迪拜', coords: [25.2048, 55.2708], type: 'major' },
-            { name: '亚丁', coords: [12.7855, 45.0187], type: 'warning' },
-            { name: '巴拿马城', coords: [8.9833, -79.5167], type: 'warning' },
-            { name: '汉堡', coords: [53.5511, 9.9937], type: 'major' },
-            { name: '纽约', coords: [40.7128, -74.0060], type: 'major' },
-            { name: '东京', coords: [35.6762, 139.6503], type: 'major' },
-            { name: '悉尼', coords: [-33.8688, 151.2093], type: 'major' },
-            { name: '开普敦', coords: [-33.9249, 18.4241], type: 'alternative' }
+            { name: '上海', coords: [31.2304, 121.4737], type: 'major', status: 'normal', congestion: '中等' },
+            { name: '新加坡', coords: [1.3521, 103.8198], type: 'major', status: 'normal', congestion: '中等' },
+            { name: '鹿特丹', coords: [51.9244, 4.4777], type: 'major', status: 'normal', congestion: '低' },
+            { name: '洛杉矶', coords: [33.7362, -118.2922], type: 'major', status: 'normal', congestion: '高' },
+            { name: '迪拜', coords: [25.2048, 55.2708], type: 'warning', status: 'danger', congestion: '暂停' },
+            { name: '亚丁', coords: [12.7855, 45.0187], type: 'danger', status: 'danger', congestion: '高风险' },
+            { name: '巴拿马城', coords: [8.9833, -79.5167], type: 'warning', status: 'warning', congestion: '受限' },
+            { name: '汉堡', coords: [53.5511, 9.9937], type: 'major', status: 'normal', congestion: '低' },
+            { name: '纽约', coords: [40.7128, -74.0060], type: 'major', status: 'normal', congestion: '中等' },
+            { name: '东京', coords: [35.6762, 139.6503], type: 'major', status: 'normal', congestion: '中等' },
+            { name: '悉尼', coords: [-33.8688, 151.2093], type: 'major', status: 'normal', congestion: '低' },
+            { name: '开普敦', coords: [-33.9249, 18.4241], type: 'alternative', status: 'normal', congestion: '低' }
         ];
 
         // 添加港口标记
         ports.forEach(port => {
-            const color = port.type === 'major' ? '#3b82f6' : 
-                         port.type === 'warning' ? '#f59e0b' : '#10b981';
+            const color = port.status === 'danger' ? '#ef4444' : 
+                         port.status === 'warning' ? '#f59e0b' : '#3b82f6';
             
-            L.circleMarker(port.coords, {
-                radius: port.type === 'major' ? 8 : 6,
+            const marker = L.circleMarker(port.coords, {
+                radius: port.type === 'major' ? 10 : 8,
                 fillColor: color,
                 color: '#fff',
                 weight: 2,
                 opacity: 1,
-                fillOpacity: 0.8
-            }).addTo(map).bindPopup(`<b>${port.name}</b><br>${port.type === 'warning' ? '⚠️ 注意区域' : '主要港口'}`);
+                fillOpacity: 0.9
+            }).addTo(map);
+
+            marker.bindPopup(`
+                <div class="custom-tooltip">
+                    <div class="font-bold mb-1">${port.name}</div>
+                    <div class="text-slate-300">状态: ${port.status === 'normal' ? '正常' : port.status === 'warning' ? '注意' : '高风险'}</div>
+                    <div class="text-slate-300">拥堵: ${port.congestion}</div>
+                </div>
+            `);
         });
 
         // 航线数据
         const routes = {
-            // 亚洲-欧洲（经苏伊士）- 中断
             'asia-europe': {
                 coords: [[31.2304, 121.4737], [1.3521, 103.8198], [12.7855, 45.0187], [30.0, 32.5], [51.9244, 4.4777]],
                 color: '#ef4444',
                 weight: 3,
-                dashArray: '10, 10'
+                dashArray: '10, 10',
+                status: 'blocked',
+                name: '亚洲-欧洲（经苏伊士）'
             },
-            // 亚洲-欧洲（替代：经好望角）- 正常
             'asia-europe-alt': {
                 coords: [[31.2304, 121.4737], [1.3521, 103.8198], [-33.9249, 18.4241], [51.9244, 4.4777]],
                 color: '#10b981',
                 weight: 4,
-                dashArray: null
+                dashArray: null,
+                status: 'normal',
+                name: '亚洲-欧洲（经好望角）'
             },
-            // 跨太平洋
             'transpacific': {
                 coords: [[31.2304, 121.4737], [33.7362, -118.2922]],
                 color: '#f59e0b',
                 weight: 3,
-                dashArray: null
+                dashArray: null,
+                status: 'warning',
+                name: '跨太平洋'
             },
-            // 亚洲-中东（中断）
             'asia-middle-east': {
                 coords: [[31.2304, 121.4737], [1.3521, 103.8198], [25.2048, 55.2708]],
                 color: '#ef4444',
                 weight: 3,
-                dashArray: '5, 5'
+                dashArray: '5, 5',
+                status: 'blocked',
+                name: '亚洲-中东'
             }
         };
 
@@ -377,84 +577,165 @@
                 dashArray: route.dashArray,
                 className: route.dashArray ? 'route-line' : ''
             }).addTo(map);
+
+            polyline.on('click', () => showRouteDetails(key));
         });
 
         // 风险区域
         const riskZones = [
-            {
-                name: '红海/苏伊士运河',
-                center: [20, 38],
-                radius: 300000,
-                reason: '胡塞武装袭击风险'
-            },
-            {
-                name: '霍尔木兹海峡',
-                center: [26.5, 56.3],
-                radius: 200000,
-                reason: '军事冲突，航运中断'
-            },
-            {
-                name: '巴拿马运河',
-                center: [9, -79.5],
-                radius: 150000,
-                reason: '政治风波，通行受限'
-            }
+            { name: '红海/苏伊士运河', center: [20, 38], radius: 300000, reason: '胡塞武装袭击风险' },
+            { name: '霍尔木兹海峡', center: [26.5, 56.3], radius: 200000, reason: '军事冲突，航运中断' },
+            { name: '巴拿马运河', center: [9, -79.5], radius: 150000, reason: '政治风波，通行受限' }
         ];
 
-        // 添加风险区域
         riskZones.forEach(zone => {
             L.circle(zone.center, {
                 radius: zone.radius,
                 className: 'risk-zone'
-            }).addTo(map).bindPopup(`<b>⚠️ ${zone.name}</b><br>${zone.reason}`);
+            }).addTo(map).bindPopup(`
+                <div class="custom-tooltip">
+                    <div class="font-bold text-red-400 mb-1">⚠️ ${zone.name}</div>
+                    <div class="text-slate-300">${zone.reason}</div>
+                </div>
+            `);
         });
 
-        // 侧边栏切换
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('collapsed');
+        // 功能函数
+        function toggleLeftPanel() {
+            const panel = document.getElementById('leftPanel');
+            panel.classList.toggle('hidden');
         }
 
-        // 聚焦航线
+        function toggleLayerPanel() {
+            // 图层控制面板逻辑
+            alert('图层控制功能开发中...');
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
         function focusRoute(routeKey) {
             const route = routes[routeKey];
             if (route) {
                 const bounds = L.latLngBounds(route.coords);
-                map.fitBounds(bounds, { padding: [50, 50] });
+                map.fitBounds(bounds, { padding: [100, 100] });
+                showRouteDetails(routeKey);
             }
         }
 
-        // 添加动画船舶标记（模拟）
-        function addAnimatedVessel() {
-            const vesselIcon = L.divIcon({
-                className: 'vessel-marker',
-                html: '<i class="fas fa-ship text-white text-lg"></i>',
-                iconSize: [24, 24],
-                iconAnchor: [12, 12]
-            });
+        function showRouteDetails(routeKey) {
+            const route = routes[routeKey];
+            const panel = document.getElementById('rightPanel');
+            const details = document.getElementById('routeDetails');
+            
+            details.innerHTML = `
+                <div class="space-y-4">
+                    <div>
+                        <div class="text-slate-400 text-xs mb-1">航线名称</div>
+                        <div class="text-white font-semibold">${route.name}</div>
+                    </div>
+                    
+                    <div>
+                        <div class="text-slate-400 text-xs mb-1">当前状态</div>
+                        <span class="px-2 py-1 rounded text-xs font-medium ${
+                            route.status === 'normal' ? 'bg-green-500/20 text-green-400' :
+                            route.status === 'warning' ? 'bg-yellow-500/20 text-yellow-400' :
+                            'bg-red-500/20 text-red-400'
+                        }">${
+                            route.status === 'normal' ? '正常通行' :
+                            route.status === 'warning' ? '需谨慎' : '中断/高风险'
+                        }</span>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-400">预计航程</span>
+                            <span class="text-white">${route.status === 'blocked' ? 'N/A' : '40-45天'}</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-400">距离</span>
+                            <span class="text-white">${route.status === 'blocked' ? 'N/A' : '13,500海里'}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-3 bg-slate-800 rounded-lg">
+                        <div class="text-slate-400 text-xs mb-2">风险提示</div>
+                        <div class="text-sm ${route.status === 'normal' ? 'text-green-400' : 'text-red-400'}">
+                            ${route.status === 'normal' ? 
+                                '<i class="fas fa-check-circle mr-1"></i>当前推荐航线，可正常通行' :
+                                '<i class="fas fa-exclamation-triangle mr-1"></i>建议改道或延迟出航'
+                            }
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            panel.classList.remove('hidden');
+        }
 
-            // 在替代航线上添加动画船舶
-            const vessel = L.marker([10, 70], { icon: vesselIcon }).addTo(map);
-            
-            let progress = 0;
-            const path = routes['asia-europe-alt'].coords;
-            
-            setInterval(() => {
-                progress += 0.005;
-                if (progress > 1) progress = 0;
-                
-                const index = Math.floor(progress * (path.length - 1));
+        function closeRightPanel() {
+            document.getElementById('rightPanel').classList.add('hidden');
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query) {
+                alert('搜索功能开发中: ' + query);
+            }
+        }
+
+        function refreshData() {
+            const btn = event.target;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>刷新中...';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-sync-alt mr-1"></i>刷新数据';
+                alert('数据已更新至最新状态');
+            }, 1500);
+        }
+
+        // 添加动画船舶
+        function addAnimatedVessels() {
+            const vesselData = [
+                { route: 'asia-europe-alt', progress: 0.3, type: 'container' },
+                { route: 'asia-europe-alt', progress: 0.7, type: 'bulk' },
+                { route: 'transpacific', progress: 0.5, type: 'container' }
+            ];
+
+            vesselData.forEach((vessel, idx) => {
+                const route = routes[vessel.route];
+                const path = route.coords;
+                const index = Math.floor(vessel.progress * (path.length - 1));
                 const nextIndex = Math.min(index + 1, path.length - 1);
-                const segmentProgress = (progress * (path.length - 1)) - index;
+                const segmentProgress = (vessel.progress * (path.length - 1)) - index;
                 
                 const lat = path[index][0] + (path[nextIndex][0] - path[index][0]) * segmentProgress;
                 const lng = path[index][1] + (path[nextIndex][1] - path[index][1]) * segmentProgress;
                 
-                vessel.setLatLng([lat, lng]);
-            }, 100);
+                const icon = L.divIcon({
+                    className: 'vessel-marker',
+                    html: `<div class="vessel-icon" style="background: ${vessel.type === 'container' ? '#3b82f6' : '#10b981'}">
+                            <i class="fas fa-ship"></i>
+                          </div>`,
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                });
+
+                L.marker([lat, lng], { icon }).addTo(map);
+            });
         }
 
-        // 启动动画
-        addAnimatedVessel();
+        // 启动
+        addAnimatedVessels();
+
+        // 搜索框回车事件
+        document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
     </script>
 </body>
 </html>
