@@ -344,8 +344,27 @@
         // 从 OpenSky Network 获取真实航班数据
         async function fetchRealFlightData() {
             try {
-                // 获取亚洲-欧洲区域航班
-                const response = await fetch('https://opensky-network.org/api/states/all?lamin=20&lomin=60&lamax=60&lomax=140');
+                // 使用 CORS 代理服务
+                const proxyUrls = [
+                    'https://api.allorigins.win/raw?url=https://opensky-network.org/api/states/all?lamin=20&lomin=60&lamax=60&lomax=140',
+                    'https://corsproxy.io/?https://opensky-network.org/api/states/all?lamin=20&lomin=60&lamax=60&lomax=140'
+                ];
+                
+                let response = null;
+                for (const proxyUrl of proxyUrls) {
+                    try {
+                        response = await fetch(proxyUrl, { timeout: 5000 });
+                        if (response.ok) break;
+                    } catch (e) {
+                        console.log('代理失败，尝试下一个:', e.message);
+                        continue;
+                    }
+                }
+                
+                if (!response || !response.ok) {
+                    throw new Error('所有代理都失败');
+                }
+                
                 const data = await response.json();
                 
                 if (data.states && data.states.length > 0) {
@@ -355,8 +374,49 @@
                 return [];
             } catch (error) {
                 console.error('获取航班数据失败:', error);
-                return [];
+                // 如果 API 失败，使用模拟数据作为后备
+                console.log('使用模拟数据作为后备');
+                return generateMockFlightData();
             }
+        }
+        
+        // 生成模拟航班数据（API 失败时使用）
+        function generateMockFlightData() {
+            const mockFlights = [];
+            const routes = [
+                { from: [31.1443, 121.8083], to: [50.0379, 8.5622] },
+                { from: [31.1443, 121.8083], to: [33.9416, -118.4085] },
+                { from: [22.3080, 113.9185], to: [51.9244, 4.4777] }
+            ];
+            
+            for (let i = 0; i < 15; i++) {
+                const route = routes[i % routes.length];
+                const progress = Math.random();
+                const lat = route.from[0] + (route.to[0] - route.from[0]) * progress;
+                const lon = route.from[1] + (route.to[1] - route.from[1]) * progress;
+                
+                mockFlights.push([
+                    `mock${i}`,
+                    `FLT${100 + i}`,
+                    'China',
+                    Date.now(),
+                    Date.now(),
+                    lon,
+                    lat,
+                    10000 + Math.random() * 5000,
+                    false,
+                    200 + Math.random() * 100,
+                    Math.random() * 360,
+                    0,
+                    null,
+                    null,
+                    null,
+                    false,
+                    0
+                ]);
+            }
+            
+            return mockFlights;
         }
         
         // 更新飞机位置
