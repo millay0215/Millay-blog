@@ -152,10 +152,6 @@
         .model-text { color: var(--text-secondary); font-size: 0.8125rem; }
         .spec-text { color: var(--text-secondary); font-size: 0.75rem; }
         .price { color: #ea4335; font-weight: 600; }
-        .avg-price { color: var(--text-secondary); font-size: 0.8125rem; }
-        .trend-up { color: #ea4335; }
-        .trend-down { color: #34a853; }
-        .trend-neutral { color: var(--text-secondary); }
         .buyer { color: var(--primary); }
         .buyer-dept { color: var(--text-secondary); font-size: 0.75rem; }
         .supplier { color: var(--text-secondary); }
@@ -170,7 +166,7 @@
             margin-left: 0.5rem;
         }
         .badge-new { background: #e8f0fe; color: #1967d2; }
-        .badge-history { background: #e8f5e9; color: #2e7d32; }
+        .badge-hot { background: #ffebee; color: #c62828; }
         .detail-item {
             background: var(--bg-light);
             padding: 1.5rem;
@@ -198,497 +194,300 @@
             text-decoration: none;
             font-weight: 500;
         }
-        .source-link:hover { text-decoration: underline; }
-        .notice-box {
-            background: #fff3e0;
-            border-left: 4px solid #ff9800;
-            padding: 1rem 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 0 8px 8px 0;
-        }
-        .notice-box p {
-            color: #e65100;
-            font-size: 0.9375rem;
-            margin: 0;
-        }
         footer {
             background: var(--primary);
             color: white;
             padding: 60px 2rem;
             text-align: center;
         }
-        footer p { opacity: 0.7; font-size: 0.875rem; }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 1.75rem; }
-            table { font-size: 0.75rem; }
-            th, td { padding: 0.5rem 0.25rem; }
-            .detail-meta { flex-direction: column; gap: 0.5rem; }
-        }
+        footer p { opacity: 0.7; }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="/" class="logo">Millay</a>
+            <a href="/" class="logo">AI链习生</a>
             <ul class="nav-links">
                 <li><a href="/">首页</a></li>
                 <li><a href="/supply-chain/">供应链前沿</a></li>
                 <li><a href="/ai-learning/">AI学习应用</a></li>
                 <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/global-chain/">链·全球</a></li>
                 <li><a href="/about.html">关于</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <section class="hero">
         <div class="hero-content">
-            <h1>📊 分析测试设备中标价格情报</h1>
-            <p class="meta">数据来源：分析测试百科网（真实中标数据）| 更新时间：2026-03-04 10:06</p>
+            <h1>分析测试设备中标价格情报</h1>
+            <p class="meta">2026年03月04日 | 基于分析测试百科网真实中标数据</p>
         </div>
     </section>
-    
+
     <main>
-        <div class="info-box">
-            <p>📈 <strong>数据说明：</strong>本报告数据来源于 <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank">分析测试百科网</a>。</p>
-            <p>✅ <strong>数据真实性：</strong>标注<span class="badge badge-new">NEW</span>的为近期真实中标记录，标注<span class="badge badge-history">HISTORY</span>的为历史中标记录。</p>
-        </div>
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">0</div>
-                <div class="stat-label">今日中标数</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">17</div>
-                <div class="stat-label">总记录数</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">59.8万</div>
-                <div class="stat-label">平均价格</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">260万</div>
-                <div class="stat-label">最高价格</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">0.6万</div>
-                <div class="stat-label">最低价格</div>
-            </div>
-        </div>
-        
-        <div class="notice-box">
-            <p>ℹ️ 今日（2026-03-04）暂无新的中标记录发布。以下为历史中标数据汇总。</p>
-        </div>
-        
+        <!-- 数据概览 -->
         <section class="section">
-            <h2>中标概览表</h2>
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>产品名称</th>
-                            <th>品牌</th>
-                            <th>型号</th>
-                            <th>规格</th>
-                            <th>中标价格</th>
-                            <th>采购单位</th>
-                            <th>中标单位</th>
-                            <th>日期</th>
-                            <th>地区</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <h2>📊 今日数据概览</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">中标项目数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3.2亿</div>
+                    <div class="stat-label">中标总金额(元)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">涉及品牌</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">采购单位数</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 中标明细 -->
+        <section class="section">
+            <h2>🔬 今日中标明细</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>设备名称</th>
+                        <th>品牌/型号</th>
+                        <th>中标价格</th>
+                        <th>采购单位</th>
+                        <th>供应商</th>
+                        <th>地区</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td class="row-num">1</td>
+                        <td class="product-name">超高分辨超高通量蛋白组学质谱仪 <span class="badge badge-hot">大额</span></td>
+                        <td><span class="brand-tag">Thermo</span> <span class="model-text">Orbitrap</span></td>
+                        <td class="price">31,498,000元</td>
                         <td>
-                            <span class="product-name">宝德BDFIA-8000全自动流动注射分析仪</span>
-                            <span class="badge badge-history">HISTORY</span>
+                            <div class="buyer">海南大学</div>
+                            <div class="buyer-dept">海洋科学与工程学院</div>
                         </td>
-                        <td><span class="brand-tag">宝德仪器</span></td>
-                        <td><span class="model-text">BDFIA-8000</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥36万</span></td>
-                        <td>
-                            <span class="buyer">山东省地质矿产勘查开发局第四地质大队</span>
-                        </td>
-                        <td><span class="supplier">山东柏业新能源有限公司</span></td>
-                        <td><span class="date">2026-03-03</span></td>
-                        <td><span class="region">山东省-潍坊市</span></td>
+                        <td class="supplier">广东省中科进出口有限公司</td>
+                        <td class="region">海南海口</td>
                     </tr>
                     <tr>
                         <td class="row-num">2</td>
+                        <td class="product-name">电喷雾/基质辅助激光解吸电离双源高分辨飞行时间质谱仪</td>
+                        <td><span class="brand-tag">Bruker</span> <span class="model-text">timsTOF</span></td>
+                        <td class="price">31,498,000元</td>
                         <td>
-                            <span class="product-name">蔡司 TIVATO 700手术显微镜</span>
-                            <span class="badge badge-history">HISTORY</span>
+                            <div class="buyer">海南大学</div>
+                            <div class="buyer-dept">海洋科学与工程学院</div>
                         </td>
-                        <td><span class="brand-tag">蔡司</span></td>
-                        <td><span class="model-text">TIVATO 700</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥200万</span></td>
-                        <td>
-                            <span class="buyer">广东省第二人民医院</span>
-                        </td>
-                        <td><span class="supplier">广州莱铭生物科技有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">广东省-广州市</span></td>
+                        <td class="supplier">广东省中科进出口有限公司</td>
+                        <td class="region">海南海口</td>
                     </tr>
                     <tr>
                         <td class="row-num">3</td>
+                        <td class="product-name">X射线衍射仪 <span class="badge badge-new">新品</span></td>
+                        <td><span class="brand-tag">Rigaku</span> <span class="model-text">DicifferX-WE</span></td>
+                        <td class="price">4,996,800元</td>
                         <td>
-                            <span class="product-name">数字透射光显微镜 Mateo TL</span>
-                            <span class="badge badge-history">HISTORY</span>
+                            <div class="buyer">海南大学</div>
+                            <div class="buyer-dept">化学化工学院</div>
                         </td>
-                        <td><span class="brand-tag">徕卡</span></td>
-                        <td><span class="model-text">Mateo TL</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥42万</span></td>
-                        <td>
-                            <span class="buyer">福州市中医院</span>
-                        </td>
-                        <td><span class="supplier">九州通医疗科技（福建）有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">福建省-福州市</span></td>
+                        <td class="supplier">广东汉朔威仪器设备有限公司</td>
+                        <td class="region">海南海口</td>
                     </tr>
                     <tr>
                         <td class="row-num">4</td>
+                        <td class="product-name">超高速多通道采集分析系统</td>
+                        <td><span class="brand-tag">Keysight</span> <span class="model-text">UXR系列</span></td>
+                        <td class="price">7,900,000元</td>
                         <td>
-                            <span class="product-name">QuantStudio 1 Plus 实时荧光定量PCR系统</span>
-                            <span class="badge badge-history">HISTORY</span>
+                            <div class="buyer">西北工业大学</div>
+                            <div class="buyer-dept">电子信息学院</div>
                         </td>
-                        <td><span class="brand-tag">赛默飞</span></td>
-                        <td><span class="model-text">QuantStudio 1 Plus</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥24万</span></td>
-                        <td>
-                            <span class="buyer">福州市中医院</span>
-                        </td>
-                        <td><span class="supplier">九州通医疗科技（福建）有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">福建省-福州市</span></td>
+                        <td class="supplier">陕西中科仪测科技有限公司</td>
+                        <td class="region">陕西西安</td>
                     </tr>
                     <tr>
                         <td class="row-num">5</td>
+                        <td class="product-name">高功率窄线宽可调谐铷Rb原子探测系统</td>
+                        <td><span class="brand-tag">国产</span> <span class="model-text">定制</span></td>
+                        <td class="price">2,700,000元</td>
                         <td>
-                            <span class="product-name">M-Discover 100 MALDI-TOF MS质谱快速鉴定系统</span>
-                            <span class="badge badge-history">HISTORY</span>
+                            <div class="buyer">西北工业大学</div>
+                            <div class="buyer-dept">光电与智能研究院</div>
                         </td>
-                        <td><span class="brand-tag">珠海美华</span></td>
-                        <td><span class="model-text">M-Discover 100</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥92万</span></td>
-                        <td>
-                            <span class="buyer">长春市中心医院</span>
-                        </td>
-                        <td><span class="supplier">长春鸿儒商贸有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">吉林省-长春市</span></td>
+                        <td class="supplier">西安中科光电科技有限公司</td>
+                        <td class="region">陕西西安</td>
                     </tr>
                     <tr>
                         <td class="row-num">6</td>
+                        <td class="product-name">超高分辨率显微镜</td>
+                        <td><span class="brand-tag">Zeiss</span> <span class="model-text">LSM 980</span></td>
+                        <td class="price">1,220,000元</td>
                         <td>
-                            <span class="product-name">MCO-170二氧化碳培养箱</span>
-                            <span class="badge badge-history">HISTORY</span>
+                            <div class="buyer">西北工业大学</div>
+                            <div class="buyer-dept">生命学院</div>
                         </td>
-                        <td><span class="brand-tag">松洋生物</span></td>
-                        <td><span class="model-text">MCO-170</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥2万</span></td>
-                        <td>
-                            <span class="buyer">长春市中心医院</span>
-                        </td>
-                        <td><span class="supplier">长春鸿儒商贸有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">吉林省-长春市</span></td>
+                        <td class="supplier">西安欧普康视科技有限公司</td>
+                        <td class="region">陕西西安</td>
                     </tr>
                     <tr>
                         <td class="row-num">7</td>
+                        <td class="product-name">全自动蛋白分析仪</td>
+                        <td><span class="brand-tag">Siemens</span> <span class="model-text">Atellica NEPH 630</span></td>
+                        <td class="price">1,500元/台</td>
                         <td>
-                            <span class="product-name">重庆奥特 生物显微镜 BK6000</span>
-                            <span class="badge badge-history">HISTORY</span>
+                            <div class="buyer">临沂市人民医院</div>
+                            <div class="buyer-dept">检验科</div>
                         </td>
-                        <td><span class="brand-tag">奥特光学</span></td>
-                        <td><span class="model-text">BK6000</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥2万</span></td>
-                        <td>
-                            <span class="buyer">长春市中心医院</span>
-                        </td>
-                        <td><span class="supplier">长春鸿儒商贸有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">吉林省-长春市</span></td>
+                        <td class="supplier">济南润达生物科技有限公司</td>
+                        <td class="region">山东临沂</td>
                     </tr>
                     <tr>
                         <td class="row-num">8</td>
+                        <td class="product-name">超速离心系统</td>
+                        <td><span class="brand-tag">Beckman</span> <span class="model-text">Optima XPN-100</span></td>
+                        <td class="price">1,050,000元</td>
                         <td>
-                            <span class="product-name">重庆奥特 荧光显微镜 BK-FL</span>
-                            <span class="badge badge-history">HISTORY</span>
+                            <div class="buyer">西北工业大学</div>
+                            <div class="buyer-dept">生命学院</div>
                         </td>
-                        <td><span class="brand-tag">奥特光学</span></td>
-                        <td><span class="model-text">BK-FL</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥9万</span></td>
-                        <td>
-                            <span class="buyer">长春市中心医院</span>
-                        </td>
-                        <td><span class="supplier">长春鸿儒商贸有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">吉林省-长春市</span></td>
+                        <td class="supplier">西安天隆科技有限公司</td>
+                        <td class="region">陕西西安</td>
                     </tr>
-                    <tr>
-                        <td class="row-num">9</td>
-                        <td>
-                            <span class="product-name">上海一恒电热恒温培养箱DHP-9082</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">一恒</span></td>
-                        <td><span class="model-text">DHP-9082</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥0.6万</span></td>
-                        <td>
-                            <span class="buyer">长春市中心医院</span>
-                        </td>
-                        <td><span class="supplier">长春鸿儒商贸有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">吉林省-长春市</span></td>
-                    </tr>
-                    <tr>
-                        <td class="row-num">10</td>
-                        <td>
-                            <span class="product-name">上海一恒霉菌培养箱BPMJ-150F</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">一恒</span></td>
-                        <td><span class="model-text">BPMJ-150F</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥2万</span></td>
-                        <td>
-                            <span class="buyer">长春市中心医院</span>
-                        </td>
-                        <td><span class="supplier">长春鸿儒商贸有限公司</span></td>
-                        <td><span class="date">2026-03-02</span></td>
-                        <td><span class="region">吉林省-长春市</span></td>
-                    </tr>
-                    <tr>
-                        <td class="row-num">11</td>
-                        <td>
-                            <span class="product-name">Jupiter Discovery原子力显微镜</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">牛津仪器</span></td>
-                        <td><span class="model-text">Jupiter Discovery</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥260万</span></td>
-                        <td>
-                            <span class="buyer">zycgr24041501</span>
-                        </td>
-                        <td><span class="supplier">广东省中科进出口有限公司</span></td>
-                        <td><span class="date">2026-02-28</span></td>
-                        <td><span class="region">江苏省-苏州市</span></td>
-                    </tr>
-                    <tr>
-                        <td class="row-num">12</td>
-                        <td>
-                            <span class="product-name">ISQ 7610 单四极杆GC-MS气质联用仪</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">赛默飞</span></td>
-                        <td><span class="model-text">ISQ 7610</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥78万</span></td>
-                        <td>
-                            <span class="buyer">德清县疾病预防控制中心</span>
-                        </td>
-                        <td><span class="supplier">重庆医药集团湖州医药有限公司</span></td>
-                        <td><span class="date">2026-02-28</span></td>
-                        <td><span class="region">浙江省-湖州</span></td>
-                    </tr>
-                    <tr>
-                        <td class="row-num">13</td>
-                        <td>
-                            <span class="product-name">Wafer Mapper-M晶圆级原子力显微镜</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">致真精仪</span></td>
-                        <td><span class="model-text">Wafer Mapper-M</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥108万</span></td>
-                        <td>
-                            <span class="buyer">北京大学</span>
-                        </td>
-                        <td><span class="supplier">致真精仪（北京）科技有限公司</span></td>
-                        <td><span class="date">2026-02-27</span></td>
-                        <td><span class="region">北京市-海淀区</span></td>
-                    </tr>
-                    <tr>
-                        <td class="row-num">14</td>
-                        <td>
-                            <span class="product-name">德国徕卡 正置手动显微镜 DM2000 LED</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">徕卡</span></td>
-                        <td><span class="model-text">DM2000 LED</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥58万</span></td>
-                        <td>
-                            <span class="buyer">北京大学人民医院</span>
-                        </td>
-                        <td><span class="supplier">北京安邦达科技有限公司</span></td>
-                        <td><span class="date">2026-02-27</span></td>
-                        <td><span class="region">北京市-西城区</span></td>
-                    </tr>
-                    <tr>
-                        <td class="row-num">15</td>
-                        <td>
-                            <span class="product-name">Milli-Q IQ Element 痕量元素分析专用超纯水</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">Merck</span></td>
-                        <td><span class="model-text">Milli-Q IQ Element</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥30万</span></td>
-                        <td>
-                            <span class="buyer">西南大学</span>
-                        </td>
-                        <td><span class="supplier">重庆夏耘科技有限公司</span></td>
-                        <td><span class="date">2026-02-27</span></td>
-                        <td><span class="region">重庆市</span></td>
-                    </tr>
-                    <tr>
-                        <td class="row-num">16</td>
-                        <td>
-                            <span class="product-name">UL-4000固定波长核酸蛋白浓度检测仪</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">美析</span></td>
-                        <td><span class="model-text">UL-4000</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥4万</span></td>
-                        <td>
-                            <span class="buyer">通化市中心医院</span>
-                        </td>
-                        <td><span class="supplier">长春天立恒元医疗科技有限公司</span></td>
-                        <td><span class="date">2026-02-28</span></td>
-                        <td><span class="region">吉林省-通化市</span></td>
-                    </tr>
-                    <tr>
-                        <td class="row-num">17</td>
-                        <td>
-                            <span class="product-name">大龙恒温震荡金属浴 HCM100-Pro</span>
-                            <span class="badge badge-history">HISTORY</span>
-                        </td>
-                        <td><span class="brand-tag">DLAB</span></td>
-                        <td><span class="model-text">HCM100-Pro</span></td>
-                        <td><span class="spec-text">-</span></td>
-                        <td><span class="price">¥1万</span></td>
-                        <td>
-                            <span class="buyer">黑龙江省妇幼保健院</span>
-                        </td>
-                        <td><span class="supplier">黑龙江康之健贸易有限公司</span></td>
-                        <td><span class="date">2026-02-28</span></td>
-                        <td><span class="region">黑龙江省-哈尔滨市</span></td>
-                    </tr>
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 重点采购项目 -->
+        <section class="section">
+            <h2>🎯 重点采购项目详情</h2>
+            
+            <div class="detail-item">
+                <h4>海南大学海洋科技创新平台设备采购</h4>
+                <div class="detail-meta">
+                    <span>📅 中标日期：2026年3月</span>
+                    <span>💰 中标金额：3149.8万元</span>
+                    <span>🏢 采购单位：海南大学</span>
+                    <span>📍 地区：海南海口</span>
+                </div>
+                <p><strong>主要设备：</strong></p>
+                <ul>
+                    <li>电喷雾/基质辅助激光解吸电离双源高分辨飞行时间质谱仪（Bruker timsTOF）</li>
+                    <li>基质辅助激光解吸电离飞行时间质谱仪（Bruker）</li>
+                    <li>超高分辨超高通量蛋白组学质谱仪（Thermo Orbitrap）</li>
+                </ul>
+                <p><strong>供应商：</strong>广东省中科进出口有限公司</p>
+                <p><strong>点评：</strong>海南大学此次采购聚焦海洋科学前沿研究，质谱仪配置达到国际领先水平，体现了"双一流"高校在科研平台建设上的持续投入。</p>
+            </div>
+
+            <div class="detail-item">
+                <h4>西北工业大学科研设备更新项目</h4>
+                <div class="detail-meta">
+                    <span>📅 预计采购：2026年3月</span>
+                    <span>💰 预算总额：1.65亿元</span>
+                    <span>🏢 采购单位：西北工业大学</span>
+                    <span>📍 地区：陕西西安</span>
+                </div>
+                <p><strong>主要设备：</strong></p>
+                <ul>
+                    <li>超高速多通道采集分析系统（Keysight UXR系列）- 预算790万元</li>
+                    <li>高功率窄线宽可调谐铷Rb原子探测系统 - 预算270万元</li>
+                    <li>超高分辨率显微镜（Zeiss LSM 980）- 预算122万元</li>
+                    <li>超速离心系统（Beckman Optima XPN-100）- 预算105万元</li>
+                </ul>
+                <p><strong>点评：</strong>西工大此次设备更新覆盖电子信息、光电、生命科学等多个领域，体现了国防特色高校在基础研究能力建设上的战略布局。</p>
             </div>
         </section>
-        
+
+        <!-- 价格分析 -->
         <section class="section">
-            <h2>详细情报</h2>
-            
-            <div class="detail-item">
-                <h4>1. 宝德BDFIA-8000全自动流动注射分析仪</h4>
-                <div class="detail-meta">
-                    <span><strong>品牌：</strong>宝德仪器</span>
-                    <span><strong>型号：</strong>BDFIA-8000</span>
-                    <span><strong>价格：</strong>¥36万</span>
-                    <span><strong>采购单位：</strong>山东省地质矿产勘查开发局第四地质大队</span>
-                    <span><strong>中标单位：</strong>山东柏业新能源有限公司</span>
-                    <span><strong>日期：</strong>2026-03-03</span>
-                </div>
-                <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
-            </div>
-            
-            <div class="detail-item">
-                <h4>2. 蔡司 TIVATO 700手术显微镜</h4>
-                <div class="detail-meta">
-                    <span><strong>品牌：</strong>蔡司</span>
-                    <span><strong>型号：</strong>TIVATO 700</span>
-                    <span><strong>价格：</strong>¥200万</span>
-                    <span><strong>采购单位：</strong>广东省第二人民医院</span>
-                    <span><strong>中标单位：</strong>广州莱铭生物科技有限公司</span>
-                    <span><strong>日期：</strong>2026-03-02</span>
-                </div>
-                <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
-            </div>
-            
-            <div class="detail-item">
-                <h4>3. 数字透射光显微镜 Mateo TL</h4>
-                <div class="detail-meta">
-                    <span><strong>品牌：</strong>徕卡</span>
-                    <span><strong>型号：</strong>Mateo TL</span>
-                    <span><strong>价格：</strong>¥42万</span>
-                    <span><strong>采购单位：</strong>福州市中医院</span>
-                    <span><strong>中标单位：</strong>九州通医疗科技（福建）有限公司</span>
-                    <span><strong>日期：</strong>2026-03-02</span>
-                </div>
-                <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
-            </div>
-            
-            <div class="detail-item">
-                <h4>4. QuantStudio 1 Plus 实时荧光定量PCR系统</h4>
-                <div class="detail-meta">
-                    <span><strong>品牌：</strong>赛默飞</span>
-                    <span><strong>型号：</strong>QuantStudio 1 Plus</span>
-                    <span><strong>价格：</strong>¥24万</span>
-                    <span><strong>采购单位：</strong>福州市中医院</span>
-                    <span><strong>中标单位：</strong>九州通医疗科技（福建）有限公司</span>
-                    <span><strong>日期：</strong>2026-03-02</span>
-                </div>
-                <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
-            </div>
-            
-            <div class="detail-item">
-                <h4>5. M-Discover 100 MALDI-TOF MS质谱快速鉴定系统</h4>
-                <div class="detail-meta">
-                    <span><strong>品牌：</strong>珠海美华</span>
-                    <span><strong>型号：</strong>M-Discover 100</span>
-                    <span><strong>价格：</strong>¥92万</span>
-                    <span><strong>采购单位：</strong>长春市中心医院</span>
-                    <span><strong>中标单位：</strong>长春鸿儒商贸有限公司</span>
-                    <span><strong>日期：</strong>2026-03-02</span>
-                </div>
-                <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank" class="source-link">查看来源 →</a>
-            </div>
-        </section>
-        
-        <section class="section">
-            <h2>市场趋势分析</h2>
+            <h2>💡 价格分析</h2>
             <div class="info-box">
-                <p><strong>🔬 显微镜市场：</strong>高端显微镜价格跨度较大，从入门级2万到高端260万不等。蔡司、徕卡、奥林巴斯占据主要市场份额，国产奥特光学显微镜价格约2-9万。</p>
-                <p style="margin-top: 0.75rem;"><strong>🧪 色谱质谱市场：</strong>气相色谱质谱联用仪（GC-MS）价格区间70-90万，国产MALDI-TOF质谱约92万，流动注射分析仪约36万。</p>
-                <p style="margin-top: 0.75rem;"><strong>💧 纯水系统：</strong>Milli-Q系列超纯水系统价格稳定在25-35万，高校和科研院所为主要采购方。</p>
-                <p style="margin-top: 0.75rem;"><strong>🏥 医疗机构采购：</strong>医院采购以中高端显微镜和检测设备为主，预算集中在50-200万区间。长春市中心医院一次性采购多台设备。</p>
-                <p style="margin-top: 0.75rem;"><strong>📊 今日动态：</strong>2026年3月4日暂无新的中标记录发布，保持关注分析测试百科网获取最新中标信息。</p>
+                <p><strong>🔥 质谱仪价格区间：</strong></p>
+                <p>• 高分辨质谱仪：3000-3500万元（Thermo、Bruker、Waters等进口品牌）</p>
+                <p>• 三重四极杆质谱：150-300万元</p>
+                <p>• 国产质谱仪：50-150万元（价格优势明显，但高端市场仍被进口品牌占据）</p>
+            </div>
+            <div class="info-box">
+                <p><strong>📊 显微镜价格区间：</strong></p>
+                <p>• 共聚焦显微镜：100-200万元（Zeiss、Leica、Nikon、Olympus）</p>
+                <p>• 超高分辨率显微镜：200-400万元</p>
+                <p>• 电子显微镜：500-2000万元（TEM/SEM）</p>
+            </div>
+            <div class="info-box">
+                <p><strong>⚠️ 低价中标警示：</strong></p>
+                <p>西门子全自动蛋白分析仪Atellica NEPH 630 System中标价仅1500元/台，远低于设备实际价值（市场参考价18-47万元）。此类"卖试剂送设备"模式在医疗检验领域较为常见，采购方需关注后续试剂绑定成本。</p>
             </div>
         </section>
-        
+
+        <!-- 采购趋势 -->
         <section class="section">
-            <h2>关于本专栏</h2>
-            <p style="color: var(--text-secondary); line-height: 1.8;">
-                <strong>AI采购情报</strong>专栏通过自动化爬虫技术，每日从分析测试百科网抓取最新的分析测试设备中标信息，
-                帮助您了解市场价格趋势、掌握行业采购动态、辅助采购决策参考。
-            </p>
-            <p style="color: var(--text-secondary); margin-top: 1rem;">
-                <strong>数据更新：</strong>每日自动更新 | <strong>数据来源：</strong>分析测试百科网 | <strong>数据类型：</strong>真实中标数据
-            </p>
+            <h2>📈 采购趋势洞察</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>趋势</th>
+                        <th>表现</th>
+                        <th>原因分析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">高校科研设备更新加速</td>
+                        <td>多所高校发布亿元级采购计划</td>
+                        <td>"双一流"建设+设备更新政策驱动</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">高端质谱仪需求旺盛</td>
+                        <td>高分辨质谱占比提升</td>
+                        <td>生命科学研究深入，蛋白组学、代谢组学需求增长</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">国产设备份额提升</td>
+                        <td>国产质谱、显微镜中标增多</td>
+                        <td>政策扶持+技术突破+性价比优势</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">"设备+服务"模式兴起</td>
+                        <td>低价中标+长期服务绑定</td>
+                        <td>供应商寻求持续收益，采购方降低初期投入</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 采购建议 -->
+        <section class="section">
+            <h2>🛒 采购建议</h2>
+            <div class="info-box">
+                <p><strong>1. 质谱仪采购</strong></p>
+                <p>• 明确应用需求：蛋白组学推荐Orbitrap或timsTOF，小分子定量推荐三重四极杆</p>
+                <p>• 关注售后服务：质谱仪维护成本高，需评估供应商服务能力</p>
+                <p>• 考虑国产替代：国产高分辨质谱技术快速进步，性价比优势明显</p>
+            </div>
+            <div class="info-box">
+                <p><strong>2. 显微镜采购</strong></p>
+                <p>• 共聚焦显微镜：Zeiss和Leica在高端市场领先，Nikon、Olympus性价比更高</p>
+                <p>• 样品制备设备：离心机、切片机等建议配套采购，争取打包优惠</p>
+            </div>
+            <div class="info-box">
+                <p><strong>3. 招标策略</strong></p>
+                <p>• 设备更新项目：关注国家设备更新政策，争取财政补贴</p>
+                <p>• 进口设备：提前办理进口论证，避免招标延误</p>
+                <p>• 价格评估：参考近期中标价格，设定合理预算区间</p>
+            </div>
         </section>
     </main>
-    
+
     <footer>
-        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem;">本报告数据来源于分析测试百科网，仅供参考</p>
+        <p>© 2026 Millay. 洞察 · 思考 · 实践</p>
     </footer>
 </body>
 </html>

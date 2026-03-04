@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学原料市场价格情报 | 2026年3月4日 | Millay</title>
+    <meta name="description" content="化学原料市场价格情报，涵盖能源、化工、金属、工业气体等板块最新价格行情与市场分析">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --success: #34a853;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            color: white;
+            padding: 160px 2rem 100px;
+            margin-top: 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 81, 255, 0.1) 0%, transparent 50%);
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        .alert-banner {
+            background: linear-gradient(90deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-icon {
+            font-size: 1.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.75rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .stat-value.up { color: var(--danger); }
+        .stat-value.down { color: var(--success); }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        .stat-change.up { color: var(--danger); }
+        .stat-change.down { color: var(--success); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+            background: var(--bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        th, td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        tr:hover { background: var(--bg-light); }
+        .product-name { font-weight: 600; color: var(--primary); }
+        .price { font-weight: 700; }
+        .price.up { color: var(--danger); }
+        .price.down { color: var(--success); }
+        .trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .trend.up { color: var(--danger); }
+        .trend.down { color: var(--success); }
+        .trend.neutral { color: var(--text-muted); }
+        .analysis-box {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-warm) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            margin: 2rem 0;
+        }
+        .analysis-box h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .analysis-box p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .tag-hot { background: #ffebee; color: #c62828; }
+        .tag-rising { background: #fff3e0; color: #ef6c00; }
+        .tag-stable { background: #e8f5e9; color: #2e7d32; }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/global-chain/">链·全球</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="alert-banner">
+        ⚠️ 市场警示：中东局势升级导致原油供应风险，化工品价格波动加剧，建议关注供应链安全
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Chemical Market Intelligence</span>
+            <h1>化学原料市场价格情报</h1>
+            <p class="meta">2026年3月4日 | 每日更新化工、能源、金属板块最新行情</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- 市场概览 -->
+        <section class="section">
+            <h2><span class="section-icon">📊</span>市场概览</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value up">2548</div>
+                    <div class="stat-label">甲醇（元/吨）</div>
+                    <div class="stat-change up">↑ 7.52%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3828</div>
+                    <div class="stat-label">乙二醇（元/吨）</div>
+                    <div class="stat-change neutral">→ 0.00%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value down">7388</div>
+                    <div class="stat-label">苯酚（元/吨）</div>
+                    <div class="stat-change up">↑ 6.10%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value up">6750</div>
+                    <div class="stat-label">丙烯酸（元/吨）</div>
+                    <div class="stat-change up">↑ 6.30%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 涨幅榜 -->
+        <section class="section">
+            <h2><span class="section-icon">🔥</span>今日涨幅榜</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>产品名称</th>
+                        <th>3月3日价格</th>
+                        <th>3月4日价格</th>
+                        <th>日涨跌</th>
+                        <th>趋势</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="product-name">二甘醇 <span class="tag tag-hot">热门</span></td>
+                        <td>3393元/吨</td>
+                        <td class="price up">3833元/吨</td>
+                        <td class="trend up">↑ 12.97%</td>
+                        <td>供应紧张</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="product-name">甲醇 <span class="tag tag-hot">热门</span></td>
+                        <td>2370元/吨</td>
+                        <td class="price up">2548元/吨</td>
+                        <td class="trend up">↑ 7.52%</td>
+                        <td>中东局势影响</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="product-name">丙烯酸</td>
+                        <td>6350元/吨</td>
+                        <td class="price up">6750元/吨</td>
+                        <td class="trend up">↑ 6.30%</td>
+                        <td>需求回升</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="product-name">苯酚</td>
+                        <td>6963元/吨</td>
+                        <td class="price up">7388元/吨</td>
+                        <td class="trend up">↑ 6.10%</td>
+                        <td>成本推动</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="product-name">正丁醇(工业级)</td>
+                        <td>6067元/吨</td>
+                        <td class="price up">6380元/吨</td>
+                        <td class="trend up">↑ 5.16%</td>
+                        <td>库存下降</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 跌幅榜 -->
+        <section class="section">
+            <h2><span class="section-icon">📉</span>今日跌幅榜</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>产品名称</th>
+                        <th>3月3日价格</th>
+                        <th>3月4日价格</th>
+                        <th>日涨跌</th>
+                        <th>趋势</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="product-name">碳酸锂-工业级</td>
+                        <td>75500元/吨</td>
+                        <td class="price down">70171元/吨</td>
+                        <td class="trend down">↓ 7.06%</td>
+                        <td>产能过剩</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="product-name">碳酸锂-电池级</td>
+                        <td>78200元/吨</td>
+                        <td class="price down">72743元/吨</td>
+                        <td class="trend down">↓ 6.98%</td>
+                        <td>需求疲软</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="product-name">氢氧化锂(工业级)</td>
+                        <td>72500元/吨</td>
+                        <td class="price down">67757元/吨</td>
+                        <td class="trend down">↓ 6.54%</td>
+                        <td>下游观望</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 重点产品行情 -->
+        <section class="section">
+            <h2><span class="section-icon">🎯</span>重点产品行情</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格/型号</th>
+                        <th>最新价格</th>
+                        <th>日涨跌</th>
+                        <th>市场动态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">聚合MDI</td>
+                        <td>工业级</td>
+                        <td class="price">14900元/吨</td>
+                        <td class="trend up">↑ 3.47%</td>
+                        <td>厂家提价，供应偏紧</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">环氧树脂</td>
+                        <td>E-51</td>
+                        <td class="price">15067元/吨</td>
+                        <td class="trend up">↑ 3.91%</td>
+                        <td>成本支撑，需求回暖</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">双酚A</td>
+                        <td>工业级</td>
+                        <td class="price">8580元/吨</td>
+                        <td class="trend up">↑ 3.12%</td>
+                        <td>跟随原料上涨</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">乙二醇</td>
+                        <td>聚酯级</td>
+                        <td class="price">3828元/吨</td>
+                        <td class="trend neutral">→ 0.00%</td>
+                        <td>供需平衡，震荡整理</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">钛白粉</td>
+                        <td>R-930</td>
+                        <td class="price">14160元/吨</td>
+                        <td class="trend neutral">→ 0.00%</td>
+                        <td>市场观望，成交清淡</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">尿素</td>
+                        <td>小颗粒</td>
+                        <td class="price">1859元/吨</td>
+                        <td class="trend up">↑ 0.13%</td>
+                        <td>春耕需求支撑</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 市场分析 -->
+        <section class="section">
+            <h2><span class="section-icon">💡</span>市场分析</h2>
+            <div class="analysis-box">
+                <h3>🔥 甲醇：中东局势推升价格</h3>
+                <p>受中东局势升级影响，甲醇价格单日大涨7.52%至2548元/吨。伊朗作为中国甲醇进口主要来源国（占比61%），其供应稳定性引发市场担忧。建议下游企业关注原料库存，适当备货。</p>
+            </div>
+            <div class="analysis-box">
+                <h3>📉 碳酸锂：持续承压</h3>
+                <p>碳酸锂价格延续跌势，工业级跌7.06%至70171元/吨，电池级跌6.98%至72743元/吨。全球新能源汽车增速放缓，动力电池需求不及预期，锂盐产能过剩格局短期难改。</p>
+            </div>
+            <div class="analysis-box">
+                <h3>📊 化工品整体：成本推动型上涨</h3>
+                <p>今日化工板块涨多跌少，44个品种上涨，仅8个品种下跌。涨幅居前的多为成本推动型上涨，原油价格上涨带动下游化工品跟涨。建议关注中东局势发展对能源价格的持续影响。</p>
+            </div>
+        </section>
+
+        <!-- 采购建议 -->
+        <section class="section">
+            <h2><span class="section-icon">🛒</span>采购建议</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品类别</th>
+                        <th>建议</th>
+                        <th>理由</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">甲醇</td>
+                        <td><span class="tag tag-hot">紧急备货</span></td>
+                        <td>中东局势不确定，供应风险上升</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">乙二醇</td>
+                        <td><span class="tag tag-stable">按需采购</span></td>
+                        <td>价格稳定，库存充足</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">碳酸锂</td>
+                        <td><span class="tag tag-rising">观望为主</span></td>
+                        <td>价格持续下跌，等待企稳信号</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">环氧树脂</td>
+                        <td><span class="tag tag-rising">适量备货</span></td>
+                        <td>成本支撑，价格上行</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Millay. 洞察 · 思考 · 实践</p>
+    </footer>
+</body>
+</html>
