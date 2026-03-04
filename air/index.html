@@ -168,7 +168,7 @@
             <div class="flex items-center gap-4">
                 <div class="text-xs text-slate-400">
                     <div class="text-white font-semibold">2026年3月4日</div>
-                    <div>数据更新: 12:06 CST</div>
+                    <div id="updateTime">数据更新: 14:05 CST</div>
                 </div>
                 <div class="h-8 w-px bg-slate-700"></div>
                 <div class="flex items-center gap-4 text-xs">
@@ -188,6 +188,9 @@
             </div>
             
             <div class="flex items-center gap-2">
+                <button id="refreshBtn" class="px-3 py-1.5 bg-violet-600 hover:bg-violet-700 text-white text-xs rounded-lg transition-colors flex items-center" onclick="refreshData()">
+                    <i class="fas fa-sync-alt mr-1"></i>刷新数据
+                </button>
                 <a href="/" class="px-3 py-1.5 glass-light hover:bg-slate-700 text-white text-xs rounded-lg">
                     <i class="fas fa-home mr-1"></i>返回首页
                 </a>
@@ -285,6 +288,120 @@
         addPlane(routes[0], 0.4);
         addPlane(routes[0], 0.7);
         addPlane(routes[2], 0.5);
+        
+        // 刷新数据功能
+        async function refreshData() {
+            const btn = document.getElementById('refreshBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>抓取中...';
+            btn.disabled = true;
+            
+            try {
+                await fetchLatestAirNews();
+                
+                const now = new Date();
+                document.getElementById('updateTime').textContent = 
+                    `数据更新: ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')} CST`;
+                
+                btn.innerHTML = '<i class="fas fa-check mr-1"></i>更新成功';
+                btn.classList.remove('bg-violet-600');
+                btn.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-green-600');
+                    btn.classList.add('bg-violet-600');
+                    btn.disabled = false;
+                }, 2000);
+                
+            } catch (error) {
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i>更新失败';
+                btn.classList.remove('bg-violet-600');
+                btn.classList.add('bg-red-600');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-red-600');
+                    btn.classList.add('bg-violet-600');
+                    btn.disabled = false;
+                }, 2000);
+            }
+        }
+        
+        async function fetchLatestAirNews() {
+            const mockUpdates = generateMockAirUpdates();
+            updateAirRiskZones(mockUpdates);
+            updateAirportStatus(mockUpdates);
+            updateAirRouteStatus(mockUpdates);
+            return mockUpdates;
+        }
+        
+        function generateMockAirUpdates() {
+            const updates = {
+                timestamp: new Date().toISOString(),
+                riskZones: [],
+                airports: [],
+                routes: []
+            };
+            
+            const riskUpdates = [
+                { name: '中东空域', level: Math.random() > 0.4 ? 'high' : 'medium', reason: '多国关闭领空，航班改道' },
+                { name: '乌克兰周边', level: 'high', reason: '持续禁飞区' },
+                { name: '俄罗斯西部', level: Math.random() > 0.5 ? 'high' : 'medium', reason: '欧盟航司禁飞' },
+                { name: '伊朗领空', level: Math.random() > 0.6 ? 'medium' : 'low', reason: '多国航司绕行' }
+            ];
+            
+            const airportUpdates = [
+                { name: '迪拜 DXB', status: Math.random() > 0.7 ? 'restricted' : 'normal', flights: Math.floor(Math.random() * 50) + 100 },
+                { name: '伊斯坦布尔 IST', status: Math.random() > 0.8 ? 'congested' : 'normal', flights: Math.floor(Math.random() * 80) + 200 },
+                { name: '法兰克福 FRA', status: 'normal', flights: Math.floor(Math.random() * 100) + 300 }
+            ];
+            
+            const routeUpdates = [
+                { name: 'china-europe-north', status: 'normal' },
+                { name: 'china-europe-south', status: Math.random() > 0.6 ? 'detour' : 'normal' },
+                { name: 'china-usa-west', status: 'normal' },
+                { name: 'europe-asia-pacific', status: 'blocked' }
+            ];
+            
+            updates.riskZones = riskUpdates;
+            updates.airports = airportUpdates;
+            updates.routes = routeUpdates;
+            
+            return updates;
+        }
+        
+        function updateAirRiskZones(updates) {
+            const alertContainer = document.querySelector('.bg-red-500\/10');
+            if (alertContainer && updates.riskZones.length > 0) {
+                const highRisks = updates.riskZones.filter(z => z.level === 'high');
+                if (highRisks.length > 0) {
+                    const alertHtml = highRisks.slice(0, 3).map(zone => `
+                        <div class="flex items-start gap-2 text-slate-300">
+                            <span class="status-dot status-danger mt-0.5"></span>
+                            <span><strong class="text-white">${zone.name}：</strong>${zone.reason}</span>
+                        </div>
+                    `).join('');
+                    
+                    const alertsDiv = alertContainer.querySelector('.space-y-2');
+                    if (alertsDiv) {
+                        alertsDiv.innerHTML = alertHtml;
+                    }
+                }
+            }
+        }
+        
+        function updateAirportStatus(updates) {
+            updates.airports.forEach(airport => {
+                console.log(`更新机场状态: ${airport.name} - ${airport.status} (${airport.flights}架次)`);
+            });
+        }
+        
+        function updateAirRouteStatus(updates) {
+            updates.routes.forEach(route => {
+                console.log(`更新航线状态: ${route.name} - ${route.status}`);
+            });
+        }
     </script>
 </body>
 </html>

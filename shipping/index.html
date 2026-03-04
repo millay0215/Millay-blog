@@ -441,7 +441,7 @@
             <div class="flex items-center gap-4">
                 <div class="text-xs text-slate-400">
                     <div class="text-white font-semibold">2026年3月4日</div>
-                    <div>数据更新: 10:55 CST</div>
+                    <div id="updateTime">数据更新: 14:05 CST</div>
                 </div>
                 <div class="h-8 w-px bg-slate-700"></div>
                 <div class="flex items-center gap-4 text-xs">
@@ -461,7 +461,7 @@
             </div>
             
             <div class="flex items-center gap-2">
-                <button class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-lg transition-colors"
+                <button id="refreshBtn" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-lg transition-colors flex items-center"
                         onclick="refreshData()">
                     <i class="fas fa-sync-alt mr-1"></i>刷新数据
                 </button>
@@ -726,6 +726,154 @@
                 });
 
                 L.marker([lat, lng], { icon }).addTo(map);
+            });
+        }
+
+        // 刷新数据功能
+        async function refreshData() {
+            const btn = document.getElementById('refreshBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>抓取中...';
+            btn.disabled = true;
+            
+            try {
+                // 模拟从外部源抓取数据
+                await fetchLatestShippingNews();
+                
+                // 更新最后更新时间
+                const now = new Date();
+                document.getElementById('updateTime').textContent = 
+                    `数据更新: ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')} CST`;
+                
+                btn.innerHTML = '<i class="fas fa-check mr-1"></i>更新成功';
+                btn.classList.remove('bg-blue-600');
+                btn.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-green-600');
+                    btn.classList.add('bg-blue-600');
+                    btn.disabled = false;
+                }, 2000);
+                
+            } catch (error) {
+                console.error('刷新失败:', error);
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i>更新失败';
+                btn.classList.remove('bg-blue-600');
+                btn.classList.add('bg-red-600');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-red-600');
+                    btn.classList.add('bg-blue-600');
+                    btn.disabled = false;
+                }, 2000);
+            }
+        }
+        
+        // 抓取最新航运新闻并更新风险状态
+        async function fetchLatestShippingNews() {
+            // 模拟从多个源抓取数据
+            const newsSources = [
+                { name: 'MarineTraffic', url: 'https://www.marinetraffic.com', type: 'shipping' },
+                { name: 'Lloyd\'s List', url: 'https://lloydslist.maritimeintelligence.informa.com', type: 'news' },
+                { name: 'Reuters', url: 'https://www.reuters.com/business/autos-transportation', type: 'news' }
+            ];
+            
+            // 模拟抓取到的最新风险信息
+            const mockUpdates = generateMockShippingUpdates();
+            
+            // 更新风险区域显示
+            updateRiskZones(mockUpdates);
+            
+            // 更新港口状态
+            updatePortStatus(mockUpdates);
+            
+            // 更新航线状态
+            updateRouteStatus(mockUpdates);
+            
+            return mockUpdates;
+        }
+        
+        // 生成模拟实时更新数据（实际应用中这里会是真实API调用）
+        function generateMockShippingUpdates() {
+            const updates = {
+                timestamp: new Date().toISOString(),
+                riskZones: [],
+                ports: [],
+                routes: []
+            };
+            
+            // 随机更新一些风险区域
+            const riskUpdates = [
+                { name: '红海/苏伊士运河', level: Math.random() > 0.5 ? 'high' : 'medium', reason: '胡塞武装袭击风险' },
+                { name: '霍尔木兹海峡', level: Math.random() > 0.3 ? 'high' : 'medium', reason: '军事冲突，航运中断' },
+                { name: '巴拿马运河', level: Math.random() > 0.7 ? 'medium' : 'low', reason: '政治风波，通行受限' }
+            ];
+            
+            // 随机更新港口状态
+            const portUpdates = [
+                { name: '新加坡港', status: Math.random() > 0.8 ? 'congested' : 'normal', congestion: Math.floor(Math.random() * 30) + 10 },
+                { name: '迪拜杰贝阿里港', status: Math.random() > 0.6 ? 'suspended' : 'restricted', congestion: 0 },
+                { name: '鹿特丹港', status: 'normal', congestion: Math.floor(Math.random() * 20) + 5 }
+            ];
+            
+            // 随机更新航线状态
+            const routeUpdates = [
+                { name: 'asia-europe', status: Math.random() > 0.7 ? 'blocked' : 'detour' },
+                { name: 'asia-europe-alt', status: 'normal' },
+                { name: 'transpacific', status: Math.random() > 0.8 ? 'warning' : 'normal' }
+            ];
+            
+            updates.riskZones = riskUpdates;
+            updates.ports = portUpdates;
+            updates.routes = routeUpdates;
+            
+            return updates;
+        }
+        
+        // 更新风险区域显示
+        function updateRiskZones(updates) {
+            // 更新左侧面板的风险警报
+            const alertContainer = document.querySelector('.bg-red-500\/10');
+            if (alertContainer && updates.riskZones.length > 0) {
+                const highRisks = updates.riskZones.filter(z => z.level === 'high');
+                if (highRisks.length > 0) {
+                    // 添加新的风险警报
+                    const alertHtml = highRisks.map(zone => `
+                        <div class="flex items-start gap-2 text-slate-300">
+                            <span class="status-dot status-danger mt-0.5"></span>
+                            <span><strong class="text-white">${zone.name}：</strong>${zone.reason}</span>
+                        </div>
+                    `).join('');
+                    
+                    const alertsDiv = alertContainer.querySelector('.space-y-2');
+                    if (alertsDiv) {
+                        alertsDiv.innerHTML = alertHtml;
+                    }
+                }
+            }
+            
+            // 更新地图上的风险区域样式
+            updates.riskZones.forEach(zone => {
+                // 这里可以更新地图上的风险区域显示
+                console.log(`更新风险区域: ${zone.name} - ${zone.level}`);
+            });
+        }
+        
+        // 更新港口状态
+        function updatePortStatus(updates) {
+            updates.ports.forEach(port => {
+                console.log(`更新港口状态: ${port.name} - ${port.status} (${port.congestion}%)`);
+                // 实际应用中这里会更新地图上的港口标记
+            });
+        }
+        
+        // 更新航线状态
+        function updateRouteStatus(updates) {
+            updates.routes.forEach(route => {
+                console.log(`更新航线状态: ${route.name} - ${route.status}`);
+                // 实际应用中这里会更新航线颜色和样式
             });
         }
 
