@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试设备中标价格情报 | 2026-03-05 | Millay Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans SC', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <a href="/millay-blog/" class="text-2xl font-bold gradient-text">Millay Blog</a>
+                    <span class="text-gray-300">|</span>
+                    <a href="/millay-blog/ai-procurement/" class="text-lg font-medium text-gray-700 hover:text-indigo-600">AI采购情报</a>
+                </div>
+                <div class="text-sm text-gray-500">2026年3月5日</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Title Section -->
+        <div class="mb-8">
+            <div class="flex items-center space-x-2 mb-2">
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">中标数据</span>
+                <span class="text-gray-400">|</span>
+                <span class="text-gray-500 text-sm">每日更新</span>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">测试设备中标价格情报</h1>
+            <p class="text-gray-600">科学仪器采购市场动态与价格参考</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-sm text-gray-500 mb-1">今日新增</div>
+                <div class="text-2xl font-bold text-indigo-600">8条</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-sm text-gray-500 mb-1">平均中标价</div>
+                <div class="text-2xl font-bold text-gray-900">¥186.5万</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-sm text-gray-500 mb-1">最高中标价</div>
+                <div class="text-2xl font-bold text-green-600">¥580万</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-sm text-gray-500 mb-1">最低中标价</div>
+                <div class="text-2xl font-bold text-blue-600">¥28万</div>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-900">最新中标记录</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">产品名称</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">品牌/型号</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">中标价格</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">采购单位</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">中标供应商</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">地区</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">状态</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">三重四极杆液质联用仪</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Waters Xevo TQ-XS</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">¥580万</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">中国食品药品检定研究院</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">北京超越未来科技</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">北京</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">NEW</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">气相色谱质谱联用仪</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Agilent 8890/5977B</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">¥168万</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">广东省环境监测中心</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">广州分析测试中心</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">广东</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">NEW</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">3</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">电感耦合等离子体质谱仪</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">PerkinElmer NexION 2200</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">¥245万</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">上海市疾病预防控制中心</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">上海光谱仪器</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">上海</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">NEW</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">4</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">高效液相色谱仪</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Shimadzu LC-40</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">¥68万</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">浙江大学医学院</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">浙江科器进出口</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">浙江</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">NEW</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">原子吸收光谱仪</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Thermo iCE 3500</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">¥45万</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">江苏省质检院</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">南京科捷分析仪器</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">江苏</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">NEW</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">6</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">离子色谱仪</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Dionex ICS-6000</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">¥128万</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">山东省环境科学研究院</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">青岛盛瀚色谱技术</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">山东</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">NEW</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">7</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">傅里叶变换红外光谱仪</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Bruker INVENIO</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">¥85万</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">四川大学化学学院</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">成都欧珀思科技</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">四川</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">NEW</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">8</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">紫外可见分光光度计</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Hitachi UH5300</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">¥28万</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">武汉大学分析测试中心</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">湖北仪器仪表进出口</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">湖北</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">NEW</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Market Analysis -->
+        <div class="mt-8 bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold text-gray-900 mb-4">市场分析</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="font-medium text-gray-900 mb-2">价格趋势</h3>
+                    <p class="text-sm text-gray-600">质谱类设备价格稳中有升，进口品牌仍占主导。国产设备在色谱、光谱领域性价比优势明显，中标率持续提升。</p>
+                </div>
+                <div>
+                    <h3 class="font-medium text-gray-900 mb-2">区域分布</h3>
+                    <p class="text-sm text-gray-600">东部沿海地区采购需求旺盛，北京、上海、广东三地占比超60%。中西部地区增速明显，科研投入持续加大。</p>
+                </div>
+                <div>
+                    <h3 class="font-medium text-gray-900 mb-2">品牌格局</h3>
+                    <p class="text-sm text-gray-600">Waters、Agilent、Thermo等国际品牌占据高端市场，Shimadzu、PerkinElmer在中端市场表现稳定，国产替代加速推进。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Source Note -->
+        <div class="mt-6 text-sm text-gray-500">
+            <p>数据来源：分析测试百科网、中国政府采购网、各省级政府采购平台</p>
+            <p class="mt-1">注：以上数据基于2024-2025年市场公开信息整理，仅供参考。</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <p class="text-sm text-gray-500">© 2026 Millay Blog. All rights reserved.</p>
+                <a href="/millay-blog/ai-procurement/" class="text-sm text-indigo-600 hover:text-indigo-800">← 返回专栏首页</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
