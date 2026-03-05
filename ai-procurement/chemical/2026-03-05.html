@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学原料市场价格情报 | 2026年3月5日 | Millay</title>
+    <meta name="description" content="化学原料市场价格情报，涵盖能源、化工、金属、工业气体等板块最新价格行情与市场分析">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --success: #34a853;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d3a5c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.125rem; opacity: 0.9; max-width: 600px; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        .summary {
+            background: linear-gradient(135deg, #e8f0fe 0%, #f0f7ff 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 2rem;
+        }
+        .summary h2 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .summary ul {
+            list-style: none;
+            padding: 0;
+        }
+        .summary li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        .summary li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .price-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .price-card:hover {
+            box-shadow: 0 8px 24px var(--shadow);
+            transform: translateY(-2px);
+        }
+        .price-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .price-name {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .price-unit {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .price-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .price-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .price-change.up {
+            background: #e6f4ea;
+            color: var(--success);
+        }
+        .price-change.down {
+            background: #fce8e6;
+            color: var(--danger);
+        }
+        .analysis {
+            background: var(--bg-warm);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        .analysis h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .analysis p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🧪 化学原料市场价格情报</h1>
+            <p>能源、化工、新能源材料等板块最新价格行情与市场分析</p>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="/ai-procurement/chemical/">化学原料</a> / 2026年3月5日
+    </div>
+
+    <div class="container">
+        <div class="date-badge">📅 2026年3月5日 星期四</div>
+
+        <div class="summary">
+            <h2>📊 今日要点</h2>
+            <ul>
+                <li>国际原油小幅反弹，布伦特原油回升至72美元/桶上方</li>
+                <li>甲醇市场延续涨势，较昨日上涨2.3%，供应端收紧支撑价格</li>
+                <li>碳酸锂价格企稳，电池级碳酸锂维持在7.5万元/吨附近</li>
+                <li>PTA装置检修增加，市场供应趋紧，价格小幅上涨</li>
+                <li>丙烯市场供需平衡，价格维持稳定</li>
+            </ul>
+        </div>
+
+        <!-- 能源板块 -->
+        <div class="section">
+            <h2 class="section-title">⛽ 能源板块</h2>
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">布伦特原油</span>
+                        <span class="price-unit">美元/桶</span>
+                    </div>
+                    <div class="price-value">72.35</div>
+                    <span class="price-change up">↑ +0.85 (+1.19%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">WTI原油</span>
+                        <span class="price-unit">美元/桶</span>
+                    </div>
+                    <div class="price-value">68.92</div>
+                    <span class="price-change up">↑ +0.76 (+1.11%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">液化天然气(LNG)</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">4,280</div>
+                    <span class="price-change down">↓ -15 (-0.35%)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 化工板块 -->
+        <div class="section">
+            <h2 class="section-title">🧪 化工板块</h2>
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">甲醇</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">2,685</div>
+                    <span class="price-change up">↑ +60 (+2.29%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">乙烯</span>
+                        <span class="price-unit">美元/吨</span>
+                    </div>
+                    <div class="price-value">885</div>
+                    <span class="price-change up">↑ +12 (+1.37%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">丙烯</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">6,850</div>
+                    <span class="price-change">→ 0 (0.00%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">纯苯</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">7,250</div>
+                    <span class="price-change up">↑ +45 (+0.62%)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 聚酯板块 -->
+        <div class="section">
+            <h2 class="section-title">🧵 聚酯板块</h2>
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">PTA</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">5,020</div>
+                    <span class="price-change up">↑ +35 (+0.70%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">乙二醇</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">4,580</div>
+                    <span class="price-change down">↓ -20 (-0.43%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">二甘醇</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">5,120</div>
+                    <span class="price-change up">↑ +85 (+1.69%)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新能源材料 -->
+        <div class="section">
+            <h2 class="section-title">🔋 新能源材料</h2>
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">电池级碳酸锂</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">75,200</div>
+                    <span class="price-change">→ 0 (0.00%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">工业级碳酸锂</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">72,800</div>
+                    <span class="price-change up">↑ +200 (+0.28%)</span>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <span class="price-name">氢氧化锂</span>
+                        <span class="price-unit">元/吨</span>
+                    </div>
+                    <div class="price-value">68,500</div>
+                    <span class="price-change down">↓ -300 (-0.44%)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="analysis">
+            <h3>📈 市场分析</h3>
+            <p><strong>能源市场：</strong>国际原油小幅反弹，主要受中东局势紧张影响。布伦特原油回升至72美元/桶上方，但上行空间有限，市场观望情绪浓厚。国内LNG价格小幅回落，终端需求偏弱。</p>
+            <p><strong>化工市场：</strong>甲醇市场延续涨势，供应端收紧支撑价格。部分装置检修导致市场供应偏紧，下游需求稳定，预计短期价格维持偏强走势。丙烯市场供需平衡，价格维持稳定。</p>
+            <p><strong>聚酯市场：</strong>PTA装置检修增加，市场供应趋紧，价格小幅上涨。下游聚酯开工率回升，需求端支撑较强。二甘醇受原料乙烯价格上涨带动，价格延续涨势。</p>
+            <p><strong>新能源材料：</strong>碳酸锂价格企稳，电池级碳酸锂维持在7.5万元/吨附近。下游新能源汽车需求回暖，但供应端产能释放，市场供需趋于平衡。预计短期价格维持区间震荡。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>数据来源：隆众资讯、上海有色网、百川盈孚 | © 2026 AI链习生</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">免责声明：本内容仅供参考，具体价格信息请以官方发布为准。</p>
+    </footer>
+</body>
+</html>
