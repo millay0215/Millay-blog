@@ -167,7 +167,7 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="text-xs text-slate-400">
-                    <div class="text-white font-semibold">2026年3月4日</div>
+                    <div class="text-white font-semibold" id="currentDate">2026年3月4日</div>
                     <div id="updateTime">数据更新: 14:05 CST</div>
                 </div>
                 <div class="h-8 w-px bg-slate-700"></div>
@@ -288,37 +288,47 @@
         addPlane(routes[0], 0.4);
         addPlane(routes[0], 0.7);
         addPlane(routes[2], 0.5);
-        
+
+        // 页面加载时初始化日期
+        function initDate() {
+            const now = new Date();
+            const dateStr = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+            document.getElementById('currentDate').textContent = dateStr;
+        }
+
         // 刷新数据功能
         async function refreshData() {
             const btn = document.getElementById('refreshBtn');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>抓取中...';
             btn.disabled = true;
-            
+
             try {
                 await fetchLatestAirNews();
-                
+
+                // 更新日期和时间
                 const now = new Date();
-                document.getElementById('updateTime').textContent = 
+                const dateStr = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+                document.getElementById('currentDate').textContent = dateStr;
+                document.getElementById('updateTime').textContent =
                     `数据更新: ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')} CST`;
-                
+
                 btn.innerHTML = '<i class="fas fa-check mr-1"></i>更新成功';
                 btn.classList.remove('bg-violet-600');
                 btn.classList.add('bg-green-600');
-                
+
                 setTimeout(() => {
                     btn.innerHTML = originalText;
                     btn.classList.remove('bg-green-600');
                     btn.classList.add('bg-violet-600');
                     btn.disabled = false;
                 }, 2000);
-                
+
             } catch (error) {
                 btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i>更新失败';
                 btn.classList.remove('bg-violet-600');
                 btn.classList.add('bg-red-600');
-                
+
                 setTimeout(() => {
                     btn.innerHTML = originalText;
                     btn.classList.remove('bg-red-600');
@@ -546,6 +556,9 @@
                 console.log(`更新航线状态: ${route.name} - ${route.status}`);
             });
         }
+
+        // 页面加载时初始化
+        initDate();
     </script>
 </body>
 </html>
