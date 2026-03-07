@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI市场情报日报 | 2026年3月7日 | AI学习应用 | AI链习生</title>
+    <meta name="description" content="2026年3月7日AI市场情报日报：OpenAI发布GPT-5.3 Instant、Anthropic ARR突破190亿美元、全球AI融资创纪录">
+    <meta name="author" content="Millay">
+    <meta name="keywords" content="AI市场情报, GPT-5.3, Anthropic, OpenAI, AI融资, AI监管">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text: #1f2937;
+            --bg: #ffffff;
+            --gray: #6b7280;
+            --light-bg: #f9fafb;
+            --accent: #7c3aed;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        header {
+            background: var(--bg);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .section h3 {
+            margin: 1.5rem 0 1rem;
+            color: var(--text);
+            font-size: 1.25rem;
+        }
+        
+        .section p {
+            margin-bottom: 1rem;
+        }
+        
+        .section ul, .section ol {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+        
+        .section li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .highlight {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .news-card {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .news-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .news-card .meta {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .news-card .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tag-product { background: #dbeafe; color: #1e40af; }
+        .tag-funding { background: #d1fae5; color: #065f46; }
+        .tag-policy { background: #fef3c7; color: #92400e; }
+        .tag-trend { background: #ede9fe; color: #5b21b6; }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .insight-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        
+        .source-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        
+        .source-link:hover {
+            text-decoration: underline;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-card {
+            background: var(--light-bg);
+            padding: 1.25rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .stat-card .number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-card .label {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-top: 0.25rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #e5e7eb;
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <a href="/ai-learning/" class="back-link">← 返回专栏</a>
+        
+        <section class="hero">
+            <h1>🤖 AI市场情报日报</h1>
+            <p>洞察全球AI产业动态，捕捉市场先机</p>
+            <span class="date-badge">📅 2026年3月7日 星期六</span>
+        </section>
+        
+        <!-- 今日要点 -->
+        <section class="section">
+            <h2>🔥 今日要点</h2>
+            
+            <div class="news-card">
+                <span class="tag tag-product">产品动态</span>
+                <h4>1. OpenAI发布GPT-5.3 Instant，成为ChatGPT默认模型</h4>
+                <p class="meta">来源：TechInformed | 2026年3月5日</p>
+                <p>OpenAI于3月3日正式推出GPT-5.3 Instant，这是ChatGPT使用率最高的模型系列的最新升级版本。该版本解决了AI"说教"和"爹味"问题，响应更加直接、准确，减少了冗长免责声明和无谓拒绝。所有ChatGPT用户（包括免费版）均可使用。</p>
+                <p><strong>关键改进：</strong>更精准的搜索结果、更自然的对话体验、更少的幻觉问题。API定价为每百万输入token $1.25，输出token $10.00。</p>
+            </div>
+            
+            <div class="news-card">
+                <span class="tag tag-funding">融资并购</span>
+                <h4>2. Anthropic ARR突破190亿美元，企业市场份额达40%</h4>
+                <p class="meta">来源：Crunchbase / SWOTPal | 2026年3月4日</p>
+                <p>Anthropic年化经常性收入（ARR）已达190亿美元，较2025年的90亿美元增长超过110%，仅数周前这一数字还是140亿美元。更值得注意的是，Anthropic在企业LLM市场的份额已达40%，超越OpenAI（27%）和Google（21%）。</p>
+                <p><strong>战略意义：</strong>企业客户更青睐Anthropic的Constitutional AI安全框架，在受监管行业（金融、医疗、政府）建立了高利润护城河。</p>
+            </div>
+            
+            <div class="news-card">
+                <span class="tag tag-funding">融资并购</span>
+                <h4>3. 全球AI融资创历史纪录：2月融资1890亿美元</h4>
+                <p class="meta">来源：Crunchbase | 2026年3月3日</p>
+                <p>2026年2月全球初创企业融资创下1890亿美元的历史纪录，其中AI相关初创企业融资1710亿美元，占全球风投总额的90%。美国初创企业融资1740亿美元，占全球92%。</p>
+                <p><strong>头部交易：</strong>OpenAI 1100亿美元（估值8400亿美元）、Anthropic 300亿美元（估值3800亿美元）、xAI 200亿美元、ElevenLabs 5亿美元（估值110亿美元）。</p>
+            </div>
+            
+            <div class="news-card">
+                <span class="tag tag-policy">监管政策</span>
+                <h4>4. 美国多州加速AI立法，俄勒冈州通过儿童聊天机器人安全法案</h4>
+                <p class="meta">来源：Transparency Coalition AI | 2026年3月6日</p>
+                <p>美国各州立法机构正在加速推进AI相关法案。俄勒冈州SB 1546法案获得最终通过，要求聊天机器人运营商实施强有力的措施保护与其产品互动的儿童。佛罗里达州AI权利法案（SB 482）在参议院以35-2通过。</p>
+                <p><strong>立法趋势：</strong>年龄验证、深度伪造监管、AI在医疗和保险决策中的使用限制成为各州立法重点。</p>
+            </div>
+            
+            <div class="news-card">
+                <span class="tag tag-product">产品动态</span>
+                <h4>5. Anthropic指控中国AI实验室大规模盗用Claude模型</h4>
+                <p class="meta">来源：STARTUP EDITION | 2026年3月1日</p>
+                <p>Anthropic发现超过24,000个欺诈账户，据称由DeepSeek、Moonshot AI和MiniMax等三家中国AI实验室创建，用于"蒸馏"（distillation）逆向工程Claude模型。这些账户生成了超过1600万次与Claude的交互。</p>
+                <p><strong>安全担忧：</strong>Anthropic将此活动定性为潜在国家安全威胁，警告被盗模型可能被用于网络攻击和虚假信息活动。</p>
+            </div>
+        </section>
+        
+        <!-- 关键数据 -->
+        <section class="section">
+            <h2>📊 关键数据</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">$190亿</div>
+                    <div class="label">Anthropic ARR</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">40%</div>
+                    <div class="label">企业LLM市场份额</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">$1890亿</div>
+                    <div class="label">2月全球融资额</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">90%</div>
+                    <div class="label">AI融资占比</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 产品/技术动态 -->
+        <section class="section">
+            <h2>🚀 产品/技术动态</h2>
+            
+            <h3>OpenAI：GPT-5.3系列全面铺开</h3>
+            <ul>
+                <li><strong>GPT-5.3 Instant（3月3日）：</strong>ChatGPT默认模型，优化日常对话体验，减少"说教"语气</li>
+                <li><strong>GPT-5.3 Codex（2月24日）：</strong>编程专用模型，上下文窗口40万token，在Terminal-Bench 2.0基准测试中得分77.3%</li>
+                <li><strong>GPT-5.4预告：</strong>OpenAI官方账号暗示"5.4 sooner than you Think"，预计将带来200万token上下文和有状态AI架构</li>
+            </ul>
+            
+            <h3>Google：Gemini 3.1系列持续迭代</h3>
+            <ul>
+                <li><strong>Gemini 3.1 Pro（2月19日）：</strong>200万token上下文窗口，GPQA Diamond基准测试得分94.3%，专为研究型工作负载设计</li>
+                <li><strong>Computer Use功能（1月29日）：</strong>支持桌面应用操作、浏览器导航和多步骤工作流协调</li>
+                <li><strong>定价策略：</strong>Gemini 3.1 Flash-Lite定价仅$0.25/百万输入token，大幅低于竞争对手</li>
+            </ul>
+            
+            <h3>Anthropic：Claude Opus 4.6与平台扩展</h3>
+            <ul>
+                <li><strong>Claude Opus 4.6（2月发布）：</strong>新增企业功能，与Palantir Maven智能系统合作用于国防分析</li>
+                <li><strong>跨平台集成：</strong>推出平台支持从OpenAI等其他平台导入上下文到Claude</li>
+                <li><strong>微软生态整合：</strong>Claude于2026年1月成为微软官方子处理器，在Microsoft 365安全和合规框架内运行</li>
+            </ul>
+        </section>
+        
+        <!-- 投融资情报 -->
+        <section class="section">
+            <h2>💰 投融资情报</h2>
+            
+            <h3>2026年超大规模融资一览（$1亿+）</h3>
+            
+            <table style="width:100%; border-collapse: collapse; margin: 1rem 0;">
+                <thead>
+                    <tr style="background: var(--light-bg);">
+                        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #e5e7eb;">公司</th>
+                        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #e5e7eb;">金额</th>
+                        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #e5e7eb;">估值</th>
+                        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #e5e7eb;">轮次</th>
+                        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #e5e7eb;">领投方</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>OpenAI</strong></td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$1100亿</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$8400亿</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">-</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">多投资方</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>Anthropic</strong></td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$300亿</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$3800亿</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Series G</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Founders Fund等</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>xAI</strong></td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$200亿</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">-</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Series E</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Valor Equity等</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>ElevenLabs</strong></td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$500M</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$110亿</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Series D</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Sequoia</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>Runway</strong></td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$315M</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">$53亿</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Series E</td>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">General Atlantic</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>重要并购动态</h3>
+            <ul>
+                <li><strong>Accenture收购Ookla（3月3日）：</strong>增强网络智能和企业AI数据分析能力</li>
+                <li><strong>MSCI收购Vantager（3月2日）：</strong>收购AI原生平台，加速私募市场投资尽调流程</li>
+                <li><strong>Workday整合Sana（2025年11月完成）：</strong>2026年是关键验证年，目标打造"工作新入口"</li>
+            </ul>
+        </section>
+        
+        <!-- 监管政策 -->
+        <section class="section">
+            <h2>⚖️ 监管政策</h2>
+            
+            <h3>美国各州AI立法加速</h3>
+            
+            <div class="highlight">
+                <h4>俄勒冈州 SB 1546 - 儿童聊天机器人安全法案</h4>
+                <p><strong>状态：</strong>已获立法机构最终通过，待州长签署</p>
+                <p><strong>核心要求：</strong>聊天机器人运营商必须实施强有力措施保护与其产品互动的儿童，包括年龄验证、家长同意机制等。</p>
+            </div>
+            
+            <div class="highlight">
+                <h4>佛罗里达州 SB 482 - AI权利法案</h4>
+                <p><strong>状态：</strong>参议院35-2通过，已送交众议院</p>
+                <p><strong>核心内容：</strong>创建"人工智能权利法案"，规定佛罗里达州民使用AI的权利；禁止AI技术公司在未经同意的情况下出售或披露用户个人信息；要求陪伴聊天机器人平台禁止未成年人在未经家长同意的情况下创建账户。</p>
+            </div>
+            
+            <h3>其他重要立法动态</h3>
+            <ul>
+                <li><strong>华盛顿州：</strong>SB 5105（深度伪造）获得最终通过；HB 1170（AI披露）和SB 5395（健康保险AI使用）接近完成</li>
+                <li><strong>犹他州：</strong>通过SB 73（在线年龄验证）和HB 276（深度伪造）法案</li>
+                <li><strong>密歇根州：</strong>SB 760法案禁止聊天机器人向未成年人提供可能鼓励自伤、暴力、药物滥用等内容</li>
+            </ul>
+            
+            <div class="insight-box">
+                <h4>💡 政策观察</h4>
+                <p>2026年美国AI立法呈现两大趋势：<strong>儿童保护</strong>和<strong>深度伪造监管</strong>成为各州立法重点。与联邦层面的缓慢进展相比，各州正在快速填补监管空白，企业需要密切关注多州合规要求。</p>
+            </div>
+        </section>
+        
+        <!-- 趋势洞察 -->
+        <section class="section">
+            <h2>🔮 趋势洞察</h2>
+            
+            <h3>1. 企业AI市场格局重塑：安全优先战胜品牌效应</h3>
+            <p>Anthropic在企业LLM市场的崛起标志着企业采购决策的成熟化。从2024年OpenAI占据50%企业市场份额，到2026年Anthropic以40%领先，这一转变反映了：</p>
+            <ul>
+                <li>企业更看重AI系统的<strong>可审计性、合规性和安全性</strong>，而非仅仅是技术性能</li>
+                <li>Constitutional AI框架在受监管行业（金融、医疗、政府）建立了差异化优势</li>
+                <li>Anthropic的每用户收入（$211/月）远超OpenAI（$25/周），说明其高价值企业客户定位成功</li>
+            </ul>
+            
+            <h3>2. AI变现模式分化：广告vs订阅的路线之争</h3>
+            <p>OpenAI在ChatGPT中测试广告（针对免费和低付费用户），而Google和Anthropic明确反对在AI助手中植入广告：</p>
+            <ul>
+                <li><strong>OpenAI路线：</strong>通过广告补贴免费用户，扩大用户基数，但可能牺牲用户体验</li>
+                <li><strong>Google/Anthropic路线：</strong>保持AI助手纯粹性，通过订阅和云服务变现</li>
+            </ul>
+            <p>这一分歧将深刻影响AI产品的用户体验和商业模式演进。</p>
+            
+            <h3>3. 模型蒸馏与知识产权：AI军备竞赛的新战场</h3>
+            <p>Anthropic指控中国实验室大规模盗用Claude模型，揭示了AI产业的新挑战：</p>
+            <ul>
+                <li><strong>模型蒸馏</strong>（用高级模型输出训练低成本模型）成为快速追赶的技术捷径</li>
+                <li>API提供商面临如何保护模型知识产权的难题</li>
+                <li>地缘政治因素正在渗入AI技术竞争，可能引发更严格的技术出口管制</li>
+            </ul>
+            
+            <h3>4. 2026年IPO窗口：AI巨头的资本市场大考</h3>
+            <p>OpenAI和Anthropic都被传可能在2026年寻求IPO，这将是AI行业的历史性时刻：</p>
+            <ul>
+                <li>公开市场将首次对大型语言模型商业模式进行定价</li>
+                <li>S-1文件将揭示真实的计算成本、供应链风险和治理结构</li>
+                <li>OpenAI的"利润上限"模式和Anthropic的"公共利益公司"结构将面临投资者审视</li>
+            </ul>
+            
+            <div class="insight-box">
+                <h4>📈 投资建议</h4>
+                <p><strong>对投资者：</strong>AI赛道正从"买所有"转向"选边站"。关注那些能在企业市场建立护城河、有清晰盈利路径的公司，而非仅仅是技术领先者。</p>
+                <p><strong>对企业买家：</strong>现在是深度整合AI的黄金窗口期。OpenAI和Anthropic都在补贴企业用户以争夺市场份额，建议利用这一时期进行多平台试点，锁定长期合作关系。</p>
+                <p><strong>对开发者：</strong>编码AI市场正在爆发，Claude在编码市场份额（42%）是OpenAI（21%）的两倍。建议优先评估Claude Code等工具在开发工作流中的集成。</p>
+            </div>
+        </section>
+        
+        <!-- 参考来源 -->
+        <section class="section">
+            <h2>📚 参考来源</h2>
+            <ol>
+                <li><a href="https://techinformed.com/openai-makes-gpt-5-3-the-new-chatgpt-default-rolls-out-5-3-instant/" class="source-link" target="_blank">TechInformed - OpenAI makes GPT-5.3 the new ChatGPT default</a></li>
+                <li><a href="https://news.crunchbase.com/venture/record-setting-global-funding-february-2026-openai-anthropic/" class="source-link" target="_blank">Crunchbase - Massive AI Deals Drive $189B Startup Funding Record</a></li>
+                <li><a href="https://swotpal.com/blog/openai-vs-anthropic-swot-2026" class="source-link" target="_blank">SWOTPal - OpenAI vs Anthropic SWOT Analysis 2026</a></li>
+                <li><a href="https://www.transparencycoalition.ai/news/ai-legislative-update-march6-2026" class="source-link" target="_blank">Transparency Coalition AI - AI Legislative Update March 6, 2026</a></li>
+                <li><a href="https://blog.mean.ceo/anthropic-claude-news-march-2026/" class="source-link" target="_blank">STARTUP EDITION - Anthropic Claude News March 2026</a></li>
+                <li><a href="https://yingtu.ai/en/blog/gpt-5-4-vs-gpt-5-3-vs-gemini-3-1" class="source-link" target="_blank">Yingtu AI - GPT-5.4 vs GPT-5.3 vs Gemini 3.1 Comparison</a></li>
+                <li><a href="https://www.storyboard18.com/brand-makers/davos-2026-why-google-and-anthropic-are-resisting-ads-in-ai-chatbots-as-openai-experiments-88089.htm" class="source-link" target="_blank">Storyboard18 - Davos 2026: Google and Anthropic resisting ads</a></li>
+                <li><a href="https://i10x.ai/news/2026-ai-ipo-openai-anthropic" class="source-link" target="_blank">i10x.ai - 2026 AI IPOs: OpenAI, Anthropic Market Shifts</a></li>
+            </ol>
+        </section>
+        
+        <footer>
+            <p>© 2026 AI链习生 | 洞察 · 思考 · 实践</p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem;">本报告基于公开信息整理，仅供参考，不构成投资建议</p>
+        </footer>
+    </main>
+</body>
+</html>
