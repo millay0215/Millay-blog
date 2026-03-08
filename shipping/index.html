@@ -890,22 +890,9 @@
         
         // 从新闻获取航运风险
         async function updateShippingRiskFromNews() {
-            try {
-                // 搜索航运相关新闻
-                const keywords = ['suez canal', 'red sea shipping', 'panama canal', 'shipping disruption'];
-                
-                for (const keyword of keywords) {
-                    const response = await fetch(`https://gnews.io/api/v4/search?q=${keyword}&lang=en&max=2&apikey=demo`);
-                    if (response.ok) {
-                        const news = await response.json();
-                        if (news.articles && news.articles.length > 0) {
-                            console.log(`获取到 ${keyword} 新闻:`, news.articles[0].title);
-                        }
-                    }
-                }
-            } catch (error) {
-                console.log('新闻获取失败');
-            }
+            // 模拟从新闻获取风险信息，实际使用时可以接入真实的航运新闻 API
+            console.log('航运风险信息已更新');
+            return true;
         }
         
         // 生成模拟实时更新数据（实际应用中这里会是真实API调用）

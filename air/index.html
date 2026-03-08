@@ -485,20 +485,9 @@
         
         // 从新闻 API 获取风险信息
         async function updateAirRiskFromNews() {
-            try {
-                // 使用 GNews API 搜索航空相关新闻
-                const response = await fetch('https://gnews.io/api/v4/search?q=airspace+closure+flight+ban&lang=en&max=5&apikey=YOUR_API_KEY');
-                
-                if (response.ok) {
-                    const news = await response.json();
-                    console.log('获取到航空新闻:', news);
-                    
-                    // 根据新闻更新风险区域
-                    // 这里简化处理，实际应该分析新闻内容
-                }
-            } catch (error) {
-                console.log('新闻获取失败，使用默认风险数据');
-            }
+            // 模拟从新闻获取风险信息，实际使用时可以接入真实的航空新闻 API
+            console.log('航空风险信息已更新');
+            return true;
         }
         
         function generateMockAirUpdates() {
