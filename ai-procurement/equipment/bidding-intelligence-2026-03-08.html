@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析测试设备中标价格情报 | 2026年03月08日 | Millay</title>
+    <meta name="description" content="分析测试百科网真实中标数据，分析测试设备采购价格情报">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --bg: #ffffff;
+            --bg-light: #f6f8fa;
+            --border: #e5e9ec;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, #051c2c 0%, #0a2942 100%);
+            color: white;
+            padding: 140px 2rem 100px;
+            margin-top: 72px;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .bidding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        .bidding-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        .bidding-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .bidding-info-item {
+            font-size: 0.9375rem;
+        }
+        .bidding-info-item .label {
+            color: var(--text-secondary);
+        }
+        .bidding-info-item .value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .price-highlight {
+            color: #dc2626;
+            font-size: 1.25rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+            margin-top: 60px;
+        }
+        footer p {
+            opacity: 0.7;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Millay</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>分析测试设备中标价格情报</h1>
+            <p class="meta">2026年03月08日 | 仪器设备分类 | 数据来源：政府采购网、招标平台</p>
+        </div>
+    </div>
+
+    <main>
+        <a href="/ai-procurement/equipment/" class="back-link">← 返回仪器设备分类</a>
+
+        <h2 class="section-title">📊 今日概览</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">4</div>
+                <div class="label">新增中标项目</div>
+            </div>
+            <div class="stat-card">
+                <div class="number price-highlight">8066万</div>
+                <div class="label">最高中标金额</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">GPU</div>
+                <div class="label">热门设备类型</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🏆 重点中标项目</h2>
+
+        <div class="bidding-card">
+            <h3>并行科技GPU服务器及存储设备采购</h3>
+            <div class="bidding-info">
+                <div class="bidding-info-item">
+                    <span class="label">采购单位：</span>
+                    <span class="value">北京并行科技股份有限公司</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">中标金额：</span>
+                    <span class="value price-highlight">8,066万元</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">设备类型：</span>
+                    <span class="value">GPU算力服务器 + 存储设备</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">供应商：</span>
+                    <span class="value">浙江天极集成电路、北京容天汇海</span>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">用于扩充自有算力资源池，满足AI及多行业算力需求。GPU算力服务器2,736万元，存储设备5,330万元。</p>
+        </div>
+
+        <div class="bidding-card">
+            <h3>天水天光半导体设备采购（第一批）</h3>
+            <div class="bidding-info">
+                <div class="bidding-info-item">
+                    <span class="label">采购单位：</span>
+                    <span class="value">天水天光半导体有限责任公司</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">中标金额：</span>
+                    <span class="value price-highlight">310万元</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">中标日期：</span>
+                    <span class="value">2026年3月4日</span>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">第一包：江苏鸣志微电子（149.9万元，得分91.98）；第二包：江苏容道社半导体设备（158万元，得分89.00）</p>
+        </div>
+
+        <div class="bidding-card">
+            <h3>陕西科技大学高性能服务器采购</h3>
+            <div class="bidding-info">
+                <div class="bidding-info-item">
+                    <span class="label">采购单位：</span>
+                    <span class="value">陕西科技大学</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">项目类型：</span>
+                    <span class="value">高性能服务器采购</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">公告日期：</span>
+                    <span class="value">2026年3月4日</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">地区：</span>
+                    <span class="value">陕西西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bidding-card">
+            <h3>复旦大学近期科研设备采购</h3>
+            <div class="bidding-info">
+                <div class="bidding-info-item">
+                    <span class="label">采购单位：</span>
+                    <span class="value">复旦大学</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">项目数量：</span>
+                    <span class="value">5项科研设备</span>
+                </div>
+                <div class="bidding-info-item">
+                    <span class="label">时间：</span>
+                    <span class="value">2026年3月初</span>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">包括：极低温强磁场兼容扫描探针显微镜扫描头、神经血管介入手术模拟器、探针采集卡式集成测试系统、扫描微波阻抗显微镜微波控制器、机器人智能体运动协调与控制方法研究设备</p>
+        </div>
+
+        <h2 class="section-title">📈 市场趋势</h2>
+        <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px;">
+            <ul style="color: var(--text-secondary); line-height: 1.8;">
+                <li><strong>算力需求爆发</strong>：并行科技等算力运营商持续扩大自有算力资源池，AI算力租赁市场需求旺盛</li>
+                <li><strong>国产芯片崛起</strong>：昆仑芯在中国移动集采中表现亮眼，国产AI芯片正在从"可用"走向"好用"</li>
+                <li><strong>高校投入加大</strong>：从复旦、陕西科大等采购动态看，高校在AI相关科研设备上的投入持续增长</li>
+                <li><strong>半导体设备国产化</strong>：天水天光等企业的设备采购，显示国产半导体设备供应链逐步成熟</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; margin-top: 3rem; color: var(--text-secondary); font-size: 0.875rem;">
+            数据更新时间：2026年03月08日 | 本情报基于公开信息整理，仅供参考
+        </p>
+    </main>
+
+    <footer>
+        <p>© 2026 Millay. 洞察 · 思考 · 实践</p>
+    </footer>
+</body>
+</html>
