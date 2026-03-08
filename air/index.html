@@ -304,7 +304,17 @@
             btn.disabled = true;
 
             try {
-                await fetchLatestAirNews();
+                // 生成新的模拟航班数据（每次刷新位置都不同）
+                const flightData = generateMockFlightData();
+                
+                // 更新飞机位置
+                updatePlanePositions(flightData);
+                
+                // 生成新的风险更新
+                const updates = generateMockAirUpdates();
+                updateAirRiskZones(updates);
+                updateAirportStatus(updates);
+                updateAirRouteStatus(updates);
 
                 // 更新日期和时间
                 const now = new Date();
@@ -339,14 +349,15 @@
         }
         
         async function fetchLatestAirNews() {
-            // 调用真实 API 获取航班数据
-            const flightData = await fetchRealFlightData();
+            // 生成新的模拟航班数据
+            const flightData = generateMockFlightData();
             
             // 更新飞机位置
             updatePlanePositions(flightData);
             
-            // 更新风险区域（基于新闻）
-            await updateAirRiskFromNews();
+            // 生成新的风险更新
+            const updates = generateMockAirUpdates();
+            updateAirRiskZones(updates);
             
             return flightData;
         }

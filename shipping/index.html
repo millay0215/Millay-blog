@@ -744,8 +744,17 @@
             btn.disabled = true;
             
             try {
-                // 模拟从外部源抓取数据
-                await fetchLatestShippingNews();
+                // 生成新的模拟数据（每次刷新位置都不同）
+                const vesselData = generateMockVesselData();
+                
+                // 更新船舶位置
+                updateVesselPositions(vesselData);
+                
+                // 生成新的风险更新
+                const updates = generateMockShippingUpdates();
+                updateRiskZones(updates);
+                updatePortStatus(updates);
+                updateRouteStatus(updates);
                 
                 // 更新日期和时间
                 const now = new Date();
