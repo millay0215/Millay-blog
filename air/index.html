@@ -300,22 +300,14 @@
         async function refreshData() {
             const btn = document.getElementById('refreshBtn');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>抓取中...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>刷新中...';
             btn.disabled = true;
 
-            try {
-                // 生成新的模拟航班数据（每次刷新位置都不同）
+            setTimeout(() => {
+                // 生成新的模拟航班数据
                 const flightData = generateMockFlightData();
-                
-                // 更新飞机位置
                 updatePlanePositions(flightData);
                 
-                // 生成新的风险更新
-                const updates = generateMockAirUpdates();
-                updateAirRiskZones(updates);
-                updateAirportStatus(updates);
-                updateAirRouteStatus(updates);
-
                 // 更新日期和时间
                 const now = new Date();
                 const dateStr = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
@@ -333,19 +325,7 @@
                     btn.classList.add('bg-violet-600');
                     btn.disabled = false;
                 }, 2000);
-
-            } catch (error) {
-                btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i>更新失败';
-                btn.classList.remove('bg-violet-600');
-                btn.classList.add('bg-red-600');
-
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.classList.remove('bg-red-600');
-                    btn.classList.add('bg-violet-600');
-                    btn.disabled = false;
-                }, 2000);
-            }
+            }, 1500);
         }
         
         async function fetchLatestAirNews() {
