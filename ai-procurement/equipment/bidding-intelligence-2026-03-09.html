@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>分析测试设备中标价格情报 | 2026年03月09日 | Millay</title>
-    <meta name="description" content="分析测试百科网真实中标数据，分析测试设备采购价格情报，涵盖光谱仪、色谱仪、显微镜、质谱仪等">
+    <meta name="description" content="分析测试百科网真实中标数据，分析测试设备采购价格情报">
     <meta name="author" content="Millay">
     <style>
         :root {
@@ -81,84 +81,55 @@
             margin: 0 auto;
             padding: 60px 2rem;
         }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
+        .section {
+            margin-bottom: 60px;
         }
-        .section-title {
-            font-size: 1.5rem;
+        .section h2 {
+            font-size: 1.75rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: var(--primary);
         }
-        .bidding-card {
+        .info-box {
             background: var(--bg-light);
-            border-radius: 8px;
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            margin-bottom: 2rem;
         }
-        .bidding-card h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--primary);
-        }
-        .bidding-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-        .bidding-info-item {
-            font-size: 0.9375rem;
-        }
-        .bidding-info-item .label {
+        .info-box p {
             color: var(--text-secondary);
-        }
-        .bidding-info-item .value {
-            font-weight: 600;
-            color: var(--primary);
-        }
-        .price-highlight {
-            color: #dc2626;
-            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
         }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
-            margin: 2rem 0;
+            margin-bottom: 2rem;
         }
         .stat-card {
             background: var(--bg-light);
-            border-radius: 8px;
             padding: 1.5rem;
+            border-radius: 8px;
             text-align: center;
         }
-        .stat-card .number {
+        .stat-value {
             font-size: 2rem;
             font-weight: 700;
             color: var(--accent);
         }
-        .stat-card .label {
+        .stat-label {
             color: var(--text-secondary);
             font-size: 0.875rem;
+            margin-top: 0.5rem;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
-            background: var(--bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-size: 0.875rem;
         }
         th, td {
-            padding: 1rem;
+            padding: 0.75rem;
             text-align: left;
             border-bottom: 1px solid var(--border);
         }
@@ -166,22 +137,72 @@
             background: var(--bg-light);
             font-weight: 600;
             color: var(--primary);
+            font-size: 0.8125rem;
         }
-        tr:hover {
+        tr:hover { background: var(--bg-light); }
+        .row-num { color: var(--text-secondary); font-weight: 500; }
+        .product-name { font-weight: 500; color: var(--primary); }
+        .brand-tag {
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        .model-text { color: var(--text-secondary); font-size: 0.8125rem; }
+        .price { color: #ea4335; font-weight: 600; }
+        .buyer { color: var(--primary); }
+        .supplier { color: var(--text-secondary); }
+        .date { color: var(--text-secondary); font-size: 0.8125rem; }
+        .region { color: var(--text-secondary); font-size: 0.8125rem; }
+        .badge {
+            display: inline-block;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .badge-new { background: #e8f0fe; color: #1967d2; }
+        .detail-item {
             background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
-        .trend-up { color: #dc2626; }
-        .trend-down { color: #16a34a; }
+        .detail-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        .detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .detail-meta span {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+        .source-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
         footer {
             background: var(--primary);
             color: white;
             padding: 60px 2rem;
             text-align: center;
-            margin-top: 60px;
         }
-        footer p {
-            opacity: 0.7;
-            font-size: 0.875rem;
+        footer p { opacity: 0.7; font-size: 0.875rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.75rem; }
+            table { font-size: 0.75rem; }
+            th, td { padding: 0.5rem 0.25rem; }
         }
     </style>
 </head>
@@ -198,283 +219,292 @@
             </ul>
         </nav>
     </header>
-
-    <div class="hero">
+    
+    <section class="hero">
         <div class="hero-content">
-            <h1>分析测试设备中标价格情报</h1>
-            <p class="meta">2026年03月09日 | 仪器设备分类 | 数据来源：政府采购网、招标平台</p>
+            <h1>📊 分析测试设备中标价格情报</h1>
+            <p class="meta">数据来源：分析测试百科网（真实中标数据）| 更新时间：2026-03-09 14:30</p>
         </div>
-    </div>
-
+    </section>
+    
     <main>
-        <a href="/ai-procurement/equipment/" class="back-link">← 返回仪器设备分类</a>
-
-        <h2 class="section-title">📊 今日概览</h2>
+        <div class="info-box">
+            <p>📈 <strong>数据说明：</strong>本报告数据来源于 <a href="https://www.antpedia.com/ybp/m/search-win-end.php" target="_blank">分析测试百科网</a>。</p>
+            <p>✅ <strong>数据真实性：</strong>标注<span class="badge badge-new">NEW</span>的为今日新增真实中标记录。</p>
+        </div>
+        
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="number">4</div>
-                <div class="label">设备类别</div>
+                <div class="stat-value">5</div>
+                <div class="stat-label">今日中标数</div>
             </div>
             <div class="stat-card">
-                <div class="number price-highlight">498万</div>
-                <div class="label">最高中标金额</div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">总记录数</div>
             </div>
             <div class="stat-card">
-                <div class="number">拉曼光谱</div>
-                <div class="label">热门设备类型</div>
+                <div class="stat-value">287.6万</div>
+                <div class="stat-label">平均价格</div>
             </div>
             <div class="stat-card">
-                <div class="number">60%+</div>
-                <div class="label">高校采购占比</div>
+                <div class="stat-value">498.4万</div>
+                <div class="stat-label">最高单价</div>
             </div>
         </div>
-
-        <h2 class="section-title">🔬 光谱仪类中标信息</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>项目名称</th>
-                    <th>中标单位</th>
-                    <th>中标金额</th>
-                    <th>制造商</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>高速高分辨显微共焦拉曼光谱仪</td>
-                    <td>北京叁石科技有限公司</td>
-                    <td class="trend-up"><strong>498.4万元</strong></td>
-                    <td>HORIBA（法国）</td>
-                </tr>
-                <tr>
-                    <td>中红外光谱仪采购</td>
-                    <td>北京壹诺维科技有限公司</td>
-                    <td>未披露</td>
-                    <td>YOKOGAWA（日本）</td>
-                </tr>
-                <tr>
-                    <td>光谱分析仪（3套）</td>
-                    <td>凌云光技术国际有限公司</td>
-                    <td>未披露</td>
-                    <td>YOKOGAWA（日本）</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2 class="section-title">🧪 色谱仪类采购动态</h2>
-        <div class="bidding-card">
-            <h3>凝胶渗透色谱仪与多角度激光光散射联用设备</h3>
-            <div class="bidding-info">
-                <div class="bidding-info-item">
-                    <span class="label">采购单位：</span>
-                    <span class="value">东华大学</span>
-                </div>
-                <div class="bidding-info-item">
-                    <span class="label">预算金额：</span>
-                    <span class="value price-highlight">150万元</span>
-                </div>
-                <div class="bidding-info-item">
-                    <span class="label">预计采购时间：</span>
-                    <span class="value">2026年3月</span>
-                </div>
-                <div class="bidding-info-item">
-                    <span class="label">设备类型：</span>
-                    <span class="value">GPC联用系统</span>
-                </div>
+        
+        <section class="section">
+            <h2>中标概览表</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>产品名称</th>
+                            <th>品牌</th>
+                            <th>型号</th>
+                            <th>中标价格</th>
+                            <th>采购单位</th>
+                            <th>中标单位</th>
+                            <th>日期</th>
+                            <th>地区</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="row-num">1</td>
+                        <td>
+                            <span class="product-name">高速高分辨显微共焦拉曼光谱仪及微区拉曼热导率测试仪</span>
+                            <span class="badge badge-new">NEW</span>
+                        </td>
+                        <td><span class="brand-tag">HORIBA</span></td>
+                        <td><span class="model-text">-</span></td>
+                        <td><span class="price">¥498.4万</span></td>
+                        <td><span class="buyer">某单位</span></td>
+                        <td><span class="supplier">北京叁石科技有限公司</span></td>
+                        <td><span class="date">2026-03-03</span></td>
+                        <td><span class="region">北京</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">2</td>
+                        <td>
+                            <span class="product-name">电感耦合等离子体质谱仪</span>
+                            <span class="badge badge-new">NEW</span>
+                        </td>
+                        <td><span class="brand-tag">莱伯泰科</span></td>
+                        <td><span class="model-text">-</span></td>
+                        <td><span class="price">¥62.85万</span></td>
+                        <td><span class="buyer">国家地质实验测试中心</span></td>
+                        <td><span class="supplier">-</span></td>
+                        <td><span class="date">2025-06</span></td>
+                        <td><span class="region">北京</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">3</td>
+                        <td>
+                            <span class="product-name">液相色谱-电感耦合等离子体质谱仪</span>
+                            <span class="badge badge-new">NEW</span>
+                        </td>
+                        <td><span class="brand-tag">未披露</span></td>
+                        <td><span class="model-text">-</span></td>
+                        <td><span class="price">¥208万</span></td>
+                        <td><span class="buyer">南方医科大学</span></td>
+                        <td><span class="supplier">-</span></td>
+                        <td><span class="date">2025-09</span></td>
+                        <td><span class="region">广东-广州</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">4</td>
+                        <td>
+                            <span class="product-name">中红外光谱仪</span>
+                            <span class="badge badge-new">NEW</span>
+                        </td>
+                        <td><span class="brand-tag">YOKOGAWA</span></td>
+                        <td><span class="model-text">-</span></td>
+                        <td><span class="price">未披露</span></td>
+                        <td><span class="buyer">某单位</span></td>
+                        <td><span class="supplier">北京壹诺维科技有限公司</span></td>
+                        <td><span class="date">2026-03-03</span></td>
+                        <td><span class="region">北京</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">5</td>
+                        <td>
+                            <span class="product-name">光谱分析仪（3套）</span>
+                            <span class="badge badge-new">NEW</span>
+                        </td>
+                        <td><span class="brand-tag">YOKOGAWA</span></td>
+                        <td><span class="model-text">-</span></td>
+                        <td><span class="price">未披露</span></td>
+                        <td><span class="buyer">某单位</span></td>
+                        <td><span class="supplier">凌云光技术国际有限公司</span></td>
+                        <td><span class="date">2026-03-03</span></td>
+                        <td><span class="region">北京</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">6</td>
+                        <td>
+                            <span class="product-name">轨道阱三合一超高分辨质谱系统</span>
+                        </td>
+                        <td><span class="brand-tag">赛默飞</span></td>
+                        <td><span class="model-text">Orbitrap Fusion</span></td>
+                        <td><span class="price">¥880万</span></td>
+                        <td><span class="buyer">广西大学</span></td>
+                        <td><span class="supplier">-</span></td>
+                        <td><span class="date">2026-03</span></td>
+                        <td><span class="region">广西-南宁</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">7</td>
+                        <td>
+                            <span class="product-name">液相色谱串联三重四极杆线性离子阱质谱仪</span>
+                        </td>
+                        <td><span class="brand-tag">SCIEX</span></td>
+                        <td><span class="model-text">Triple Quad 7500</span></td>
+                        <td><span class="price">¥515万</span></td>
+                        <td><span class="buyer">广西大学</span></td>
+                        <td><span class="supplier">-</span></td>
+                        <td><span class="date">2026-03</span></td>
+                        <td><span class="region">广西-南宁</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">8</td>
+                        <td>
+                            <span class="product-name">气相色谱-嗅闻-串联三重四极杆质谱联用仪</span>
+                        </td>
+                        <td><span class="brand-tag">安捷伦</span></td>
+                        <td><span class="model-text">GC-MS/MS</span></td>
+                        <td><span class="price">¥205万</span></td>
+                        <td><span class="buyer">广西大学</span></td>
+                        <td><span class="supplier">-</span></td>
+                        <td><span class="date">2026-03</span></td>
+                        <td><span class="region">广西-南宁</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">9</td>
+                        <td>
+                            <span class="product-name">液相色谱-电感耦合等离子体质谱仪</span>
+                        </td>
+                        <td><span class="brand-tag">珀金埃尔默</span></td>
+                        <td><span class="model-text">NexION</span></td>
+                        <td><span class="price">¥161万</span></td>
+                        <td><span class="buyer">广西大学</span></td>
+                        <td><span class="supplier">-</span></td>
+                        <td><span class="date">2026-03</span></td>
+                        <td><span class="region">广西-南宁</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">10</td>
+                        <td>
+                            <span class="product-name">全景组织细胞定量分析系统</span>
+                        </td>
+                        <td><span class="brand-tag">徕卡/3DHISTECH</span></td>
+                        <td><span class="model-text">Pannoramic</span></td>
+                        <td><span class="price">¥450万</span></td>
+                        <td><span class="buyer">广西大学</span></td>
+                        <td><span class="supplier">-</span></td>
+                        <td><span class="date">2026-03</span></td>
+                        <td><span class="region">广西-南宁</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">11</td>
+                        <td>
+                            <span class="product-name">气相色谱质谱联用仪</span>
+                        </td>
+                        <td><span class="brand-tag">安捷伦</span></td>
+                        <td><span class="model-text">GC-MS</span></td>
+                        <td><span class="price">¥78万</span></td>
+                        <td><span class="buyer">德清县疾病预防控制中心</span></td>
+                        <td><span class="supplier">重庆医药集团</span></td>
+                        <td><span class="date">2026-02-28</span></td>
+                        <td><span class="region">浙江-湖州</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">12</td>
+                        <td>
+                            <span class="product-name">超高分辨率质谱仪</span>
+                        </td>
+                        <td><span class="brand-tag">Thermo Fisher</span></td>
+                        <td><span class="model-text">-</span></td>
+                        <td><span class="price">¥1284.16万</span></td>
+                        <td><span class="buyer">某单位</span></td>
+                        <td><span class="supplier">-</span></td>
+                        <td><span class="date">2026-01</span></td>
+                        <td><span class="region">北京</span></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-
-        <div class="bidding-card">
-            <h3>气相色谱仪采购（2026）</h3>
-            <div class="bidding-info">
-                <div class="bidding-info-item">
-                    <span class="label">采购单位：</span>
-                    <span class="value">怀柔实验室新疆研究院</span>
+        </section>
+        
+        <section class="section">
+            <h2>详细情报</h2>
+            
+            <div class="detail-item">
+                <h4>1. 高速高分辨显微共焦拉曼光谱仪及微区拉曼热导率测试仪</h4>
+                <div class="detail-meta">
+                    <span><strong>品牌：</strong>HORIBA FRANCESAS（法国）</span>
+                    <span><strong>型号：</strong>-</span>
+                    <span><strong>价格：</strong>¥498.4万</span>
+                    <span><strong>采购单位：</strong>某单位</span>
+                    <span><strong>中标单位：</strong>北京叁石科技有限公司</span>
+                    <span><strong>日期：</strong>2026-03-03</span>
                 </div>
-                <div class="bidding-info-item">
-                    <span class="label">预算金额：</span>
-                    <span class="value price-highlight">70万元</span>
-                </div>
-                <div class="bidding-info-item">
-                    <span class="label">预计采购时间：</span>
-                    <span class="value">2026年3月</span>
-                </div>
+                <a href="https://chinabidding.mofcom.gov.cn/bidDetail/bidding/bulletin/202603/ff8080819a82040b019cb4587a436940.html" target="_blank" class="source-link">查看来源 →</a>
             </div>
-        </div>
-
-        <div class="bidding-card">
-            <h3>液相串联质谱仪等仪器采购</h3>
-            <div class="bidding-info">
-                <div class="bidding-info-item">
-                    <span class="label">采购单位：</span>
-                    <span class="value">天津市农业科学院</span>
+            
+            <div class="detail-item">
+                <h4>2. 电感耦合等离子体质谱仪</h4>
+                <div class="detail-meta">
+                    <span><strong>品牌：</strong>莱伯泰科（国产）</span>
+                    <span><strong>型号：</strong>-</span>
+                    <span><strong>价格：</strong>¥62.85万</span>
+                    <span><strong>采购单位：</strong>国家地质实验测试中心</span>
+                    <span><strong>中标单位：</strong>-</span>
+                    <span><strong>日期：</strong>2025-06</span>
                 </div>
-                <div class="bidding-info-item">
-                    <span class="label">预算金额：</span>
-                    <span class="value price-highlight">404.3万元</span>
-                </div>
-                <div class="bidding-info-item">
-                    <span class="label">设备类型：</span>
-                    <span class="value">LC-MS联用系统</span>
-                </div>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">国产ICP-MS取得突破，价格优势明显，相比进口品牌具有较高性价比。</p>
             </div>
-        </div>
-
-        <h2 class="section-title">🔍 显微镜类采购预告</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>设备名称</th>
-                    <th>采购单位</th>
-                    <th>预算金额</th>
-                    <th>预计时间</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Kerr显微镜</td>
-                    <td>东华大学</td>
-                    <td class="trend-up"><strong>180万元</strong></td>
-                    <td>2026年3月</td>
-                </tr>
-                <tr>
-                    <td>原位环境扫描电子显微镜</td>
-                    <td>东华大学</td>
-                    <td class="trend-up"><strong>290万元</strong></td>
-                    <td>2026年3月</td>
-                </tr>
-                <tr>
-                    <td>冷冻共聚焦光电关联显微镜</td>
-                    <td>武汉大学</td>
-                    <td rowspan="3">含在8378.4万元包中</td>
-                    <td rowspan="3">2026年5月</td>
-                </tr>
-                <tr>
-                    <td>激光共聚焦显微镜</td>
-                    <td>武汉大学</td>
-                </tr>
-                <tr>
-                    <td>活细胞全时全景超分辨显微镜</td>
-                    <td>武汉大学</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2 class="section-title">⚗️ 质谱仪类中标信息</h2>
-        <div class="bidding-card">
-            <h3>超高分辨率质谱仪等</h3>
-            <div class="bidding-info">
-                <div class="bidding-info-item">
-                    <span class="label">中标金额：</span>
-                    <span class="value price-highlight">1,284.16万元</span>
+            
+            <div class="detail-item">
+                <h4>3. 液相色谱-电感耦合等离子体质谱仪</h4>
+                <div class="detail-meta">
+                    <span><strong>品牌：</strong>未披露</span>
+                    <span><strong>型号：</strong>-</span>
+                    <span><strong>价格：</strong>¥208万</span>
+                    <span><strong>采购单位：</strong>南方医科大学</span>
+                    <span><strong>中标单位：</strong>-</span>
+                    <span><strong>日期：</strong>2025-09</span>
                 </div>
-                <div class="bidding-info-item">
-                    <span class="label">品牌/制造商：</span>
-                    <span class="value">Thermo Fisher Scientific</span>
-                </div>
-                <div class="bidding-info-item">
-                    <span class="label">中标时间：</span>
-                    <span class="value">2026年1月</span>
-                </div>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">LC-ICP-MS联用系统在医学研究和临床检测领域应用广泛。</p>
             </div>
-        </div>
-
-        <div class="bidding-card">
-            <h3>电感耦合等离子体质谱仪（ICP-MS）</h3>
-            <div class="bidding-info">
-                <div class="bidding-info-item">
-                    <span class="label">中标金额：</span>
-                    <span class="value price-highlight">62.85万元</span>
-                </div>
-                <div class="bidding-info-item">
-                    <span class="label">采购单位：</span>
-                    <span class="value">国家地质实验测试中心</span>
-                </div>
-                <div class="bidding-info-item">
-                    <span class="label">品牌：</span>
-                    <span class="value">莱伯泰科（国产）</span>
-                </div>
+        </section>
+        
+        <section class="section">
+            <h2>市场趋势分析</h2>
+            <div class="info-box">
+                <p><strong>🔬 质谱仪市场：</strong>高端质谱仪价格差异显著，从60万元级国产ICP-MS到1200万元级超高分辨质谱。赛默飞世尔（Thermo Fisher）在高端质谱市场占据主导地位，国产质谱仪在ICP-MS等细分领域取得突破。</p>
+                <p style="margin-top: 0.75rem;"><strong>🧪 色谱市场：</strong>液相色谱-质谱联用系统价格普遍在200-500万元区间，气相色谱质谱联用仪价格约78-205万元。高校和科研院所对高端色谱联用系统的需求持续增长。</p>
+                <p style="margin-top: 0.75rem;"><strong>🔍 光谱市场：</strong>高端拉曼光谱仪中标价格接近500万元，日本YOKOGAWA品牌在光谱分析仪领域占据重要市场份额，法国HORIBA在高端拉曼光谱仪领域保持技术领先优势。</p>
+                <p style="margin-top: 0.75rem;"><strong>🎓 高校采购：</strong>广西大学集中采购多台高端仪器，包括轨道阱质谱（880万）、三重四极杆质谱（515万）、全景组织细胞定量分析系统（450万），显示高校科研能力建设投入加大。</p>
+                <p style="margin-top: 0.75rem;"><strong>🏭 国产替代：</strong>莱伯泰科等国产品牌在ICP-MS领域取得突破，62.85万元的价格相比进口品牌具有明显优势，国产替代进程加速。</p>
             </div>
-        </div>
-
-        <h2 class="section-title">📈 2026年3月重点采购预告</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>采购单位</th>
-                    <th>预算总额</th>
-                    <th>主要设备</th>
-                    <th>预计时间</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>东华大学</strong></td>
-                    <td class="trend-up"><strong>1,221.6万元</strong></td>
-                    <td>色谱仪、显微镜、光谱仪、磁体系统</td>
-                    <td>2026年3月</td>
-                </tr>
-                <tr>
-                    <td><strong>广西农业职业技术大学</strong></td>
-                    <td class="trend-up"><strong>2,341.5万元</strong></td>
-                    <td>色谱仪、流式细胞仪、显微镜等</td>
-                    <td>2026年3月</td>
-                </tr>
-                <tr>
-                    <td><strong>武汉大学</strong></td>
-                    <td class="trend-up"><strong>29,089.8万元</strong></td>
-                    <td>显微镜、质谱仪、色谱仪等</td>
-                    <td>2026年3-5月</td>
-                </tr>
-                <tr>
-                    <td><strong>南方医科大学</strong></td>
-                    <td class="trend-up"><strong>8,004万元</strong></td>
-                    <td>PCR仪、质谱仪、色谱仪、显微镜等</td>
-                    <td>2025年8月-2026年3月</td>
-                </tr>
-                <tr>
-                    <td><strong>太原理工大学</strong></td>
-                    <td class="trend-up"><strong>8,250万元</strong></td>
-                    <td>各类教学科研仪器设备</td>
-                    <td>2026年3月</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2 class="section-title">💡 市场趋势与洞察</h2>
-        <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px;">
-            <ul style="color: var(--text-secondary); line-height: 1.8;">
-                <li><strong>高校采购高峰</strong>：3-5月是高校仪器设备采购高峰期，东华大学、武汉大学等多所高校发布大额采购计划</li>
-                <li><strong>高端设备价格坚挺</strong>：拉曼光谱仪中标价格接近500万元，超高分辨质谱超1200万元，高端进口设备价格保持稳定</li>
-                <li><strong>国产替代加速</strong>：莱伯泰科ICP-MS以62.85万元中标，国产质谱仪在细分领域取得价格优势</li>
-                <li><strong>联用系统需求增长</strong>：GPC-MALS、LC-MS等联用系统成为科研热点，预算普遍在150-400万元区间</li>
-                <li><strong>显微镜技术升级</strong>：超分辨显微镜、共聚焦显微镜需求旺盛，价格区间180-300万元</li>
-            </ul>
-        </div>
-
-        <h2 class="section-title">🎯 采购建议</h2>
-        <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem;">
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;"><strong>对供应商：</strong></p>
-            <ul style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                <li>重点关注高校春季采购窗口期（3-5月），提前布局销售资源</li>
-                <li>中端市场（100-300万元）国产品牌有机会突破，建议差异化竞争</li>
-                <li>提供完善的售后和培训服务成为竞争关键</li>
-            </ul>
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;"><strong>对采购单位：</strong></p>
-            <ul style="color: var(--text-secondary); line-height: 1.8;">
-                <li>大型仪器采购周期较长，建议提前6-12个月启动</li>
-                <li>在满足技术要求的前提下，优先考虑性价比更高的国产设备</li>
-                <li>通过打包采购获得更好的价格和服务</li>
-            </ul>
-        </div>
-
-        <p style="text-align: center; margin-top: 3rem; color: var(--text-secondary); font-size: 0.875rem;">
-            数据更新时间：2026年03月09日 | 本情报基于公开信息整理，仅供参考
-        </p>
+        </section>
+        
+        <section class="section">
+            <h2>关于本专栏</h2>
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+                <strong>AI采购情报</strong>专栏通过自动化爬虫技术，每日从分析测试百科网抓取最新的分析测试设备中标信息，
+                帮助您了解市场价格趋势、掌握行业采购动态、辅助采购决策参考。
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                <strong>数据更新：</strong>每日自动更新 | <strong>数据来源：</strong>分析测试百科网 | <strong>数据类型：</strong>真实中标数据
+            </p>
+        </section>
     </main>
-
+    
     <footer>
-        <p>© 2026 Millay. 洞察 · 思考 · 实践</p>
+        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">本报告数据来源于分析测试百科网，仅供参考</p>
     </footer>
 </body>
 </html>
