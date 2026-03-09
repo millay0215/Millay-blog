@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学原料市场价格情报 | 2026年3月9日 | Millay</title>
+    <meta name="description" content="化学原料市场价格情报，涵盖能源、化工、金属、工业气体等板块最新价格行情与市场分析">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --success: #34a853;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            color: white;
+            padding: 160px 2rem 100px;
+            margin-top: 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-label {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9375rem;
+        }
+        .section-header {
+            margin-bottom: 2rem;
+        }
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .section-header p {
+            color: var(--text-secondary);
+        }
+        .alert-card {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #dc2626;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .alert-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #991b1b;
+            margin-bottom: 0.5rem;
+        }
+        .alert-card p {
+            color: #b91c1c;
+            font-size: 0.9375rem;
+        }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .data-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .data-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .data-card .change {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .change-up { color: #dc2626; }
+        .change-down { color: #16a34a; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+        }
+        tr:hover {
+            background: var(--bg-light);
+        }
+        .trend-up { color: #dc2626; font-weight: 600; }
+        .trend-down { color: #16a34a; font-weight: 600; }
+        .analysis-box {
+            background: var(--bg-warm);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .analysis-box h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .analysis-box ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-left: 1.5rem;
+        }
+        .analysis-box li {
+            margin-bottom: 0.5rem;
+        }
+        .data-source {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        .data-source h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .data-source p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p {
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Chemical Intelligence</span>
+            <h1>化学原料市场价格情报</h1>
+            <p>每日更新能源、化工、金属、工业气体等板块最新价格行情与市场分析</p>
+        </div>
+    </section>
+
+    <main>
+        <a href="/ai-procurement/chemical/" class="back-link">← 返回化学原料分类</a>
+
+        <div class="section-header">
+            <h2>📅 2026年3月9日</h2>
+            <p>今日化学原料市场数据更新情况</p>
+        </div>
+
+        <div class="alert-card">
+            <h3>⚠️ 市场预警：国际油价暴涨超22%</h3>
+            <p>受中东局势持续升级影响，3月9日WTI原油盘中突破111美元/桶，创2022年8月以来新高。霍尔木兹海峡近乎封锁，阿联酋、科威特等主要产油国宣布减产，化工产业链成本压力剧增。</p>
+        </div>
+
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--primary);">🛢️ 能源板块</h2>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>WTI原油</h4>
+                <div class="price">$107.62</div>
+                <div class="change change-up">↑ +18.40%</div>
+            </div>
+            <div class="data-card">
+                <h4>布伦特原油</h4>
+                <div class="price">$107.98</div>
+                <div class="change change-up">↑ +16.49%</div>
+            </div>
+            <div class="data-card">
+                <h4>国内汽油（调价后）</h4>
+                <div class="price">上调695元/吨</div>
+                <div class="change change-up">↑ 2026年第五次调价</div>
+            </div>
+            <div class="data-card">
+                <h4>国内柴油（调价后）</h4>
+                <div class="price">上调670元/吨</div>
+                <div class="change change-up">↑ 第四次上调</div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>品种</th>
+                    <th>价格/变化</th>
+                    <th>市场动态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>WTI原油</td>
+                    <td class="trend-up">$107.62/桶 (+18.40%)</td>
+                    <td>盘中一度突破111美元，创三年多新高</td>
+                </tr>
+                <tr>
+                    <td>布伦特原油</td>
+                    <td class="trend-up">$107.98/桶 (+16.49%)</td>
+                    <td>中东局势升级推动油价飙升</td>
+                </tr>
+                <tr>
+                    <td>国内成品油</td>
+                    <td class="trend-up">汽油+695元/吨 柴油+670元/吨</td>
+                    <td>3月9日24时调价，呈现"四涨零跌一搁浅"格局</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--primary);">🧪 化工板块</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>品种</th>
+                    <th>价格</th>
+                    <th>日涨跌</th>
+                    <th>市场分析</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>甲醇</td>
+                    <td>2,595元/吨</td>
+                    <td class="trend-up">+3.80%</td>
+                    <td>受原油带动，甲醇价格延续涨势</td>
+                </tr>
+                <tr>
+                    <td>丙烯</td>
+                    <td>7,451元/吨</td>
+                    <td class="trend-up">+3.33%</td>
+                    <td>成本支撑强劲，下游需求回暖</td>
+                </tr>
+                <tr>
+                    <td>纯苯</td>
+                    <td>7,557元/吨</td>
+                    <td class="trend-up">+4.86%</td>
+                    <td>原油暴涨带动芳烃产业链普涨</td>
+                </tr>
+                <tr>
+                    <td>苯乙烯</td>
+                    <td>8,910元/吨</td>
+                    <td class="trend-up">+4.82%</td>
+                    <td>成本推动型上涨，库存压力仍存</td>
+                </tr>
+                <tr>
+                    <td>丁二烯</td>
+                    <td>12,687元/吨</td>
+                    <td class="trend-up">+8.28%</td>
+                    <td>供应偏紧，价格大幅上涨</td>
+                </tr>
+                <tr>
+                    <td>双酚A</td>
+                    <td>10,360元/吨</td>
+                    <td class="trend-up">+11.16%</td>
+                    <td>产业链传导效应明显</td>
+                </tr>
+                <tr>
+                    <td>顺酐</td>
+                    <td>8,325元/吨</td>
+                    <td class="trend-up">+17.67%</td>
+                    <td>涨幅居化工品前列</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--primary);">⚙️ 金属板块</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>品种</th>
+                    <th>价格</th>
+                    <th>周涨跌</th>
+                    <th>市场分析</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>沪铜</td>
+                    <td>100,250元/吨</td>
+                    <td class="trend-down">-0.8%</td>
+                    <td>库存累库压力，现货贴水收敛</td>
+                </tr>
+                <tr>
+                    <td>沪铝</td>
+                    <td>25,180元/吨</td>
+                    <td class="trend-up">+2.5%</td>
+                    <td>地缘扰动推升能源价格，铝价强势上涨</td>
+                </tr>
+                <tr>
+                    <td>电池级碳酸锂</td>
+                    <td>155,000元/吨</td>
+                    <td class="trend-down">-10.40%</td>
+                    <td>供应过剩，价格持续承压</td>
+                </tr>
+                <tr>
+                    <td>电解钴</td>
+                    <td>432,000元/吨</td>
+                    <td class="trend-down">-1.37%</td>
+                    <td>需求疲软，价格小幅回落</td>
+                </tr>
+                <tr>
+                    <td>电解镍</td>
+                    <td>140,700元/吨</td>
+                    <td class="trend-down">-1.75%</td>
+                    <td>库存高位，价格承压</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--primary);">💨 工业气体</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>品种</th>
+                    <th>价格区间</th>
+                    <th>市场动态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>液氧</td>
+                    <td>450-650元/吨</td>
+                    <td>供应充足，价格持稳</td>
+                </tr>
+                <tr>
+                    <td>液氮</td>
+                    <td>500-750元/吨</td>
+                    <td>需求平稳，局部地区小幅波动</td>
+                </tr>
+                <tr>
+                    <td>液氩</td>
+                    <td>800-1,200元/吨</td>
+                    <td>光伏行业需求支撑，价格坚挺</td>
+                </tr>
+                <tr>
+                    <td>二氧化碳</td>
+                    <td>300-500元/吨</td>
+                    <td>食品级需求稳定，工业级供应宽松</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="analysis-box">
+            <h3>📈 市场趋势分析</h3>
+            <ul>
+                <li><strong>能源危机加剧：</strong>霍尔木兹海峡近乎封锁，全球约20%石油运输受阻，阿联酋、科威特、伊拉克等主要产油国相继减产，油价短期或维持100-120美元高位</li>
+                <li><strong>化工品全线跟涨：</strong>原油暴涨带动化工产业链成本上升，顺酐、双酚A、丁二烯等品种涨幅超10%，预计短期内化工品价格维持强势</li>
+                <li><strong>有色金属分化：</strong>铝价受能源成本推动上涨，铜、镍、锂等受库存和需求影响承压，地缘风险对贵金属形成支撑</li>
+                <li><strong>工业气体稳定：</strong>大宗工业气体供应充足，价格持稳，光伏行业对液氩需求形成支撑</li>
+                <li><strong>采购建议：</strong>建议下游企业加快原料备货，关注油价走势及中东局势演变，合理控制库存风险</li>
+            </ul>
+        </div>
+
+        <div class="data-source">
+            <h3>📊 数据来源</h3>
+            <p>本栏目数据来源于隆众资讯、生意社、上海金属网、财新数据等权威资讯平台，每日自动抓取整理，为您提供及时准确的化学原料市场价格情报。</p>
+            <p style="margin-top: 1rem;"><strong>覆盖品类：</strong>原油、天然气、乙烯、丙烯、苯、甲醇、PTA、乙二醇、塑料、橡胶、有色金属、工业气体等</p>
+        </div>
+
+        <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.875rem;">
+            数据更新时间：2026年3月9日 | 本情报基于公开信息整理，仅供参考
+        </p>
+    </main>
+
+    <footer>
+        <p>© 2026 Millay. 洞察 · 思考 · 实践</p>
+    </footer>
+</body>
+</html>
