@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学原料行情日报 | 2026年03月10日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(147,0,211,0.1) 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #00d4ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(0,212,255,0.3);
+        }
+        .header .date {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            letter-spacing: 2px;
+        }
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #00d4ff, #ff00ff) 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #00d4ff, #ff00ff);
+            border-radius: 2px;
+        }
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .overview-card {
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(147,0,211,0.1) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .overview-card h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .overview-card p {
+            color: #c0c0c0;
+            font-size: 0.95em;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .price-table th {
+            background: linear-gradient(135deg, rgba(0,212,255,0.2) 0%, rgba(147,0,211,0.2) 100%);
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            border-bottom: 2px solid rgba(0,212,255,0.3);
+        }
+        .price-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #d0d0d0;
+        }
+        .price-table tr:hover {
+            background: rgba(0,212,255,0.05);
+        }
+        .price-up {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+        .price-down {
+            color: #51cf66;
+            font-weight: 600;
+        }
+        .price-flat {
+            color: #ffd93d;
+        }
+        .analysis-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .analysis-item {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #00d4ff;
+        }
+        .analysis-item h4 {
+            color: #00d4ff;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        .analysis-item p, .analysis-item ul {
+            color: #b0b0b0;
+            font-size: 0.95em;
+        }
+        .analysis-item ul {
+            padding-left: 20px;
+        }
+        .analysis-item li {
+            margin-bottom: 8px;
+        }
+        .news-list {
+            list-style: none;
+        }
+        .news-item {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-tag {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+        .news-tag.red {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+        }
+        .news-tag.green {
+            background: linear-gradient(135deg, #51cf66, #40c057);
+        }
+        .news-tag.purple {
+            background: linear-gradient(135deg, #a855f7, #9333ea);
+        }
+        .news-content {
+            flex: 1;
+        }
+        .news-content h4 {
+            color: #e8e8e8;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+        .news-content p {
+            color: #909090;
+            font-size: 0.9em;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255,107,107,0.15) 0%, rgba(238,90,90,0.1) 100%);
+            border: 1px solid rgba(255,107,107,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .highlight-box h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #707070;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .price-table {
+                font-size: 0.8em;
+            }
+            .price-table th, .price-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>化学原料行情日报</h1>
+            <div class="date">2026年03月10日 星期二</div>
+        </header>
+
+        <!-- 市场概况 -->
+        <section class="section">
+            <h2 class="section-title">市场概况</h2>
+            <div class="overview">
+                <div class="overview-card">
+                    <h3>🔥 能源市场</h3>
+                    <p>受中东局势影响，国际原油和能化市场持续飙升。WTI原油期货一度冲高至近120美元/桶，上海原油期货涨停，燃料油、低硫燃料油、沥青、丁二烯橡胶等21个品种收盘涨停。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>📈 化工板块</h3>
+                    <p>3月9日化工板块环比上升商品共88种，涨幅5%以上商品40种，占12.1%。甲醇、塑料、聚丙烯等主力合约大涨，化工品价格指数创2025年下半年以来新高。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>🌾 农资市场</h3>
+                    <p>春耕备肥进入关键阶段，磷肥、复合肥需求集中释放，硫磺价格较年初涨幅突破20%，港口库存维持低位运行。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>🔋 新能源材料</h3>
+                    <p>六氟磷酸锂三个月内涨幅接近160%，行业库存维持10-15天低位。万华化学上调PA12等高端材料价格5%-10%。</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>⚠️ 风险提示</h4>
+                <p>上期所、上期能源发布风控措施：自3月11日起，燃料油、石油沥青、丁二烯橡胶期货涨跌停板幅度调整为12%，交易保证金比例上调。地缘冲突发展态势存在高不确定性，短期内价格波动风险显著高于历史平均水平。</p>
+            </div>
+        </section>
+
+        <!-- 主要原料价格表 -->
+        <section class="section">
+            <h2 class="section-title">主要原料价格表</h2>
+            
+            <h3 style="color: #00d4ff; margin: 20px 0 15px; font-size: 1.1em;">🔸 化工原料</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>最新价格</th>
+                        <th>单位</th>
+                        <th>日涨跌</th>
+                        <th>同比涨跌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>磷酸</td>
+                        <td>7,060</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.44%</td>
+                        <td class="price-up">+4.59%</td>
+                    </tr>
+                    <tr>
+                        <td>碳酸二甲酯</td>
+                        <td>3,850</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.32%</td>
+                        <td class="price-up">+8.45%</td>
+                    </tr>
+                    <tr>
+                        <td>苯胺</td>
+                        <td>9,745</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.04%</td>
+                        <td class="price-up">+6.36%</td>
+                    </tr>
+                    <tr>
+                        <td>纯苯</td>
+                        <td>6,657</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+0.55%</td>
+                        <td class="price-down">-11.75%</td>
+                    </tr>
+                    <tr>
+                        <td>苯乙烯</td>
+                        <td>8,550</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+5.56%</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>氢氧化锂(电池级)</td>
+                        <td>153,000</td>
+                        <td>元/吨</td>
+                        <td class="price-flat">0.00%</td>
+                        <td class="price-up">+112.50%</td>
+                    </tr>
+                    <tr>
+                        <td>氢氧化锂(工业级)</td>
+                        <td>142,000</td>
+                        <td>元/吨</td>
+                        <td class="price-flat">0.00%</td>
+                        <td class="price-up">+121.88%</td>
+                    </tr>
+                    <tr>
+                        <td>硫酸铵</td>
+                        <td>1,275</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.19%</td>
+                        <td class="price-up">+30.10%</td>
+                    </tr>
+                    <tr>
+                        <td>氯化钾(进口)</td>
+                        <td>3,700</td>
+                        <td>元/吨</td>
+                        <td class="price-flat">0.00%</td>
+                        <td class="price-up">+9.90%</td>
+                    </tr>
+                    <tr>
+                        <td>有机硅DMC</td>
+                        <td>14,000</td>
+                        <td>元/吨</td>
+                        <td class="price-flat">0.00%</td>
+                        <td class="price-up">+2.19%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #00d4ff; margin: 30px 0 15px; font-size: 1.1em;">🔸 橡塑原料</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>最新价格</th>
+                        <th>单位</th>
+                        <th>日涨跌</th>
+                        <th>同比涨跌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ABS</td>
+                        <td>11,333</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+4.29%</td>
+                        <td class="price-down">-2.61%</td>
+                    </tr>
+                    <tr>
+                        <td>PA66</td>
+                        <td>16,833</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+2.85%</td>
+                        <td class="price-down">-10.14%</td>
+                    </tr>
+                    <tr>
+                        <td>顺丁橡胶</td>
+                        <td>14,260</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+2.52%</td>
+                        <td class="price-up">+1.28%</td>
+                    </tr>
+                    <tr>
+                        <td>PVC</td>
+                        <td>4,901</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.66%</td>
+                        <td class="price-down">-0.67%</td>
+                    </tr>
+                    <tr>
+                        <td>PP(拉丝)</td>
+                        <td>7,827</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.60%</td>
+                        <td class="price-up">+4.01%</td>
+                    </tr>
+                    <tr>
+                        <td>丁苯橡胶</td>
+                        <td>14,158</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.31%</td>
+                        <td class="price-down">-1.22%</td>
+                    </tr>
+                    <tr>
+                        <td>PC</td>
+                        <td>14,917</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.29%</td>
+                        <td class="price-down">-7.06%</td>
+                    </tr>
+                    <tr>
+                        <td>LLDPE</td>
+                        <td>7,567</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.00%</td>
+                        <td class="price-down">-8.06%</td>
+                    </tr>
+                    <tr>
+                        <td>天然橡胶</td>
+                        <td>16,650</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+0.10%</td>
+                        <td class="price-down">-2.40%</td>
+                    </tr>
+                    <tr>
+                        <td>PMMA</td>
+                        <td>15,033</td>
+                        <td>元/吨</td>
+                        <td class="price-flat">0.00%</td>
+                        <td class="price-down">-14.58%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #00d4ff; margin: 30px 0 15px; font-size: 1.1em;">🔸 能源与大宗商品</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>最新价格</th>
+                        <th>单位</th>
+                        <th>日涨跌</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WTI原油</td>
+                        <td>81.01</td>
+                        <td>美元/桶</td>
+                        <td class="price-up">+8.5%</td>
+                        <td>中东局势影响</td>
+                    </tr>
+                    <tr>
+                        <td>布伦特原油</td>
+                        <td>85.41</td>
+                        <td>美元/桶</td>
+                        <td class="price-up">+4.9%</td>
+                        <td>供应受阻</td>
+                    </tr>
+                    <tr>
+                        <td>石油焦(山东东方华龙)</td>
+                        <td>1,550</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+3.3%</td>
+                        <td>硫7.0</td>
+                    </tr>
+                    <tr>
+                        <td>大庆石化PP(T30S)</td>
+                        <td>7,750</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+4.0%</td>
+                        <td>上调300元</td>
+                    </tr>
+                    <tr>
+                        <td>万华化学LLDPE(7042)</td>
+                        <td>7,700</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+2.6%</td>
+                        <td>华东地区</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 价格走势分析 -->
+        <section class="section">
+            <h2 class="section-title">价格走势分析</h2>
+            <div class="analysis-content">
+                <div class="analysis-item">
+                    <h4>📊 上涨驱动因素</h4>
+                    <ul>
+                        <li><strong>地缘冲突升级：</strong>中东局势紧张导致霍尔木兹海峡航运受阻，全球约20-30%原油贸易面临中断风险</li>
+                        <li><strong>供应端收缩：</strong>伊朗甲醇装置产能占中东59.78%，装置开工受影响预期强烈</li>
+                        <li><strong>春季检修：</strong>天赐材料、金陵石化、浙江石化等龙头企业装置陆续停车检修，周期超30天</li>
+                        <li><strong>需求复苏：</strong>"金三银四"旺季来临，下游复工复产，春耕备肥需求集中释放</li>
+                    </ul>
+                </div>
+                <div class="analysis-item">
+                    <h4>📉 潜在风险因素</h4>
+                    <ul>
+                        <li><strong>局势缓和风险：</strong>一旦地缘冲突缓解，能化品种价格可能出现较大回落</li>
+                        <li><strong>库存压力：</strong>甲醇港口库存仍处高位，需关注去库拐点</li>
+                        <li><strong>下游接受度：</strong>若涨价幅度过大，下游市场难以接受，存在价格回调压力</li>
+                        <li><strong>交易所风控：</strong>上期所上调保证金及涨跌停板，抑制市场过热情绪</li>
+                    </ul>
+                </div>
+                <div class="analysis-item">
+                    <h4>🔮 后市展望</h4>
+                    <ul>
+                        <li><strong>短期：</strong>春季检修与下游需求复苏支撑化工品价格保持强势，行业盈利有望改善</li>
+                        <li><strong>中期：</strong>欧洲高成本产能持续退出，国内化工企业国际竞争力提升</li>
+                        <li><strong>长期：</strong>绿色转型、高端替代、供应链自主可控成为核心主线</li>
+                        <li><strong>关注品种：</strong>甲醇、纯苯、苯乙烯、MDI、钛白粉、六氟磷酸锂</li>
+                    </ul>
+                </div>
+                <div class="analysis-item">
+                    <h4>🎯 机构观点</h4>
+                    <ul>
+                        <li><strong>华泰期货：</strong>对MA2605合约维持谨慎逢低做多套保策略</li>
+                        <li><strong>银河期货：</strong>地缘冲突发展态势存在高不确定性，短期价格波动风险显著</li>
+                        <li><strong>东方盛虹：</strong>2026年以来PX、PTA、纯苯等产品涨价超10%，部分超20%</li>
+                        <li><strong>宝丰能源：</strong>预计2025年归母净利润110-120亿元，同比增长73.57%-89.34%</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 行业动态 -->
+        <section class="section">
+            <h2 class="section-title">行业动态</h2>
+            <ul class="news-list">
+                <li class="news-item">
+                    <span class="news-tag red">交易所</span>
+                    <div class="news-content">
+                        <h4>上期所、上期能源发布风控措施</h4>
+                        <p>自3月11日起，燃料油期货日内开仓最大数量调整为1500手；石油沥青、丁二烯橡胶期货涨跌停板幅度调整为12%，套保持仓保证金13%，一般持仓14%。暂停相关品种交易减收。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag">企业动态</span>
+                    <div class="news-content">
+                        <h4>宁德时代与力拓签署合作谅解备忘录</h4>
+                        <p>双方将重点关注采矿作业的电气化应用，致力于探索电池材料的回收利用以及关键矿产资源的循环发展路径。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag green">项目进展</span>
+                    <div class="news-content">
+                        <h4>天华新能锂电材料二期项目推进</h4>
+                        <p>四川天华时代新能源锂电材料二期项目将建一套锂辉石硫酸法提锂、制备电池级碳酸锂装置，年产能6万吨，计划2026年底建成、2027年一季度投产。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag purple">国际市场</span>
+                    <div class="news-content">
+                        <h4>英国启动对中国金红石型二氧化钛反倾销调查</h4>
+                        <p>调查期为2025年全年，以核实中国进口产品是否存在倾销行为及其对英国产业的损害。相关企业可于3月17日前注册参与。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag">企业动态</span>
+                    <div class="news-content">
+                        <h4>陶氏上调MDI产品价格</h4>
+                        <p>3月5日，陶氏对欧洲地区MDI产品提价200欧元/吨，对印度、中东及非洲地区上调300美元/吨。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag red">航运</span>
+                    <div class="news-content">
+                        <h4>长荣海运暂停中东多国订舱</h4>
+                        <p>即日起暂停受理巴林、科威特、卡塔尔、阿联酋、沙特阿拉伯（吉达除外）、伊拉克乌姆盖斯尔港的新订舱申请，直至另行通知。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag green">行业会议</span>
+                    <div class="news-content">
+                        <h4>2026能源化工行业技术装备国产化大会即将召开</h4>
+                        <p>中国设备管理协会定于3月19-20日在青岛召开大会，主题为"高端引领、绿色转型、高端赋能"，同期发布年度装备创新产品。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag">企业动态</span>
+                    <div class="news-content">
+                        <h4>万华化学上调高端材料价格</h4>
+                        <p>3月1日起，万华化学上调PA12等高端材料价格，涨幅在5%-10%，上游成本压力逐步向下游传导。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag purple">产能动态</span>
+                    <div class="news-content">
+                        <h4>印度GNFC的TDI装置停车</h4>
+                        <p>位于印度古吉拉特邦Dahej的TDI装置于3月5日因技术问题暂时停车，后续复产时间有待更新。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag green">业绩预增</span>
+                    <div class="news-content">
+                        <h4>传化智联2025年归母净利润预增256%-362%</h4>
+                        <p>预计归母净利润5.4亿至7亿元，主要受益于化学业务增长及资产优化。太平洋证券给予"增持"评级。</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <p>数据来源：生意社、卓创资讯、百川盈孚、隆众资讯、各交易所公告</p>
+            <p style="margin-top: 10px;">免责声明：本报告仅供参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+            <p style="margin-top: 10px;">© 2026 化学原料行情日报 | 生成时间：2026年03月10日</p>
+        </footer>
+    </div>
+</body>
+</html>
