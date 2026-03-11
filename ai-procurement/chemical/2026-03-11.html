@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学原料行情日报 | 2026年03月11日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(147,0,211,0.1) 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #00d4ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(0,212,255,0.3);
+        }
+        .header .date {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            letter-spacing: 2px;
+        }
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #00d4ff, #ff00ff) 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #00d4ff, #ff00ff);
+            border-radius: 2px;
+        }
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .overview-card {
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(147,0,211,0.1) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .overview-card h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .overview-card p {
+            color: #c0c0c0;
+            font-size: 0.95em;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .price-table th {
+            background: linear-gradient(135deg, rgba(0,212,255,0.2) 0%, rgba(147,0,211,0.2) 100%);
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            border-bottom: 2px solid rgba(0,212,255,0.3);
+        }
+        .price-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #d0d0d0;
+        }
+        .price-table tr:hover {
+            background: rgba(0,212,255,0.05);
+        }
+        .price-up {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+        .price-down {
+            color: #51cf66;
+            font-weight: 600;
+        }
+        .price-flat {
+            color: #ffd93d;
+        }
+        .analysis-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .analysis-item {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #00d4ff;
+        }
+        .analysis-item h4 {
+            color: #00d4ff;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        .analysis-item p, .analysis-item ul {
+            color: #b0b0b0;
+            font-size: 0.95em;
+        }
+        .analysis-item ul {
+            padding-left: 20px;
+        }
+        .analysis-item li {
+            margin-bottom: 8px;
+        }
+        .news-list {
+            list-style: none;
+        }
+        .news-item {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-tag {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+        .news-tag.red {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+        }
+        .news-tag.green {
+            background: linear-gradient(135deg, #51cf66, #40c057);
+        }
+        .news-tag.purple {
+            background: linear-gradient(135deg, #a855f7, #9333ea);
+        }
+        .news-content {
+            flex: 1;
+        }
+        .news-content h4 {
+            color: #e8e8e8;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+        .news-content p {
+            color: #909090;
+            font-size: 0.9em;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255,107,107,0.15) 0%, rgba(238,90,90,0.1) 100%);
+            border: 1px solid rgba(255,107,107,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .highlight-box h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #707070;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .price-table {
+                font-size: 0.8em;
+            }
+            .price-table th, .price-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>化学原料行情日报</h1>
+            <div class="date">2026年03月11日 星期三</div>
+        </header>
+
+        <!-- 市场概况 -->
+        <section class="section">
+            <h2 class="section-title">市场概况</h2>
+            <div class="overview">
+                <div class="overview-card">
+                    <h3>🔥 能源市场</h3>
+                    <p>国际原油价格大幅回调，WTI原油收于83.45美元/桶，单日跌幅11.94%；布伦特原油收于87.80美元/桶，跌幅11.28%。SC原油主力合约收跌12.34%，报642元/桶。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>📉 化工板块</h3>
+                    <p>3月10日化工板块跌多涨少，燃料油、纯苯跌超7%，丙烯、苯乙烯、低硫燃料油跌超5%。丙烯酸、苯乙酮、己二酸等品种涨幅居前。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>⚠️ 风控措施</h3>
+                    <p>上期能源调整原油、低硫燃料油期货相关合约涨跌停板幅度和交易保证金比例，抑制市场过度波动。交易所风控措施持续收紧。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>📊 涨跌分布</h3>
+                    <p>3月10日化工板块环比上升商品74种，涨幅5%以上21种；环比下降商品中，纯苯跌19.43%、苯酚跌16.67%、丙酮跌13.62%、甲醇跌11.34%。</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>⚠️ 风险提示</h4>
+                <p>地缘冲突发展态势存在高不确定性，国际原油价格单日波动超10%，国内化工品期货价格波动剧烈。上期所、上期能源已发布风控措施，燃料油、低硫燃料油期货涨跌停板幅度和交易保证金比例已调整。建议投资者注意控制风险，谨慎操作。</p>
+            </div>
+        </section>
+
+        <!-- 主要原料价格表 -->
+        <section class="section">
+            <h2 class="section-title">主要原料价格表</h2>
+            
+            <h3 style="color: #00d4ff; margin: 20px 0 15px; font-size: 1.1em;">🔸 化工原料（涨幅榜）</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>最新价格</th>
+                        <th>单位</th>
+                        <th>日涨跌</th>
+                        <th>同比涨跌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>丙烯酸</td>
+                        <td>12,583</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+5.59%</td>
+                        <td class="price-up">+64.49%</td>
+                    </tr>
+                    <tr>
+                        <td>苯乙酮</td>
+                        <td>13,100</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+5.36%</td>
+                        <td class="price-down">-6.26%</td>
+                    </tr>
+                    <tr>
+                        <td>己二酸</td>
+                        <td>10,600</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+5.30%</td>
+                        <td class="price-up">+33.05%</td>
+                    </tr>
+                    <tr>
+                        <td>甲醛</td>
+                        <td>1,152</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+5.25%</td>
+                        <td class="price-down">-1.50%</td>
+                    </tr>
+                    <tr>
+                        <td>DBP</td>
+                        <td>9,601</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+5.11%</td>
+                        <td class="price-up">+17.55%</td>
+                    </tr>
+                    <tr>
+                        <td>异辛醇</td>
+                        <td>9,500</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+4.97%</td>
+                        <td class="price-up">+26.61%</td>
+                    </tr>
+                    <tr>
+                        <td>DMF</td>
+                        <td>4,780</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+4.82%</td>
+                        <td class="price-up">+13.54%</td>
+                    </tr>
+                    <tr>
+                        <td>环氧丙烷</td>
+                        <td>11,016</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+4.75%</td>
+                        <td class="price-up">+38.57%</td>
+                    </tr>
+                    <tr>
+                        <td>聚合MDI</td>
+                        <td>17,433</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+4.39%</td>
+                        <td class="price-down">-0.19%</td>
+                    </tr>
+                    <tr>
+                        <td>TDI</td>
+                        <td>18,600</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+4.10%</td>
+                        <td class="price-up">+53.72%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #00d4ff; margin: 30px 0 15px; font-size: 1.1em;">🔸 化工原料（跌幅榜）</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>最新价格</th>
+                        <th>单位</th>
+                        <th>日涨跌</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>纯苯</td>
+                        <td>9,670</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-19.43%</td>
+                        <td>跌幅最大</td>
+                    </tr>
+                    <tr>
+                        <td>甲苯</td>
+                        <td>8,333</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-21.88%</td>
+                        <td>芳烃系回调</td>
+                    </tr>
+                    <tr>
+                        <td>苯酚</td>
+                        <td>9,000</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-16.67%</td>
+                        <td>双酚A原料</td>
+                    </tr>
+                    <tr>
+                        <td>丙酮</td>
+                        <td>6,500</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-13.62%</td>
+                        <td>溶剂市场</td>
+                    </tr>
+                    <tr>
+                        <td>甲醇</td>
+                        <td>2,593</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-11.34%</td>
+                        <td>煤化工</td>
+                    </tr>
+                    <tr>
+                        <td>苯乙烯</td>
+                        <td>10,500</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-9.25%</td>
+                        <td>橡塑原料</td>
+                    </tr>
+                    <tr>
+                        <td>丙烯</td>
+                        <td>8,817</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-9.11%</td>
+                        <td>石化基础</td>
+                    </tr>
+                    <tr>
+                        <td>MTBE</td>
+                        <td>7,733</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-5.69%</td>
+                        <td>汽油添加剂</td>
+                    </tr>
+                    <tr>
+                        <td>双酚A</td>
+                        <td>11,560</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-6.47%</td>
+                        <td>PC原料</td>
+                    </tr>
+                    <tr>
+                        <td>混二甲苯</td>
+                        <td>8,137</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-6.73%</td>
+                        <td>芳烃系</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #00d4ff; margin: 30px 0 15px; font-size: 1.1em;">🔸 能源与大宗商品</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>最新价格</th>
+                        <th>单位</th>
+                        <th>日涨跌</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WTI原油</td>
+                        <td>83.45</td>
+                        <td>美元/桶</td>
+                        <td class="price-down">-11.94%</td>
+                        <td>大幅回调</td>
+                    </tr>
+                    <tr>
+                        <td>布伦特原油</td>
+                        <td>87.80</td>
+                        <td>美元/桶</td>
+                        <td class="price-down">-11.28%</td>
+                        <td>国际基准</td>
+                    </tr>
+                    <tr>
+                        <td>SC原油</td>
+                        <td>642</td>
+                        <td>元/桶</td>
+                        <td class="price-down">-12.34%</td>
+                        <td>上海原油</td>
+                    </tr>
+                    <tr>
+                        <td>燃料油</td>
+                        <td>-</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-7%+</td>
+                        <td>跌超7%</td>
+                    </tr>
+                    <tr>
+                        <td>低硫燃料油(LU)</td>
+                        <td>-</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-5%+</td>
+                        <td>跌超5%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 价格走势分析 -->
+        <section class="section">
+            <h2 class="section-title">价格走势分析</h2>
+            <div class="analysis-content">
+                <div class="analysis-item">
+                    <h4>📊 市场驱动因素</h4>
+                    <ul>
+                        <li><strong>原油大幅回调：</strong>中东局势缓和预期导致国际油价单日暴跌超11%，WTI跌破84美元/桶，成本端支撑减弱</li>
+                        <li><strong>芳烃系领跌：</strong>纯苯、甲苯、苯乙烯、苯酚等芳烃产品跌幅居前，纯苯单日跌19.43%，甲苯跌21.88%</li>
+                        <li><strong>煤化工承压：</strong>甲醇跌11.34%，丙烯跌9.11%，煤化工产业链整体回调</li>
+                        <li><strong>分化明显：</strong>丙烯酸、己二酸、TDI等品种逆势上涨，市场呈现结构性行情</li>
+                    </ul>
+                </div>
+                <div class="analysis-item">
+                    <h4>📉 下跌原因分析</h4>
+                    <ul>
+                        <li><strong>成本坍塌：</strong>原油价格大幅回调，化工品成本支撑减弱，跟跌效应明显</li>
+                        <li><strong>情绪逆转：</strong>前期涨幅过大品种获利回吐，市场避险情绪升温</li>
+                        <li><strong>需求观望：</strong>下游对高价原料接受度下降，采购节奏放缓</li>
+                        <li><strong>交易所风控：</strong>上期所上调保证金及涨跌停板，抑制投机情绪</li>
+                    </ul>
+                </div>
+                <div class="analysis-item">
+                    <h4>🔮 后市展望</h4>
+                    <ul>
+                        <li><strong>短期：</strong>原油价格波动将主导化工品走势，建议关注地缘局势进展</li>
+                        <li><strong>中期：</strong>春季检修与下游需求复苏仍存支撑，但需警惕成本端波动风险</li>
+                        <li><strong>长期：</strong>欧洲高成本产能持续退出，国内化工企业国际竞争力提升</li>
+                        <li><strong>关注品种：</strong>丙烯酸、己二酸、TDI等强势品种，以及超跌的芳烃系反弹机会</li>
+                    </ul>
+                </div>
+                <div class="analysis-item">
+                    <h4>🎯 机构观点</h4>
+                    <ul>
+                        <li><strong>华泰期货：</strong>地缘冲突发展态势存在高不确定性，短期价格波动风险显著</li>
+                        <li><strong>银河期货：</strong>对MA2605合约维持谨慎逢低做多套保策略，但需控制仓位</li>
+                        <li><strong>东方盛虹：</strong>2026年以来PX、PTA、纯苯等产品涨价超10%，部分超20%</li>
+                        <li><strong>国金化工：</strong>本周化工产品涨跌分化，液氯、燃料油、己二酸涨幅居前</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 行业动态 -->
+        <section class="section">
+            <h2 class="section-title">行业动态</h2>
+            <ul class="news-list">
+                <li class="news-item">
+                    <span class="news-tag red">交易所</span>
+                    <div class="news-content">
+                        <h4>上期能源调整原油期货风控措施</h4>
+                        <p>3月11日起，原油、低硫燃料油期货相关合约涨跌停板幅度和交易保证金比例调整，抑制市场过度波动。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag red">能源</span>
+                    <div class="news-content">
+                        <h4>国际油价单日暴跌超11%</h4>
+                        <p>WTI原油收于83.45美元/桶，跌幅11.94%；布伦特原油收于87.80美元/桶，跌幅11.28%。中东局势缓和预期主导市场。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag">市场</span>
+                    <div class="news-content">
+                        <h4>化工期货主力合约跌多涨少</h4>
+                        <p>截至23:00收盘，燃料油、纯苯跌超7%，丙烯、苯乙烯、低硫燃料油跌超5%；豆粕、棉花、菜粕涨超1%。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag green">企业</span>
+                    <div class="news-content">
+                        <h4>东方盛虹：石化品涨价超10%</h4>
+                        <p>2026年以来，PX、PTA、纯苯、丁二烯、苯乙烯、苯酚、丙酮、环氧丙烷、硫磺等产品涨价幅度超过10%。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag purple">国际</span>
+                    <div class="news-content">
+                        <h4>印度JSW钢铁2月产量下降1%</h4>
+                        <p>受3号高炉停产影响，2026年2月印度业务粗钢产量同比下降1%。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag">数据</span>
+                    <div class="news-content">
+                        <h4>中国1-2月煤炭进口同比增长1.5%</h4>
+                        <p>海关数据显示，2026年1-2月中国煤炭进口量达到7722万吨，同比增长1.5%。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag">航运</span>
+                    <div class="news-content">
+                        <h4>铁矿石港口库存回升</h4>
+                        <p>3月2日-3月8日期间，澳大利亚、巴西七个主要港口铁矿石库存总量1317.9万吨，环比增加39.6万吨。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag green">金属</span>
+                    <div class="news-content">
+                        <h4>伦铜收涨1.51%</h4>
+                        <p>伦铜报13114美元/吨，伦铝报3390美元/吨，伦锌报3342美元/吨，工业金属普遍上涨。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag red">贵金属</span>
+                    <div class="news-content">
+                        <h4>沪金收涨0.98%，沪银收涨1.67%</h4>
+                        <p>沪金主力合约报1155元/克，沪银主力合约报22536元/千克，贵金属避险属性凸显。</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-tag">农产品</span>
+                    <div class="news-content">
+                        <h4>美大豆涨0.59%，美豆粕涨0.51%</h4>
+                        <p>美玉米持平，美豆油跌0.33%，美小麦跌1.70%，农产品期货涨跌互现。</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <p>数据来源：生意社、卓创资讯、百川盈孚、隆众资讯、各交易所公告、金十期货</p>
+            <p style="margin-top: 10px;">免责声明：本报告仅供参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+            <p style="margin-top: 10px;">© 2026 化学原料行情日报 | 生成时间：2026年03月11日</p>
+        </footer>
+    </div>
+</body>
+</html>
