@@ -4,175 +4,510 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>化学原料市场价格情报 | 2026年3月12日 | Millay</title>
-    <meta name="description" content="化学原料市场价格情报，涵盖能源、化工、金属等板块最新价格行情与市场分析">
+    <meta name="description" content="化学原料市场价格情报，涵盖能源、化工、金属、工业气体等板块最新价格行情与市场分析">
     <meta name="author" content="Millay">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --success: #34a853;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            color: white;
+            padding: 160px 2rem 100px;
+            margin-top: 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 81, 255, 0.1) 0%, transparent 50%);
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        .alert-banner {
+            background: linear-gradient(90deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-icon {
+            font-size: 1.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.75rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+        .stat-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-value.up { color: var(--danger); }
+        .stat-value.down { color: var(--success); }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-top: 0.5rem;
+        }
+        .stat-change {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+        .stat-change.up { color: var(--danger); }
+        .stat-change.down { color: var(--success); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+            background: var(--bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.875rem;
+        }
+        tr:hover { background: var(--bg-light); }
+        .product-name { font-weight: 600; color: var(--primary); }
+        .price { font-weight: 700; color: var(--primary); }
+        .trend-up { color: var(--danger); font-weight: 600; }
+        .trend-down { color: var(--success); font-weight: 600; }
+        .trend-neutral { color: var(--text-muted); }
+        .unit { color: var(--text-secondary); font-size: 0.875rem; }
+        .region-tag {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .analysis-box {
+            background: var(--bg-warm);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .analysis-box h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .analysis-box p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .highlight-box h4 {
+            color: #e65100;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .highlight-box p {
+            color: #bf360c;
+            line-height: 1.7;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .tag-buy { background: #e8f5e9; color: #2e7d32; }
+        .tag-sell { background: #ffebee; color: #c62828; }
+        .tag-hold { background: #fff3e0; color: #ef6c00; }
+        .tag-watch { background: #e3f2fd; color: #1565c0; }
+        .data-source {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+        .data-source h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .data-source p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; font-size: 0.9375rem; }
+        footer .tagline {
+            font-size: 1.25rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 0.75rem;
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.75rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            table { font-size: 0.8125rem; }
+            th, td { padding: 0.75rem 0.5rem; }
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <nav class="bg-white shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../../index.html" class="text-xl font-bold text-gray-900">洞察 · 思考 · 实践</a>
-                <div class="flex gap-4">
-                    <a href="../../supply-chain/index.html" class="text-gray-600 hover:text-gray-900">供应链前沿</a>
-                    <a href="../../ai-learning/index.html" class="text-gray-600 hover:text-gray-900">AI学习</a>
-                    <a href="../index.html" class="text-gray-600 hover:text-gray-900">AI采购</a>
-                    <a href="../../global-chain/index.html" class="text-gray-600 hover:text-gray-900">链·全球</a>
-                </div>
-            </div>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="alert-banner">
+        ⚠️ 市场预警：受中东地缘冲突影响，国际油价今日大涨超4%，化工板块全线上涨，多家化工企业官宣涨价
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Chemical Market Intelligence</span>
+            <h1>🧪 化学原料市场价格情报</h1>
+            <p class="meta">数据更新时间：2026年3月12日 16:00 | 数据来源：隆众资讯、光大期货、新浪财经</p>
         </div>
-    </nav>
+    </section>
 
-    <main class="max-w-4xl mx-auto px-4 py-8">
-        <article class="bg-white rounded-lg shadow-sm p-8">
-            <header class="mb-8 pb-8 border-b">
-                <div class="text-sm text-gray-500 mb-2">2026年3月12日 · 化学原料市场价格情报</div>
-                <h1 class="text-3xl font-bold text-gray-900 mb-4">化工板块全线上涨，地缘冲突推升能源化工品价格</h1>
-                <div class="flex gap-2 flex-wrap">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">原油</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">化工品</span>
-                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">涨价</span>
+    <main>
+        <!-- 市场概览 -->
+        <section class="section">
+            <h2><span class="section-icon">📊</span>市场概览</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value up">$87.25</div>
+                    <div class="stat-label">WTI原油（美元/桶）</div>
+                    <div class="stat-change up">↑ 4.55%</div>
                 </div>
-            </header>
-
-            <div class="prose max-w-none">
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-                    <p class="text-blue-900 font-medium">今日核心洞察</p>
-                    <p class="text-blue-800 text-sm mt-1">受中东地缘冲突影响，国际油价大幅反弹，WTI原油涨至87.25美元/桶（涨幅4.55%），布伦特原油涨至91.98美元/桶（涨幅4.76%）。化工板块全线上涨，PTA涨11.36%，短纤涨7.48%，低硫燃料油涨7.13%，多家化工企业官宣产品涨价。</p>
+                <div class="stat-card">
+                    <div class="stat-value up">$91.98</div>
+                    <div class="stat-label">布伦特原油（美元/桶）</div>
+                    <div class="stat-change up">↑ 4.76%</div>
                 </div>
-
-                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">一、能源板块</h2>
-                
-                <div class="overflow-x-auto">
-                    <table class="min-w-full border-collapse border border-gray-300">
-                        <thead>
-                            <tr class="bg-gray-100">
-                                <th class="border border-gray-300 px-4 py-2 text-left">品种</th>
-                                <th class="border border-gray-300 px-4 py-2 text-right">价格</th>
-                                <th class="border border-gray-300 px-4 py-2 text-right">涨跌</th>
-                                <th class="border border-gray-300 px-4 py-2 text-right">涨跌幅</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">WTI原油</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">87.25美元/桶</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+3.80</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+4.55%</td>
-                            </tr>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">布伦特原油</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">91.98美元/桶</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+4.18</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+4.76%</td>
-                            </tr>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">SC原油</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">695元/桶</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+45.8</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+7.05%</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="stat-card">
+                    <div class="stat-value up">¥695</div>
+                    <div class="stat-label">SC原油（元/桶）</div>
+                    <div class="stat-change up">↑ 7.05%</div>
                 </div>
-
-                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">二、化工板块</h2>
-                
-                <div class="overflow-x-auto">
-                    <table class="min-w-full border-collapse border border-gray-300">
-                        <thead>
-                            <tr class="bg-gray-100">
-                                <th class="border border-gray-300 px-4 py-2 text-left">品种</th>
-                                <th class="border border-gray-300 px-4 py-2 text-right">价格</th>
-                                <th class="border border-gray-300 px-4 py-2 text-right">涨跌幅</th>
-                                <th class="border border-gray-300 px-4 py-2">备注</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">PTA</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">6660元/吨</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+11.36%</td>
-                                <td class="border border-gray-300 px-4 py-2">夜盘大涨</td>
-                            </tr>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">短纤</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">-</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+7.48%</td>
-                                <td class="border border-gray-300 px-4 py-2">夜盘大涨</td>
-                            </tr>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">乙二醇</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">4577元/吨</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+6.29%</td>
-                                <td class="border border-gray-300 px-4 py-2">-</td>
-                            </tr>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">甲醇</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">2212.5元/吨</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+6.12%</td>
-                                <td class="border border-gray-300 px-4 py-2">大幅上涨</td>
-                            </tr>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">苯酚</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">9050元/吨</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+4.02%</td>
-                                <td class="border border-gray-300 px-4 py-2">-</td>
-                            </tr>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">双酚A</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">11500元/吨</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+4.55%</td>
-                                <td class="border border-gray-300 px-4 py-2">-</td>
-                            </tr>
-                            <tr class="bg-red-50">
-                                <td class="border border-gray-300 px-4 py-2">纯苯</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right">8415元/吨</td>
-                                <td class="border border-gray-300 px-4 py-2 text-right text-red-600">+5.65%</td>
-                                <td class="border border-gray-300 px-4 py-2">-</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="stat-card">
+                    <div class="stat-value up">¥6,660</div>
+                    <div class="stat-label">PTA（元/吨）</div>
+                    <div class="stat-change up">↑ 11.36%</div>
                 </div>
+            </div>
+        </section>
 
-                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">三、企业涨价动态</h2>
-                
-                <div class="bg-white border rounded-lg p-6 mb-6 shadow-sm">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">多家A股化工企业官宣涨价</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li><strong>华峰超纤：</strong>自3月9日起，超纤基布统一上调1-4元/米</li>
-                        <li><strong>红墙股份：</strong>自3月11日起，聚醚大单体、非离子表面活性剂及羟基酯产品价格上调50%-80%</li>
-                        <li><strong>卫星化学：</strong>各产品已随行就市上调价格</li>
-                        <li><strong>巴斯夫：</strong>3月4日起全球范围内上调塑料应用领域抗氧化剂、加工助剂和光稳定剂价格，最高涨幅达20%</li>
-                    </ul>
-                </div>
+        <!-- 能源板块 -->
+        <section class="section">
+            <h2><span class="section-icon">⛽</span>能源板块</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格</th>
+                        <th>价格</th>
+                        <th>涨跌</th>
+                        <th>单位</th>
+                        <th>地区</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">WTI原油</td>
+                        <td>期货主力</td>
+                        <td class="price">87.25</td>
+                        <td class="trend-up">+4.55%</td>
+                        <td class="unit">美元/桶</td>
+                        <td><span class="region-tag">国际</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">布伦特原油</td>
+                        <td>期货主力</td>
+                        <td class="price">91.98</td>
+                        <td class="trend-up">+4.76%</td>
+                        <td class="unit">美元/桶</td>
+                        <td><span class="region-tag">国际</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">SC原油</td>
+                        <td>主力合约</td>
+                        <td class="price">695</td>
+                        <td class="trend-up">+7.05%</td>
+                        <td class="unit">元/桶</td>
+                        <td><span class="region-tag">上海</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">低硫燃料油</td>
+                        <td>主力合约</td>
+                        <td class="price">5,050</td>
+                        <td class="trend-up">+7.13%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">上期所</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">四、市场分析</h2>
-                
-                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">1. 成本驱动</h3>
-                <p class="text-gray-700 mb-4">自2025年12月以来，原油价格累积涨幅已超过30%。与原油密切相关的化工原料在此期间持续上涨，成本大幅提升。油制PP毛利为-305.75元/吨，处于亏损状态；而煤制PP生产毛利1288.67元/吨，煤化工成本优势凸显。</p>
+        <!-- 化工板块 -->
+        <section class="section">
+            <h2><span class="section-icon">🧪</span>化工板块</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格</th>
+                        <th>价格</th>
+                        <th>涨跌</th>
+                        <th>单位</th>
+                        <th>地区</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name">PTA</td>
+                        <td>主力合约</td>
+                        <td class="price">6,660</td>
+                        <td class="trend-up">+11.36%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">郑商所</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">甲醇</td>
+                        <td>太仓现货</td>
+                        <td class="price">2,660</td>
+                        <td class="trend-up">+6.12%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">乙二醇</td>
+                        <td>主力合约</td>
+                        <td class="price">4,577</td>
+                        <td class="trend-up">+6.29%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">大商所</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">苯酚</td>
+                        <td>现货</td>
+                        <td class="price">9,050</td>
+                        <td class="trend-up">+4.02%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">纯苯</td>
+                        <td>现货</td>
+                        <td class="price">8,415</td>
+                        <td class="trend-up">+5.65%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                    <tr>
+                        <td class="product-name">双酚A</td>
+                        <td>现货</td>
+                        <td class="price">11,500</td>
+                        <td class="trend-up">+4.55%</td>
+                        <td class="unit">元/吨</td>
+                        <td><span class="region-tag">华东</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">2. 供应端收缩</h3>
-                <p class="text-gray-700 mb-4">受地缘冲突升级影响，地炼从中东及南美采购重质原油的渠道受限，原料到岸成本持续上行。亚洲地区石脑油裂解厂开工率继续下调，日本三井化学已将千叶和大阪裂解厂的开工率下调。</p>
-
-                <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">3. 需求端</ph3>
-                <p class="text-gray-700 mb-4">下游涤丝销售冷淡，价格向下游传导受阻。短期交易供应缩减与下游负反馈磨合，短期以偏强震荡看待聚酯链品种。</p>
-
-                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">五、后市展望</h2>
-                <p class="text-gray-700 mb-4">方正证券表示，顺周期的涨价交易开始活跃，涨价链至少在短期月度级别机会上存在行情扩散，可以关注基础化工等偏顺周期的方向。化工板块大的政策背景基调是"反内卷"，产业方面则是需求端新兴产业结构性的高增长、供给端则有国内资本开支收缩、欧洲产能退出等因素叠加，因此景气验证有望逐步到来。</p>
+        <!-- 市场分析 -->
+        <section class="section">
+            <h2><span class="section-icon">📈</span>市场分析</h2>
+            
+            <div class="analysis-box">
+                <h3>🔥 成本驱动：油价大幅反弹</h3>
+                <p>受中东地缘冲突影响，国际油价今日大幅反弹。WTI原油上涨4.55%至87.25美元/桶，布伦特原油上涨4.76%至91.98美元/桶。自2025年12月以来，原油价格累积涨幅已超过30%，与原油密切相关的化工原料在此期间持续上涨，成本大幅提升。</p>
             </div>
 
-            <footer class="mt-8 pt-8 border-t text-gray-500 text-sm">
-                <p>数据来源：隆众资讯、东方财富、光大期货、新浪财经等</p>
-                <p class="mt-2">发布时间：2026年3月12日</p>
-            </footer>
-        </article>
+            <div class="analysis-box">
+                <h3>⚡ 供应端收缩</h3>
+                <p>受地缘冲突升级影响，地炼从中东及南美采购重质原油的渠道受限，原料到岸成本持续上行。亚洲地区石脑油裂解厂开工率继续下调，日本三井化学已将千叶和大阪裂解厂的开工率下调。国内乙烯裂解制乙二醇企业的开工率有不同程度的下降。</p>
+            </div>
 
-        <div class="mt-8 flex justify-between">
-            <a href="2026-03-11.html" class="text-blue-600 hover:text-blue-800">← 上一篇：3月11日</a>
-            <a href="../index.html" class="text-gray-600 hover:text-gray-900">返回专栏首页</a>
+            <div class="highlight-box">
+                <h4>📢 企业涨价动态</h4>
+                <p>• 华峰超纤：自3月9日起，超纤基布统一上调1-4元/米</p>
+                <p>• 红墙股份：自3月11日起，聚醚大单体等产品价格上调50%-80%</p>
+                <p>• 卫星化学：各产品已随行就市上调价格</p>
+                <p>• 巴斯夫：3月4日起全球范围内上调塑料添加剂价格，最高涨幅20%</p>
+            </div>
+        </section>
+
+        <!-- 采购建议 -->
+        <section class="section">
+            <h2><span class="section-icon">💡</span>采购建议</h2>
+            
+            <div class="analysis-box">
+                <p><span class="tag tag-watch">观望</span> <strong>原油及衍生品：</strong>短期地缘风险提升波动率，建议观望为主，等待局势明朗。</p>
+                <p><span class="tag tag-hold">按需</span> <strong>PTA/聚酯链：</strong>供应缩减与下游负反馈博弈，短期偏强震荡，按需采购。</p>
+                <p><span class="tag tag-buy">关注</span> <strong>煤化工产品：</strong>煤制PP生产毛利1288.67元/吨，煤化工成本优势凸显，可关注相关产品。</p>
+            </div>
+        </section>
+
+        <!-- 数据源 -->
+        <div class="data-source">
+            <h3>📚 数据说明</h3>
+            <p>本报告数据来源于隆众资讯、光大期货、东方财富、新浪财经等公开市场数据，仅供参考。价格数据为当日市场主流成交价，实际采购价格可能因采购量、付款方式、交货期等因素有所差异。建议大宗采购前与供应商确认最新报价。</p>
         </div>
     </main>
+
+    <footer>
+        <p class="tagline">洞察 · 思考 · 实践</p>
+        <p>© 2026 Millay Blog. All rights reserved.</p>
+    </footer>
 </body>
 </html>
