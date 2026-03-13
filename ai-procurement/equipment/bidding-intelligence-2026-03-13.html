@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析测试设备中标价格情报 | 2026年3月13日 | Millay</title>
+    <meta name="description" content="分析测试仪器设备中标价格情报，覆盖质谱仪、色谱仪、光谱仪、显微镜等高端科研设备最新中标动态">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --success: #34a853;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            color: white;
+            padding: 160px 2rem 100px;
+            margin-top: 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 81, 255, 0.1) 0%, transparent 50%);
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-icon {
+            font-size: 1.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.75rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+        .stat-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-top: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+            background: var(--bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.875rem;
+        }
+        tr:hover { background: var(--bg-light); }
+        .device-name { font-weight: 600; color: var(--primary); }
+        .price { font-weight: 700; color: var(--accent); }
+        .buyer { color: var(--text-secondary); font-size: 0.875rem; }
+        .supplier { color: var(--text-secondary); font-size: 0.875rem; }
+        .region-tag {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .highlight-box h4 {
+            color: #e65100;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .highlight-box p {
+            color: #bf360c;
+            line-height: 1.7;
+        }
+        .analysis-box {
+            background: var(--bg-warm);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .analysis-box h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .analysis-box p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .procurement-intent {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+        .procurement-intent h4 {
+            color: #2e7d32;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .procurement-intent p {
+            color: #1b5e20;
+            line-height: 1.7;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .tag-import { background: #ffebee; color: #c62828; }
+        .tag-domestic { background: #e8f5e9; color: #2e7d32; }
+        .tag-high { background: #fff3e0; color: #ef6c00; }
+        .data-source {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+        .data-source h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .data-source p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; font-size: 0.9375rem; }
+        footer .tagline {
+            font-size: 1.25rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 0.75rem;
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.75rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            table { font-size: 0.8125rem; }
+            th, td { padding: 0.75rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Equipment Bidding Intelligence</span>
+            <h1>🔬 分析测试设备中标价格情报</h1>
+            <p class="meta">数据更新时间：2026年3月13日 16:00 | 数据来源：中国政府采购网、高校招标平台</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- 市场概览 -->
+        <section class="section">
+            <h2><span class="section-icon">📊</span>市场概览</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">14</div>
+                    <div class="stat-label">今日中标项目</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">4.95亿</div>
+                    <div class="stat-label">太原理工采购预算</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">786万</div>
+                    <div class="stat-label">最高单价设备</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">39%</div>
+                    <div class="stat-label">国产设备占比</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 重点中标项目 -->
+        <section class="section">
+            <h2><span class="section-icon">🏆</span>重点中标项目</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>设备名称</th>
+                        <th>中标金额</th>
+                        <th>采购单位</th>
+                        <th>中标供应商</th>
+                        <th>类型</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="device-name">误码率测试仪 <span class="tag tag-import">进口</span></td>
+                        <td class="price">786万元</td>
+                        <td class="buyer">南京大学</td>
+                        <td class="supplier">Keysight</td>
+                        <td><span class="region-tag">测试仪器</span></td>
+                    </tr>
+                    <tr>
+                        <td class="device-name">超高效液相色谱/三重四极杆质谱联用仪 <span class="tag tag-import">进口</span></td>
+                        <td class="price">517万元</td>
+                        <td class="buyer">重庆企业</td>
+                        <td class="supplier">中技国际</td>
+                        <td><span class="region-tag">质谱仪</span></td>
+                    </tr>
+                    <tr>
+                        <td class="device-name">三重四极杆电感耦合等离子体质谱仪 <span class="tag tag-import">进口</span></td>
+                        <td class="price">234万元</td>
+                        <td class="buyer">东南大学</td>
+                        <td class="supplier">江苏康沁原仪器</td>
+                        <td><span class="region-tag">质谱仪</span></td>
+                    </tr>
+                    <tr>
+                        <td class="device-name">高效液相色谱-电感耦合等离子体质谱联用仪 <span class="tag tag-import">进口</span></td>
+                        <td class="price">165万元</td>
+                        <td class="buyer">哈尔滨师范大学</td>
+                        <td class="supplier">待开标</td>
+                        <td><span class="region-tag">色谱质谱</span></td>
+                    </tr>
+                    <tr>
+                        <td class="device-name">全自动气体吸附分析仪 <span class="tag tag-import">进口</span></td>
+                        <td class="price">70万元</td>
+                        <td class="buyer">哈尔滨师范大学</td>
+                        <td class="supplier">待开标</td>
+                        <td><span class="region-tag">分析仪器</span></td>
+                    </tr>
+                    <tr>
+                        <td class="device-name">化学吸附仪 <span class="tag tag-import">进口</span></td>
+                        <td class="price">61.7万元</td>
+                        <td class="buyer">哈尔滨师范大学</td>
+                        <td class="supplier">待开标</td>
+                        <td><span class="region-tag">分析仪器</span></td>
+                    </tr>
+                    <tr>
+                        <td class="device-name">教学科研仪器设备 <span class="tag tag-domestic">国产</span></td>
+                        <td class="price">328.8万元</td>
+                        <td class="buyer">郑州大学电气学院</td>
+                        <td class="supplier">河南创享高科</td>
+                        <td><span class="region-tag">教学设备</span></td>
+                    </tr>
+                    <tr>
+                        <td class="device-name">化工学院科研配套设备 <span class="tag tag-domestic">国产</span></td>
+                        <td class="price">43.6万元</td>
+                        <td class="buyer">青岛科技大学</td>
+                        <td class="supplier">青岛昱博丰科技</td>
+                        <td><span class="region-tag">科研设备</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 重大采购意向 -->
+        <section class="section">
+            <h2><span class="section-icon">📢</span>重大采购意向</h2>
+            
+            <div class="procurement-intent">
+                <h4>🎓 太原理工大学 - 教学科研仪器设备更新项目</h4>
+                <p><strong>预算金额：</strong>4.952亿元 | <strong>预计采购时间：</strong>2026年3月</p>
+                <p style="margin-top: 0.75rem;"><strong>采购内容：</strong>材料精细结构分析仪、气相色谱-质谱联用仪、高分辨率显微镜、原位红外表征系统、高压气体吸附仪、ICP元素分析仪、化学吸附质谱联用仪、电化学工作站、电子顺磁波谱仪、液质联用仪、白光干涉显微镜、质谱仪、气质联用仪、原位高温高压红外光谱仪、多组分气体分析仪、液质联用仪、扫描隧道显微镜、宽带采样示波器、超高分辨率光谱分析仪、矢量网络分析仪、集成电路测试仪、原子力显微镜、傅里叶变换红外光谱仪等。</p>
+            </div>
+
+            <div class="procurement-intent">
+                <h4>🎓 复旦大学 - 高保型性离子束加工设备</h4>
+                <p><strong>预算金额：</strong>待公布 | <strong>发布日期：</strong>2026年3月12日</p>
+                <p style="margin-top: 0.75rem;">复旦大学发布高保型性离子束加工设备国际公开招标公告，属于精密加工设备类别。</p>
+            </div>
+
+            <div class="procurement-intent">
+                <h4>🎓 福州大学 - 气相色谱仪等设备</h4>
+                <p><strong>预算金额：</strong>待公布 | <strong>投标截止：</strong>2026年3月26日</p>
+                <p style="margin-top: 0.75rem;">采购气相色谱仪等分析测试设备，用于科研公共服务条件平台。</p>
+            </div>
+        </section>
+
+        <!-- 市场动态分析 -->
+        <section class="section">
+            <h2><span class="section-icon">📈</span>市场动态分析</h2>
+            
+            <div class="analysis-box">
+                <h3>🔬 质谱仪市场：高端设备持续依赖进口</h3>
+                <p>近期中标数据显示，三重四极杆质谱仪、电感耦合等离子体质谱仪等高端设备仍以进口品牌为主，主要供应商包括安捷伦(Agilent)、赛默飞(Thermo)、SCIEX、铂金埃尔默(PerkinElmer)等。国产质谱仪在部分细分领域取得突破，但整体市场份额仍有待提升。</p>
+                <p>东南大学近期以234万元采购的三重四极杆电感耦合等离子体质谱仪，中标供应商为江苏康沁原仪器科技有限公司，评审总得分93.49分，体现了高校对设备性能和服务质量的高要求。</p>
+            </div>
+
+            <div class="analysis-box">
+                <h3>🧪 色谱仪市场：需求稳定增长</h3>
+                <p>气相色谱仪、液相色谱仪需求保持稳定增长态势。太原理工大学教学科研仪器设备更新项目中，气相色谱-质谱联用仪、液相色谱质谱联用仪、高效液相色谱仪等均为重点采购品类，预计采购数量超过50台套。</p>
+                <p>从价格区间看，单台气相色谱仪价格在40-80万元之间，液相色谱仪价格在30-60万元之间，联用设备价格通常在150-300万元区间。</p>
+            </div>
+
+            <div class="analysis-box">
+                <h3>⚡ 测试测量仪器：高精度设备单价超百万</h3>
+                <p>误码率测试仪、示波器、频谱分析仪等测试测量仪器近期需求活跃。南京大学以786万元采购Keysight M8050A误码率测试仪（120Gbaud），广东工业大学拟以560万元采购高性能误码率测试仪，体现了通信、半导体领域对高精度测试设备的强劲需求。</p>
+                <p>哈尔滨理工大学计划以90万元采购频谱分析仪，用于科研中的高精度频谱分析需求。</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>💡 采购建议</h4>
+                <p>1. <strong>关注太原理工大学系列招标：</strong>4.95亿元教学科研仪器设备更新项目将于3月陆续开标，建议相关供应商密切关注招标公告。</p>
+                <p>2. <strong>国产替代机遇：</strong>部分常规分析仪器和教学设备已实现国产化，国产供应商可关注高校教学设备采购。</p>
+                <p>3. <strong>服务增值：</strong>高校和科研院所越来越重视售后服务和技术支持，供应商应在方案中突出服务能力。</p>
+            </div>
+        </section>
+
+        <!-- 数据来源 -->
+        <div class="data-source">
+            <h3>📡 数据来源说明</h3>
+            <p>本报告数据来源于：<a href="https://www.ccgp.gov.cn" target="_blank" style="color: var(--accent);">中国政府采购网</a>、<a href="https://www.zbytb.com" target="_blank" style="color: var(--accent);">中国招标与采购网</a>、各高校招标平台等公开渠道。</p>
+            <p style="margin-top: 0.75rem; font-size: 0.875rem;">免责声明：本报告内容仅供参考，不构成投资建议。具体价格请以实际交易为准。</p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="tagline">洞察 · 思考 · 实践</p>
+        <p>&copy; 2026 Millay. All rights reserved.</p>
+    </footer>
+</body>
+</html>

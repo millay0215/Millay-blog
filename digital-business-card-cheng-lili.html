@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程丽莉 - 电子名片 | 药明康德</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .card-container {
+            perspective: 1000px;
+        }
+        .card {
+            width: 600px;
+            height: 340px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc 0%, #0099ff 100%);
+        }
+        .left-section {
+            width: 35%;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border-right: 1px solid #dee2e6;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .logo-text {
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .company-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0066cc;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .company-en {
+            font-size: 11px;
+            color: #6c757d;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+        .right-section {
+            width: 65%;
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+        .position {
+            font-size: 14px;
+            color: #495057;
+            line-height: 1.6;
+        }
+        .position-line {
+            display: block;
+        }
+        .contact-info {
+            margin-top: auto;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #495057;
+        }
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0066cc;
+            font-size: 14px;
+        }
+        .qr-section {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            text-align: center;
+        }
+        .qr-placeholder {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            border: 1px dashed #adb5bd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #6c757d;
+        }
+        .qr-text {
+            font-size: 9px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+        @media (max-width: 640px) {
+            .card {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                flex-direction: column;
+            }
+            .left-section {
+                width: 100%;
+                padding: 20px;
+                border-right: none;
+                border-bottom: 1px solid #dee2e6;
+            }
+            .right-section {
+                width: 100%;
+                padding: 25px 20px;
+            }
+            .qr-section {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin-top: 15px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+        .save-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,102,204,0.3);
+            transition: all 0.3s ease;
+        }
+        .save-btn:hover {
+            background: #0052a3;
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,102,204,0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="left-section">
+                <div class="logo">
+                    <span class="logo-text">P</span>
+                </div>
+                <div class="company-name">药明康德</div>
+                <div class="company-en">WuXi AppTec</div>
+            </div>
+            <div class="right-section">
+                <div class="header">
+                    <div class="name">程丽莉</div>
+                    <div class="title">博士 | 副总裁</div>
+                    <div class="position">
+                        <span class="position-line">供应链管理部负责人</span>
+                        <span class="position-line">供应链管理部</span>
+                        <span class="position-line">首席运营官办公室</span>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon">✉</span>
+                        <span>cheng_lili@wuxiapptec.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📱</span>
+                        <span>+86 185 1610 2590</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📠</span>
+                        <span>+86 (21) 5046 1000</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>中国（上海）自由贸易试验区外高桥富特中路288号</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">🌐</span>
+                        <span>www.wuxiapptec.com</span>
+                    </div>
+                </div>
+                <div class="qr-section">
+                    <div class="qr-placeholder">二维码</div>
+                    <div class="qr-text">官方微信公众号</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="save-btn" onclick="saveCard()">保存电子名片</button>
+    
+    <script>
+        function saveCard() {
+            // 创建canvas来生成图片
+            const card = document.querySelector('.card');
+            html2canvas(card).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '程丽莉-药明康德-电子名片.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+    </script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html>
