@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学原料行情日报 | 2026年03月15日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(147,0,211,0.1) 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #00d4ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(0,212,255,0.3);
+        }
+        .header .date {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            letter-spacing: 2px;
+        }
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #00d4ff, #ff00ff) 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #00d4ff, #ff00ff);
+            border-radius: 2px;
+        }
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .overview-card {
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(147,0,211,0.1) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .overview-card h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .overview-card p {
+            color: #c0c0c0;
+            font-size: 0.95em;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .price-table th {
+            background: linear-gradient(135deg, rgba(0,212,255,0.2) 0%, rgba(147,0,211,0.2) 100%);
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            border-bottom: 2px solid rgba(0,212,255,0.3);
+        }
+        .price-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #d0d0d0;
+        }
+        .price-table tr:hover {
+            background: rgba(0,212,255,0.05);
+        }
+        .price-up {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+        .price-down {
+            color: #51cf66;
+            font-weight: 600;
+        }
+        .price-flat {
+            color: #ffd93d;
+        }
+        .analysis-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .analysis-item {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #00d4ff;
+        }
+        .analysis-item h4 {
+            color: #00d4ff;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        .analysis-item p, .analysis-item ul {
+            color: #b0b0b0;
+            font-size: 0.95em;
+        }
+        .analysis-item ul {
+            padding-left: 20px;
+        }
+        .analysis-item li {
+            margin-bottom: 8px;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255,107,107,0.15) 0%, rgba(238,90,90,0.1) 100%);
+            border: 1px solid rgba(255,107,107,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .highlight-box h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #707070;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            font-weight: 500;
+        }
+        .tag-hot { background: rgba(255,107,107,0.3); color: #ff6b6b; }
+        .tag-rise { background: rgba(255,193,7,0.3); color: #ffc107; }
+        .tag-fall { background: rgba(76,175,80,0.3); color: #4caf50; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>化学原料行情日报</h1>
+            <div class="date">2026年03月15日 星期日</div>
+        </header>
+
+        <a href="/millay-blog/ai-procurement/" class="back-link">← 返回AI采购情报</a>
+
+        <!-- 市场概况 -->
+        <section class="section">
+            <h2 class="section-title">市场概况</h2>            <div class="overview">
+                <div class="overview-card">
+                    <h3>🔥 能源化工</h3>
+                    <p>霍尔木兹海峡危机持续发酵，中东化工原料供应受阻。国际能源署释放4亿桶战略储备，布伦特油价维持在90美元/桶以上。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>🌾 春耕化肥</h3>
+                    <p>硫磺价格涨至4395元/吨，甲醇、尿素供应偏紧。春耕备肥进入关键阶段，磷肥、复合肥需求集中释放。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>⚠️ 供应风险</h3>
+                    <p>伊朗占中国甲醇进口55-60%，中东硫磺占中国进口56%。霍尔木兹海峡航运受阻导致供应端收缩，价格上行压力大。</p>
+                </div>
+                <div class="overview-card">
+                    <h3>📊 库存情况</h3>
+                    <p>甲醇港口库存维持低位，六氟磷酸锂行业库存仅10-15天。国内磷化工行业面临长期的环保约束和产能管制。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 主要原料价格表 -->
+        <section class="section">
+            <h2 class="section-title">主要原料价格表</h2>
+            
+            <h3 style="color: #00d4ff; margin: 20px 0 15px; font-size: 1.1em;">🔸 受地缘冲突影响的品种</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>最新价格</th>
+                        <th>单位</th>
+                        <th>涨跌</th>
+                        <th>影响因素</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>硫磺</strong></td>
+                        <td>4395</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+345（春节后）</td>
+                        <td>中东供应受阻，占进口56%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>甲醇</strong></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="price-up">供应偏紧</td>
+                        <td>伊朗占进口55-60%，到港锐减</td>
+                    </tr>
+                    <tr>
+                        <td><strong>尿素</strong></td>
+                        <td>2900（埃及）</td>
+                        <td>元/吨</td>
+                        <td class="price-up">上涨</td>
+                        <td>伊朗出口收缩+春耕备肥</td>
+                    </tr>
+                    <tr>
+                        <td><strong>石油焦</strong>（山东）</td>
+                        <td>1550</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+3.3%</td>
+                        <td>油价上涨传导</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #00d4ff; margin: 30px 0 15px; font-size: 1.1em;">🔸 化工原料</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>最新价格</th>
+                        <th>单位</th>
+                        <th>日涨跌</th>
+                        <th>走势</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>磷酸</td>
+                        <td>7,060</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.44%</td>
+                        <td><span class="tag tag-rise">上涨</span></td>
+                    </tr>
+                    <tr>
+                        <td>碳酸二甲酯</td>
+                        <td>3,850</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.32%</td>
+                        <td><span class="tag tag-rise">上涨</span></td>
+                    </tr>
+                    <tr>
+                        <td>苯胺</td>
+                        <td>9,745</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+1.04%</td>
+                        <td><span class="tag tag-rise">上涨</span></td>
+                    </tr>
+                    <tr>
+                        <td>纯苯</td>
+                        <td>6,657</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+0.55%</td>
+                        <td><span class="tag tag-rise">上涨</span></td>
+                    </tr>
+                    <tr>
+                        <td>苯乙烯</td>
+                        <td>8,550</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+5.56%</td>
+                        <td><span class="tag tag-hot">强势</span></td>
+                    </tr>
+                    <tr>
+                        <td>氢氧化锂（电池级）</td>
+                        <td>153,000</td>
+                        <td>元/吨</td>
+                        <td class="price-flat">0.00%</td>
+                        <td><span class="tag tag-rise">高位</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 供应风险分析 -->
+        <section class="section">
+            <h2 class="section-title">供应风险分析</h2>            
+            <div class="highlight-box">
+                <h4>⚠️ 霍尔木兹海峡危机对化工供应链的影响</h4>
+                <p>霍尔木兹海峡承担全球<strong>30%以上硫磺海运量</strong>，我国硫磺进口依赖度超50%，中东占56%。航运受阻进一步加剧了供应紧张：</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>物流梗阻导致中东货源无法如期到港</li>
+                    <li>船只被迫绕行好望角，航程增加15-20天</li>
+                    <li>航运保险费暴涨300%以上</li>
+                    <li>国际硫磺到岸成本价格已达4300元以上</li>
+                </ul>
+            </div>
+
+            <div class="analysis-content">
+                <div class="analysis-item">
+                    <h4>📊 硫磺市场</h4>
+                    <p><strong>全球缺口约500万吨</strong>（近三年最大），春耕磷肥刚需+中东出口收缩。六国化工董秘指出，若霍尔木兹海峡长期关闭，中东地区的化肥贸易基本会终止。</p>
+                </div>
+                <div class="analysis-item">
+                    <h4>📊 甲醇市场</h4>
+                    <p>伊朗是中国最大甲醇进口来源，占55-60%。受冲突影响到港锐减，港口库存低位。若供应中断，国内现货价格或突破2500元/吨。</p>
+                </div>
+                <div class="analysis-item">
+                    <h4>📊 尿素市场</h4>
+                    <p>全球三分之一的化肥贸易经霍尔木兹海峡。伊朗出口收缩+春耕备肥，国内库存低位。埃及尿素价格已涨至2900元/吨。</p>
+                </div>
+                <div class="analysis-item">
+                    <h4>📊 聚乙烯</h4>
+                    <p>伊朗高压聚乙烯占中国进口量40%。塑料、涂料等下游成本面临推升压力。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 价格走势分析 -->
+        <section class="section">
+            <h2 class="section-title">价格走势分析</h2>            
+            <div class="analysis-content">
+                <div class="analysis-item">
+                    <h4>📈 上涨驱动因素</h4>
+                    <ul>
+                        <li><strong>地缘冲突升级</strong>：霍尔木兹海峡航运受阻，全球约20-30%原油贸易面临中断风险</li>
+                        <li><strong>供应端收缩</strong>：伊朗甲醇装置产能占中东59.78%，装置开工受影响预期强烈</li>
+                        <li><strong>春季检修</strong>：天赐材料、金陵石化等龙头企业装置陆续停车检修</li>
+                        <li><strong>需求复苏</strong>："金三银四"旺季来临，春耕备肥需求集中释放</li>
+                    </ul>
+                </div>
+                <div class="analysis-item">
+                    <h4>📉 潜在风险因素</h4>
+                    <ul>
+                        <li><strong>局势缓和风险</strong>：一旦地缘冲突缓解，能化品种价格可能出现较大回落</li>
+                        <li><strong>库存压力</strong>：甲醇港口库存仍处高位，需关注去库拐点</li>
+                        <li><strong>下游接受度</strong>：若涨价幅度过大，下游市场难以接受</li>
+                        <li><strong>交易所风控</strong>：上期所上调保证金及涨跌停板，抑制市场过热情绪</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 采购建议 -->
+        <section class="section">
+            <h2 class="section-title">采购建议</h2>            
+            <div class="analysis-content">
+                <div class="analysis-item">
+                    <h4>🎯 短期策略（1-3个月）</h4>
+                    <ul>
+                        <li>关注硫磺、甲醇、尿素等受地缘影响较大的品种</li>
+                        <li>适当增加安全库存，应对供应不确定性</li>
+                        <li>多元化采购渠道，降低单一来源依赖</li>
+                        <li>关注国内生产企业动态，寻找替代供应商</li>
+                    </ul>
+                </div>
+                <div class="analysis-item">
+                    <h4>🎯 中长期策略（3-12个月）</h4>
+                    <ul>
+                        <li>建立战略储备，应对地缘政治风险</li>
+                        <li>加强与国内化工企业合作，保障供应安全</li>
+                        <li>关注国产替代进展，评估供应商转换可行性</li>
+                        <li>运用期货工具，对冲价格波动风险</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>数据来源：生意社、卓创资讯、百川盈孚、隆众资讯、上海有色网</p>
+            <p style="margin-top: 10px;">免责声明：本报告仅供参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+            <p style="margin-top: 10px;">© 2026 化学原料行情日报 | 生成时间：2026年03月15日</p>
+        </footer>
+    </div>
+</body>
+</html>

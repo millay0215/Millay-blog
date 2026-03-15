@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析测试设备中标价格情报 | 2026年03月15日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .header .date {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        .section {
+            margin-bottom: 35px;
+        }
+        .section-title {
+            font-size: 1.4em;
+            color: #1e3c72;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .summary-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+        }
+        .summary-box p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .summary-box p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            color: #667eea;
+            font-weight: 600;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        .data-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 500;
+        }
+        .data-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .data-table tr:hover {
+            background-color: #f8f9ff;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+        .price {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .tag-government {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        .tag-university {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        .tag-maintenance {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+        .analysis-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .analysis-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .analysis-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .analysis-item h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .analysis-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+        .news-list {
+            list-style: none;
+        }
+        .news-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+        .news-list .dot {
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+        .news-list .news-content {
+            flex: 1;
+        }
+        .news-list .news-title {
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .news-list .news-meta {
+            color: #999;
+            font-size: 0.85em;
+        }
+        .footer {
+            background: #f5f5f5;
+            padding: 20px 40px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>分析测试设备中标价格情报</h1>
+            <div class="date">2026年03月15日 | 仪器设备分类</div>
+        </div>
+        
+        <div class="content">
+            <a href="/millay-blog/ai-procurement/" class="back-link">← 返回AI采购情报</a>
+
+            <!-- 日报摘要 -->
+            <div class="section">
+                <h2 class="section-title">📋 日报摘要</h2>
+                <div class="summary-box">
+                    <p>今日分析测试设备市场活跃度持续，<span class="highlight">公安系统、高校和医疗机构</span>成为主要采购主体。主要动态包括：</p>
+                    <p>1. <strong>公安系统采购</strong>：毕节市公安局455万元液相色谱仪采购项目公开招标，显示公安系统检测能力建设投入加大。</p>
+                    <p>2. <strong>设备维修服务</strong>：西南医科大学16.71万元质谱仪维修服务采购，设备维护保养市场需求活跃。</p>
+                    <p>3. <strong>高校设备更新</strong>：广东工业大学推进色谱质谱联用仪、接触角测量仪等教学科研设备采购。</p>
+                    <p>4. <strong>市场趋势</strong>：国产仪器替代加速，设备维保服务市场增长，第三方维修服务商迎来发展机遇。</p>
+                </div>
+            </div>
+
+            <!-- 最新招标项目 -->
+            <div class="section">
+                <h2 class="section-title">🎯 最新招标项目</h2>                <ul class="news-list">
+                    <li>
+                        <span class="dot"></span>
+                        <div class="news-content">
+                            <div class="news-title">毕节市公安局液相色谱仪采购项目</div>
+                            <div class="news-meta">项目编号：LXZB-2026-0309 | 采购预算：455万元 | 最高限价：455万元 | 公示期限：2026年3月9日至3月11日</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="dot"></span>
+                        <div class="news-content">
+                            <div class="news-title">西南医科大学质谱仪维修服务采购</div>
+                            <div class="news-meta">UPLC-QTOF维修 | 预算：16.71万元 | 单一来源：上海爱博才思（SCIEX）| 谈判时间：3月19日</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="dot"></span>
+                        <div class="news-content">
+                            <div class="news-title">广东工业大学色谱质谱联用仪采购</div>
+                            <div class="news-meta">教学科研设备更新项目 | 招标状态：进行中 | 预计采购多台套设备</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="dot"></span>
+                        <div class="news-content">
+                            <div class="news-title">广东工业大学接触角测量仪等设备采购</div>
+                            <div class="news-meta">表面分析设备 | 招标公告已发布 | 用于材料科学研究</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="dot"></span>
+                        <div class="news-content">
+                            <div class="news-title">广东工业大学半导体微纳加工平台工艺设备二次配系统采购</div>
+                            <div class="news-meta">第二批采购 | 已完成第一批 | 用于半导体研发平台</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="dot"></span>
+                        <div class="news-content">
+                            <div class="news-title">安徽桐源质谱仪、气相色谱仪维保服务采购</div>
+                            <div class="news-meta">洁净分析室设备维保 | 招标公告 | 中国同辐股份有限公司子公司</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 最新中标项目表格 -->
+            <div class="section">
+                <h2 class="section-title">🏆 最新中标项目一览</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>采购单位</th>
+                            <th>设备名称</th>
+                            <th>品牌/供应商</th>
+                            <th>中标金额</th>
+                            <th>类型</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>东南大学分析测试中心</td>
+                            <td>三重串联四极杆ICP-MS+离子色谱仪</td>
+                            <td>安捷伦 8900</td>
+                            <td class="price">234.16万元</td>
+                            <td><span class="tag tag-university">高校</span></td>
+                        </tr>
+                        <tr>
+                            <td>华中科技大学</td>
+                            <td>超高效液相色谱仪串联四极杆质谱仪</td>
+                            <td>武汉贝徕美生物科技</td>
+                            <td class="price">548.68万元</td>
+                            <td><span class="tag tag-university">高校</span></td>
+                        </tr>
+                        <tr>
+                            <td>华南理工大学</td>
+                            <td>高分辨质谱仪、色谱仪、高压反应釜等</td>
+                            <td>广州科纳进出口</td>
+                            <td class="price">1629.6万元</td>
+                            <td><span class="tag tag-university">高校</span></td>
+                        </tr>
+                        <tr>
+                            <td>福州市食品药品检验所</td>
+                            <td>液相色谱/质谱联用仪、气相色谱/质谱联用仪等15项</td>
+                            <td>待定</td>
+                            <td class="price">1252万元</td>
+                            <td><span class="tag tag-government">政府机构</span></td>
+                        </tr>
+                        <tr>
+                            <td>天津市农业科学院</td>
+                            <td>液相串联质谱仪、流动注射分析仪等</td>
+                            <td>待定</td>
+                            <td class="price">404.3万元</td>
+                            <td><span class="tag tag-university">科研院所</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 市场动态分析 -->
+            <div class="section">
+                <h2 class="section-title">💹 市场动态分析</h2>
+                <div class="analysis-box">
+                    <div class="analysis-item">
+                        <h4>🔬 设备维修服务市场崛起</h4>
+                        <p>随着分析测试设备保有量持续增长，设备维修保养市场需求日益旺盛。西南医科大学16.71万元质谱仪维修服务采购显示，<span class="highlight">第三方维修服务</span>正成为市场新增长点。主要维修需求包括：质谱系统清洗维护、电路板更换、液相管路更换、电脑硬件升级等。</p>
+                    </div>
+                    <div class="analysis-item">
+                        <h4>🧪 公安系统检测能力建设加速</h4>
+                        <p>毕节市公安局455万元液相色谱仪采购项目显示，<span class="highlight">公安系统对检测设备的投入持续加大</span>。主要应用领域包括：毒品检测、食品安全检测、环境污染物检测等。预计各地公安机关将加快检测设备更新升级步伐。</p>
+                    </div>
+                    <div class="analysis-item">
+                        <h4>🔬 高校设备更新需求旺盛</h4>
+                        <p>广东工业大学、东南大学、华中科技大学等高校持续推动仪器设备更新。主要采购品类包括：色谱质谱联用仪、电子显微镜、光谱仪、表面分析设备等。<span class="highlight">"十五五"期间高校仪器设备更新需求预计将持续释放</span>。</p>
+                    </div>
+                    <div class="analysis-item">
+                        <h4>📈 国产替代加速</strong></h4>
+                        <p>2025年上半年色谱仪中标数据显示，国产色谱仪中标195台/套，占比39%，平均单价34.02万元，价格优势显著。进口色谱仪平均单价54.87万元。预计2026年国产分析仪器市场份额将继续提升。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设备维保市场分析 -->
+            <div class="section">
+                <h2 class="section-title">🔧 设备维保市场分析</h2>
+                <div class="analysis-box">
+                    <div class="analysis-item">
+                        <h4>📊 维保服务需求类型</h4>
+                        <p><strong>常规维护</strong>：质谱系统清洗、液相管路更换、电脑硬件升级（单次5-20万元）</p>
+                        <p><strong>故障维修</strong>：电路板更换、离子源维修、检测器维修（单次10-50万元）</p>
+                        <p><strong>年度维保合同</strong>：预防性维护、定期校准、紧急响应（年费用10-30万元）</p>
+                    </div>
+                    <div class="analysis-item">
+                        <h4>🏢 主要维保服务商</h4>
+                        <p><strong>原厂维保</strong>：安捷伦、赛默飞、SCIEX、沃特世、岛津等（价格较高，技术保障好）</p>
+                        <p><strong>第三方维保</strong>：专业仪器维修公司（价格优势，响应速度快）</p>
+                        <p><strong>仪器代理商</strong>：兼具销售和维保能力，本地服务优势明显</p>
+                    </div>
+                    <div class="analysis-item">
+                        <h4>💡 市场机会</h4>
+                        <p>随着国内分析仪器保有量超过<span class="highlight">100万台</span>，设备维保服务市场规模预计超过<span class="highlight">50亿元/年</span>。第三方维保服务商凭借价格优势和灵活服务，正加速抢占市场份额。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 价格行情分析 -->
+            <div class="section">
+                <h2 class="section-title">💰 价格行情分析</h2>
+                <table class="data-table">
+                    <tr>
+                        <th>设备类型</th>
+                        <th>进口价格区间</th>
+                        <th>国产价格区间</th>
+                        <th>维保费用/年</th>
+                    </tr>
+                    <tr>
+                        <td>液相色谱仪（HPLC）</td>
+                        <td>50-150万元</td>
+                        <td>20-50万元</td>
+                        <td>3-8万元</td>
+                    </tr>
+                    <tr>
+                        <td>液质联用仪（LC-MS）</td>
+                        <td>200-500万元</td>
+                        <td>80-200万元</td>
+                        <td>10-30万元</td>
+                    </tr>
+                    <tr>
+                        <td>气质联用仪（GC-MS）</td>
+                        <td>80-200万元</td>
+                        <td>30-80万元</td>
+                        <td>5-15万元</td>
+                    </tr>
+                    <tr>
+                        <td>ICP-MS</td>
+                        <td>150-400万元</td>
+                        <td>60-150万元</td>
+                        <td>8-20万元</td>
+                    </tr>
+                    <tr>
+                        <td>三重四极杆质谱</td>
+                        <td>300-800万元</td>
+                        <td>150-400万元</td>
+                        <td>15-40万元</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>数据来源：中国政府采购网、分析测试百科网、仪器信息网等公开渠道</p>
+            <p>本报告仅供参考，具体采购信息以官方公告为准 | 生成时间：2026年03月15日</p>
+        </div>
+    </div>
+</body>
+</html>
