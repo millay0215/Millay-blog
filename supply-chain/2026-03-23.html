@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供应链日报 | 2026-03-23 | Millay</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: #1a1a1a;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        /* 头部 */
+        .header { 
+            background: #1a1a2e; 
+            color: white; 
+            padding: 24px;
+        }
+        .header h1 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .header .date { font-size: 14px; opacity: 0.8; }
+        
+        /* 摘要区 */
+        .summary { 
+            background: #f8f9fa; 
+            padding: 20px 24px; 
+            border-bottom: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #495057;
+        }
+        
+        /* 内容区 */
+        .content { padding: 0; }
+        
+        /* 信息块 */
+        .section { 
+            padding: 24px; 
+            border-bottom: 1px solid #e9ecef;
+        }
+        .section:last-child { border-bottom: none; }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a2e;
+            line-height: 1.4;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .tag-news { background: #e3f2fd; color: #1565c0; }
+        .tag-data { background: #fff3e0; color: #e65100; }
+        .tag-alert { background: #ffebee; color: #c62828; }
+        .tag-strategy { background: #e8f5e9; color: #2e7d32; }
+        
+        .meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 12px;
+        }
+        .meta span { display: flex; align-items: center; gap: 4px; }
+        
+        .text { font-size: 14px; color: #495057; margin-bottom: 16px; }
+        .text strong { color: #1a1a2e; }
+        
+        /* 数据卡片 */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .metric {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1565c0;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+        
+        /* 表格 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin: 16px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        td { color: #495057; }
+        tr:hover td { background: #f8f9fa; }
+        
+        /* 提示框 */
+        .alert {
+            background: #fff3e0;
+            border-left: 3px solid #f57c00;
+            padding: 12px 16px;
+            margin: 16px 0;
+            font-size: 13px;
+            color: #e65100;
+        }
+        
+        .highlight {
+            background: #e8f5e9;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+        .highlight-title {
+            font-weight: 600;
+            color: #2e7d32;
+            margin-bottom: 8px;
+        }
+        
+        /* 列表 */
+        ul { 
+            margin: 12px 0; 
+            padding-left: 20px;
+            font-size: 14px;
+            color: #495057;
+        }
+        li { margin-bottom: 8px; }
+        
+        /* 风险等级 */
+        .risk-high { color: #c62828; font-weight: 600; }
+        .risk-medium { color: #f57c00; font-weight: 600; }
+        .risk-low { color: #2e7d32; font-weight: 600; }
+        
+        /* 底部 */
+        .footer {
+            padding: 16px 24px;
+            background: #f8f9fa;
+            font-size: 12px;
+            color: #6c757d;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .section { padding: 20px; }
+            .section-header { flex-direction: column; }
+            .metrics { grid-template-columns: 1fr; }
+            table { font-size: 12px; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>供应链前沿日报</h1>
+            <div class="date">2026年3月23日 · 药明康德供应链专刊</div>
+        </div>
+        
+        <!-- 摘要 -->
+        <div class="summary">
+            常州/泰兴基地通过FDA检查；TIDES业务Q3多肽原料药采购量环比增长150%；新加坡基地预计2026年H1投产。
+        </div>
+        
+        <!-- 内容 -->
+        <div class="content">
+            
+            <!-- 信息1: FDA检查 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">药明康德常州/泰兴基地通过FDA检查</div>
+                    <span class="tag tag-news">官方公告</span>
+                </div>
+                <div class="meta">
+                    <span>📅 2026-03-23</span>
+                    <span>📰 合全药业官网 · 美通社</span>
+                </div>
+                <div class="text">
+                    药明康德子公司合全药业宣布，位于江苏常州及泰兴的两个原料药基地成功通过美国FDA检查，以<strong>零缺陷</strong>完成现场核查。
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">零缺陷</div>
+                        <div class="metric-label">FDA检查结果</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">10万升</div>
+                        <div class="metric-label">泰兴基地产能</div>
+                    </div>
+                </div>
+                <ul>
+                    <li><strong>产能保障</strong>：常州和泰兴基地是小分子CDMO和TIDES业务的核心生产基地</li>
+                    <li><strong>全球合规</strong>：支持API出口美国，确保供应链符合FDA cGMP标准</li>
+                </ul>
+            </div>
+            
+            <!-- 信息2: 采购数据 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">TIDES业务多肽原料药采购量环比增长150%</div>
+                    <span class="tag tag-data">内部数据</span>
+                </div>
+                <div class="meta">
+                    <span>📅 2025年Q2-Q3</span>
+                    <span>📰 雪球社区 · 药明康德三季报</span>
+                </div>
+                <div class="text">
+                    根据内部消息，三季度多肽原料药采购5吨，二季度采购量2吨，产量是二季度的两倍多。
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">2→5吨</div>
+                        <div class="metric-label">Q2到Q3采购量</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+150%</div>
+                        <div class="metric-label">环比增长率</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+121%</div>
+                        <div class="metric-label">TIDES收入同比增长</div>
+                    </div>
+                </div>
+                <div class="alert">
+                    <strong>⚠️ 提醒：</strong>司美格鲁肽中国专利将于2026年3月到期，仿制药进入将加剧原料供应竞争，需提前锁定关键供应商。
+                </div>
+            </div>
+            
+            <!-- 信息3: 全球产能布局 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">全球双厂生产策略加速落地</div>
+                    <span class="tag tag-strategy">战略布局</span>
+                </div>
+                <div class="meta">
+                    <span>📅 2026年1-3月</span>
+                    <span>📰 药明合联公告 · 证券时报 · 国投证券</span>
+                </div>
+                <div class="text">
+                    从供应链安全角度，药明合联提出"全球双厂生产"策略，降低地缘政治风险。
+                </div>
+                <table>
+                    <tr>
+                        <th>基地</th>
+                        <th>位置</th>
+                        <th>投产时间</th>
+                        <th>功能定位</th>
+                    </tr>
+                    <tr>
+                        <td><strong>新加坡基地</strong></td>
+                        <td>新加坡</td>
+                        <td class="risk-low">2026年H1</td>
+                        <td>ADC药物一站式CDMO</td>
+                    </tr>
+                    <tr>
+                        <td><strong>米德尔顿基地</strong></td>
+                        <td>美国特拉华州</td>
+                        <td class="risk-low">2026年底</td>
+                        <td>原料药+制剂一体化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>库威基地</strong></td>
+                        <td>瑞士</td>
+                        <td>已运营</td>
+                        <td>口服制剂产能翻倍</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- 信息4: 行业挑战 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">CXO供应链痛点：库存数据错位与需求预测不准</div>
+                    <span class="tag tag-alert">行业挑战</span>
+                </div>
+                <div class="meta">
+                    <span>📅 2025-2026年</span>
+                    <span>📰 轻流知识中心 · 36氪</span>
+                </div>
+                <table>
+                    <tr>
+                        <th>痛点</th>
+                        <th>具体表现</th>
+                        <th>影响</th>
+                    </tr>
+                    <tr>
+                        <td><strong>库存数据错位</strong></td>
+                        <td>系统显示30箱 vs 实际8箱</td>
+                        <td class="risk-high">订单延迟4天</td>
+                    </tr>
+                    <tr>
+                        <td><strong>需求预测不准</strong></td>
+                        <td>预测比实际少35%</td>
+                        <td class="risk-medium">加急成本+16%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>供应商关系复杂</strong></td>
+                        <td>CXO既是供应商又是战略伙伴</td>
+                        <td class="risk-medium">关系界定模糊</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- 信息5: 最佳实践 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">医药CXO供应链PLM系统应用</div>
+                    <span class="tag tag-strategy">最佳实践</span>
+                </div>
+                <div class="meta">
+                    <span>📅 2025-2026年</span>
+                    <span>📰 一半科技 · 轻流知识中心</span>
+                </div>
+                <ul>
+                    <li><strong>供应商全生命周期管理</strong>：入驻审核、资质备案（GMP/FDA/CE）、分级管理、考核评价</li>
+                    <li><strong>原材料采购与库存管理</strong>：实时库存同步、安全库存预警、自动补货流程</li>
+                    <li><strong>质量控制与合规</strong>：电子签名、审计追踪、CAPA流程、质量协议管理</li>
+                    <li><strong>供应链可视化</strong>：从原料到成品的全程追溯，支持客户审计</li>
+                </ul>
+                <div class="highlight">
+                    <div class="highlight-title">💡 戴尔模式借鉴</div>
+                    通过AI算法整合销售订单、供应商库存、生产数据，把库存周转天数从<strong>40多天压缩到7天以内</strong>。
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- 底部 -->
+        <div class="footer">
+            本日报内容来源于网络公开信息整理，仅供参考
+        </div>
+    </div>
+</body>
+</html>

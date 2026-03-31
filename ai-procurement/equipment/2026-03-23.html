@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析测试设备中标价格情报 | 2026年03月23日 | Millay</title>
+    <meta name="description" content="分析测试设备中标价格情报，涵盖半导体测试设备、生物医药实验室设备最新中标数据">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --bg: #ffffff;
+            --bg-light: #f6f8fa;
+            --border: #e5e9ec;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, #051c2c 0%, #0a2942 100%);
+            color: white;
+            padding: 140px 2rem 100px;
+            margin-top: 72px;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .info-box {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .info-box p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.875rem;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.8125rem;
+        }
+        tr:hover { background: var(--bg-light); }
+        .row-num { color: var(--text-secondary); font-weight: 500; }
+        .product-name { font-weight: 500; color: var(--primary); }
+        .brand-tag {
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        .model-text { color: var(--text-secondary); font-size: 0.8125rem; }
+        .spec-text { color: var(--text-secondary); font-size: 0.75rem; }
+        .price { color: #ea4335; font-weight: 600; }
+        .avg-price { color: var(--text-secondary); font-size: 0.8125rem; }
+        .trend-up { color: #ea4335; }
+        .trend-down { color: #34a853; }
+        .trend-neutral { color: var(--text-secondary); }
+        .buyer { color: var(--primary); }
+        .buyer-dept { color: var(--text-secondary); font-size: 0.75rem; }
+        .supplier { color: var(--text-secondary); }
+        .date { color: var(--text-secondary); font-size: 0.8125rem; }
+        .region { color: var(--text-secondary); font-size: 0.8125rem; }
+        .badge {
+            display: inline-block;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .badge-new { background: #e8f0fe; color: #1967d2; }
+        .badge-bidding { background: #fff3e0; color: #e65100; }
+        .badge-intent { background: #e8f5e9; color: #2e7d32; }
+        .detail-item {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .detail-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        .detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .detail-meta span {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+        .source-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .source-link:hover { text-decoration: underline; }
+        .notice-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .notice-box p {
+            color: #e65100;
+            font-size: 0.9375rem;
+            margin: 0;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; font-size: 0.875rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.75rem; }
+            table { font-size: 0.75rem; }
+            th, td { padding: 0.5rem 0.25rem; }
+            .detail-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Millay</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>📊 分析测试设备中标价格情报</h1>
+            <p class="meta">数据来源：中国国际招标网、政府采购网 | 更新时间：2026-03-23 13:30</p>
+        </div>
+    </section>
+    
+    <main>
+        <div class="info-box">
+            <p>📈 <strong>数据说明：</strong>本报告数据来源于 <a href="https://www.chinabidding.cn" target="_blank">中国国际招标网</a>、<a href="http://www.ccgp.gov.cn" target="_blank">中国政府采购网</a> 等公开渠道。</p>
+            <p>✅ <strong>数据类型：</strong>标注<span class="badge badge-new">中标</span>的为已公布中标结果，标注<span class="badge badge-bidding">招标</span>的为正在招标项目，标注<span class="badge badge-intent">意向</span>的为采购意向公示。</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">6</div>
+                <div class="stat-label">今日记录数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">3</div>
+                <div class="stat-label">中标项目</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">2</div>
+                <div class="stat-label">招标项目</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1</div>
+                <div class="stat-label">采购意向</div>
+            </div>
+        </div>
+        
+        <section class="section">
+            <h2>中标/招标概览表</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>产品名称</th>
+                            <th>类型</th>
+                            <th>项目编号</th>
+                            <th>预算/中标价</th>
+                            <th>采购单位</th>
+                            <th>状态</th>
+                            <th>日期</th>
+                            <th>地区</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="row-num">1</td>
+                        <td>
+                            <span class="product-name">12吋铜工艺关键尺寸测试设备</span>
+                            <span class="badge badge-new">中标</span>
+                        </td>
+                        <td><span class="brand-tag">半导体测试</span></td>
+                        <td><span class="model-text">0610-2642IH</span></td>
+                        <td><span class="price">待定</span></td>
+                        <td>
+                            <span class="buyer">燕东科技（北京）</span>
+                        </td>
+                        <td><span class="date">中标公示</span></td>
+                        <td><span class="date">2026-03-19</span></td>
+                        <td><span class="region">北京市</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">2</td>
+                        <td>
+                            <span class="product-name">CP全自动探针台</span>
+                            <span class="badge badge-bidding">招标</span>
+                        </td>
+                        <td><span class="brand-tag">半导体测试</span></td>
+                        <td><span class="model-text">0705-264006055035</span></td>
+                        <td><span class="price">待定</span></td>
+                        <td>
+                            <span class="buyer">上海新微半导体</span>
+                        </td>
+                        <td><span class="date">国际招标</span></td>
+                        <td><span class="date">2026-03-16</span></td>
+                        <td><span class="region">上海市</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">3</td>
+                        <td>
+                            <span class="product-name">耐热性测试仪/炭黑分散度测试仪/屏蔽层半导体电阻率测试仪</span>
+                            <span class="badge badge-bidding">询价</span>
+                        </td>
+                        <td><span class="brand-tag">材料测试</span></td>
+                        <td><span class="model-text">GDZC-2026030093</span></td>
+                        <td><span class="price">待定</span></td>
+                        <td>
+                            <span class="buyer">通用机械关键核心基础件创新中心（安徽）</span>
+                        </td>
+                        <td><span class="date">询价中</span></td>
+                        <td><span class="date">2026-03-20</span></td>
+                        <td><span class="region">安徽省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">4</td>
+                        <td>
+                            <span class="product-name">富春校区启动实验设备（生物显微镜、PCR仪、培养箱等）</span>
+                            <span class="badge badge-intent">意向</span>
+                        </td>
+                        <td><span class="brand-tag">实验室设备</span></td>
+                        <td><span class="model-text">-</span></td>
+                        <td><span class="price">¥139.81万</span></td>
+                        <td>
+                            <span class="buyer">浙江中医药大学</span>
+                        </td>
+                        <td><span class="date">意向公示</span></td>
+                        <td><span class="date">2026-03-13</span></td>
+                        <td><span class="region">浙江省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">5</td>
+                        <td>
+                            <span class="product-name">实验室小型仪器（医用冰箱、移液工作站、超低温冰箱等）</span>
+                            <span class="badge badge-bidding">询价</span>
+                        </td>
+                        <td><span class="brand-tag">实验室设备</span></td>
+                        <td><span class="model-text">SIDC-FS-2026（1）</span></td>
+                        <td><span class="price">待定</span></td>
+                        <td>
+                            <span class="buyer">上海市药品检验研究院</span>
+                        </td>
+                        <td><span class="date">询价中</span></td>
+                        <td><span class="date">2026-03-17</span></td>
+                        <td><span class="region">上海市</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">6</td>
+                        <td>
+                            <span class="product-name">医疗器械实验平台设备（167台套）</span>
+                            <span class="badge badge-bidding">招标</span>
+                        </td>
+                        <td><span class="brand-tag">医疗器械</span></td>
+                        <td><span class="model-text">0703-262511270008</span></td>
+                        <td><span class="price">待定</span></td>
+                        <td>
+                            <span class="buyer">资阳高新区</span>
+                        </td>
+                        <td><span class="date">国际招标</span></td>
+                        <td><span class="date">2026-03-18</span></td>
+                        <td><span class="region">四川省</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>详细情报</h2>
+            
+            <div class="detail-item">
+                <h4>1. 燕东科技12吋铜工艺关键尺寸测试设备中标</h4>
+                <div class="detail-meta">
+                    <span><strong>项目编号：</strong>0610-2642IH</span>
+                    <span><strong>招标范围：</strong>基于12吋铜工艺项目定制化要求关键尺寸测试设备</span>
+                    <span><strong>采购单位：</strong>燕东科技（北京）</span>
+                    <span><strong>中标时间：</strong>2026-03-19</span>
+                    <span><strong>状态：</strong>中标公示</span>
+                </div>
+                <a href="https://www.chinabidding.cn" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>2. 上海新微半导体CP全自动探针台国际招标</h4>
+                <div class="detail-meta">
+                    <span><strong>招标编号：</strong>0705-264006055035</span>
+                    <span><strong>招标内容：</strong>CP全自动探针台 6台</span>
+                    <span><strong>技术要求：</strong>搭配测试机进行CP测试，量产稳定机型，适用于集成电路工艺研发</span>
+                    <span><strong>投标资格：</strong>近3年内至少为中国大陆地区提供过50台以上与投标产品相同或相似的设备</span>
+                    <span><strong>采购单位：</strong>上海新微半导体</span>
+                    <span><strong>实施地点：</strong>中国上海市</span>
+                </div>
+                <a href="https://www.chinabidding.cn" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>3. 通用机械创新中心（安徽）测试设备询价</h4>
+                <div class="detail-meta">
+                    <span><strong>询价编号：</strong>GDZC-2026030093</span>
+                    <span><strong>采购设备：</strong>耐热性测试仪（符合BS EN 50525-2-81:2011）、炭黑分散度测试仪（符合GB/T 18251-2019）、屏蔽层半导体电阻率测试仪（符合GB/T 12706.2-2020）</span>
+                    <span><strong>采购单位：</strong>通用机械关键核心基础件创新中心（安徽）有限公司</span>
+                    <span><strong>询价文件发放：</strong>2026年3月27日至3月30日</span>
+                </div>
+                <a href="https://epp.sinomach.com.cn" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>4. 浙江中医药大学富春校区实验设备采购意向</h4>
+                <div class="detail-meta">
+                    <span><strong>采购单位：</strong>浙江中医药大学</span>
+                    <span><strong>项目名称：</strong>富春校区启动实验设备购置专项</span>
+                    <span><strong>预算金额：</strong>¥139.81万元</span>
+                    <span><strong>预计采购时间：</strong>2026年5月</span>
+                    <span><strong>主要设备：</strong>生物/倒置显微镜、全波长酶标仪、普通PCR仪（孔间温差≤±0.3℃）、分光光度计、离心机、生物安全柜（符合YY 0569标准）、高压灭菌器、超净工作台、CO2培养箱（140℃高温干热灭菌）、纯水仪</span>
+                    <span><strong>质保要求：</strong>不少于3年免费原厂保修</span>
+                </div>
+                <a href="https://www.zcmu.edu.cn" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>5. 上海市药品检验研究院实验室小型仪器采购</h4>
+                <div class="detail-meta">
+                    <span><strong>项目编号：</strong>SIDC-FS-2026（1）</span>
+                    <span><strong>采购内容：</strong>实验室小型实验仪器一批</span>
+                    <span><strong>主要设备：</strong>医用冰箱（冷藏冷冻双温区）9台、自动化移液工作站1台、超低温保存箱2台、pH计1台、紫外分光光度仪1台、溶出仪2台（含自动进样器）、凝胶强度测试仪1台、蒸汽渗透压仪1台、薄层色谱智能配液仪1台</span>
+                    <span><strong>报价时间：</strong>2026年3月17日至3月25日</span>
+                    <span><strong>优先选购：</strong>国产产品</span>
+                </div>
+                <a href="https://www.sidc.org.cn" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>6. 资阳高新区医疗器械实验平台设备采购（亚行贷款）</h4>
+                <div class="detail-meta">
+                    <span><strong>招标编号：</strong>0703-262511270008</span>
+                    <span><strong>项目名称：</strong>资阳高新区医疗器械实验平台设备采购工程</span>
+                    <span><strong>采购内容：</strong>购置设施设备及系统167台（套）</span>
+                    <span><strong>建设目标：</strong>打造医用生物材料通用测试实验室、成分分析实验室、有源口腔医疗器械研发实验室等</span>
+                    <span><strong>投标截止时间：</strong>2026年4月10日</span>
+                    <span><strong>开标地点：</strong>四川省政府政务服务和公共资源交易服务中心</span>
+                </div>
+                <a href="https://www.chinabidding.cn" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>市场趋势分析</h2>
+            <div class="info-box">
+                <p><strong>🔬 半导体测试设备：</strong>12吋铜工艺、CP测试等先进制程设备需求持续增长。进口品牌主导高端市场，国产替代加速进行中。探针台技术要求严格，需具备量产稳定业绩。</p>
+                <p style="margin-top: 0.75rem;"><strong>🧪 生物医药实验室设备：</strong>PCR仪、培养箱、生物安全柜等基础实验设备采购量大。技术要求趋严（如PCR仪孔间温差≤±0.3℃），国产品牌技术成熟度提升。</p>
+                <p style="margin-top: 0.75rem;"><strong>💧 自动化设备：</strong>自动化移液工作站单价高，需求稳定增长。超低温冰箱国产替代加速，价格呈下行趋势。</p>
+                <p style="margin-top: 0.75rem;"><strong>🏥 质保要求：</strong>高校、科研院所采购普遍要求3年以上质保，售后服务体系成为重要竞争因素。政府采购项目"优先选购国产产品"趋势明显。</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>关于本专栏</h2>
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+                <strong>AI采购情报</strong>专栏通过自动化技术每日抓取最新的分析测试设备中标、招标信息，
+                帮助您了解市场价格趋势、掌握行业采购动态、辅助采购决策参考。
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                <strong>数据更新：</strong>每日自动更新 | <strong>数据来源：</strong>中国国际招标网、政府采购网 | <strong>数据类型：</strong>中标/招标/意向
+            </p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">本报告数据来源于公开招投标信息，仅供参考</p>
+    </footer>
+</body>
+</html>

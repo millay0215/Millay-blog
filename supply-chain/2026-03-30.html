@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供应链日报 | 2026-03-30 | Millay</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: #1a1a1a;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        /* 头部 */
+        .header { 
+            background: #1a1a2e; 
+            color: white; 
+            padding: 24px;
+        }
+        .header h1 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .header .date { font-size: 14px; opacity: 0.8; }
+        
+        /* 摘要区 */
+        .summary { 
+            background: #f8f9fa; 
+            padding: 20px 24px; 
+            border-bottom: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #495057;
+        }
+        
+        /* 内容区 */
+        .content { padding: 0; }
+        
+        /* 信息块 */
+        .section { 
+            padding: 24px; 
+            border-bottom: 1px solid #e9ecef;
+        }
+        .section:last-child { border-bottom: none; }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a2e;
+            line-height: 1.4;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .tag-news { background: #e3f2fd; color: #1565c0; }
+        .tag-data { background: #fff3e0; color: #e65100; }
+        .tag-alert { background: #ffebee; color: #c62828; }
+        .tag-strategy { background: #e8f5e9; color: #2e7d32; }
+        
+        .section-content {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #495057;
+        }
+        
+        .section-content p { margin-bottom: 12px; }
+        .section-content ul { 
+            margin-left: 20px; 
+            margin-bottom: 12px;
+        }
+        .section-content li { margin-bottom: 6px; }
+        
+        /* 高亮框 */
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+            border-left: 4px solid #1976d2;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* 数据表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+        .data-table th, .data-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .data-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        .data-table tr:hover { background: #f8f9fa; }
+        
+        /* 来源标注 */
+        .source {
+            font-size: 12px;
+            color: #1976d2;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #e9ecef;
+        }
+        
+        /* 页脚 */
+        .footer {
+            padding: 20px 24px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            font-size: 12px;
+            color: #6c757d;
+            text-align: center;
+        }
+        
+        /* 洞察卡片 */
+        .insight-card {
+            background: #fff8e1;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .insight-card h4 {
+            color: #f57c00;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .section { padding: 16px; }
+            .section-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>🔗 供应链前沿日报</h1>
+            <div class="date">2026年3月30日 星期一</div>
+        </div>
+        
+        <!-- 摘要 -->
+        <div class="summary">
+            <strong>今日要点：</strong>智元机器人第10000台通用具身机器人下线，标志着国产机器人供应链成熟；五矿发展2025年年报显示制造业终端销量同比增长52%；商务部等8部门发布数智供应链发展专项行动计划，到2030年培育100家领军企业。
+        </div>
+        
+        <!-- 内容 -->
+        <div class="content">
+            <!-- 板块1: 行业要讯 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">智元机器人第10000台下线，国产具身智能供应链成熟</div>
+                    <span class="tag tag-news">供应链突破</span>
+                </div>
+                <div class="section-content">
+                    <p>3月30日，智元机器人联合创始人、总裁兼CTO彭志辉宣布，智元第10000台通用具身机器人——远征A3于3月28日正式下线。彭志辉表示，万台下线标志着供应链成熟与规模化量产能力的形成。</p>
+                    
+                    <div class="highlight-box">
+                        <strong>关键意义：</strong><br>
+                        • 从0到10000台仅用不到两年时间，刷新国内人形机器人量产纪录<br>
+                        • 核心零部件国产化率超90%，包括谐波减速器、伺服电机、力传感器等<br>
+                        • 已部署于汽车工厂、3C制造、商超服务等场景
+                    </div>
+                    
+                    <p><strong>供应链核心能力：</strong></p>
+                    <ul>
+                        <li><strong>精密减速器：</strong>国产谐波减速器成本较进口降低40%，寿命提升至2万小时</li>
+                        <li><strong>伺服系统：</strong>自研高扭矩密度伺服电机，功率密度达500W/kg</li>
+                        <li><strong>感知系统：</strong>六维力传感器、激光雷达、RGBD相机国产替代加速</li>
+                        <li><strong>AI芯片：</strong>与地平线、华为昇腾合作，端侧算力提升至100TOPS</li>
+                    </ul>
+                    
+                    <div class="source">
+                        📅 发布日期：2026-03-30 | 📰 信息来源：智元机器人官方、NE时代
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 板块2: 企业供应链 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">五矿发展2025年报：制造业终端销量增长52%</div>
+                    <span class="tag tag-data">数据洞察</span>
+                </div>
+                <div class="section-content">
+                    <p>五矿发展3月30日晚间披露2025年年报显示，公司全年实现营业收入528.23亿元，归属于上市公司股东的净利润0.19亿元。年末资产负债率66.78%，较上年下降1.21个百分点，资产结构持续优化。</p>
+                    
+                    <table class="data-table">
+                        <tr>
+                            <th>业务板块</th>
+                            <th>2025年经营数据</th>
+                            <th>同比变化</th>
+                        </tr>
+                        <tr>
+                            <td>铁矿石经营量</td>
+                            <td>约2103万吨</td>
+                            <td>+8.3%</td>
+                        </tr>
+                        <tr>
+                            <td>工程配供业务</td>
+                            <td>约436万吨</td>
+                            <td>+12%</td>
+                        </tr>
+                        <tr>
+                            <td>制造业终端销量</td>
+                            <td>约314万吨</td>
+                            <td>+52%</td>
+                        </tr>
+                        <tr>
+                            <td>物流园吞吐量</td>
+                            <td>约1333万吨</td>
+                            <td>+15%</td>
+                        </tr>
+                        <tr>
+                            <td>新增监管库</td>
+                            <td>40家</td>
+                            <td>新增</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="insight-card">
+                        <h4>💡 供应链洞察</h4>
+                        <p>制造业终端销量同比增长52%，反映出大宗商品供应链向制造业终端下沉的趋势。五矿发展通过"矿产资源获取+港口混配+钢厂销售"的全产业链布局，以及数字化交易平台建设，成功实现从贸易商向供应链服务商的转型。</p>
+                    </div>
+                    
+                    <div class="source">
+                        📅 发布日期：2026-03-30 | 📰 信息来源：五矿发展年报、经济参考报
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 板块3: 政策动态 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">八部门发文：到2030年培育100家数智供应链领军企业</div>
+                    <span class="tag tag-strategy">政策解读</span>
+                </div>
+                <div class="section-content">
+                    <p>商务部、国家发展改革委等8部门联合发布《加快数智供应链发展专项行动计划》，聚焦农业、制造业、批发业、零售业等5大重点领域，明确提出到2030年培育100家左右全国数智供应链领军企业。</p>
+                    
+                    <p><strong>五大重点领域任务：</strong></p>
+                    <ul>
+                        <li><strong>农业：</strong>支持发展农产品供应链服务商，建设数智化商品市场</li>
+                        <li><strong>制造业：</strong>协同打造智能工厂和智慧供应链，开展AI赋能新型工业化专项行动</li>
+                        <li><strong>批发业：</strong>增强供应链集成能力，为原料采购、仓储物流提供综合服务</li>
+                        <li><strong>零售业：</strong>支持零售企业采用数智技术整合全渠道信息，引导"个性定制+柔性生产"</li>
+                        <li><strong>物流：</strong>推动降低全社会物流成本，推广智能立体仓库、AGV、无人配送车</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <strong>政策亮点：</strong><br>
+                        • 首次将数智供应链上升为国家战略层面<br>
+                        • 明确支持贸港航一体化发展，打通国际供应链通道<br>
+                        • 鼓励供应链企业出海，参与全球供应链重构
+                    </div>
+                    
+                    <div class="source">
+                        📅 发布日期：2026-03-30 | 📰 信息来源：商务部、国家发改委官网
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 板块4: 国际视野 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">力拓CEO：中国仍是最大市场，首批碳酸锂运往上海</div>
+                    <span class="tag tag-data">国际动态</span>
+                </div>
+                <div class="section-content">
+                    <p>力拓CEO石道成（Jakob Stausholm）在接受采访时表示，中国仍是力拓最大的市场，2025年力拓合并销售收入中中国市场贡献占比达57%。他强调："力拓聚焦于提供世界所需材料，而中国是这一切的核心。"</p>
+                    
+                    <p><strong>锂业布局进展：</strong></p>
+                    <ul>
+                        <li>2025年3月完成以67亿美元收购美国锂业巨头阿卡迪姆（Arcadium Lithium）</li>
+                        <li>在阿根廷生产的首批商业化碳酸锂正在运往上海的途中</li>
+                        <li>目标到2028年将产能提升至20万吨碳酸锂当量/年</li>
+                    </ul>
+                    
+                    <p><strong>铁矿生产目标：</strong></p>
+                    <ul>
+                        <li>2026年铁矿生产指导目标：3.43亿—3.66亿吨</li>
+                        <li>随着西芒杜项目逐步增产，中期目标提升至4.25亿—4.4亿吨</li>
+                    </ul>
+                    
+                    <div class="source">
+                        📅 发布日期：2026-03-25 | 📰 信息来源：财新网、力拓官方
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 板块5: 物流仓储 -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">新疆双港片区：中外运、中远海运签约布局跨境物流</div>
+                    <span class="tag tag-news">物流基建</span>
+                </div>
+                <div class="section-content">
+                    <p>3月29日，中外运物流新疆有限公司、中远海运物流供应链（西北）区域公司等企业分别与新疆双港片区签署战略合作协议。双港片区正成为连接国内国际两个市场的"黄金搭档"。</p>
+                    
+                    <p><strong>合作内容：</strong></p>
+                    <ul>
+                        <li><strong>中外运物流：</strong>在仓储物流配送方面深度合作，共同做好多式联运</li>
+                        <li><strong>中远海运：</strong>建设向中亚、欧洲方向的铁路物流通道，以及从新疆向东的海陆联动通道</li>
+                        <li><strong>目标：</strong>协助各类企业降低物流成本，助力中国商品"走出去"、优势资源"引进来"</li>
+                    </ul>
+                    
+                    <div class="source">
+                        📅 发布日期：2026-03-30 | 📰 信息来源：新疆网、中外运物流
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 今日总结 -->
+            <div class="section" style="background: #f8f9fa;">
+                <div class="section-header">
+                    <div class="section-title">📋 今日核心洞察</div>
+                </div>
+                <div class="section-content">
+                    <p><strong>1. 机器人供应链成熟：</strong>智元机器人万台下线标志国产具身智能供应链从零到一的突破，核心零部件国产化率超90%，为智能制造提供新质生产力。</p>
+                    <p><strong>2. 数智供应链升级：</strong>八部门专项行动计划出台，数智供应链上升为国家战略，制造业、物流业迎来数字化转型窗口期。</p>
+                    <p><strong>3. 大宗商品供应链下沉：</strong>五矿发展制造业终端销量增长52%，反映供应链服务向产业终端延伸的趋势。</p>
+                    <p><strong>4. 跨境物流布局加速：</strong>新疆双港片区成为"一带一路"物流枢纽，中外运、中远海运等头部企业加速布局中亚、欧洲通道。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>Millay Blog · 供应链前沿</p>
+            <p style="margin-top: 8px; opacity: 0.7;">数据仅供参考，投资采购请结合实际情况</p>
+        </div>
+    </div>
+</body>
+</html>
