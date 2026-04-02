@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析测试设备中标价格情报 | 2026年04月01日 | Millay</title>
+    <meta name="description" content="分析测试设备中标价格情报，涵盖实验室仪器设备、生物医药设备、环境监测设备最新中标数据">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --bg: #ffffff;
+            --bg-light: #f6f8fa;
+            --border: #e5e9ec;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .hero {
+            background: linear-gradient(135deg, #051c2c 0%, #0a2942 100%);
+            color: white;
+            padding: 140px 2rem 100px;
+            margin-top: 72px;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero .meta {
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .info-box {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .info-box p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.875rem;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.8125rem;
+        }
+        tr:hover { background: var(--bg-light); }
+        .row-num { color: var(--text-secondary); font-weight: 500; }
+        .product-name { font-weight: 500; color: var(--primary); }
+        .brand-tag {
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        .model-text { color: var(--text-secondary); font-size: 0.8125rem; }
+        .spec-text { color: var(--text-secondary); font-size: 0.75rem; }
+        .price { color: #ea4335; font-weight: 600; }
+        .avg-price { color: var(--text-secondary); font-size: 0.8125rem; }
+        .trend-up { color: #ea4335; }
+        .trend-down { color: #34a853; }
+        .trend-neutral { color: var(--text-secondary); }
+        .buyer { color: var(--primary); }
+        .buyer-dept { color: var(--text-secondary); font-size: 0.75rem; }
+        .supplier { color: var(--text-secondary); }
+        .date { color: var(--text-secondary); font-size: 0.8125rem; }
+        .region { color: var(--text-secondary); font-size: 0.8125rem; }
+        .badge {
+            display: inline-block;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .badge-new { background: #e8f0fe; color: #1967d2; }
+        .badge-bidding { background: #fff3e0; color: #e65100; }
+        .badge-intent { background: #e8f5e9; color: #2e7d32; }
+        .detail-item {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .detail-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        .detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .detail-meta span {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+        .source-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .source-link:hover { text-decoration: underline; }
+        .notice-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .notice-box p {
+            color: #e65100;
+            font-size: 0.9375rem;
+            margin: 0;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+        footer p { opacity: 0.7; font-size: 0.875rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.75rem; }
+            table { font-size: 0.75rem; }
+            th, td { padding: 0.5rem 0.25rem; }
+            .detail-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Millay</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>📊 分析测试设备中标价格情报</h1>
+            <p class="meta">数据来源：中国政府采购网、北京市政府采购网 | 更新时间：2026-04-01 14:00</p>
+        </div>
+    </section>
+    
+    <main>
+        <div class="info-box">
+            <p>📈 <strong>数据说明：</strong>本报告数据来源于 <a href="http://www.ccgp.gov.cn" target="_blank">中国政府采购网</a>、<a href="https://www.ccgp-beijing.gov.cn" target="_blank">北京市政府采购网</a> 等公开渠道。</p>
+            <p>✅ <strong>数据类型：</strong>标注<span class="badge badge-new">中标</span>的为已公布中标结果，标注<span class="badge badge-bidding">招标</span>的为正在招标项目，标注<span class="badge badge-intent">意向</span>的为采购意向公示。</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">5</div>
+                <div class="stat-label">今日记录数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1</div>
+                <div class="stat-label">中标项目</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">3</div>
+                <div class="stat-label">招标项目</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1</div>
+                <div class="stat-label">采购意向</div>
+            </div>
+        </div>
+        
+        <section class="section">
+            <h2>中标/招标概览表</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>产品名称</th>
+                            <th>类型</th>
+                            <th>项目编号</th>
+                            <th>预算/中标价</th>
+                            <th>采购单位</th>
+                            <th>状态</th>
+                            <th>日期</th>
+                            <th>地区</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="row-num">1</td>
+                        <td>
+                            <span class="product-name">运维费-实验室仪器设备运维</span>
+                            <span class="badge badge-bidding">招标</span>
+                        </td>
+                        <td><span class="brand-tag">运维服务</span></td>
+                        <td><span class="model-text">ZYZX-FW-2646</span></td>
+                        <td><span class="price">¥148.5万</span></td>
+                        <td>
+                            <span class="buyer">北京市水文总站</span>
+                        </td>
+                        <td><span class="date">招标中</span></td>
+                        <td><span class="date">2026-04-01</span></td>
+                        <td><span class="region">北京市</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">2</td>
+                        <td>
+                            <span class="product-name">实验室监测仪器维修、维护、保养</span>
+                            <span class="badge badge-bidding">招标</span>
+                        </td>
+                        <td><span class="brand-tag">运维服务</span></td>
+                        <td><span class="model-text">1100002****200166753</span></td>
+                        <td><span class="price">¥396.36万</span></td>
+                        <td>
+                            <span class="buyer">北京市生态环境监测中心</span>
+                        </td>
+                        <td><span class="date">招标中</span></td>
+                        <td><span class="date">2026-03-19</span></td>
+                        <td><span class="region">北京市</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">3</td>
+                        <td>
+                            <span class="product-name">微振动与声学实验室试验仪器及装置</span>
+                            <span class="badge badge-bidding">招标</span>
+                        </td>
+                        <td><span class="brand-tag">实验室设备</span></td>
+                        <td><span class="model-text">2026-YK01-W1029</span></td>
+                        <td><span class="price">¥350万</span></td>
+                        <td>
+                            <span class="buyer">国防科技大学</span>
+                        </td>
+                        <td><span class="date">招标中</span></td>
+                        <td><span class="date">2026-03-10</span></td>
+                        <td><span class="region">湖南省</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">4</td>
+                        <td>
+                            <span class="product-name">2026年实验室仪器设备维护维保服务</span>
+                            <span class="badge badge-bidding">招标</span>
+                        </td>
+                        <td><span class="brand-tag">运维服务</span></td>
+                        <td><span class="model-text">A包（重新招标）</span></td>
+                        <td><span class="price">待定</span></td>
+                        <td>
+                            <span class="buyer">深圳市农产品质量安全检验检测中心</span>
+                        </td>
+                        <td><span class="date">招标中</span></td>
+                        <td><span class="date">2026-03-05</span></td>
+                        <td><span class="region">深圳市</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-num">5</td>
+                        <td>
+                            <span class="product-name">学科仪器设备更新</span>
+                            <span class="badge badge-intent">意向</span>
+                        </td>
+                        <td><span class="brand-tag">高校设备</span></td>
+                        <td><span class="model-text">-</span></td>
+                        <td><span class="price">待定</span></td>
+                        <td>
+                            <span class="buyer">海南大学</span>
+                        </td>
+                        <td><span class="date">意向公示</span></td>
+                        <td><span class="date">2026-04-01</span></td>
+                        <td><span class="region">海南省</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>详细情报</h2>
+            
+            <div class="detail-item">
+                <h4>1. 北京市水文总站实验室仪器设备运维招标</h4>
+                <div class="detail-meta">
+                    <span><strong>项目编号：</strong>ZYZX-FW-2646</span>
+                    <span><strong>预算金额：</strong>148.5万元</span>
+                    <span><strong>采购单位：</strong>北京市水文总站</span>
+                    <span><strong>投标截止：</strong>2026年4月21日9:00</span>
+                    <span><strong>服务期限：</strong>合同签订至2026年12月31日</span>
+                    <span><strong>招标方式：</strong>公开招标</span>
+                </div>
+                <p><strong>政策要求：</strong>本项目专门面向小微企业采购，需落实节能环保、中小微型企业扶持、支持监狱企业、促进残疾人就业等相关政府采购政策。</p>
+                <a href="https://swj.beijing.gov.cn/zwgk/zfcg/zbgg/202603/t20260331_4571255.html" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>2. 北京市生态环境监测中心仪器维保招标</h4>
+                <div class="detail-meta">
+                    <span><strong>项目编号：</strong>1100002****200166753-XM001</span>
+                    <span><strong>预算金额：</strong>396.36万元</span>
+                    <span><strong>采购单位：</strong>北京市生态环境监测中心</span>
+                    <span><strong>服务期限：</strong>2026年5月1日至2027年4月30日</span>
+                    <span><strong>投标截止：</strong>2026年4月9日9:30</span>
+                </div>
+                <p><strong>项目概况：</strong>污染源监测运维项目-实验室监测仪器维修、维护、保养，本项目01-04包专门面向小微企业采购。</p>
+                <a href="https://ggzyfw.beijing.gov.cn/jyxxcggg/20260319/5465909.html" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>3. 国防科技大学微振动及声学实验室设备招标</h4>
+                <div class="detail-meta">
+                    <span><strong>项目编号：</strong>2026-YK01-W1029</span>
+                    <span><strong>预算金额：</strong>350万元</span>
+                    <span><strong>采购单位：</strong>国防科技大学</span>
+                    <span><strong>采购内容：</strong>微振动与声学实验室试验仪器及装置1套</span>
+                    <span><strong>交货要求：</strong>详见采购文件商务要求</span>
+                </div>
+                <p><strong>供应商资格：</strong>具有企（事）业法人资格，国有企业、事业单位、军队单位或成立三年以上的非外资独资/控股企业。</p>
+                <a href="https://www.nudt.edu.cn/cgxx/31fb43f79f4f43adb9b3128b0bfddb9d.htm" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>4. 深圳市农产品质量安全检验检测中心维保服务招标</h4>
+                <div class="detail-meta">
+                    <span><strong>项目名称：</strong>2026年实验室仪器设备维护维保服务项目（A包）（重新招标）</span>
+                    <span><strong>采购单位：</strong>深圳市农产品质量安全检验检测中心</span>
+                    <span><strong>获取招标文件：</strong>深圳政府采购智慧平台</span>
+                    <span><strong>备注：</strong>不接受联合体投标，不接受进口产品</span>
+                </div>
+                <p><strong>政策要点：</strong>中标供应商可凭借中标通知书和采购合同向金融机构申请政府采购订单融资。</p>
+                <a href="http://zfcg.szggzy.com:8081/gsgg/002001/002001002/002001002001/20260305/c9c5ebd1-f0f1-4912-b43a-838e94174338.html" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+            
+            <div class="detail-item">
+                <h4>5. 海南大学2026年仪器设备采购意向</h4>
+                <div class="detail-meta">
+                    <span><strong>采购单位：</strong>海南大学</span>
+                    <span><strong>采购时间：</strong>2026年4月至5月</span>
+                    <span><strong>采购类型：</strong>学科仪器设备更新</span>
+                    <span><strong>状态：</strong>意向公示</span>
+                </div>
+                <p><strong>备注：</strong>具体采购内容待后续招标公告公布，涉及学科仪器设备更新。</p>
+                <a href="https://bidding.hainanu.edu.cn/" target="_blank" class="source-link">查看来源 →</a>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>市场趋势分析</h2>
+            <div class="info-box">
+                <p><strong>🔧 运维服务需求旺盛：</strong>今日招标项目以实验室仪器设备运维维保服务为主，北京、深圳等地环境监测机构纷纷启动年度运维招标，预算金额从148万到396万不等，反映实验室设备全生命周期管理受到重视。</p>
+                <p style="margin-top: 0.75rem;"><strong>🏫 高校科研投入持续：</strong>国防科技大学350万元微振动及声学实验室设备采购、海南大学学科仪器更新意向，显示高校科研平台建设持续投入。</p>
+                <p style="margin-top: 0.75rem;"><strong>🌱 小微企业政策倾斜：</strong>多个项目专门面向小微企业采购，落实政府采购扶持政策，为中小企业参与政府项目提供机会。</p>
+                <p style="margin-top: 0.75rem;"><strong>📊 PCR仪市场回顾：</strong>2025年上半年中国政府采购网PCR仪中标534台/套，总金额1.4亿元，其中国产占比61.8%，平均单价14.36万元；进口占比38.2%，平均单价45.53万元。高校采购金额占比45%，为最大需求方。</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>关于本专栏</h2>
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+                <strong>AI采购情报</strong>专栏通过自动化技术每日抓取最新的分析测试设备中标、招标信息，
+                帮助您了解市场价格趋势、掌握行业采购动态、辅助采购决策参考。
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                <strong>数据更新：</strong>每日自动更新 | <strong>数据来源：</strong>中国政府采购网、各省政府采购网 | <strong>数据类型：</strong>中标/招标/意向
+            </p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">本报告数据来源于公开招投标信息，仅供参考</p>
+    </footer>
+</body>
+</html>
