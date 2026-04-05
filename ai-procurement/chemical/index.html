@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>化学原料价格情报 | AI采购情报 | Millay</title>
-    <meta name="description" content="化工原料市场价格情报，涵盖原油、天然气、乙烯、丙烯、苯、甲醇等基础化工产品">
+    <title>化学原料 | AI采购情报</title>
+    <meta name="description" content="化工原料采购价格情报，甲醇、苯乙烯、丙烯酸等市场行情监测">
     <style>
         :root {
             --primary: #051c2c;
-            --primary-light: #0a2942;
             --accent: #2251ff;
             --text: #051c2c;
             --text-secondary: #5a6872;
@@ -27,6 +26,7 @@
         }
         header {
             background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -41,55 +41,36 @@
             align-items: center;
             height: 72px;
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9375rem;
-            font-weight: 500;
-        }
-        .nav-links a:hover { color: var(--accent); }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #0d3a5c 100%);
+            background: linear-gradient(135deg, #0d4a3c 0%, #051c2c 100%);
             color: white;
             padding: 140px 2rem 80px;
             margin-top: 72px;
         }
-        .hero-content {
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.125rem; opacity: 0.9; max-width: 600px; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem 4rem;
         }
-        .hero h1 {
-            font-size: 2.5rem;
+        .section-title {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            opacity: 0.85;
-            font-size: 1.125rem;
-            max-width: 600px;
-        }
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 2rem;
-        }
-        .section-header {
-            margin-bottom: 2rem;
-        }
-        .section-header h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
+            margin-bottom: 1.5rem;
             color: var(--primary);
         }
         .article-list {
@@ -110,57 +91,53 @@
             transition: all 0.3s ease;
         }
         .article-item:hover {
-            border-color: transparent;
+            border-color: var(--accent);
             box-shadow: 0 8px 24px var(--shadow);
             transform: translateX(4px);
         }
         .article-item h4 {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
         .article-item p {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.9375rem;
         }
         .article-date {
             color: var(--text-muted);
-            font-size: 0.9375rem;
-            font-weight: 500;
+            font-size: 0.875rem;
             white-space: nowrap;
             padding-left: 2rem;
         }
-        .tag {
-            display: inline-block;
-            background: #e8f0fe;
-            color: #1967d2;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 3rem;
         }
-        .tag-new {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 40px 2rem;
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
             text-align: center;
         }
-        footer p { opacity: 0.7; font-size: 0.875rem; }
-        @media (max-width: 768px) {
-            .article-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            .article-date {
-                padding-left: 0;
-            }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        footer {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
         }
     </style>
 </head>
@@ -170,6 +147,8 @@
             <a href="/" class="logo">AI链习生</a>
             <ul class="nav-links">
                 <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
                 <li><a href="/ai-procurement/">AI采购情报</a></li>
             </ul>
         </nav>
@@ -177,141 +156,66 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>🧪 化学原料价格情报</h1>
-            <p>化工原料市场价格情报，涵盖能源、化工、贵金属、工业气体等板块最新价格行情与市场分析</p>
+            <h1>🧪 化学原料</h1>
+            <p>化工原料采购价格情报、市场行情监测与趋势分析。覆盖苯乙烯、甲醇、丙烯酸等核心化工产品。</p>
         </div>
     </section>
 
-    <main>
-        <div class="section-header">
-            <h2>情报列表</h2>
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / 化学原料
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">4</div>
+                <div class="stat-label">收录文章</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">10+</div>
+                <div class="stat-label">监测品种</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">日更</div>
+                <div class="stat-label">更新频率</div>
+            </div>
         </div>
-        
+
+        <h2 class="section-title">📋 文章列表</h2>
         <div class="article-list">
-            <a href="2026-04-03.html" class="article-item">
+            <a href="2026-04-05.html" class="article-item">
                 <div>
-                    <h4>化学原材料市场情报 | 2026年4月3日 <span class="tag tag-new">NEW</span></h4>
-                    <p>化工板块46个品种上涨，亚磷酸二甲酯暴涨15.09%，甲醇涨7.27%，醋酸产业链全线走强...</p>
+                    <h4>化工原料采购情报 | 2026年4月5日</h4>
+                    <p>苯乙烯2025年跌幅达20.19%，纯苯跌幅27.17%，丙烯酸-丙烯价差扩大5020元/吨...</p>
                 </div>
-                <span class="article-date">2026.04.03</span>
-            </a>
-            <a href="2026-04-01.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年4月1日 <span class="tag tag-new">NEW</span></h4>
-                    <p>硫酸暴涨10%领涨化工板块，醋酸产业链全线走强，甲醇高位回调7%，化工板块46个品种上涨...</p>
-                </div>
-                <span class="article-date">2026.04.01</span>
+                <div class="article-date">2026-04-05</div>
             </a>
             <a href="2026-03-23.html" class="article-item">
                 <div>
-                    <h4>化学原料市场价格情报 | 2026年3月23日 <span class="tag tag-new">NEW</span></h4>
-                    <p>⚠️ 中东局势持续紧张！甲醇价格创近年新高，碳酸锶暴涨148%，聚丙烯一周涨12%，化工品价格普涨...</p>
+                    <h4>化工原料价格监测 | 2026年3月23日</h4>
+                    <p>化工原料市场行情分析，甲醇、苯乙烯、丙烯酸等核心产品价格走势...</p>
                 </div>
-                <span class="article-date">2026.03.23</span>
+                <div class="article-date">2026-03-23</div>
             </a>
-            <a href="2026-03-18.html" class="article-item">
+            <a href="2026-03-20.html" class="article-item">
                 <div>
-                    <h4>化学原料市场价格情报 | 2026年3月18日</h4>
-                    <p>化工原料市场行情监测，能源价格波动分析，采购策略建议更新...</p>
+                    <h4>化工原料市场监测 | 2026年3月20日</h4>
+                    <p>化工原料价格行情追踪，石化产业链最新动态...</p>
                 </div>
-                <span class="article-date">2026.03.18</span>
-            </a>
-            <a href="2026-03-17.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月17日 <span class="tag tag-new">NEW</span></h4>
-                    <p>春耕备肥需求强劲支撑化肥价格，全球化肥供应持续紧张，尿素、磷肥、钾肥市场行情监测...</p>
-                </div>
-                <span class="article-date">2026.03.17</span>
+                <div class="article-date">2026-03-20</div>
             </a>
             <a href="2026-03-16.html" class="article-item">
                 <div>
-                    <h4>化学原料市场价格情报 | 2026年3月16日 <span class="tag tag-new">NEW</span></h4>
-                    <p>化工原料市场行情监测，能源价格波动分析，采购策略建议更新...</p>
+                    <h4>化工原料价格情报 | 2026年3月16日</h4>
+                    <p>化工原料市场行情分析，苯乙烯、甲醇等核心产品价格走势...</p>
                 </div>
-                <span class="article-date">2026.03.16</span>
-            </a>
-            <a href="2026-03-15.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月15日 <span class="tag tag-new">NEW</span></h4>
-                    <p>化工原料市场行情监测，能源价格波动分析，采购策略建议...</p>
-                </div>
-                <span class="article-date">2026.03.15</span>
-            </a>
-            <a href="2026-03-13.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月13日 <span class="tag tag-new">NEW</span></h4>
-                    <p>⚠️ 布伦特原油突破100美元大关！WTI原油涨超9%，PX、PTA涨停，化工板块全线大涨...</p>
-                </div>
-                <span class="article-date">2026.03.13</span>
-            </a>
-            <a href="2026-03-12.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月12日 <span class="tag tag-new">NEW</span></h4>
-                    <p>⚠️ 化工板块全线上涨！WTI原油涨4.55%，PTA涨11.36%，甲醇涨6.12%，多家化工企业官宣涨价...</p>
-                </div>
-                <span class="article-date">2026.03.12</span>
-            </a>
-            <a href="2026-03-11.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月11日 <span class="tag tag-new">NEW</span></h4>
-                    <p>⚠️ 苯酚回调16.67%！环氧丙烷突破11000元/吨，七日涨幅37.71%，丙烯酸涨64.49%，正丁醇涨12.81%...</p>
-                </div>
-                <span class="article-date">2026.03.11</span>
-            </a>
-            <a href="2026-03-10.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月10日</h4>
-                    <p>⚠️ 原油冲高至120美元！化工板块21品种涨停，六氟磷酸锂三个月涨幅160%，上期所发布风控措施...</p>
-                </div>
-                <span class="article-date">2026.03.10</span>
-            </a>
-            <a href="2026-03-09.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月9日</h4>
-                    <p>⚠️ 国际油价暴涨超22%突破111美元！中东局势升级，化工品全线跟涨，顺酐涨17.67%...</p>
-                </div>
-                <span class="article-date">2026.03.09</span>
-            </a>
-            <a href="2026-03-08.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月8日</h4>
-                    <p>今日化学原料板块暂无新增中标数据，请关注明日更新的化学原料市场价格情报...</p>
-                </div>
-                <span class="article-date">2026.03.08</span>
-            </a>
-            <a href="2026-03-07.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月7日</h4>
-                    <p>⚠️ 国际油价本周暴涨超35%，WTI突破91美元/桶，化工品全线上涨，纯苯涨8.58%...</p>
-                </div>
-                <span class="article-date">2026.03.07</span>
-            </a>
-            <a href="2026-03-05.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月5日</h4>
-                    <p>原油小幅反弹、甲醇延续涨势+2.3%、碳酸锂企稳、PTA供应趋紧价格上涨...</p>
-                </div>
-                <span class="article-date">2026.03.05</span>
-            </a>
-            <a href="2026-03-04.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月4日</h4>
-                    <p>甲醇大涨7.52%、二甘醇飙升12.97%、碳酸锂持续下跌、中东局势影响能源供应...</p>
-                </div>
-                <span class="article-date">2026.03.04</span>
-            </a>
-            <a href="2026-03-02.html" class="article-item">
-                <div>
-                    <h4>化学原料市场价格情报 | 2026年3月2日</h4>
-                    <p>⚠️ 地缘冲突推升油价大涨超10%，WTI原油报75美元/桶，化工原料价格普遍上行，白银单日涨5.5%...</p>
-                </div>
-                <span class="article-date">2026.03.02</span>
+                <div class="article-date">2026-03-16</div>
             </a>
         </div>
-    </main>
+    </div>
 
     <footer>
-        <p>&copy; 2026 Millay. 洞察 · 思考 · 实践</p>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
     </footer>
 </body>
 </html>
