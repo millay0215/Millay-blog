@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供应链前沿日报 | 2026年4月17日</title>
+    <meta name="description" content="2026年4月17日供应链前沿日报：美伊停火谈判进入关键期、半导体涨价潮全面蔓延、英伟达万亿订单背后的供应链博弈">
+    <meta name="author" content="Millay">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #051c2c 0%, #2251ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -12px rgba(5, 28, 44, 0.15);
+        }
+        .section-icon {
+            background: linear-gradient(135deg, #2251ff 0%, #1e40af 100%);
+        }
+        .tag-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .news-item {
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .news-item:hover {
+            border-left-color: #2251ff;
+            background: rgba(34, 81, 255, 0.03);
+        }
+        .risk-high { border-left-color: #ef4444; }
+        .risk-medium { border-left-color: #f59e0b; }
+        .risk-low { border-left-color: #10b981; }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/supply-chain/" class="text-xl font-bold text-slate-900 hover:text-blue-600 transition">← 返回日报列表</a>
+                <div class="text-sm text-slate-500">2026年4月17日 星期五</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm font-medium border border-blue-500/30">第50期</span>
+                <span class="text-slate-400 text-sm">每日 9:00 更新</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">供应链前沿日报</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">聚焦全球供应链动态、AI技术应用、采购情报与行业趋势，助力决策者把握先机</p>
+            <div class="mt-8 flex flex-wrap gap-4">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/10">
+                    <span class="text-slate-400 text-xs">编辑</span>
+                    <p class="font-medium">AI链习生</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/10">
+                    <span class="text-slate-400 text-xs">数据来源</span>
+                    <p class="font-medium">财新网、华尔街见闻、摩根士丹利、海关总署等</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- 1. 今日要闻 -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="section-icon w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl">🔥</div>
+                <h2 class="text-2xl font-bold text-slate-900">今日要闻</h2>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden card-hover">
+                <div class="p-6 md:p-8">
+                    <!-- 头条新闻 -->
+                    <div class="border-b border-slate-100 pb-6 mb-6">
+                        <div class="flex items-start gap-4">
+                            <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded">焦点</span>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">美伊停火谈判进入关键期，霍尔木兹海峡或暂停航运</h3>
+                                <p class="text-slate-600 leading-relaxed mb-3">
+                                    据金十数据和财新网报道，<strong>伊朗正考虑暂时停止通过霍尔木兹海峡的航运</strong>，以避免挑战美国的海上封锁并破坏新一轮和平谈判。知情人士表示，这一潜在的暂停反映了在华盛顿与德黑兰安排下一次面对面会谈的后勤工作之际，伊朗希望避免在敏感外交时刻出现局势立即升级。<span class="text-red-600 font-semibold">关注4月22日停火截止日与4月28日国会授权日两个关键节点。</span>特朗普此前宣布对伊朗战事取得"快速、决定性、压倒性胜利"，但市场普遍认为冲突"接近完成"而非真正结束。
+                                </p>
+                                <div class="flex flex-wrap gap-2 text-sm">
+                                    <span class="text-slate-400">来源：金十数据、财新网、华尔街见闻</span>
+                                    <span class="text-slate-300">|</span>
+                                    <span class="text-slate-400">2026-04-15/16</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 次要新闻 -->
+                    <div class="space-y-4">
+                        <div class="news-item pl-4 py-3 rounded-lg">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">中国一季度进出口总值11.84万亿元，创历史新高</h4>
+                                    <p class="text-slate-600 text-sm">海关总署4月14日发布数据显示，2026年一季度我国货物贸易进出口总值11.84万亿元，历史同期首次超过11万亿元，同比增速保持两位数增长，达到15%。其中3月大豆进口401.9万吨，铁矿砂进口10474.3万吨，煤及褐煤进口3905.9万吨，原油进口4998.2万吨。</p>
+                                </div>
+                                <span class="text-xs text-slate-400 whitespace-nowrap">海关总署</span>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item pl-4 py-3 rounded-lg">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">英伟达积压订单突破1万亿美元，供应链全面吃紧</h4>
+                                    <p class="text-slate-600 text-sm">在GTC 2026大会上，黄仁勋披露英伟达积压订单规模已突破万亿美元。他指出，1万亿美元仅指Blackwell平台加上Vera Rubin平台到2027年的订单规模，不包括其他业务线。对比去年提及的5000亿美元订单规模，今年已翻倍。摩根士丹利报告显示，台积电CoWoS产能2027年将扩至每月16-17万片，但仍面临中介层翘曲等技术挑战。</p>
+                                </div>
+                                <span class="text-xs text-slate-400 whitespace-nowrap">36氪</span>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item pl-4 py-3 rounded-lg">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">现代汽车绕行好望角，全球车企供应链重构加速</h4>
+                                    <p class="text-slate-600 text-sm">现代汽车已安排运输船舶绕行非洲好望角以避开霍尔木兹海峡，此举将延长全球供应链交货周期。公司CEO何塞·穆诺兹表示，航线调整是运营布局重构的一部分，旨在应对供应链冲击、关税及地缘政治风险。现代计划在欧洲本地采购更多零部件，并将供应链决策会议由每年一次改为每周一次。计划到2030年将在美年产能提升至120万辆，实现80%供应链本土化率。</p>
+                                </div>
+                                <span class="text-xs text-slate-400 whitespace-nowrap">凤凰网汽车</span>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item pl-4 py-3 rounded-lg">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">中国发布《产业链供应链安全规定》，制度化管控供应链风险</h4>
+                                    <p class="text-slate-600 text-sm">4月7日，国务院发布《关于产业链供应链安全的规定》，明确将供应链韧性与国家安全、经济稳定紧密联系。该文件将供应链保护构建为跨部门体系，列出负责该领域的中央机构，并提供定期更新的重点行业清单。第14条规定，如外国对中国实施歧视性禁令，可启动特别调查并实施后续限制。这标志着中国正将供应链保护从"应对攻击"转向对脆弱性的持续性管理。</p>
+                                </div>
+                                <span class="text-xs text-slate-400 whitespace-nowrap">俄罗斯卫星通讯社</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. AI+供应链动态 -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="section-icon w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl">🤖</div>
+                <h2 class="text-2xl font-bold text-slate-900">AI+供应链动态</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 card-hover">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="bg-purple-100 text-purple-700 text-xs font-semibold px-2 py-1 rounded">AI算力</span>
+                        <span class="text-xs text-slate-400">钛媒体</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">AI算力需求推动云服务商集体涨价5%-30%</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">2026年4月，腾讯云、阿里云、百度云等国内云服务商集体上调AI算力服务价格5%-30%，核心原因是全球AI算力需求持续激增、硬件供应链成本大幅上涨。中国日均Token调用量从2024年初约1000亿飙升至2026年3月约140万亿，两年增长超千倍。CoreWeave预计2026年营收将达120亿-130亿美元，合同积压超660亿美元。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">算力涨价</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Token激增</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">CoreWeave</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 card-hover">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-1 rounded">AI基础设施</span>
+                        <span class="text-xs text-slate-400">摩根士丹利</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">联发科谷歌3nm TPU进展顺利，2026下半年量产</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">摩根士丹利最新研报显示，联发科为谷歌开发的3nm TPU（ZebraFish）进展顺利，预计2026年下半年量产。报告维持2026年16亿美元、2027年100亿美元的营收预测。同时，英伟达正逐步引入三星作为台积电的补充，2027年的LP35节点可能采用双供应商策略，打破台积电独占英伟达先进制程的预期。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">3nm芯片</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">双供应商策略</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">AI芯片</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 card-hover">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">物流AI</span>
+                        <span class="text-xs text-slate-400">宁波海关</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">宁波创新打造"甬智"AI审单智能体，通关效率提升30%</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">在出口管制监管领域，宁波创新打造"甬智"AI审单智能体，完成出口报关单全量智能审核应用，在"管得好""管得住"的前提下，通关效率提升30%。同时，宁波率先将AI技术运用在海关机检查验，智能审图平均识别时间压缩至12秒，查验时间最快缩短至4分钟。在铁矿石、铜精矿等进口口岸加装高速图像识别、自动采样机器人等设备，平均通关时长压缩15小时以上。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">智慧海关</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">AI审单</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">通关提速</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 card-hover">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="bg-orange-100 text-orange-700 text-xs font-semibold px-2 py-1 rounded">端侧AI</span>
+                        <span class="text-xs text-slate-400">东方财富</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">黄仁勋定义英伟达：将"电子"转为"Token"的转换器</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">黄仁勋首次抛出英伟达的极简定义："输入是电子，输出是Token，中间是英伟达。"他强调，英伟达提供的是覆盖全科学领域的加速计算平台，其成本优势在于最优的TCO（总拥有成本）与每瓦特Token产出。他表示，绝不对GPU进行"价高者得"的竞价售卖，也不会放弃中国市场。黄仁勋将于6月1日Computex开幕前夕登台，或揭晓下一代AI革命技术。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Token经济学</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">加速计算</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">GTC大会</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 采购情报 -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="section-icon w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl">📊</div>
+                <h2 class="text-2xl font-bold text-slate-900">采购情报</h2>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-6 md:p-8">
+                    <!-- 价格趋势 -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                            关键元器件价格动态
+                        </h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-slate-600 text-sm">半导体靶材</span>
+                                    <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">↑ 60%-70%</span>
+                                </div>
+                                <p class="text-2xl font-bold text-slate-900">60%-70%</p>
+                                <p class="text-xs text-slate-500 mt-1">特殊小金属类靶材涨幅远超行业平均</p>
+                            </div>
+                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-slate-600 text-sm">车规DRAM</span>
+                                    <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">↑ 300%</span>
+                                </div>
+                                <p class="text-2xl font-bold text-slate-900">300%</p>
+                                <p class="text-xs text-slate-500 mt-1">野村证券将Q2 DRAM涨幅调高至51%</p>
+                            </div>
+                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-slate-600 text-sm">CPU（Intel/AMD）</span>
+                                    <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">↑ 10%-15%</span>
+                                </div>
+                                <p class="text-2xl font-bold text-slate-900">10%-15%</p>
+                                <p class="text-xs text-slate-500 mt-1">交期延长至6个月，AI推理需求驱动</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 采购策略建议 -->
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            采购策略建议
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                <div class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">半导体靶材：关注国产三杰替代窗口</h4>
+                                    <p class="text-slate-600 text-sm">2026年一季度，AI算力需求引爆全球半导体市场全链条涨价潮，已有超50家行业公司密集调整价格，部分高端AI芯片涨幅突破100%。国产三杰（江丰电子、阿石创、隆华科技）正卡位千亿替代窗口，建议采购方关注国产靶材的验证进展，适度分散供应商风险。</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                <div class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">存储芯片：警惕群联仅能满足30%需求</h4>
+                                    <p class="text-slate-600 text-sm">NAND Flash控制芯片及模组大厂群联电子正面临严峻供给缺口，CEO潘健成表示公司目前仅能满足客户30%的需求，高达70%的订单无法承接。威刚已将库存提升至300亿元并评估进一步增至350亿元。建议企业级SSD采购方提前锁定长期供应协议，部分原厂要求预付三年货款。</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                <div class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">CPU/GPU：Arm架构迎来结构性机会</h4>
+                                    <p class="text-slate-600 text-sm">在x86阵营供应受阻的背景下，基于Arm架构的芯片迎来结构性机会。据华硕透露，其搭载Copilot AI的PC产品中，采用Arm架构CPU的比例已达30%，较去年底提升10个百分点。苹果凭借自研M系列处理器完全规避此轮涨价影响，近期推出定价4599元的入门级MacBook Neo。建议关注Arm架构替代方案可行性。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 行业趋势分析 -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="section-icon w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl">📈</div>
+                <h2 class="text-2xl font-bold text-slate-900">行业趋势分析</h2>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-4">2026年供应链核心趋势</h3>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3">
+                                <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0">1</span>
+                                <span class="text-slate-700 text-sm"><strong>供应链从"效率优先"转向"安全与韧性"</strong>：霍尔木兹海峡危机成为分水岭，企业被迫重新审视对单一地理通道的过度依赖，加速供应链的多元化与区域化布局</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0">2</span>
+                                <span class="text-slate-700 text-sm"><strong>AI算力需求呈指数级增长</strong>：中国日均Token调用量两年增长超千倍，AI智算中心建设成本是传统数据中心的10倍以上，推动全产业链涨价</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0">3</span>
+                                <span class="text-slate-700 text-sm"><strong>半导体进入"高价稳供"新阶段</strong>：存储、CPU、GPU、FPGA全面涨价，交期延长至6个月，结构性缺货将持续至2028年</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0">4</span>
+                                <span class="text-slate-700 text-sm"><strong>地缘政治重塑全球贸易格局</strong>：美国要求东盟国家切断与中国的供应链联系，墨西哥对中国商品加征最高50%关税，"中国+1"战略加速推进</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0">5</span>
+                                <span class="text-slate-700 text-sm"><strong>国产替代迎来窗口期</strong>：国产FPGA国内市场占比预计2026年升至25%，国产存储份额将提升至25%以上，国产AI芯片在中低端市场实现替代</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-4">关键数据洞察</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-slate-600 text-sm">英伟达积压订单规模</span>
+                                    <span class="text-blue-600 font-bold">$1万亿+</span>
+                                </div>
+                                <div class="w-full bg-blue-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Blackwell+Vera Rubin平台至2027年订单，同比翻倍</p>
+                            </div>
+                            <div class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-slate-600 text-sm">中国日均Token调用量</span>
+                                    <span class="text-green-600 font-bold">140万亿</span>
+                                </div>
+                                <div class="w-full bg-green-200 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">2026年3月数据，较2024年初增长超千倍</p>
+                            </div>
+                            <div class="p-4 bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl border border-orange-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-slate-600 text-sm">霍尔木兹海峡通航量</span>
+                                    <span class="text-orange-600 font-bold">骤降94%</span>
+                                </div>
+                                <div class="w-full bg-orange-200 rounded-full h-2">
+                                    <div class="bg-orange-600 h-2 rounded-full" style="width: 6%"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">较往年水平下降超九成，战争风险保险费暴涨300%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 近期重要行业会议 -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="section-icon w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl">🗓️</div>
+                <h2 class="text-2xl font-bold text-slate-900">近期重要行业会议</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 p-4">
+                        <span class="text-blue-100 text-xs font-medium">4月22-24日</span>
+                        <h3 class="text-white font-bold mt-1">第四届国际港航物流暨多式联运展览会</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 text-sm text-slate-600 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            上海跨国采购会展中心
+                        </div>
+                        <p class="text-slate-600 text-sm">ISL Expo 2026，将举办15个品类的货主供应链论坛，涵盖光伏、半导体、医药、化工、汽车等行业。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-700 p-4">
+                        <span class="text-purple-100 text-xs font-medium">4月22日</span>
+                        <h3 class="text-white font-bold mt-1">2026国际芯片与半导体进出口供应链发展论坛</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 text-sm text-slate-600 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            上海跨国采购会展中心
+                        </div>
+                        <p class="text-slate-600 text-sm">由江苏省半导体行业协会主办，聚焦半导体供应链物流韧性新生态。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 p-4">
+                        <span class="text-red-100 text-xs font-medium">4月28日</span>
+                        <h3 class="text-white font-bold mt-1">美国国会授权日（美伊谈判关键节点）</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 text-sm text-slate-600 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            华盛顿
+                        </div>
+                        <p class="text-slate-600 text-sm">关注4月22日停火截止日与4月28日国会授权日两个关键节点，将决定霍尔木兹海峡通航前景。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-green-600 to-green-700 p-4">
+                        <span class="text-green-100 text-xs font-medium">4月23日</span>
+                        <h3 class="text-white font-bold mt-1">2026光伏行业供应链物流论坛</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 text-sm text-slate-600 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            上海跨国采购会展中心
+                        </div>
+                        <p class="text-slate-600 text-sm">由中国光伏行业协会主办，探讨光伏供应链稳定与韧性建设。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-orange-600 to-orange-700 p-4">
+                        <span class="text-orange-100 text-xs font-medium">4月23日</span>
+                        <h3 class="text-white font-bold mt-1">2026国际医药进出口供应链发展论坛</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 text-sm text-slate-600 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            上海跨国采购会展中心
+                        </div>
+                        <p class="text-slate-600 text-sm">由医时集主办，聚焦医药进出口政策趋势、创新药供应链布局。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-teal-600 to-teal-700 p-4">
+                        <span class="text-teal-100 text-xs font-medium">6月1日</span>
+                        <h3 class="text-white font-bold mt-1">英伟达黄仁勋Computex主题演讲</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 text-sm text-slate-600 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            台北
+                        </div>
+                        <p class="text-slate-600 text-sm">黄仁勋将于Computex开幕前夕登台，或揭晓"驱动下一代AI的突破性技术"，以及与联发科联合研发的Arm架构AI PC芯片。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 风险提示 -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="section-icon w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl">⚠️</div>
+                <h2 class="text-2xl font-bold text-slate-900">风险提示</h2>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-6 md:p-8">
+                    <div class="space-y-4">
+                        <div class="risk-high news-item pl-4 py-4 rounded-lg bg-red-50">
+                            <div class="flex items-start gap-4">
+                                <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded shrink-0">高风险</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-1">地缘政治风险：美伊谈判关键节点临近，霍尔木兹海峡或暂停航运</h4>
+                                    <p class="text-slate-700 text-sm">伊朗正考虑暂时停止通过霍尔木兹海峡的航运，以避免破坏新一轮和平谈判。4月22日停火截止日与4月28日国会授权日是两个关键节点。如谈判破裂，海峡可能重新封锁，全球能源运输成本将永久性抬升。建议能源进口企业、依赖中东航线的物流企业密切关注谈判进展，提前布局替代方案。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="risk-high news-item pl-4 py-4 rounded-lg bg-red-50">
+                            <div class="flex items-start gap-4">
+                                <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded shrink-0">高风险</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-1">供应链成本上涨：半导体全面涨价交期延长至6个月</h4>
+                                    <p class="text-slate-700 text-sm">半导体靶材涨60%-70%、车规DRAM涨300%、CPU/GPU涨10%-15%且交期延长至6个月。群联电子仅能满足30%客户需求，70%订单无法承接。AI服务器与汽车电子双引擎驱动下的结构性缺货将持续至2028年。建议电子设备制造商提前锁定长期供应协议，评估国产替代方案可行性。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="risk-medium news-item pl-4 py-4 rounded-lg bg-amber-50">
+                            <div class="flex items-start gap-4">
+                                <span class="bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded shrink-0">中风险</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-1">贸易摩擦升级：美国要求东盟切断与中国供应链联系</h4>
+                                    <p class="text-slate-700 text-sm">美国在与东盟国家达成贸易协议后，要求它们切断与中国的供应链联系，任何借道第三国出口美国的商品一旦被认定含有中国成分，将被征收40%的"特别转运关税"。墨西哥已对中国商品加征最高50%关税。建议出口企业加速在东南亚提高输美产品的东盟增值比例，或开拓非美市场分散风险。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="risk-medium news-item pl-4 py-4 rounded-lg bg-amber-50">
+                            <div class="flex items-start gap-4">
+                                <span class="bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded shrink-0">中风险</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-1">全球贸易增长放缓：WTO下调2026年贸易增长预期</h4>
+                                    <p class="text-slate-700 text-sm">联合国贸发会议发布报告指出，尽管2025年全球货物和服务贸易总额增长约2.5万亿美元，但中东冲突和霍尔木兹海峡航运中断持续干扰能源流动和区域物流。美国"301调查"范围扩大，可能出台新的关税政策，增加了贸易环境的不确定性。建议企业密切关注政策动向，做好多情景预案。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="risk-low news-item pl-4 py-4 rounded-lg bg-green-50">
+                            <div class="flex items-start gap-4">
+                                <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded shrink-0">低风险</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-1">政策机遇：跨境电商跨关区退货模式全国推广</h4>
+                                    <p class="text-slate-700 text-sm">4月1日起，跨境电商零售出口跨关区退货模式在全国海关推广，退运时间从40天降到7天，退运时效提升80%。每一单可节省10-20元，资金周转率大幅提升。建议跨境电商企业充分利用这一政策红利，优化退货流程，降低物流成本。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 每日一句 -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 text-center">
+                <p class="text-slate-300 text-sm mb-2">💡 今日洞察</p>
+                <p class="text-white text-xl md:text-2xl font-medium italic">"当霍尔木兹海峡的通航量骤降94%，当英伟达的订单积压突破万亿美元，2026年的供应链正在经历一场从'效率优先'到'安全与韧性'的范式转移——这不是周期性的波动，而是结构性的重构。"</p>
+                <p class="text-slate-400 text-sm mt-4">—— 供应链前沿日报</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <p class="text-white font-bold text-lg mb-1">AI链习生</p>
+                    <p class="text-sm">洞察 · 思考 · 实践</p>
+                </div>
+                <div class="text-sm">
+                    <p>数据来源：财新网、华尔街见闻、摩根士丹利、海关总署、钛媒体等</p>
+                    <p class="mt-1">© 2026 Millay. 仅供学习交流使用</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
