@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析测试设备中标价格情报 | 2026年4月16日</title>
+    <meta name="description" content="2026年4月16日分析测试仪器设备中标价格情报，涵盖质谱仪、色谱仪、光谱仪最新中标数据">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+            --success: #34a853;
+            --warning: #fbbc04;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d3a5c 100%);
+            color: white;
+            padding: 140px 2rem 60px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.25rem; margin-bottom: 0.75rem; }
+        .hero .date { opacity: 0.8; font-size: 1rem; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-value { font-size: 2rem; font-weight: 700; color: var(--accent); }
+        .stat-label { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem; }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem;
+            color: var(--primary);
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .bidding-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        .bidding-table th {
+            background: var(--bg-light);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .bidding-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .bidding-table tr:hover { background: var(--bg-light); }
+        .price-high { color: var(--success); font-weight: 600; }
+        .trend-up { color: var(--success); }
+        .trend-down { color: var(--warning); }
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f0fe 0%, #f8f9fa 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .highlight-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        .source-box {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+        .source-box h4 { color: var(--primary); margin-bottom: 0.75rem; }
+        .source-box a { color: var(--accent); text-decoration: none; }
+        footer {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🔬 分析测试设备中标价格情报</h1>
+            <p class="date">2026年4月16日 | 数据来源：中国政府采购网、化工仪器网</p>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="/ai-procurement/equipment/">仪器设备</a> / 2026-04-16
+    </div>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">500</div>
+                <div class="stat-label">2025上半年色谱仪中标(台/套)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">2.43亿</div>
+                <div class="stat-label">2025上半年中标总金额</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">39%</div>
+                <div class="stat-label">国产色谱仪占比</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">187家</div>
+                <div class="stat-label">高校采购单位数量</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">📊 2025上半年色谱仪中标数据盘点</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+            据化工仪器网不完全统计，2025年1-6月，中国政府采购网上与色谱仪中标数量总计<strong>500台/套</strong>，中标总金额<strong>24283.40万元</strong>。高校采购需求最为旺盛，占比达40%。
+        </p>
+
+        <table class="bidding-table">
+            <thead>
+                <tr>
+                    <th>采购单位类型</th>
+                    <th>数量(台/套)</th>
+                    <th>金额(万元)</th>
+                    <th>平均单价(万元)</th>
+                    <th>金额占比</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>高校</strong></td>
+                    <td>230</td>
+                    <td>9,797.51</td>
+                    <td>42.69</td>
+                    <td class="price-high">40%</td>
+                </tr>
+                <tr>
+                    <td>政府机构</td>
+                    <td>120</td>
+                    <td>5,638.28</td>
+                    <td>47.56</td>
+                    <td>23%</td>
+                </tr>
+                <tr>
+                    <td>医疗卫生机构</td>
+                    <td>59</td>
+                    <td>3,498.95</td>
+                    <td>59.60</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>科研院所</td>
+                    <td>45</td>
+                    <td>2,690.49</td>
+                    <td>57.50</td>
+                    <td>11%</td>
+                </tr>
+                <tr>
+                    <td>质检机构</td>
+                    <td>35</td>
+                    <td>1,874.12</td>
+                    <td>46.07</td>
+                    <td>8%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">🧪 色谱仪类型分析</h2>
+        <table class="bidding-table">
+            <thead>
+                <tr>
+                    <th>仪器类型</th>
+                    <th>中标数量(台/套)</th>
+                    <th>占比</th>
+                    <th>市场趋势</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>离子色谱仪</strong></td>
+                    <td>196</td>
+                    <td class="price-high">39%</td>
+                    <td class="trend-up">↑ 需求第一</td>
+                </tr>
+                <tr>
+                    <td>气相色谱仪</td>
+                    <td>184</td>
+                    <td>37%</td>
+                    <td class="trend-up">↑ 采购主力</td>
+                </tr>
+                <tr>
+                    <td>液相色谱仪</td>
+                    <td>74</td>
+                    <td>15%</td>
+                    <td>→ 稳定增长</td>
+                </tr>
+                <tr>
+                    <td>其他类型</td>
+                    <td>46</td>
+                    <td>9%</td>
+                    <td>→ 细分领域</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">💰 国产 vs 进口设备对比</h2>
+        <table class="bidding-table">
+            <thead>
+                <tr>
+                    <th>产地</th>
+                    <th>数量(台/套)</th>
+                    <th>占比</th>
+                    <th>平均单价(万元)</th>
+                    <th>金额(万元)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>国产</strong></td>
+                    <td>195</td>
+                    <td>39%</td>
+                    <td>34.02</td>
+                    <td>6,634.17</td>
+                </tr>
+                <tr>
+                    <td><strong>进口</strong></td>
+                    <td>305</td>
+                    <td class="price-high">61%</td>
+                    <td>54.87</td>
+                    <td>17,649.23</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <h3>🔍 市场观察</h3>
+            <p style="margin-bottom: 0.75rem;"><strong>国产替代趋势：</strong>国产色谱仪中标数量占比39%，较往年稳步提升。进口设备平均单价比国产设备高61%（54.87万 vs 34.02万）。</p>
+            <p style="margin-bottom: 0.75rem;"><strong>高校采购主导：</strong>高校采购金额占比40%，是色谱仪最大采购方。医疗卫生机构和科研院所平均单价最高（59.60万、57.50万）。</p>
+            <p><strong>离子色谱仪领跑：</strong>离子色谱仪中标数量及金额均排名第一，反映环境监测、食品安全检测需求旺盛。</p>
+        </div>
+
+        <h2 class="section-title">📋 最新中标项目动态</h2>
+        <table class="bidding-table">
+            <thead>
+                <tr>
+                    <th>项目名称</th>
+                    <th>中标金额</th>
+                    <th>设备类型</th>
+                    <th>来源</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>华中科技大学超高效液相色谱仪串联四极杆质谱仪</td>
+                    <td class="price-high">548.68万</td>
+                    <td>SCIEX 7500+ System-QTRAP</td>
+                    <td>中国政府采购网</td>
+                </tr>
+                <tr>
+                    <td>河南省科学院大型仪器设备开放共享平台</td>
+                    <td>362.30万</td>
+                    <td>综合检测设备包</td>
+                    <td>河南省政府采购网</td>
+                </tr>
+                <tr>
+                    <td>西北大学气相色谱仪-同位素比质谱仪</td>
+                    <td class="price-high">321.00万</td>
+                    <td>elementar precisION</td>
+                    <td>千里马招标网</td>
+                </tr>
+                <tr>
+                    <td>河南中医药大学科研公共服务平台</td>
+                    <td class="price-high">2,450.00万</td>
+                    <td>液质联用检测升级</td>
+                    <td>河南省政府采购网</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="source-box">
+            <h4>📡 数据来源</h4>
+            <p>• <a href="https://www.ccgp.gov.cn" target="_blank">中国政府采购网</a> — 全国政府采购信息发布平台</p>
+            <p>• <a href="https://www.chem17.com" target="_blank">化工仪器网</a> — 专业仪器行业门户网站</p>
+            <p>• <a href="https://www.qianlima.com" target="_blank">千里马招标网</a> — 招标采购信息平台</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted);">
+                免责声明：本数据仅供参考，具体采购价格以实际中标公告为准。数据收集时间：2026年4月16日
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>
