@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化工原料采购情报 | 2026年4月20日</title>
+    <meta name="description" content="化工原料市场价格情报，覆盖苯乙烯、甲醇、丙烯酸等核心化工产品，每日监测隆众资讯等权威数据源">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --success: #34a853;
+            --warning: #fbbc04;
+            --danger: #ea4335;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero {
+            background: linear-gradient(135deg, #0d4a3c 0%, #051c2c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero .meta { opacity: 0.8; font-size: 0.9375rem; margin-top: 1rem; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .price-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+        .price-card:hover {
+            box-shadow: 0 8px 24px rgba(5,28,44,0.08);
+            transform: translateY(-2px);
+        }
+        .price-card .product-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .price-card .region {
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            margin-bottom: 1rem;
+        }
+        .price-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+        .price-card .change {
+            font-size: 0.9375rem;
+            font-weight: 600;
+        }
+        .price-card .change.up { color: var(--danger); }
+        .price-card .change.down { color: var(--success); }
+        .price-card .change.flat { color: var(--text-muted); }
+        .price-card .note {
+            color: var(--text-secondary);
+            font-size: 0.8125rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+        }
+        .article-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(5,28,44,0.08);
+            transform: translateY(-2px);
+        }
+        .article-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .article-card .meta {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        .tag.hot { background: #fef3e8; color: #d97706; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+        }
+        .data-table th {
+            background: var(--bg-light);
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .data-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .data-table tr:hover td { background: var(--bg-light); }
+        .highlight { background: linear-gradient(120deg, #fef3e8 0%, #fef3e8 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 88%; padding: 0 2px; }
+        .source { color: var(--text-muted); font-size: 0.8125rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .insight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .insight-box h4 { font-size: 1.125rem; font-weight: 600; color: var(--primary); margin-bottom: 0.75rem; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { padding: 0.5rem 0; color: var(--text-secondary); position: relative; padding-left: 1.5rem; }
+        .insight-box li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+        footer { background: var(--bg-light); padding: 3rem 2rem; text-align: center; color: var(--text-muted); margin-top: 4rem; }
+        .nav-footer { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+        .nav-footer a { color: var(--text-secondary); text-decoration: none; }
+        .nav-footer a:hover { color: var(--primary); }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.75rem; }
+            .nav-links { display: none; }
+            .price-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🧪 化工原料采购情报</h1>
+            <p>化工原料市场价格情报、供需监测与趋势分析</p>
+            <div class="meta">2026年4月20日 星期一 | 数据来源：隆众资讯、化易天下</div>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="/ai-procurement/chemical/">化学原料</a> / 2026年4月20日
+    </div>
+
+    <div class="container">
+        <!-- 核心产品价格监测 -->
+        <div class="section">
+            <h2>📊 核心产品价格监测（4月17日-20日）</h2>
+            
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="product-name">苯乙烯</div>
+                    <div class="region">华东地区现货</div>
+                    <div class="price">10,160 <span style="font-size:1rem; font-weight:400; color:var(--text-secondary);">元/吨</span></div>
+                    <div class="change flat">→ 高位整理</div>
+                    <div class="note">隆众资讯数据显示，苯乙烯近期偏强震荡，江苏市场现货价10160元/吨附近运行。原油反弹叠加装置检修消息，市场心态偏谨慎。</div>
+                </div>
+
+                <div class="price-card">
+                    <div class="product-name">纯苯</div>
+                    <div class="region">华东地区</div>
+                    <div class="price">8,320 <span style="font-size:1rem; font-weight:400; color:var(--text-secondary);">元/吨</span></div>
+                    <div class="change flat">→ 涨跌互现</div>
+                    <div class="note">隆众资讯数据显示，纯苯华东地区市场参考价8320元/吨。中石化华东地区纯苯价格执行7500元/吨。</div>
+                </div>
+
+                <div class="price-card">
+                    <div class="product-name">甲醇</div>
+                    <div class="region">太仓地区</div>
+                    <div class="price">2,820 <span style="font-size:1rem; font-weight:400; color:var(--text-secondary);">元/吨</span></div>
+                    <div class="change flat">→ 区间震荡</div>
+                    <div class="note">隆众资讯数据显示，甲醇太仓现货价2820元/吨，市场维持区间震荡格局。下游需求跟进有限，港口库存小幅累积。</div>
+                </div>
+
+                <div class="price-card">
+                    <div class="product-name">丙烯酸</div>
+                    <div class="region">华东地区</div>
+                    <div class="price">6,000 <span style="font-size:1rem; font-weight:400; color:var(--text-secondary);">元/吨</span></div>
+                    <div class="change flat">→ 弱稳运行</div>
+                    <div class="note">隆众资讯数据显示，丙烯酸华东地区市场参考价6000-6050元/吨。精酸暂参考价格6500-6600元/吨左右。</div>
+                </div>
+
+                <div class="price-card">
+                    <div class="product-name">丙烯</div>
+                    <div class="region">山东地区</div>
+                    <div class="price">6,048 <span style="font-size:1rem; font-weight:400; color:var(--text-secondary);">元/吨</span></div>
+                    <div class="change flat">→ 偏弱运行</div>
+                    <div class="note">隆众资讯数据显示，丙烯山东地区主流成交参考价围绕6048元/吨。供应端增量预期，市场偏弱整理。</div>
+                </div>
+
+                <div class="price-card">
+                    <div class="product-name">乙烯</div>
+                    <div class="region">CFR东北亚</div>
+                    <div class="price">6,119 <span style="font-size:1rem; font-weight:400; color:var(--text-secondary);">元/吨</span></div>
+                    <div class="change flat">→ 偏弱震荡</div>
+                    <div class="note">隆众资讯数据显示，乙烯CFR东北亚参考均价6119元/吨。下游开工率有所回落，需求端支撑不足。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 市场行情综述 -->
+        <div class="section">
+            <h2>📋 市场行情综述</h2>
+            
+            <div class="article-card">
+                <h3>芳烃产业链：高位整理，成本支撑犹存</h3>
+                <div class="meta">数据周期：2026年4月14日-20日 | 来源：隆众资讯</div>
+                <p>本周芳烃市场维持高位整理态势。<span class="highlight">苯乙烯</span>在华东市场现货价格围绕10160元/吨运行，较月初有所反弹。主要支撑因素包括：一是原油价格反弹带动成本端支撑；二是部分装置检修消息提振市场心态；三是下游EPS、PS开工率维持相对高位。</p>
+                <p><span class="highlight">纯苯</span>市场涨跌互现，华东地区主流价8320元/吨。中石化华东纯苯价格执行7500元/吨，内外盘价差收窄。下游苯乙烯装置开工率维持高位，对纯苯需求形成一定支撑。</p>
+                <span class="tag">芳烃</span>
+                <span class="tag">苯乙烯</span>
+                <span class="tag">纯苯</span>
+            </div>
+
+            <div class="article-card">
+                <h3>烯烃产业链：供需博弈，价格弱稳</h3>
+                <div class="meta">数据周期：2026年4月14日-20日 | 来源：隆众资讯</div>
+                <p>本周烯烃产业链整体呈现<span class="highlight">弱稳运行</span>格局。<span class="highlight">甲醇</span>市场太仓现货价2820元/吨，区间震荡为主。港口库存小幅累积，下游MTO开工率有所下降，需求端支撑力度一般。</p>
+                <p><span class="highlight">丙烯</span>山东地区主流成交参考价6048元/吨，供应端增量预期压制市场情绪。部分PDH装置重启预期较强，后续供应压力或有所增加。</p>
+                <span class="tag">烯烃</span>
+                <span class="tag">甲醇</span>
+                <span class="tag">丙烯</span>
+            </div>
+
+            <div class="article-card">
+                <h3>丙烯酸及酯类：市场僵持，下游按需采购</h3>
+                <div class="meta">数据周期：2026年4月14日-20日 | 来源：隆众资讯</div>
+                <p>本周丙烯酸市场维持<span class="highlight">弱稳运行</span>，华东地区市场参考价6000-6050元/吨。原料丙烯价格偏弱，成本端支撑有限。下游乳液工厂按需采购为主，新单成交一般。</p>
+                <p>丙烯酸酯类产品同步整理，<span class="highlight">丙烯酸丁酯</span>市场参考9030元/吨左右。涂料、胶粘剂行业需求恢复缓慢，制约产品价格上行空间。</p>
+                <span class="tag">丙烯酸</span>
+                <span class="tag">酯类</span>
+                <span class="tag">涂料原料</span>
+            </div>
+        </div>
+
+        <!-- 价格数据汇总表 -->
+        <div class="section">
+            <h2>📈 本周价格数据汇总</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格/地区</th>
+                        <th>本周均价</th>
+                        <th>较上周</th>
+                        <th>市场趋势</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>苯乙烯</td>
+                        <td>华东现货</td>
+                        <td style="font-weight:600; color:var(--success);">10,160元/吨</td>
+                        <td>+1.2%</td>
+                        <td><span class="tag hot">偏强震荡</span></td>
+                    </tr>
+                    <tr>
+                        <td>纯苯</td>
+                        <td>华东地区</td>
+                        <td style="font-weight:600; color:var(--success);">8,320元/吨</td>
+                        <td>-0.5%</td>
+                        <td><span class="tag">涨跌互现</span></td>
+                    </tr>
+                    <tr>
+                        <td>甲醇</td>
+                        <td>太仓现货</td>
+                        <td style="font-weight:600; color:var(--success);">2,820元/吨</td>
+                        <td>+0.3%</td>
+                        <td><span class="tag">区间震荡</span></td>
+                    </tr>
+                    <tr>
+                        <td>丙烯</td>
+                        <td>山东地区</td>
+                        <td style="font-weight:600; color:var(--success);">6,048元/吨</td>
+                        <td>-1.0%</td>
+                        <td><span class="tag">偏弱运行</span></td>
+                    </tr>
+                    <tr>
+                        <td>乙烯</td>
+                        <td>CFR东北亚</td>
+                        <td style="font-weight:600; color:var(--success);">6,119元/吨</td>
+                        <td>-0.8%</td>
+                        <td><span class="tag">偏弱震荡</span></td>
+                    </tr>
+                    <tr>
+                        <td>丙烯酸</td>
+                        <td>华东地区</td>
+                        <td style="font-weight:600; color:var(--success);">6,000元/吨</td>
+                        <td>0%</td>
+                        <td><span class="tag">弱稳运行</span></td>
+                    </tr>
+                    <tr>
+                        <td>丙烯酸丁酯</td>
+                        <td>华东地区</td>
+                        <td style="font-weight:600; color:var(--success);">9,030元/吨</td>
+                        <td>-0.5%</td>
+                        <td><span class="tag">整理运行</span></td>
+                    </tr>
+                    <tr>
+                        <td>环氧丙烷</td>
+                        <td>山东地区</td>
+                        <td style="font-weight:600; color:var(--success);">9,414元/吨</td>
+                        <td>+0.1%</td>
+                        <td><span class="tag">窄幅震荡</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 产业链分析 -->
+        <div class="section">
+            <h2>🔗 产业链价差分析</h2>
+            
+            <div class="article-card">
+                <h3>丙烯-丙烯酸价差收窄</h3>
+                <div class="meta">数据周期：2026年4月20日 | 来源：东吴证券研究所、隆众资讯</div>
+                <p>本周丙烯-丙烯酸价差维持在<span class="highlight">1147元/吨</span>附近（丙烯酸按6080元/吨、丙烯按6048元/吨计算），处于近十年历史分位数15%的低位区间。</p>
+                <p>价差收窄的主要原因：丙烯酸下游需求恢复缓慢，而丙烯价格受供应端增量预期影响持续承压。对于丙烯酸生产企业而言，当前利润空间较为有限。</p>
+                <span class="tag">价差分析</span>
+                <span class="tag">盈利空间</span>
+            </div>
+
+            <div class="article-card">
+                <h3>苯乙烯-纯苯价差维持高位</h3>
+                <div class="meta">数据周期：2026年4月20日 | 来源：隆众资讯</div>
+                <p>本周苯乙烯-纯苯价差维持在<span class="highlight">1840元/吨</span>左右（苯乙烯10160元/吨减去纯苯8320元/吨），对苯乙烯生产企业利润形成一定支撑。</p>
+                <p>价差维持高位主要得益于苯乙烯装置检修带来的供应收缩，以及下游EPS、PS开工率维持相对高位。后续需关注新增产能释放进度及下游需求变化。</p>
+                <span class="tag">价差分析</span>
+                <span class="tag">利润监测</span>
+            </div>
+        </div>
+
+        <!-- 市场洞察 -->
+        <div class="insight-box">
+            <h4>💡 本周市场洞察</h4>
+            <ul>
+                <li><strong>芳烃链偏强整理：</strong>苯乙烯在成本支撑和装置检修双重推动下维持高位，但下游跟进力度一般，追高需谨慎</li>
+                <li><strong>烯烃链供需博弈：</strong>甲醇港口库存小幅累积，丙烯供应增量预期压制价格，整体偏弱运行</li>
+                <li><strong>下游需求恢复缓慢：</strong>涂料、胶粘剂等终端行业开工率回升不及预期，制约丙烯酸及酯类产品上行空间</li>
+                <li><strong>成本端支撑分化：</strong>原油反弹为芳烃产品提供支撑，但煤炭价格偏弱对煤制烯烃产品成本支撑有限</li>
+                <li><strong>关注装置动态：</strong>4月下旬至5月，多套石化装置计划检修，需密切关注供应端变化对价格的影响</li>
+            </ul>
+        </div>
+
+        <div class="source">
+            <p><strong>数据来源：</strong>隆众资讯 (oilchem.net)、化易天下 (51huagong.cn)</p>
+            <p><strong>免责声明：</strong>本报告数据来自公开渠道，仅供参考，具体价格信息请以官方发布为准。化工产品价格波动较大，实际交易请以市场行情为准。</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="nav-footer">
+            <a href="2026-04-19.html">← 上一篇</a>
+            <a href="index.html">返回列表</a>
+        </div>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>

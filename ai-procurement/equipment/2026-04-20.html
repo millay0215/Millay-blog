@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仪器设备中标情报 | 2026年4月20日</title>
+    <meta name="description" content="分析测试设备中标价格情报，覆盖质谱仪、色谱仪、显微镜等实验室设备，实时跟踪政府采购与高校科研仪器采购动态">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --success: #34a853;
+            --warning: #fbbc04;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d3a5c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero .meta { opacity: 0.8; font-size: 0.9375rem; margin-top: 1rem; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .article-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(5,28,44,0.08);
+            transform: translateY(-2px);
+        }
+        .article-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .article-card .meta {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        .tag.hot { background: #fef3e8; color: #d97706; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+        }
+        .data-table th {
+            background: var(--bg-light);
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .data-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .data-table tr:hover td { background: var(--bg-light); }
+        .price { font-weight: 600; color: var(--success); }
+        .highlight { background: linear-gradient(120deg, #fef3e8 0%, #fef3e8 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 88%; padding: 0 2px; }
+        .source { color: var(--text-muted); font-size: 0.8125rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .insight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .insight-box h4 { font-size: 1.125rem; font-weight: 600; color: var(--primary); margin-bottom: 0.75rem; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { padding: 0.5rem 0; color: var(--text-secondary); position: relative; padding-left: 1.5rem; }
+        .insight-box li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+        footer { background: var(--bg-light); padding: 3rem 2rem; text-align: center; color: var(--text-muted); margin-top: 4rem; }
+        .nav-footer { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+        .nav-footer a { color: var(--text-secondary); text-decoration: none; }
+        .nav-footer a:hover { color: var(--primary); }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.75rem; }
+            .nav-links { display: none; }
+            .data-table { font-size: 0.8125rem; }
+            .data-table th, .data-table td { padding: 0.625rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🔬 仪器设备中标情报</h1>
+            <p>分析测试设备中标价格情报、市场动态与趋势分析</p>
+            <div class="meta">2026年4月20日 星期一 | 数据来源：分析测试百科网、中国政府采购网</div>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="/ai-procurement/equipment/">仪器设备</a> / 2026年4月20日
+    </div>
+
+    <div class="container">
+        <!-- 今日中标精选 -->
+        <div class="section">
+            <h2>📌 今日中标精选</h2>
+            
+            <div class="article-card">
+                <h3>7248万元大单落地！哈医大寒地心血管病重点实验室设备全面升级</h3>
+                <div class="meta">发布时间：2026年4月 | 来源：分析测试百科网</div>
+                <p>哈尔滨医科大学寒地心血管病全国重点实验室设备更新项目多批次采购结果陆续公布，一批高端科研仪器完成中标采购，<span class="highlight">总中标金额达7248.5780万元</span>。</p>
+                <p>本次设备更新项目涵盖质谱、光谱、色谱、显微成像等多个领域，所购仪器品牌包括赛默飞、布鲁克、赛多利斯、岛津、蔡司、Cytiva、罗氏、贝克曼库尔特、徕卡、艾本德、珀金埃尔默等国际一线品牌。</p>
+                <p><strong>寒地心血管病全国重点实验室</strong>是我国心血管疾病领域的国家级科研平台，本次大规模设备更新将进一步提升其在心血管基础研究、临床转化等方面的科研能力。</p>
+                <span class="tag hot">超7000万大单</span>
+                <span class="tag">全国重点实验室</span>
+                <span class="tag">多品牌集采</span>
+            </div>
+
+            <div class="article-card">
+                <h3>2482万元！北京友谊医院全国重点实验室设备采购中标</h3>
+                <div class="meta">发布时间：2026年4月18日 | 来源：分析测试百科网</div>
+                <p>首都医科大学附属北京友谊医院就<span class="highlight">消化健康全国重点实验室科研设备购置项目</span>发布中标公告。此次项目总中标金额达2482.42万元。</p>
+                <p>中标设备涵盖荧光定量PCR仪、紫外分光光度计、共聚焦显微镜、流式细胞分析仪等一批高端科研仪器，全面覆盖细胞分析、分子检测、病理制片、样品前处理与样本存储等实验室核心需求。</p>
+                <p>该批设备将有力支撑消化健康领域基础研究与临床转化工作，推动我国消化系统疾病研究水平提升。</p>
+                <span class="tag hot">2000万+</span>
+                <span class="tag">PCR/显微镜</span>
+                <span class="tag">流式细胞</span>
+            </div>
+        </div>
+
+        <!-- 招标预告 -->
+        <div class="section">
+            <h2>📋 重点招标预告</h2>
+            
+            <div class="article-card">
+                <h3>2848万元！沈阳农业大学水利学院高端科研仪器招标</h3>
+                <div class="meta">发布时间：2026年4月18日 | 来源：中国政府采购网</div>
+                <p>沈阳农业大学水利学院发布两项科研设备采购公开招标公告，两个项目总预算达2848万元：</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                    <li>湿地平台元素分析仪等设备采购项目（项目编号：JH26-210000-14280）</li>
+                    <li>人工植物气候室等设备采购项目（项目编号：JH26-210000-14286）</li>
+                </ul>
+                <p>采购内容涵盖<span class="highlight">稳定性同位素质谱仪、气相色谱-串联质谱仪、电感耦合等离子体质谱仪（ICP-MS）、元素分析仪、人工植物气候室、碳通量监测系统</span>等多款高端科研仪器。</p>
+                <span class="tag">公开招标</span>
+                <span class="tag">ICP-MS</span>
+                <span class="tag">GC-MS/MS</span>
+            </div>
+
+            <div class="article-card">
+                <h3>2546万元！云南农业大学教学科研仪器设备招标</h3>
+                <div class="meta">发布时间：2026年4月18日 | 来源：中国政府采购网</div>
+                <p>云南农业大学再次公布一批教学科研仪器设备招标公告，覆盖动物医学院、热带作物学院、食品学院、资环学院等院系，<span class="highlight">总预算金额合计2546万元</span>。</p>
+                <p>主要采购设备包括：多功能酶标仪、数字PCR仪、液相色谱仪、气相色谱-质谱联用仪（GC-MS）等教学科研所需仪器设备。</p>
+                <span class="tag">高校集采</span>
+                <span class="tag">GC-MS</span>
+                <span class="tag">数字PCR</span>
+            </div>
+        </div>
+
+        <!-- 中标数据汇总 -->
+        <div class="section">
+            <h2>📊 本周中标数据汇总（4月14日-4月20日）</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>采购单位</th>
+                        <th>设备类型</th>
+                        <th>中标/预算金额</th>
+                        <th>状态</th>
+                        <th>日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>哈尔滨医科大学</td>
+                        <td>质谱/光谱/色谱/显微成像</td>
+                        <td class="price">7248.58万元</td>
+                        <td><span class="tag hot">已中标</span></td>
+                        <td>4月18日</td>
+                    </tr>
+                    <tr>
+                        <td>北京友谊医院</td>
+                        <td>PCR/显微镜/流式细胞仪</td>
+                        <td class="price">2482.42万元</td>
+                        <td><span class="tag hot">已中标</span></td>
+                        <td>4月18日</td>
+                    </tr>
+                    <tr>
+                        <td>沈阳农业大学水利学院</td>
+                        <td>ICP-MS/GC-MS/元素分析仪</td>
+                        <td class="price">2848万元</td>
+                        <td><span class="tag">招标中</span></td>
+                        <td>4月18日</td>
+                    </tr>
+                    <tr>
+                        <td>云南农业大学</td>
+                        <td>GC-MS/液相色谱/PCR</td>
+                        <td class="price">2546万元</td>
+                        <td><span class="tag">招标中</span></td>
+                        <td>4月18日</td>
+                    </tr>
+                    <tr>
+                        <td>东南大学</td>
+                        <td>质谱仪</td>
+                        <td class="price">234万元</td>
+                        <td><span class="tag hot">已中标</span></td>
+                        <td>4月19日</td>
+                    </tr>
+                    <tr>
+                        <td>海关总署</td>
+                        <td>沃特世质谱仪12台</td>
+                        <td class="price">1836万元</td>
+                        <td><span class="tag hot">已中标</span></td>
+                        <td>4月17日</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 行业动态 -->
+        <div class="section">
+            <h2>📰 行业动态</h2>
+            
+            <div class="article-card">
+                <h3>沃特世本土化产品推出全新中文品牌名</h3>
+                <div class="meta">发布时间：2026年4月17日</div>
+                <p>进入中国近四十年的沃特世公司正式为在中国生产的液相色谱及质谱产品系列推出全新中文品牌——<span class="highlight">润沃™、艾擎™、艾起™</span>。此次中文品牌的推出，标志着沃特世本土化进程的进一步深化：以中文承载产品内涵，依托本土生产强化供应链与服务响应。</p>
+                <span class="tag">本土化</span>
+                <span class="tag">品牌战略</span>
+            </div>
+
+            <div class="article-card">
+                <h3>赛默飞发布EXUM™ MASSBOX™ LALI飞行时间质谱仪</h3>
+                <div class="meta">发布时间：2026年4月17日</div>
+                <p>赛默飞世尔科技正式发布EXUM™ MASSBOX™ LALI飞行时间质谱仪，将<span class="highlight">激光剥蚀-激光电离与飞行时间质谱（LALI-TOF-MS）</span>集成于一台台式仪器中。</p>
+                <p>该设备在材料科学、冶金研究、电池开发与矿产勘探等领域具有重要应用价值，凭借多功能性和高灵敏度，可大幅提升元素分析的精度和效率。</p>
+                <span class="tag">新品发布</span>
+                <span class="tag">质谱技术</span>
+                <span class="tag">材料科学</span>
+            </div>
+
+            <div class="article-card">
+                <h3>安益谱国产傅里叶静电阱高分辨质谱问世两周年</h3>
+                <div class="meta">发布时间：2026年4月18日</div>
+                <p>2024年4月18日，苏州安益谱精密仪器有限公司正式发布国产傅里叶静电阱高分辨质谱<span class="highlight">Cassitrap 120K</span>，一举打破国外在该技术领域长达二十年的垄断。</p>
+                <p>过去二十年间，傅里叶变换静电阱高分辨质谱技术始终被单一国际企业牢牢掌控，成为我国科学仪器自主可控道路上难以突破的壁垒。Cassitrap的问世标志着国产高端质谱技术取得重大突破。</p>
+                <span class="tag">国产替代</span>
+                <span class="tag">技术突破</span>
+                <span class="tag">高分辨质谱</span>
+            </div>
+        </div>
+
+        <!-- 市场洞察 -->
+        <div class="insight-box">
+            <h4>💡 本周市场洞察</h4>
+            <ul>
+                <li><strong>全国重点实验室设备更新加速：</strong>本周哈尔滨医科大学和北京友谊医院两个全国重点实验室分别完成超7000万和超2000万的设备采购，显示国家重点实验室建设进入新一轮投入周期</li>
+                <li><strong>高校春招季采购高峰：</strong>沈阳农业大学、云南农业大学等多所高校发布大规模招标公告，春招季高校设备更新需求集中释放</li>
+                <li><strong>国产替代持续推进：</strong>安益谱Cassitrap两周年、沃特世推出中文品牌，显示国际品牌本土化与国产品牌高端化双线并进</li>
+                <li><strong>质谱仪仍是采购热点：</strong>ICP-MS、GC-MS/MS等高阶质谱联用仪在高校和重点实验室采购中占据重要份额</li>
+                <li><strong>品牌集中度较高：</strong>高端设备仍以赛默飞、沃特世、布鲁克、岛津等国际品牌为主，国产设备在中低端市场持续渗透</li>
+            </ul>
+        </div>
+
+        <div class="source">
+            <p><strong>数据来源：</strong>分析测试百科网 (antpedia.com)、中国政府采购网 (ccgp.gov.cn)</p>
+            <p><strong>免责声明：</strong>本报告数据来自公开渠道，仅供参考，具体以官方发布为准。</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="nav-footer">
+            <a href="2026-04-19.html">← 上一篇</a>
+            <a href="index.html">返回列表</a>
+        </div>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>
