@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链·全球 | 2026年4月21日 | 中国企业出海日报</title>
+    <meta name="description" content="2026年4月21日中国企业出海日报：医疗器械出海拐点确认，储能订单井喷欧洲建厂加速，央行境外放款新规赋能出海">
+    <meta name="author" content="Millay">
+    
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+            --shadow-hover: rgba(5, 28, 44, 0.12);
+            --global-accent: #0d7377;
+            --global-accent-light: #14a085;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Article header */
+        .article-header {
+            background: linear-gradient(135deg, #051c2c 0%, #0d3a5c 50%, #0d7377 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+            position: relative;
+        }
+        
+        .article-header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .article-date {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .article-summary {
+            font-size: 1.125rem;
+            opacity: 0.85;
+            line-height: 1.6;
+            max-width: 700px;
+        }
+        
+        /* Article content */
+        .article-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--global-accent);
+            letter-spacing: -0.01em;
+        }
+        
+        .article-content h3 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+        }
+        
+        .article-content h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+        
+        .article-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .article-content ul, .article-content ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .article-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+        
+        .article-content strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .article-content a {
+            color: var(--global-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .article-content a:hover {
+            border-bottom-color: var(--global-accent);
+        }
+        
+        /* Data table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+        }
+        
+        .data-table th {
+            background: linear-gradient(135deg, rgba(13, 115, 119, 0.1) 0%, rgba(20, 160, 133, 0.1) 100%);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--global-accent);
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .data-table tr:hover td {
+            background: var(--bg-light);
+        }
+        
+        /* Highlight box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(13, 115, 119, 0.08) 0%, rgba(20, 160, 133, 0.05) 100%);
+            border-left: 4px solid var(--global-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            color: var(--text);
+        }
+        
+        /* Source link */
+        .source-link {
+            display: inline-block;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        
+        /* Back to list */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--global-accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 3rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--global-accent);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: var(--global-accent);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-header h1 {
+                font-size: 1.875rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .data-table {
+                font-size: 0.875rem;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/global-chain/">链·全球</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="article-header">
+        <div class="article-header-content">
+            <span class="article-date">2026年4月21日</span>
+            <h1>链·全球 | 中国企业出海日报</h1>
+            <p class="article-summary">本期聚焦：医疗器械出海拐点确认 | 储能订单井喷+欧洲建厂潮 | 央行境外放款新规赋能 | 欧盟《工业加速法案》倒逼本地化 | 英国首次排除中国风电</p>
+        </div>
+    </div>
+    
+    <article class="article-content">
+        <p style="font-style: italic; color: var(--text-muted); border-left: 3px solid var(--global-accent); padding-left: 1rem; margin-bottom: 2rem;">
+            <strong>主编手记：</strong>出海已从"选择题"变为"必答题"。本周看点：储能订单井喷、医疗器械拐点确认、金融开放政策再加码——三条主线共同指向一个事实：中国企业正在从"产品输出"转向"体系扎根"。
+        </p>
+
+        <h2>一、行业要讯</h2>
+        
+        <h3>1. 医疗器械：出海拐点确认，创新药BD交易井喷</h3>
+        
+        <p><strong>【板块拐点】</strong> 中信建投证券4月21日发布研报指出，医疗器械板块拐点已至，2026年应重点关注<strong>业绩修复+出海</strong>双重驱动的投资机会。研报称，具备全球竞争力的改进式创新、突破式创新产品正被逐步认可，一批公司积极战略拓展第二增长曲线、实现海外业务高增长，估值迎来重估。</p>
+        
+        <p><strong>【合规出海】</strong> TÜV莱茵4月9日参展第93届CMEF（中国国际医疗器械博览会），为多家医疗器械企业颁证，并主办"2026 TÜV莱茵医疗器械法规论坛"。TÜV莱茵大中华区医疗器械服务副总裁耿文表示："欧盟是中国医疗器械企业出海的核心市场，我们见证本土企业在研发创新与合规能力上实现持续积累与突破。"</p>
+        
+        <p><strong>【创新药出海】</strong> 2026年一季度，中国创新药对外授权（BD）交易总额<strong>突破600亿美元</strong>，接近2025年全年1357亿美元规模的一半。全球前十大授权交易中<strong>7笔来自中国</strong>，多机构预测全年BD规模有望再创新高。标志性事件：荣昌生物将RC148海外权益授权给艾伯维，总金额566.5亿美元；石药集团与阿斯利康合作总金额185亿美元。</p>
+        
+        <p><strong>【AI医疗融资】</strong> 4月20日，<strong>商汤医疗完成5亿人民币A轮融资</strong>，成为智能科技领域当周最大单笔融资之一。商汤科技亚太区总裁Jeff Shi透露，公司在亚太地区11个市场开展业务，过去三年长期客户数量实现五倍增长。</p>
+        
+        <p><strong>【人才瓶颈】</strong> 据智乐聘《2026中国企业出海招聘白皮书》，2025年医疗器械类出口额为<strong>504.69亿美元</strong>，同比增长3.54%。但报告同时指出，<strong>90%的医疗出海企业卡在海外招人环节</strong>，海外临床支持、高端研发、合规人才成为最紧缺的岗位类型。</p>
+        
+        <p class="source-link">来源：<a href="https://www.stcn.com/article/detail/3771174.html" target="_blank">证券时报</a>、<a href="https://www.prnasia.com/story/529457-1.shtml" target="_blank">美通社</a>、<a href="https://www.zguocity.com/pages/149059.html" target="_blank">中国城市网</a></p>
+        
+        <h3>2. 新能源与储能：订单爆发+建厂潮双轮驱动</h3>
+        
+        <p><strong>【储能订单井喷】</strong> 2025年中国储能企业新增海外订单规模达<strong>366GWh</strong>，同比增长144%。2026年初至3月下旬，中国储能企业签订欧洲订单超过15个，规模接近<strong>30GWh</strong>，居出海目的地首位。澳大利亚2月、3月户储新增容量均创单月历史新高。</p>
+        
+        <p><strong>【欧洲建厂加速】</strong> 3月，<strong>海辰储能</strong>与西班牙政府签署意向书，计划投资约<strong>4亿欧元</strong>建设大型电池与储能系统制造工厂。2月，<strong>阳光电源</strong>宣布将在欧洲投资建设首座制造工厂，总投资<strong>2.3亿欧元</strong>，规划年产20GW光伏逆变器及12.5GWh储能系统。1月，<strong>中创新航</strong>与葡萄牙政府签约，投资<strong>20.67亿欧元</strong>建设锂电池工厂，预计2028年全面投运。</p>
+        
+        <p><strong>【中东布局】</strong> 1月，<strong>阳光电源</strong>与埃及政府、挪威Scatec签署战略合作协议，三方共同推进总投资超<strong>18亿美元</strong>的清洁能源项目，包括阳光电源在苏伊士运河经济区投资建厂。<strong>楚能新能源</strong>与埃及WeaCan、Kemet签署协议，计划分阶段供应总计<strong>6GWh</strong>储能系统，并共建5GWh年产能电池工厂。</p>
+        
+        <p><strong>【宁德时代业绩】</strong> 宁德时代2026年Q1业绩超预期，储能电池出货占比升至<strong>四分之一</strong>。海外储能需求强劲：AI算力爆发驱动美国储能需求大增；欧洲、澳洲储能装机进入高增期。尽管储能电池出口退税下调政策于4月1日实行，但政策生效前"抢出口"现象明显，推动电池出口数据短期走高。</p>
+        
+        <p><strong>【匈牙利电池之都】</strong> 匈牙利已成为中国动力电池企业欧洲布局的核心节点。宁德时代德布勒森100GWh超级工厂、亿纬锂能超百亿元电池工厂等项目密集落地，近十家中国电池原材料、组件企业前往打造产业链配套，投资额累计超<strong>100亿欧元</strong>。匈牙利新总理毛焦尔4月14日表示，对华投资保持开放态度，强调投资须服务当地经济。</p>
+        
+        <p class="source-link">来源：<a href="https://www.stcn.com/article/detail/3729088.html" target="_blank">证券时报</a>、<a href="http://news.cnpc.com.cn/system/2026/04/15/030190099.shtml" target="_blank">中国石化报</a>、<a href="https://www.caixin.com/2026-04-20/102435783.html" target="_blank">财新</a>、<a href="https://www.caixin.com/2026-04-14/102434053.html" target="_blank">财新</a></p>
+        
+        <h3>3. 智能汽车：出口量登顶，产业链抱团出海</h3>
+        
+        <p><strong>【出口预测】</strong> 奇瑞汽车副总裁王琅在4月11-12日智能电动汽车发展高层论坛上提出，中国汽车出口正处于历史性拐点，2025年达<strong>710万辆</strong>，预计2026年达<strong>750万辆</strong>左右。出海不再是单一整车出口，而是电芯、芯片、软件等产业链抱团出海。</p>
+        
+        <p><strong>【智能化竞争】</strong> 华为公司高级副总裁靳玉志指出，<strong>2026年将成为全球自动驾驶开启元年</strong>。中国市场L2级及以上辅助驾驶在10万元以上车型渗透率突破<strong>90%</strong>，两款L3车型已获批开展准入试点。地平线创始人余凯透露即将发布"星空系列"舱驾融合智能体芯片，将原本需要两个域控制器的计算整合到一颗芯片上。</p>
+        
+        <p><strong>【新能源商用车】</strong> 2026年1-2月汽车出口销量<strong>135.2万辆</strong>，同比+48.4%，占总销量32.6%。其中新能源出海增速达<strong>110.0%</strong>，占比总出口数量达43.1%。随着国内车企在海外建厂/投产，海外销量有望进一步提升。</p>
+        
+        <p class="source-link">来源：<a href="http://www.news.cn/auto/20260415/030c0f11f3c4456cb841e03d307051ce/c.html" target="_blank">新华网</a>、<a href="https://www.cinn.cn/qc/2026/04-13/Nk07qjdD.html" target="_blank">中国工业新闻网</a>、<a href="https://pdf.dfcfw.com/pdf/H3_AP202604201821328557_1.pdf" target="_blank">东方财富</a></p>
+        
+        <h3>4. 科技与服务出海：从"卖产品"到"卖系统"</h3>
+        
+        <p><strong>【华勤技术融资】</strong> 4月15日，全球领先智能硬件ODM企业<strong>华勤技术</strong>（603296.SH/03296.HK）宣布完成约<strong>2.9亿美元</strong>战略融资，同时启动H股招股。业务已从智能手机代工扩展至平板电脑、笔记本电脑、服务器、机器人及车载导航等多元领域，正向"研发+制造+服务"一体化平台转型。</p>
+        
+        <p><strong>【服务出口增长】</strong> 2025年中国服务进出口总额<strong>80823.1亿元</strong>，同比增长7.4%，比货物贸易高出3.6个百分点。其中知识密集型服务出口增长10.5%。英国《金融时报》指出，中国外贸结构正出现新变化——技术、数字系统和配套服务在对外贸易中的比重正逐步上升，"服务出口正成为中国面向全球贸易的新前沿领域"。</p>
+        
+        <p class="source-link">来源：<a href="https://www.odibeian.cn/market-insights-china-outbound-weekly-2026-april-v16/" target="_blank">跨境合规圈</a>、<a href="https://world.people.com.cn/n1/2026/0420/c1002-40704241.html" target="_blank">人民网</a></p>
+        
+        <h2>二、出海政策</h2>
+        
+        <h3>中国政策：金融开放再加码</h3>
+        
+        <p><strong>【境外放款管理办法】</strong> 3月20日，中国人民银行、国家外汇管理局发布<strong>《境内企业境外放款管理办法》</strong>，实现本外币境外放款统一管理，终结长期以来的政策双轨运行。关键突破：①本外币一体化宏观审慎管理框架；②宏观审慎调节系数上调至<strong>0.6</strong>，显著扩大企业境外放款空间；③放款人注册成立年限要求从3年降至<strong>1年（含）以上</strong>，降低初创型出海主体门槛。</p>
+        
+        <p><strong>【银行境外贷款优化】</strong> 4月15日，央行发布通知，上调部分银行境外贷款余额上限计算系数，将核定上限由<strong>20亿元上调至100亿元</strong>。进出口银行境外贷款杠杆率从3倍上调，更好地支持外资银行、进出口银行发挥业务优势，满足境外企业合理融资需求。</p>
+        
+        <p><strong>【跨境金融便利化】</strong> 2026年《政府工作报告》明确提出"加大信贷、信保支持，扩大人民币跨境使用"，引导企业优化全球市场布局。外汇局表示，已有超过<strong>90%的资本项目</strong>实现不同程度的开放。下一步将修订出台境内企业境外放款本外币一体化管理办法，在全国实施跨国公司本外币跨境资金集中运营管理政策。</p>
+        
+        <p><strong>【跨境电商退运免税延续】</strong> 财政部等三部门明确，跨境电商出口退运免税政策延续至<strong>2027年</strong>。9610/1210/9710/9810模式商品6个月内原状退运回国，免征进口关税、增值税、消费税。4月1日起，9610模式跨境电商退货全国通办，预计降低退运成本<strong>30%-50%</strong>。</p>
+        
+        <p class="source-link">来源：<a href="https://segg.sh.gov.cn/zxfw/xwzx/20260331/0823d8ea350946cdaec1f43d32ca4cf2.html" target="_blank">上海市企业走出去综合服务平台</a>、<a href="https://finance.caixin.com/2026-04-15/102434392.html" target="_blank">财新</a>、<a href="https://news.cctv.cn/2026/03/24/ARTI1FNK2OkLh483wfGQJge4260324.shtml" target="_blank">央视网</a></p>
+        
+        <h3>海外政策：合规壁垒升级</h3>
+        
+        <p><strong>【欧盟《工业加速法案》】</strong> 欧盟近期推出的《工业加速法案》引发贸易伙伴普遍担忧。法案规定，外商直接投资项目需满足六个条件中的四个方可获批：外资持股不超过49%、签署知识产权许可协议、欧盟境内年研发投入不低于总收入1%、欧盟本土员工占比不低于50%、至少30%采购来自欧盟本土。罗兰贝格指出，该法案覆盖面远超此前的碳边境调节机制（CBAM），电动汽车、动力电池、光伏等中国产能占比较高的行业将首当其冲。</p>
+        
+        <p><strong>【英国排除中国风电】</strong> 4月14日，英国能源事务大臣以"国家安全"为由，明确不支持在英海上风电项目中使用中国明阳智能的风机产品。这是英国首次以国家安全为由排除中国风电设备进入关键基础设施领域。商务部新闻发言人回应称，英方此举有悖其长期秉持的开放、自由市场理念，中方对此坚决反对。</p>
+        
+        <p><strong>【美国关税退税系统上线】</strong> 4月20日，美国海关特朗普关税退税系统正式上线。同时，美国商务部BIS持续加码对华半导体材料出口执法，并拟扩大中国电信企业在美业务禁令。</p>
+        
+        <p><strong>【俄罗斯SPOT清关】</strong> 俄罗斯宣布SPOT清关系统4月试点、7月全面执行，强制实行本土税务居民收货人确认、申报信息自动比对。这意味着对俄跨境电商出口"灰关通道"大幅受限，合规申报、真实收货人成为通关必要条件。</p>
+        
+        <p class="source-link">来源：<a href="https://www.caixin.com/2026-04-17/102435385.html" target="_blank">财新</a>、<a href="https://commerce.sz.gov.cn/attachment/1/1705/1705542/12743807.pdf" target="_blank">深圳市商务局</a>、<a href="https://www.163.com/dy/article/KQ2PGIHO0538U1ZG.html" target="_blank">网易</a></p>
+        
+        <h2>三、建议洞察</h2>
+        
+        <h3>趋势判断：从"产品输出"到"体系扎根"</h3>
+        
+        <p>2026年的中国企业出海，正经历从"规模化出海"向"高质量全球化"的深度跃迁。三个核心趋势值得高度关注：</p>
+        
+        <p><strong>第一，储能出海进入"产能+订单"双兑现期。</strong> 2025年366GWh海外订单、2026年Q1欧洲30GWh订单的数据表明，储能已从"概念验证"进入"商业放量"阶段。但企业需警惕：欧盟《工业加速法案》的本地化要求正在倒逼企业从"贸易出海"转向"制造出海"，西班牙、葡萄牙、匈牙利等南欧/中东欧国家的建厂窗口期正在收窄。</p>
+        
+        <p><strong>第二，医疗器械迎来"出海拐点"。</strong> 中信建投的研报与CMEF的火爆共同印证：具备全球竞争力的创新器械正在被国际市场认可。但90%企业卡在海外招人的现实表明，<strong>人才瓶颈已成为比技术瓶颈更紧迫的制约</strong>。建议企业提前布局海外临床支持、法规注册、本地化运营人才的储备，而非临时招聘。</p>
+        
+        <p><strong>第三，金融服务从"跟随出海"到"主动赋能"。</strong> 央行境外放款管理办法、银行境外贷款额度上调等政策，正在为企业出海提供更有力的跨境资金支撑。建议出海企业：①善用本外币一体化资金池政策，降低汇率风险；②关注人民币跨境使用便利化，减少汇兑损失；③利用出口信用保险，对冲地缘政治风险。</p>
+        
+        <h3>风险预警：三条"暗线"</h3>
+        
+        <ol>
+            <li><strong>霍尔木兹海峡局势</strong>：4月13日美军封锁伊朗港口海上交通，航空煤油价格单日暴涨逾70%，依赖跨境物流的电商和精密电子出口面临运费压力。在波斯湾地区有长期项目的基建与能源企业，需将安全评估等级提升至最高级别。</li>
+            <li><strong>英国风电禁令外溢</strong>：英国以"国家安全"排除中国风电设备，可能与欧盟《外国补贴条例》（FSR）形成联动效应，对中国新能源设备进入欧洲基础设施领域构成系统性障碍。建议企业加强供应链溯源合规，提前准备"非中国产地"替代方案。</li>
+            <li><strong>美国关税政策不确定性</strong>：特朗普关税退税系统上线虽提供了合规退税通道，但BIS对华半导体材料出口执法持续加码，叠加拟扩大中国电信企业禁令，科技出海企业需做好"技术脱钩"场景下的应急预案。</li>
+        </ol>
+        
+        <h3>行动建议</h3>
+        
+        <ul>
+            <li><strong>对于储能/新能源企业</strong>：欧洲建厂窗口期有限，建议优先锁定西班牙、葡萄牙、匈牙利的产能落地机会；同步关注中东（沙特、阿联酋）的新兴市场订单。</li>
+            <li><strong>对于医疗器械企业</strong>：Q2是海外人才招聘旺季，建议通过猎头+本地渠道+学术网络三线并行，重点攻克法规注册和临床支持岗位。</li>
+            <li><strong>对于出海企业普遍</strong>：尽快适配央行境外放款新规，将跨境资金池用起来；同时关注跨境电商9610退货通办政策，降低售后成本。</li>
+        </ul>
+        
+        <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--border);">
+        
+        <p style="color: var(--text-muted); font-size: 0.9375rem;">
+            <strong>编辑：</strong> Millay<br>
+            <strong>发布日期：</strong> 2026年4月21日<br>
+            <strong>数据来源：</strong> 证券时报、财新、亿欧、跨境合规圈、新华网等公开渠道
+        </p>
+        
+        <div class="highlight-box" style="margin-top: 2rem;">
+            <p style="font-size: 0.875rem; color: var(--text-muted);"><strong>免责声明：</strong> 本日报内容基于公开信息整理，仅供参考，不构成投资建议。</p>
+        </div>
+        
+        <a href="/global-chain/" class="back-link">← 返回出海日报列表</a>
+    </article>
+</body>
+</html>
