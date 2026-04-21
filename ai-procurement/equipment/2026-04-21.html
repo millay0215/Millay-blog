@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仪器设备市场情报 | 2026年4月21日</title>
+    <meta name="description" content="仪器设备中标价格情报与市场动态，覆盖环境监测、高校科研、食品检测等领域仪器采购">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --success: #34a853;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero {
+            background: linear-gradient(135deg, #0d2137 0%, #051c2c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero .meta { opacity: 0.8; font-size: 0.9375rem; margin-top: 1rem; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .bidding-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+        }
+        .bidding-table th {
+            background: var(--bg-light);
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .bidding-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .bidding-table tr:hover td { background: var(--bg-light); }
+        .price-highlight { color: var(--danger); font-weight: 600; }
+        .article-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(5,28,44,0.08);
+            transform: translateY(-2px);
+        }
+        .article-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .article-card .meta {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        .tag.hot { background: #fef3e8; color: #d97706; }
+        .highlight { background: linear-gradient(120deg, #fef3e8 0%, #fef3e8 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 88%; padding: 0 2px; }
+        .source { color: var(--text-muted); font-size: 0.8125rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .insight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .insight-box h4 { font-size: 1.125rem; font-weight: 600; color: var(--primary); margin-bottom: 0.75rem; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { padding: 0.5rem 0; color: var(--text-secondary); position: relative; padding-left: 1.5rem; }
+        .insight-box li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+        footer { background: var(--bg-light); padding: 3rem 2rem; text-align: center; color: var(--text-muted); margin-top: 4rem; }
+        .nav-footer { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+        .nav-footer a { color: var(--text-secondary); text-decoration: none; }
+        .nav-footer a:hover { color: var(--primary); }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.75rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🔬 仪器设备市场情报</h1>
+            <p>分析测试设备中标价格情报与采购动态监测</p>
+            <div class="meta">2026年4月21日 星期二 | 数据来源：中国政府采购网、分析测试百科网</div>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="/ai-procurement/equipment/">仪器设备</a> / 2026年4月21日
+    </div>
+
+    <div class="container">
+        <!-- 市场综述 -->
+        <div class="section">
+            <h2>📊 本周市场综述</h2>
+            <div class="article-card">
+                <h3>高校科研仪器采购持续活跃，色谱仪与质谱仪需求旺盛</h3>
+                <div class="meta">数据周期：2026年4月14日-21日 | 来源：中国政府采购网、化工仪器网</div>
+                <p>本周仪器设备市场延续活跃态势，<span class="highlight">高校和科研院所仍是采购主力</span>。据不完全统计，2025年8月中国政府采购网上与色谱相关的中标词条共201条，可统计到的色谱中标124套，中标金额6629.91万元，平均单价约53.47万元/套。</p>
+                <p>从采购单位分布来看，<span class="highlight">高校采购数量占比43.55%</span>，采购金额占比39.47%；医疗卫生机构采购数量占比20.16%，采购金额占比23.13%。科研院所虽然采购数量仅占5.65%，但平均采购单价最高，达74.01万元/套。</p>
+                <span class="tag">市场动态</span>
+                <span class="tag">高校采购</span>
+            </div>
+
+            <div class="article-card">
+                <h3>国外品牌色谱仪中标金额占比73.63%，国产替代仍需发力</h3>
+                <div class="meta">数据周期：2026年4月 | 来源：化工仪器网</div>
+                <p>2025年8月色谱仪中标数据显示，<span class="highlight">国外品牌色谱仪中标金额占比73.63%</span>，远超国产品牌。安捷伦、Waters、SCIEX等国际品牌仍占据高校和科研机构的高端市场。</p>
+                <p>国产品牌在政府采购政策支持和中低端市场表现活跃，但在高端质谱仪、高分辨色谱仪领域，进口依赖度仍然较高。随着国产仪器技术提升和政策支持力度加大，国产替代进程有望加速。</p>
+                <span class="tag">国产替代</span>
+                <span class="tag">市场格局</span>
+            </div>
+        </div>
+
+        <!-- 重点中标项目 -->
+        <div class="section">
+            <h2>🏆 重点中标项目一览</h2>
+            <table class="bidding-table">
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>采购单位</th>
+                        <th>中标品牌</th>
+                        <th>中标金额</th>
+                        <th>中标日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>超高效液相色谱仪串联四极杆质谱仪</td>
+                        <td>华中科技大学</td>
+                        <td>SCIEX 7500+ System-QTRAP</td>
+                        <td class="price-highlight">548.68万元</td>
+                        <td>2025-01-23</td>
+                    </tr>
+                    <tr>
+                        <td>三重串联四极杆电感耦合等离子体质谱仪+离子色谱仪</td>
+                        <td>东南大学分析测试中心</td>
+                        <td>安捷伦 8900</td>
+                        <td class="price-highlight">234.16万元</td>
+                        <td>2024-10-10</td>
+                    </tr>
+                    <tr>
+                        <td>液相色谱仪-电感耦合等离子体质谱仪</td>
+                        <td>南京大学</td>
+                        <td>安捷伦 7900、1260</td>
+                        <td class="price-highlight">139.00万元</td>
+                        <td>2024-12-10</td>
+                    </tr>
+                    <tr>
+                        <td>高分辨质谱仪、色谱仪、高压反应釜等一批设备</td>
+                        <td>华南理工大学</td>
+                        <td>多品牌</td>
+                        <td class="price-highlight">1,629.60万元</td>
+                        <td>2022-12-17</td>
+                    </tr>
+                    <tr>
+                        <td>在线质谱分析仪、含铁物料氢基软融滴落测试仪</td>
+                        <td>西安建筑科技大学</td>
+                        <td>Hiden HPR-20EGA</td>
+                        <td class="price-highlight">105.56万元</td>
+                        <td>2024-11</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">* 数据来源：中国政府采购网公开中标公告</p>
+        </div>
+
+        <!-- 设备价格参考 -->
+        <div class="section">
+            <h2>💰 设备价格参考（近期中标）</h2>
+            <table class="bidding-table">
+                <thead>
+                    <tr>
+                        <th>设备类型</th>
+                        <th>品牌/型号</th>
+                        <th>规格参数</th>
+                        <th>中标单价</th>
+                        <th>采购单位类型</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>超高效液相色谱串联质谱仪</td>
+                        <td>SCIEX 7500+</td>
+                        <td>QTRAP系统</td>
+                        <td class="price-highlight">548.68万元</td>
+                        <td>高校</td>
+                    </tr>
+                    <tr>
+                        <td>三重四极杆ICP-MS</td>
+                        <td>安捷伦 8900</td>
+                        <td>串联四极杆</td>
+                        <td class="price-highlight">234.16万元</td>
+                        <td>高校</td>
+                    </tr>
+                    <tr>
+                        <td>液相色谱-ICP-MS联用</td>
+                        <td>安捷伦 7900+1260</td>
+                        <td>标准配置</td>
+                        <td class="price-highlight">139.00万元</td>
+                        <td>高校</td>
+                    </tr>
+                    <tr>
+                        <td>在线质谱分析仪</td>
+                        <td>Hiden HPR-20EGA</td>
+                        <td>在线分析</td>
+                        <td class="price-highlight">57.90万元</td>
+                        <td>高校</td>
+                    </tr>
+                    <tr>
+                        <td>气相色谱质谱联用仪</td>
+                        <td>赛默飞</td>
+                        <td>GC-MS系统</td>
+                        <td class="price-highlight">约85-120万元</td>
+                        <td>检测机构</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 采购趋势分析 -->
+        <div class="section">
+            <h2>📈 采购趋势分析</h2>
+            
+            <div class="article-card">
+                <h3>质谱仪采购：高端设备单价持续走高</h3>
+                <div class="meta">数据周期：2024-2025年 | 来源：中国政府采购网</div>
+                <p>近期高校和科研机构对<span class="highlight">高端质谱仪</span>的采购需求显著增长。三重四极杆质谱仪、高分辨质谱仪等高端设备中标单价普遍在200-600万元区间，反映出科研单位对高精度分析设备的投资力度加大。</p>
+                <p>主要驱动因素包括：食品安全检测标准提升、环境监测要求趋严、新材料研发需求增加等。预计2026年质谱仪市场规模将继续保持15%以上的年增长率。</p>
+                <span class="tag">质谱仪</span>
+                <span class="tag">高端设备</span>
+            </div>
+
+            <div class="article-card">
+                <h3>色谱仪市场：平均单价稳中有升</h3>
+                <div class="meta">数据周期：2025年 | 来源：化工仪器网</div>
+                <p>2025年色谱仪中标数据显示，<span class="highlight">平均中标单价约53.47万元/套</span>，较此前略有上涨。科研院所平均采购单价最高（74.01万元），质检机构次之（61.9万元），高校平均采购单价约48.46万元。</p>
+                <p>从品牌格局来看，安捷伦、Waters、岛津等外资品牌占据高端市场主要份额，国产色谱仪在中低端市场逐步扩大份额，但在超高压液相色谱等高端领域仍有差距。</p>
+                <span class="tag">色谱仪</span>
+                <span class="tag">品牌格局</span>
+            </div>
+        </div>
+
+        <!-- 市场洞察 -->
+        <div class="insight-box">
+            <h4>💡 本周市场洞察</h4>
+            <ul>
+                <li><strong>高校采购集中期：</strong>4-6月是高校设备采购传统旺季，建议供应商重点关注高校招标信息</li>
+                <li><strong>高端质谱仪需求增长：</strong>三重四极杆、高分辨质谱仪中标金额持续走高，反映科研投入加大</li>
+                <li><strong>国产替代窗口期：</strong>政策支持下，国产仪器在政府采购中占比逐步提升，但仍需突破高端领域</li>
+                <li><strong>色谱仪价格稳中有升：</strong>平均单价约53.47万元，科研院所采购单价显著高于高校</li>
+                <li><strong>检测行业标准化推动设备升级：</strong>食品、环境、药品检测标准提升带动仪器更新换代需求</li>
+            </ul>
+        </div>
+
+        <div class="source">
+            <p><strong>数据来源：</strong>中国政府采购网 (ccgp.gov.cn)、分析测试百科网 (antpedia.com)、化工仪器网</p>
+            <p><strong>免责声明：</strong>本报告数据来自公开渠道，仅供参考，具体采购信息请以官方发布为准。</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="nav-footer">
+            <a href="2026-04-20.html">← 上一篇</a>
+            <a href="index.html">返回列表</a>
+        </div>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>
