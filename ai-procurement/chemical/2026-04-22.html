@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化工原料采购情报 | 2026年4月22日</title>
+    <meta name="description" content="化工原料最新市场价格与采购情报，覆盖纯苯、苯乙烯、甲醇、丙烯酸等核心产品">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --success: #34a853;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero {
+            background: linear-gradient(135deg, #0d2137 0%, #051c2c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero .meta { opacity: 0.8; font-size: 0.9375rem; margin-top: 1rem; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+        }
+        .price-table th {
+            background: var(--bg-light);
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .price-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .price-table tr:hover td { background: var(--bg-light); }
+        .price-up { color: var(--danger); font-weight: 600; }
+        .price-down { color: var(--success); font-weight: 600; }
+        .price-stable { color: var(--text-muted); }
+        .article-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(5,28,44,0.08);
+            transform: translateY(-2px);
+        }
+        .article-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .article-card .meta {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        .tag.hot { background: #fef3e8; color: #d97706; }
+        .highlight { background: linear-gradient(120deg, #fef3e8 0%, #fef3e8 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 88%; padding: 0 2px; }
+        .source { color: var(--text-muted); font-size: 0.8125rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .insight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .insight-box h4 { font-size: 1.125rem; font-weight: 600; color: var(--primary); margin-bottom: 0.75rem; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { padding: 0.5rem 0; color: var(--text-secondary); position: relative; padding-left: 1.5rem; }
+        .insight-box li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+        footer { background: var(--bg-light); padding: 3rem 2rem; text-align: center; color: var(--text-muted); margin-top: 4rem; }
+        .nav-footer { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+        .nav-footer a { color: var(--text-secondary); text-decoration: none; }
+        .nav-footer a:hover { color: var(--primary); }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.75rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>⚗️ 化工原料采购情报</h1>
+            <p>化工原料最新市场价格与采购决策支持</p>
+            <div class="meta">2026年4月22日 星期三 | 数据来源：隆众资讯、卓创资讯、Mysteel</div>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="/ai-procurement/chemical/">化工原料</a> / 2026年4月22日
+    </div>
+
+    <div class="container">
+        <!-- 市场综述 -->
+        <div class="section">
+            <h2>📊 市场综述</h2>
+            <div class="article-card">
+                <h3>国际油价延续反弹，化工品市场分化加剧</h3>
+                <div class="meta">2026年4月22日 | 来源：卓创资讯、隆众资讯</div>
+                <p>受<span class="highlight">霍尔木兹海峡局势持续紧张</span>影响，国际原油市场延续反弹态势。截至4月21日收盘，WTI原油维持89美元/桶上方，布伦特原油在95美元/桶附近运行。原油反弹为化工品成本端提供一定支撑。</p>
+                <p>国内化工品市场分化明显。芳烃产业链受成本支撑，但下游需求偏弱，市场交投氛围谨慎。<span class="highlight">丙烯酸市场供需相对平衡</span>，价格窄幅整理。预计短期内化工品价格将以区间震荡为主，重点关注地缘政治进展及下游开工恢复情况。</p>
+                <span class="tag hot">油价反弹</span>
+                <span class="tag">市场震荡</span>
+            </div>
+
+            <div class="article-card">
+                <h3>丙烯酸市场：供需平衡，价格窄幅整理</h3>
+                <div class="meta">2026年4月22日 | 来源：隆众资讯</div>
+                <p>丙烯酸市场近期<span class="highlight">供需博弈持续</span>。供应端，主力工厂开工率维持在中高位，市场货源相对充足。需求端，下游丙烯酸酯类及高吸水性树脂（SAP）按需采购，整体成交气氛一般。</p>
+                <p>价格方面，华东地区丙烯酸市场价格在6000-6100元/吨左右，华北地区5950-6050元/吨，华南地区5950-6000元/吨。精酸价格参考6500-6600元/吨。预计短期内丙烯酸市场价格或维持窄幅整理态势。</p>
+                <span class="tag">丙烯酸</span>
+                <span class="tag">供需平衡</span>
+            </div>
+        </div>
+
+        <!-- 核心产品价格 -->
+        <div class="section">
+            <h2>💰 核心产品价格行情</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>规格/区域</th>
+                        <th>4月22日价格</th>
+                        <th>较上周变动</th>
+                        <th>趋势</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>纯苯</strong></td>
+                        <td>华东市场</td>
+                        <td>约7,500-7,600元/吨</td>
+                        <td class="price-down">-200元/吨</td>
+                        <td class="price-down">↓ 偏弱</td>
+                    </tr>
+                    <tr>
+                        <td><strong>苯乙烯</strong></td>
+                        <td>华东市场</td>
+                        <td>约10,500-10,700元/吨</td>
+                        <td class="price-down">-300元/吨</td>
+                        <td class="price-down">↓ 下跌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>甲醇</strong></td>
+                        <td>华东市场</td>
+                        <td>约2,400-2,500元/吨</td>
+                        <td class="price-stable">持平</td>
+                        <td class="price-stable">→ 震荡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>丙烯酸</strong></td>
+                        <td>华东市场</td>
+                        <td>约6,000-6,100元/吨</td>
+                        <td class="price-stable">-50元/吨</td>
+                        <td class="price-stable">→ 整理</td>
+                    </tr>
+                    <tr>
+                        <td><strong>丙烯酸丁酯</strong></td>
+                        <td>华东市场</td>
+                        <td>约10,400-10,600元/吨</td>
+                        <td class="price-down">-100元/吨</td>
+                        <td class="price-down">↓ 偏弱</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PTA</strong></td>
+                        <td>华东市场</td>
+                        <td>约5,400-5,500元/吨</td>
+                        <td class="price-stable">小幅波动</td>
+                        <td class="price-stable">→ 震荡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>乙二醇</strong></td>
+                        <td>华东市场</td>
+                        <td>约4,400-4,500元/吨</td>
+                        <td class="price-stable">持平</td>
+                        <td class="price-stable">→ 稳定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>二甲苯</strong></td>
+                        <td>华东市场</td>
+                        <td>约5,800-6,000元/吨</td>
+                        <td class="price-down">-200元/吨</td>
+                        <td class="price-down">↓ 下跌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>丙酮</strong></td>
+                        <td>华东市场</td>
+                        <td>约4,640-4,680元/吨</td>
+                        <td class="price-down">-150元/吨</td>
+                        <td class="price-down">↓ 下跌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>甲苯</strong></td>
+                        <td>张家港</td>
+                        <td>约5,500-5,700元/吨</td>
+                        <td class="price-down">-315元/吨</td>
+                        <td class="price-down">↓ 大跌</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">* 价格数据来源：隆众资讯、卓创资讯，仅供参考，实际采购请以供应商报价为准</p>
+        </div>
+
+        <!-- 国际市场价格 -->
+        <div class="section">
+            <h2>🌍 国际市场价格参考</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>产品</th>
+                        <th>区域/规格</th>
+                        <th>4月21日价格</th>
+                        <th>变动</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>WTI原油</strong></td>
+                        <td>2026年5月期货</td>
+                        <td>89.61美元/桶</td>
+                        <td class="price-up">+6.87%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>布伦特原油</strong></td>
+                        <td>2026年6月期货</td>
+                        <td>95.48美元/桶</td>
+                        <td class="price-up">+5.64%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>纯苯</strong></td>
+                        <td>FOB韩国</td>
+                        <td>1,120-1,125美元/吨</td>
+                        <td class="price-down">-37.5美元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>纯苯</strong></td>
+                        <td>CFR中国</td>
+                        <td>1,150-1,155美元/吨</td>
+                        <td class="price-down">-37.5美元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>苯乙烯</strong></td>
+                        <td>韩国FOB</td>
+                        <td>下跌</td>
+                        <td class="price-down">-7.50美元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>二甲苯</strong></td>
+                        <td>韩国FOB</td>
+                        <td>参考前期</td>
+                        <td class="price-down">-5.00美元/吨</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 产业链分析 -->
+        <div class="section">
+            <h2>🔗 产业链分析</h2>
+            
+            <div class="article-card">
+                <h3>芳烃产业链：成本支撑与需求疲弱的博弈</h3>
+                <div class="meta">2026年4月22日 | 来源：隆众资讯</div>
+                <p><span class="highlight">纯苯市场</span>方面，受国际原油大涨带动，成本端支撑增强，但国内下游苯乙烯、己内酰胺等产品需求偏弱，纯苯价格上涨动力不足。华东纯苯市场主流参考7,500-7,600元/吨。</p>
+                <p><span class="highlight">苯乙烯市场</span>持续承压，下游EPS、PS等行业开工率偏低，现货成交清淡。华东苯乙烯市场主流参考10,500-10,700元/吨，较前期下跌约300元/吨。</p>
+                <p>二甲苯市场同样表现疲软，国内供应充裕，但溶剂涂料等下游需求不振，价格持续下行。华东异构级二甲苯参考5,800-6,000元/吨。</p>
+                <span class="tag">芳烃</span>
+                <span class="tag">产业链</span>
+            </div>
+
+            <div class="article-card">
+                <h3>丙烯酸产业链：下游按需采购，市场交投平淡</h3>
+                <div class="meta">2026年4月22日 | 来源：隆众资讯、卓创资讯</div>
+                <p>丙烯酸市场<span class="highlight">供需面整体平稳</span>。供应端，主力工厂开工率维持7-8成，库存压力可控。需求端，下游丙烯酸酯及SAP行业按需采购，新单跟进一般。</p>
+                <p>丙烯酸丁酯市场受原料丙烯酸及丁醇价格波动影响，近期价格偏弱整理。华东丙烯酸丁酯参考10,400-10,600元/吨。</p>
+                <p>预计短期内丙烯酸产业链价格将以区间震荡为主，重点关注原料丙烯价格走势及下游补库节奏。</p>
+                <span class="tag">丙烯酸</span>
+                <span class="tag">下游需求</span>
+            </div>
+
+            <div class="article-card">
+                <h3>甲醇及下游：成本支撑减弱，价格横盘整理</h3>
+                <div class="meta">2026年4月22日 | 来源：隆众资讯</div>
+                <p>甲醇市场近期<span class="highlight">横盘整理为主</span>。西北地区甲醇装置检修与重启并行，供应端变化不大。港口库存维持在中等水平，市场交投氛围一般。</p>
+                <p>下游方面，甲醛市场开工平稳，醋酸市场价格涨跌互现，MTBE市场价格零星调涨。二甲醚市场受成本推动，局部价格偏强。</p>
+                <p>隆众资讯化工指数显示，甲醇及下游指数133.18，下跌5.05点，反映整体板块偏弱运行。</p>
+                <span class="tag">甲醇</span>
+                <span class="tag">下游产品</span>
+            </div>
+        </div>
+
+        <!-- 采购建议 -->
+        <div class="insight-box">
+            <h4>💡 本周采购建议</h4>
+            <ul>
+                <li><strong>纯苯/苯乙烯：</strong>国际原油反弹提供成本支撑，但下游需求疲软，建议按需采购，不宜大量囤货</li>
+                <li><strong>丙烯酸及酯类：</strong>市场供需相对平衡，价格窄幅整理，建议维持正常库存水平，关注工厂检修计划</li>
+                <li><strong>甲醇：</strong>价格横盘整理，下游按需采购为主，建议短期维持刚需采购策略</li>
+                <li><strong>二甲苯/甲苯：</strong>价格持续下行，溶剂类下游需求不振，建议逢低适量补库</li>
+                <li><strong>丙酮：</strong>价格下跌明显，关注下游双酚A等行业开工情况，短期偏空</li>
+                <li><strong>风险提示：</strong>霍尔木兹海峡局势不稳定，国际油价波动加剧，建议关注地缘政治对化工品价格的冲击</li>
+            </ul>
+        </div>
+
+        <div class="source">
+            <p><strong>数据来源：</strong>隆众资讯 (oilchem.net)、卓创资讯 (sci99.com)、Mysteel</p>
+            <p><strong>免责声明：</strong>本报告数据来自公开渠道，仅供参考，采购决策请以实际市场情况为准。</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="nav-footer">
+            <a href="2026-04-21.html">← 上一篇</a>
+            <a href="index.html">返回列表</a>
+        </div>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>
