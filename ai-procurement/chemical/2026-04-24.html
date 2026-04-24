@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化工原料市场情报 | 2026年4月24日</title>
+    <meta name="description" content="化工原料每日市场价格情报，覆盖甲醇、乙二醇、PTA、纯苯等主流化工产品">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --success: #34a853;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero {
+            background: linear-gradient(135deg, #0d2137 0%, #051c2c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero .meta { opacity: 0.8; font-size: 0.9375rem; margin-top: 1rem; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+        }
+        .price-table th {
+            background: var(--bg-light);
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .price-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .price-table tr:hover td { background: var(--bg-light); }
+        .price-up { color: var(--danger); font-weight: 600; }
+        .price-down { color: var(--success); font-weight: 600; }
+        .price-stable { color: var(--text-muted); }
+        .article-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(5,28,44,0.08);
+            transform: translateY(-2px);
+        }
+        .article-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .article-card .meta {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        .tag.hot { background: #fef3e8; color: #d97706; }
+        .highlight { background: linear-gradient(120deg, #fef3e8 0%, #fef3e8 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 88%; padding: 0 2px; }
+        .source { color: var(--text-muted); font-size: 0.8125rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .insight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .insight-box h4 { font-size: 1.125rem; font-weight: 600; color: var(--primary); margin-bottom: 0.75rem; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { padding: 0.5rem 0; color: var(--text-secondary); position: relative; padding-left: 1.5rem; }
+        .insight-box li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+        footer { background: var(--bg-light); padding: 3rem 2rem; text-align: center; color: var(--text-muted); margin-top: 4rem; }
+        .nav-footer { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+        .nav-footer a { color: var(--text-secondary); text-decoration: none; }
+        .nav-footer a:hover { color: var(--primary); }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.75rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🧪 化工原料市场情报</h1>
+            <p>每日化工原料市场价格监测与趋势分析</p>
+            <div class="meta">2026年4月24日 星期五 | 数据来源：生意社、隆众资讯、Mysteel</div>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="/ai-procurement/chemical/">化工原料</a> / 2026年4月24日
+    </div>
+
+    <div class="container">
+        <!-- 市场综述 -->
+        <div class="section">
+            <h2>📊 今日市场综述</h2>
+            <div class="article-card">
+                <h3>化工大宗品跌多涨少，碳酸二甲酯与丁二烯领跌</h3>
+                <div class="meta">数据日期：2026年4月22日 | 来源：生意社价格监测</div>
+                <p>据生意社价格监测，2026年4月22日大宗商品价格涨跌榜中化工板块<span class="highlight">环比上升的商品仅14种</span>，涨幅前3分别为硫化钠(3.53%)、四氢呋喃(3.50%)、二氯甲烷(1.48%)。<span class="highlight">下降商品数量明显多于上涨</span>，市场呈现偏弱震荡格局。</p>
+                <p>跌幅居前的品种包括：<span class="highlight">碳酸二甲酯(-7.66%)、甲酸(-7.14%)、丁二烯(-5.06%)、正庚烷(-4.35%)、溴素(-3.58%)、苯酚(-3.45%)</span>。其中丁二烯跌至13,767元/吨，苯酚跌至8,400元/吨，均创近期低位。碳酸二甲酯跌至3,817元/吨，跌幅最为显著。</p>
+                <span class="tag">市场动态</span>
+                <span class="tag hot">价格下跌</span>
+            </div>
+
+            <div class="article-card">
+                <h3>乙二醇现货跌至5045元/吨，卫星化学报价4980元/吨</h3>
+                <div class="meta">数据日期：2026年4月23日 | 来源：生意社、隆众资讯</div>
+                <p>据生意社4月23日数据，<span class="highlight">乙二醇基准价为5045.00元/吨</span>。卫星化学当日乙二醇报价4980元/吨。从价格走势看，乙二醇现货价格从4月15日的5225元/吨持续回落，4月23日现货价5058.33元/吨，主力期货价格4842元/吨，基差216元/吨。</p>
+                <p>180日平均基差率为2.30%，90日平均基差率为0.91%。<span class="highlight">当前基差维持高位</span>，近月合约在港口去库背景下下方支撑较强，但远月供应压力增加，预计短期偏弱震荡。</p>
+                <span class="tag">乙二醇</span>
+                <span class="tag">价格走势</span>
+            </div>
+        </div>
+
+        <!-- 重点产品价格 -->
+        <div class="section">
+            <h2>💰 重点产品价格（2026年4月22日-23日）</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>4月21日价格</th>
+                        <th>4月22日价格</th>
+                        <th>单位</th>
+                        <th>日涨跌</th>
+                        <th>同比涨跌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>丙烯酸</td>
+                        <td>12,750</td>
+                        <td>12,483</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-2.09%</td>
+                        <td class="price-up">+64.98%</td>
+                    </tr>
+                    <tr>
+                        <td>甲醇</td>
+                        <td>3,287</td>
+                        <td>3,257</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-0.91%</td>
+                        <td class="price-up">+36.26%</td>
+                    </tr>
+                    <tr>
+                        <td>甲苯</td>
+                        <td>6,628</td>
+                        <td>6,468</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-2.41%</td>
+                        <td class="price-up">+16.12%</td>
+                    </tr>
+                    <tr>
+                        <td>丙酮</td>
+                        <td>7,200</td>
+                        <td>7,000</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-2.78%</td>
+                        <td class="price-up">+16.47%</td>
+                    </tr>
+                    <tr>
+                        <td>苯酚</td>
+                        <td>8,700</td>
+                        <td>8,400</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-3.45%</td>
+                        <td class="price-up">+18.06%</td>
+                    </tr>
+                    <tr>
+                        <td>TDI</td>
+                        <td>18,267</td>
+                        <td>17,900</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-2.01%</td>
+                        <td class="price-up">+70.48%</td>
+                    </tr>
+                    <tr>
+                        <td>丁二烯</td>
+                        <td>14,500</td>
+                        <td>13,767</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-5.06%</td>
+                        <td class="price-up">+67.89%</td>
+                    </tr>
+                    <tr>
+                        <td>液氨</td>
+                        <td>2,923</td>
+                        <td>2,873</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-1.71%</td>
+                        <td class="price-up">+6.42%</td>
+                    </tr>
+                    <tr>
+                        <td>碳酸二甲酯</td>
+                        <td>4,133</td>
+                        <td>3,817</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-7.66%</td>
+                        <td class="price-up">+4.57%</td>
+                    </tr>
+                    <tr>
+                        <td>环氧树脂</td>
+                        <td>18,400</td>
+                        <td>18,200</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-1.09%</td>
+                        <td class="price-up">+33.17%</td>
+                    </tr>
+                    <tr>
+                        <td>乙二醇</td>
+                        <td>5,225</td>
+                        <td>5,058</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-3.20%</td>
+                        <td class="price-up">+5.10%</td>
+                    </tr>
+                    <tr>
+                        <td>环氧丙烷</td>
+                        <td>11,100</td>
+                        <td>11,000</td>
+                        <td>元/吨</td>
+                        <td class="price-down">-0.90%</td>
+                        <td class="price-up">+51.72%</td>
+                    </tr>
+                    <tr>
+                        <td>硫化钠</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+3.53%</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>四氢呋喃</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>元/吨</td>
+                        <td class="price-up">+3.50%</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">* 数据来源：生意社大宗商品价格监测 (top.100ppi.com)</p>
+        </div>
+
+        <!-- 企业报价 -->
+        <div class="section">
+            <h2>🏭 重点企业报价（2026年4月22日）</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>企业</th>
+                        <th>产品</th>
+                        <th>报价（元/吨）</th>
+                        <th>区域</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>万华化学</td>
+                        <td>丙烯酸</td>
+                        <td class="price-stable">11,950</td>
+                        <td>华东地区</td>
+                        <td>挂牌价</td>
+                    </tr>
+                    <tr>
+                        <td>万华化学</td>
+                        <td>丙烯酸丁酯</td>
+                        <td class="price-stable">12,600</td>
+                        <td>华东地区</td>
+                        <td>挂牌价</td>
+                    </tr>
+                    <tr>
+                        <td>万华化学</td>
+                        <td>丙烯酸甲酯</td>
+                        <td class="price-stable">14,400</td>
+                        <td>华东地区</td>
+                        <td>挂牌价</td>
+                    </tr>
+                    <tr>
+                        <td>卫星化学</td>
+                        <td>乙二醇</td>
+                        <td class="price-stable">4,980</td>
+                        <td>全国</td>
+                        <td>4月23日报价</td>
+                    </tr>
+                    <tr>
+                        <td>江苏三木</td>
+                        <td>丙烯酸</td>
+                        <td class="price-stable">暂无报价</td>
+                        <td>全国</td>
+                        <td>装置正常运行</td>
+                    </tr>
+                    <tr>
+                        <td>江苏三木</td>
+                        <td>丙烯酸丁酯</td>
+                        <td class="price-stable">暂无报价</td>
+                        <td>全国</td>
+                        <td>年产能18万吨</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">* 数据来源：隆众资讯、Mysteel、生意社</p>
+        </div>
+
+        <!-- 市场分析 -->
+        <div class="section">
+            <h2>📈 市场分析</h2>
+            
+            <div class="article-card">
+                <h3>PTA产业链：加工费高位回调，基差整体平稳</h3>
+                <div class="meta">数据日期：2026年4月17日 | 来源：中信期货、隆众资讯</div>
+                <p>据隆众口径，截至4月17日，<span class="highlight">PTA现货价格+210至6,570元/吨</span>。本周及下周主港交割05贴水17-22、仓单贴水20-21有成交，5月主港交割05升水12附近有成交。上端部分装置推迟检修，产业供需优化或不及预期，现货基差大致稳定。</p>
+                <p>据CCF口径，4月17日当周，<span class="highlight">PTA现货加工费从306.19降至182.27元/吨</span>，07合约盘面加工费同步高位回调，从482.98降至404.73元/吨。PX端，隆众口径3月PX社会库存460.59万吨，环比-3.96%。</p>
+                <span class="tag">PTA</span>
+                <span class="tag">产业链</span>
+            </div>
+
+            <div class="article-card">
+                <h3>丙烯酸及酯：万华化学华东价格维持高位</h3>
+                <div class="meta">数据日期：2026年4月22日 | 来源：隆众资讯、Mysteel</div>
+                <p>隆众资讯4月22日报道，<span class="highlight">万华化学华东地区丙烯酸挂牌价11,950元/吨</span>，丙烯酸丁酯12,600元/吨，丙烯酸甲酯14,400元/吨。相较生意社监测的丙烯酸市场价12,483元/吨，万华化学挂牌价处于略低水平。</p>
+                <p>江苏三木年产能30万吨丙烯酸及年产能18万吨丙烯酸丁酯对外暂无报价，丙烯酸装置正常运行。兰州石化年产能8万吨丙烯酸装置正常运行中，对外暂无明确报盘。整体来看，<span class="highlight">丙烯酸及酯市场供需面表现一般，下游补货心态谨慎</span>。</p>
+                <span class="tag">丙烯酸</span>
+                <span class="tag">万华化学</span>
+            </div>
+
+            <div class="article-card">
+                <h3>甲醇港口库存持续去化，基差维持高位</h3>
+                <div class="meta">数据日期：2026年4月22日 | 来源：隆众资讯、中信期货</div>
+                <p>据隆众资讯4月22日报道，<span class="highlight">甲醇港口库存总量降至93万吨</span>，较上一期减少7万吨，预计4月份进口量降至60万吨附近，港口去库幅度超过30万吨。华东、华南地区库存继续快速去化。</p>
+                <p>港口最大MTO装置恢复运行，月消耗量24万吨。当前<span class="highlight">现货基差高达190-200元/吨</span>，近月在港口加速去库背景下，特别是美伊冲突仍持续，预计近月合约将逐渐收基差，下方空间有限。山东地区主要氧化铝厂家采购32%离子膜碱自4月21日起下调15元/吨，执行出厂625元/吨。</p>
+                <span class="tag">甲醇</span>
+                <span class="tag">库存去化</span>
+            </div>
+        </div>
+
+        <!-- 市场洞察 -->
+        <div class="insight-box">
+            <h4>💡 今日市场洞察</h4>
+            <ul>
+                <li><strong>化工品整体偏弱：</strong>4月22日生意社监测化工板块跌多涨少，碳酸二甲酯(-7.66%)、丁二烯(-5.06%)领跌，反映宏观情绪趋弱</li>
+                <li><strong>乙二醇持续回落：</strong>基准价5045元/吨，较4月15日5225元/吨下跌3.4%，卫星化学报价4980元/吨，基差维持高位</li>
+                <li><strong>甲醇港口去库超预期：</strong>港口库存降至93万吨，4月去库超30万吨，现货基差190-200元/吨，近月合约下方支撑较强</li>
+                <li><strong>PTA加工费高位回落：</strong>从306元/吨降至182元/吨，上游PX装置推迟检修，供需优化不及预期</li>
+                <li><strong>丙烯酸市场僵持：</strong>万华化学挂牌价维持11,950元/吨，但生意社监测市场价跌至12,483元/吨，下游补货心态谨慎</li>
+                <li><strong>碳酸二甲酯暴跌：</strong>单日跌幅7.66%至3817元/吨，为近期最大跌幅品种，关注下游电解液需求变化</li>
+            </ul>
+        </div>
+
+        <div class="source">
+            <p><strong>数据来源：</strong>生意社 (top.100ppi.com)、隆众资讯 (oilchem.net)、Mysteel (mysteel.com)、中信期货研究所</p>
+            <p><strong>免责声明：</strong>本报告数据来自公开渠道，仅供参考，具体采购信息请以官方发布为准。</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="nav-footer">
+            <a href="2026-04-23.html">← 上一篇</a>
+            <a href="index.html">返回列表</a>
+        </div>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>
