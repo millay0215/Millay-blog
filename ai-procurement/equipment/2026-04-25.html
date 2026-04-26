@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仪器设备市场情报 | 2026年4月25日</title>
+    <meta name="description" content="仪器设备中标价格情报与市场动态，覆盖环境监测、高校科研、食品检测等领域仪器采购">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --success: #34a853;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero {
+            background: linear-gradient(135deg, #0d2137 0%, #051c2c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero .meta { opacity: 0.8; font-size: 0.9375rem; margin-top: 1rem; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .bidding-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+        }
+        .bidding-table th {
+            background: var(--bg-light);
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .bidding-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .bidding-table tr:hover td { background: var(--bg-light); }
+        .price-highlight { color: var(--danger); font-weight: 600; }
+        .article-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(5,28,44,0.08);
+            transform: translateY(-2px);
+        }
+        .article-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .article-card .meta {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        .tag.hot { background: #fef3e8; color: #d97706; }
+        .highlight { background: linear-gradient(120deg, #fef3e8 0%, #fef3e8 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 88%; padding: 0 2px; }
+        .source { color: var(--text-muted); font-size: 0.8125rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .insight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .insight-box h4 { font-size: 1.125rem; font-weight: 600; color: var(--primary); margin-bottom: 0.75rem; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { padding: 0.5rem 0; color: var(--text-secondary); position: relative; padding-left: 1.5rem; }
+        .insight-box li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+        footer { background: var(--bg-light); padding: 3rem 2rem; text-align: center; color: var(--text-muted); margin-top: 4rem; }
+        .nav-footer { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+        .nav-footer a { color: var(--text-secondary); text-decoration: none; }
+        .nav-footer a:hover { color: var(--primary); }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.75rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🔬 仪器设备市场情报</h1>
+            <p>分析测试设备中标价格情报与采购动态监测</p>
+            <div class="meta">2026年4月25日 星期六 | 数据来源：中国政府采购网、分析测试百科网、化工仪器网</div>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="/ai-procurement/equipment/">仪器设备</a> / 2026年4月25日
+    </div>
+
+    <div class="container">
+        <!-- 市场综述 -->
+        <div class="section">
+            <h2>📊 今日市场综述</h2>
+            <div class="article-card">
+                <h3>中国医学科学院发布1.64亿元仪器设备采购意向，质谱仪成重点</h3>
+                <div class="meta">采购意向：2026年4月14日 | 来源：IVD资讯网、中国政府采购网</div>
+                <p>中国医学科学院发布2026年4月—9月仪器设备采购意向，<span class="highlight">预算总金额达16,450万元</span>，涵盖北京协和医院、医药生物技术研究所、基础医学研究所、阜外医院等多家下属单位。拟采购设备包括流式细胞仪、质谱仪、核磁共振波谱仪、单细胞分析系统等大批科研与临床仪器。</p>
+                <p>其中，<span class="highlight">药物研究所科研设备采购项目预算298万元，包含超高效液相色谱-三重四极杆串联质谱仪</span>；另一项药物研究所设备采购预算1525万元，包含800MHz核磁共振波谱仪超低温探头、超高效液相色谱仪等12台设备。中国医学科学院肿瘤医院预算190万元采购全自动微生物质谱检测系统（MALDI-TOF质谱仪）。</p>
+                <span class="tag">市场数据</span>
+                <span class="tag hot">质谱仪</span>
+            </div>
+
+            <div class="article-card">
+                <h3>河南农业大学1102万元仪器设备采购公开招标，含LC-MS/MS</h3>
+                <div class="meta">招标公告：2026年4月8日 | 来源：河南省政府采购网</div>
+                <p>河南农业大学先进农业技术开放创新平台建设项目设备采购十四期项目公开招标，<span class="highlight">预算金额1102.8万元</span>，开标时间2026年4月29日。项目分三个包：</p>
+                <p>包1：流式细胞仪（分析型）、超速冷冻离心机、多功能酶标仪，预算329万元；<br>
+                包2：大小鼠药物和微生物吸入给药染毒平台、全自动微生物生化鉴定与药敏系统，预算396万元；<br>
+                包3：<span class="highlight">离子色谱、全自动氨基酸分析仪、液相色谱三重四级杆质谱联用仪</span>，预算241.8万元。</p>
+                <span class="tag">招标公告</span>
+                <span class="tag">高校采购</span>
+            </div>
+        </div>
+
+        <!-- 重点中标项目 -->
+        <div class="section">
+            <h2>🏆 重点中标项目一览</h2>
+            <table class="bidding-table">
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>采购单位</th>
+                        <th>中标品牌/型号</th>
+                        <th>中标金额</th>
+                        <th>中标日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>超高效液相色谱-三重四极杆质谱仪×12台</td>
+                        <td>海关总署</td>
+                        <td>沃特世 XevoTQAbsolute</td>
+                        <td class="price-highlight">1,836.00万元</td>
+                        <td>2026-03-14</td>
+                    </tr>
+                    <tr>
+                        <td>超高效液相色谱串联质谱仪</td>
+                        <td>华中科技大学</td>
+                        <td>SCIEX 7500+</td>
+                        <td class="price-highlight">548.68万元</td>
+                        <td>2026-01-23</td>
+                    </tr>
+                    <tr>
+                        <td>液相色谱-高分辨质谱仪</td>
+                        <td>中石油（上海）新材料研究院</td>
+                        <td>沃特斯（英国）</td>
+                        <td class="price-highlight">待定</td>
+                        <td>2026-04-10</td>
+                    </tr>
+                    <tr>
+                        <td>三重串联四极杆ICP-MS+离子色谱仪</td>
+                        <td>东南大学分析测试中心</td>
+                        <td>安捷伦 8900</td>
+                        <td class="price-highlight">234.16万元</td>
+                        <td>2024-10-10</td>
+                    </tr>
+                    <tr>
+                        <td>教科研仪器设备（含LC-MS/MS等）</td>
+                        <td>湖北中医药高等专科学校</td>
+                        <td>待定（公开招标中）</td>
+                        <td class="price-highlight">511.00万元</td>
+                        <td>2026-01-19</td>
+                    </tr>
+                    <tr>
+                        <td>电感耦合等离子体串联质谱仪</td>
+                        <td>闽都实验室（福州）</td>
+                        <td>福州科助仪器贸易有限公司</td>
+                        <td class="price-highlight">206.00万元</td>
+                        <td>2026-01-09</td>
+                    </tr>
+                    <tr>
+                        <td>液相色谱仪-电感耦合等离子体质谱仪</td>
+                        <td>南京大学</td>
+                        <td>安捷伦 7900、1260</td>
+                        <td class="price-highlight">139.00万元</td>
+                        <td>2024-12-10</td>
+                    </tr>
+                    <tr>
+                        <td>电感耦合等离子体质谱仪</td>
+                        <td>内蒙古包头某单位</td>
+                        <td>赛默飞 iCAP MSX</td>
+                        <td class="price-highlight">138.00万元</td>
+                        <td>2026-03-27</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">* 数据来源：中国政府采购网、中国国际招标网、分析测试百科网</p>
+        </div>
+
+        <!-- 本周招标预告 -->
+        <div class="section">
+            <h2>📢 本周招标预告</h2>
+            <table class="bidding-table">
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>采购单位</th>
+                        <th>预算金额</th>
+                        <th>发布日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>液相色谱三重四级杆质谱联用仪</td>
+                        <td>上海市徐汇区疾病预防控制中心</td>
+                        <td class="price-highlight">420.00万元</td>
+                        <td>2026-04-02（4月27日开标）</td>
+                    </tr>
+                    <tr>
+                        <td>超高效液相色谱-三重四极杆质谱联用仪</td>
+                        <td>广东省某单位（有德招标代理）</td>
+                        <td class="price-highlight">490.00万元</td>
+                        <td>2026-04-07（招标中）</td>
+                    </tr>
+                    <tr>
+                        <td>离子色谱、LC-MS/MS、氨基酸分析仪</td>
+                        <td>河南农业大学</td>
+                        <td class="price-highlight">241.80万元</td>
+                        <td>2026-04-08（4月29日开标）</td>
+                    </tr>
+                    <tr>
+                        <td>气相色谱高分辨率质谱仪</td>
+                        <td>北京师范大学珠海校区</td>
+                        <td class="price-highlight">待定</td>
+                        <td>2026-04-18（招标公告）</td>
+                    </tr>
+                    <tr>
+                        <td>高效液相色谱串联质谱检测系统</td>
+                        <td>许昌市建安医院</td>
+                        <td class="price-highlight">1649.25万元（整体项目）</td>
+                        <td>2026-04-17（可研评审）</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">* 数据来源：中国政府采购网、招标采购导航网</p>
+        </div>
+
+        <!-- 设备价格参考 -->
+        <div class="section">
+            <h2>💰 设备价格参考（近期中标）</h2>
+            <table class="bidding-table">
+                <thead>
+                    <tr>
+                        <th>设备类型</th>
+                        <th>品牌/型号</th>
+                        <th>规格参数</th>
+                        <th>中标单价</th>
+                        <th>采购单位类型</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>超高效液相色谱串联质谱仪</td>
+                        <td>SCIEX 7500+</td>
+                        <td>QTRAP系统</td>
+                        <td class="price-highlight">548.68万元</td>
+                        <td>高校</td>
+                    </tr>
+                    <tr>
+                        <td>超高效液相色谱-三重四极杆质谱仪</td>
+                        <td>沃特世 XevoTQAbsolute</td>
+                        <td>S型</td>
+                        <td class="price-highlight">153.00万元（集采均价）</td>
+                        <td>海关</td>
+                    </tr>
+                    <tr>
+                        <td>三重四极杆ICP-MS</td>
+                        <td>安捷伦 8900</td>
+                        <td>串联四极杆</td>
+                        <td class="price-highlight">234.16万元</td>
+                        <td>高校</td>
+                    </tr>
+                    <tr>
+                        <td>电感耦合等离子体串联质谱仪</td>
+                        <td>待定</td>
+                        <td>标准配置</td>
+                        <td class="price-highlight">206.00万元</td>
+                        <td>实验室</td>
+                    </tr>
+                    <tr>
+                        <td>液相色谱-ICP-MS联用</td>
+                        <td>安捷伦 7900+1260</td>
+                        <td>标准配置</td>
+                        <td class="price-highlight">139.00万元</td>
+                        <td>高校</td>
+                    </tr>
+                    <tr>
+                        <td>ICP-MS</td>
+                        <td>赛默飞 iCAP MSX</td>
+                        <td>标准配置</td>
+                        <td class="price-highlight">138.00万元</td>
+                        <td>检测机构</td>
+                    </tr>
+                    <tr>
+                        <td>高效液相色谱串联质谱仪</td>
+                        <td>山东英盛 YS EXACT 9700MD</td>
+                        <td>临床检验</td>
+                        <td class="price-highlight">138.00万元</td>
+                        <td>医疗机构</td>
+                    </tr>
+                    <tr>
+                        <td>在线质谱分析仪</td>
+                        <td>Hiden HPR-20EGA</td>
+                        <td>在线分析</td>
+                        <td class="price-highlight">57.90万元</td>
+                        <td>高校</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 采购趋势分析 -->
+        <div class="section">
+            <h2>📈 采购趋势分析</h2>
+            
+            <div class="article-card">
+                <h3>2026年Q1色谱质谱仪器中标分析：LC-MS/MS占预算60%</h3>
+                <div class="meta">数据周期：2026年Q1 | 来源：中国机械工业联合会机经网</div>
+                <p>据2026年Q1色谱、质谱类仪器招标采购数据分析，<span class="highlight">液相色谱-三重四极杆质谱(LC-MS/MS)成为采购热点，预算金额达1.037亿元，占季度总预算的近60%</span>，主要用于海关系统的大批量检测需求。气相色谱-质谱联用仪(GC-MS/GC-MS/MS)预算约3700万元，广泛应用于高校科研、疾控检测及海关专项检测。</p>
+                <p>单纯色谱仪器(HPLC/GC)3月中标35套，金额1370.68万元，均价39.16万元/套。其中液相色谱17套（778.17万元）、气相色谱9套（315.12万元）。<span class="highlight">超高效液相色谱-轨道阱高分辨质谱作为高端机型，仅国家区域公共卫生中心(云南)采购1套，预算560万元</span>。</p>
+                <span class="tag">Q1数据</span>
+                <span class="tag hot">LC-MS/MS</span>
+            </div>
+
+            <div class="article-card">
+                <h3>2025上半年色谱仪中标2.43亿元：进口占61%，高校采购占40%</h3>
+                <div class="meta">数据周期：2025年1-6月 | 来源：化工仪器网</div>
+                <p>据化工仪器网统计，<span class="highlight">2025年上半年中国政府采购网上色谱仪中标数量总计500台/套，中标总金额2.43亿元</span>。其中国产色谱仪中标195台/套（占39%），平均单价34.02万元；进口色谱仪中标305台/套（占61%），平均单价54.87万元。</p>
+                <p>从采购单位看，<span class="highlight">高校采购230台/套，采购金额9797.51万元，占整体采购金额的40%</span>。从仪器类型看，离子色谱仪中标数量最多（196台/套，占39%），气相色谱仪184台/套（占37%），液相色谱仪74台/套（占15%）。高校采购色谱仪平均单价42.69万元，医疗卫生机构平均单价59.6万元。</p>
+                <span class="tag">高校采购</span>
+                <span class="tag">色谱仪</span>
+            </div>
+        </div>
+
+        <!-- 市场洞察 -->
+        <div class="insight-box">
+            <h4>💡 本周市场洞察</h4>
+            <ul>
+                <li><strong>中国医学科学院大额采购：</strong>1.64亿元仪器设备采购意向发布，质谱仪、核磁共振波谱仪等高端设备为重点，采购周期4-9月</li>
+                <li><strong>河南农业大学招标在即：</strong>4月29日开标，包3含液相色谱三重四级杆质谱联用仪，预算241.8万元</li>
+                <li><strong>上海疾控LC-MS/MS招标：</strong>徐汇区疾病预防控制中心420万元采购液相色谱三重四级杆质谱联用仪，4月27日开标</li>
+                <li><strong>Q1市场格局：</strong>LC-MS/MS占色谱质谱类仪器预算60%，海关批量采购成常态，高端机型单价超500万元</li>
+                <li><strong>进口仍占主导：</strong>2025上半年进口色谱仪中标金额占61%，均价54.87万元，国产均价34.02万元</li>
+                <li><strong>高校是最大买家：</strong>高校采购占色谱仪整体采购金额40%，医疗卫生机构平均采购单价最高（59.6万元）</li>
+            </ul>
+        </div>
+
+        <div class="source">
+            <p><strong>数据来源：</strong>中国政府采购网 (ccgp.gov.cn)、中国国际招标网 (chinabidding.mofcom.gov.cn)、分析测试百科网 (antpedia.com)、化工仪器网 (chem17.com)、中国机械工业联合会机经网</p>
+            <p><strong>免责声明：</strong>本报告数据来自公开渠道，仅供参考，具体采购信息请以官方发布为准。</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="nav-footer">
+            <a href="2026-04-24.html">← 上一篇</a>
+            <a href="index.html">返回列表</a>
+        </div>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>
