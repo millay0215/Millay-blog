@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链·全球 | 2026年4月26日 | 中国企业出海日报</title>
+    <meta name="description" content="2026年4月26日中国企业出海日报：储能企业从抢单到建厂全面提速，欧盟《工业加速器法案》进入立法审议，医疗器械出海防城港模式见效">
+    <meta name="author" content="Millay">
+    
+    <style>
+        :root {
+            --primary: #051c2c;
+            --primary-light: #0a2942;
+            --accent: #2251ff;
+            --accent-light: #4b71ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+            --shadow-hover: rgba(5, 28, 44, 0.12);
+            --global-accent: #0d7377;
+            --global-accent-light: #14a085;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        
+        .logo {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a.active {
+            color: var(--global-accent);
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--global-accent);
+            border-radius: 1px;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 2rem 80px;
+        }
+        
+        /* Article Header */
+        .article-header {
+            margin-bottom: 3rem;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            padding: 0.375rem 1rem;
+            background: linear-gradient(135deg, var(--global-accent), var(--global-accent-light));
+            color: white;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            border-radius: 100px;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .article-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+        
+        /* Summary Box */
+        .summary-box {
+            background: linear-gradient(135deg, var(--global-accent) 0%, var(--global-accent-light) 100%);
+            color: white;
+            padding: 1.75rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+        
+        /* Article Content */
+        .article-content {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .article-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .article-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+        }
+        
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.75rem;
+            color: var(--text-secondary);
+        }
+        
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-content strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .article-content a {
+            color: var(--global-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .article-content a:hover {
+            border-bottom-color: var(--global-accent);
+        }
+        
+        .article-content hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2.5rem 0;
+        }
+        
+        /* Tables */
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: 0.9375rem;
+        }
+        
+        .article-content th {
+            background: var(--bg-light);
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .article-content td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .article-content tr:hover td {
+            background: var(--bg-light);
+        }
+        
+        /* Blockquote / Source */
+        .source {
+            background: var(--bg-light);
+            border-left: 3px solid var(--global-accent);
+            padding: 0.875rem 1.25rem;
+            margin: 1.5rem 0;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .source a {
+            color: var(--global-accent);
+        }
+        
+        /* Footer */
+        .article-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .article-footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--global-accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: gap 0.2s;
+        }
+        
+        .back-link:hover {
+            gap: 0.75rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            main {
+                padding: 100px 1.25rem 60px;
+            }
+            
+            .article-title {
+                font-size: 1.75rem;
+            }
+            
+            .article-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .article-content {
+                font-size: 1rem;
+            }
+            
+            .article-content table {
+                font-size: 0.8125rem;
+            }
+            
+            .article-content th,
+            .article-content td {
+                padding: 0.625rem 0.75rem;
+            }
+            
+            .summary-box {
+                padding: 1.25rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Millay</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+                <li><a href="/global-chain/" class="active">链·全球</a></li>
+                <li><a href="/ai-learning/">AI学习</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <div class="article-header">
+                <span class="category-tag">链·全球</span>
+                <h1 class="article-title">2026年4月26日 | 中国企业出海日报</h1>
+                <div class="article-meta">
+                    <span>2026年4月26日</span>
+                    <span>阅读约 8 分钟</span>
+                </div>
+            </div>
+            
+            <div class="summary-box">
+                储能企业出海从"抢单"迈向"建厂"，欧洲、中东、东南亚产能布局全面提速；欧盟《工业加速器法案》带着强制技术转让条款进入立法审议，出海合规门槛持续抬升。
+            </div>
+            
+            <div class="article-content">
+                <h2>一、行业要讯</h2>
+                
+                <h3>1. 储能出海：订单井喷，海外建厂全面提速</h3>
+                
+                <p>2026年中国储能企业正加快出海步伐，出海逻辑已从单一产品外销迈向产能、技术、标准协同输出的全球化升级。</p>
+                
+                <h4>海外大单频现</h4>
+                <ul>
+                    <li><strong>比亚迪、远景能源</strong>拿下澳洲5GWh储能大单</li>
+                    <li><strong>亿纬锂能</strong>子公司与印度GPIL子公司签署为期5年的电池供应协议</li>
+                    <li>今年一季度，中企在海外斩获超120笔储能订单，总容量超100GWh，其中3月订单容量接近45GWh</li>
+                </ul>
+                
+                <h4>海外建厂加速</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>企业</th>
+                            <th>地点</th>
+                            <th>项目内容</th>
+                            <th>进展</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>海辰储能</td>
+                            <td>西班牙</td>
+                            <td>大型电池与储能系统制造工厂</td>
+                            <td>已签意向书</td>
+                        </tr>
+                        <tr>
+                            <td>阳光电源</td>
+                            <td>欧洲</td>
+                            <td>年产20GW光伏逆变器及12.5GWh储能系统</td>
+                            <td>2月宣布投资</td>
+                        </tr>
+                        <tr>
+                            <td>中创新航</td>
+                            <td>葡萄牙</td>
+                            <td>锂电池工厂</td>
+                            <td>已签投资合同</td>
+                        </tr>
+                        <tr>
+                            <td>远景动力</td>
+                            <td>西班牙</td>
+                            <td>电池工厂</td>
+                            <td>预计2026年投产</td>
+                        </tr>
+                        <tr>
+                            <td>亿纬锂能</td>
+                            <td>马来西亚</td>
+                            <td>储能项目二期</td>
+                            <td>2月厂房落成</td>
+                        </tr>
+                        <tr>
+                            <td>阳光电源</td>
+                            <td>埃及</td>
+                            <td>苏伊士运河经济区工厂</td>
+                            <td>签署战略合作协议</td>
+                        </tr>
+                        <tr>
+                            <td>楚能新能源</td>
+                            <td>埃及</td>
+                            <td>年产能5GWh储能电池工厂</td>
+                            <td>宣布共建</td>
+                        </tr>
+                        <tr>
+                            <td>宁德时代</td>
+                            <td>印度尼西亚</td>
+                            <td>电池工厂</td>
+                            <td>计划2026年底投产</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>政策调整影响：</strong>2026年4月1日起，中国电池产品增值税出口退税率由9%下调至6%，2027年1月1日起将全面取消。这意味着储能企业正被迫告别出口退税"舒适区"，转向依靠产品力、本土化服务与全球产能布局的内生增长模式。</p>
+                
+                <div class="source">来源：<a href="https://cj.sina.cn/articles/view/5126633262/13192372e00101gpqk">新浪财经</a>、<a href="https://news.smm.cn/news/103872447">上海有色网</a></div>
+                
+                <h3>2. 医疗器械出海：防城港试验区成"出海跳板"</h3>
+                
+                <p>防城港国际医学开放试验区正成为国产创新药械出海的重要平台，探索"产品出海"向"技术出海、服务出海"升级。</p>
+                
+                <h4>出海成果</h4>
+                <ul>
+                    <li>白俄罗斯出海服务平台已为<strong>20多家国内企业</strong>打通海外准入通道</li>
+                    <li>试验区出海服务平台累计助力国内企业<strong>74件医疗器械和医药产品</strong>完成海外市场注册并实现上市</li>
+                    <li><strong>中科伊和智能医疗科技</strong>自主研发的高端医疗设备即将亮相第31届白俄罗斯国际医学展览会</li>
+                </ul>
+                
+                <h4>标志性突破</h4>
+                <ul>
+                    <li>乐珠制药珍珠明目滴眼液拿下<strong>白俄罗斯首张中成药全境销售注册证</strong></li>
+                    <li>诺港生物一氧化氮治疗仪获得越南注册证</li>
+                    <li><strong>中国医疗机器人首次正式进入越南市场</strong></li>
+                </ul>
+                
+                <h4>国际合作深化</h4>
+                <p>今年1月，试验区联合相关企业在白俄罗斯启动共建<strong>中白数字医疗设备展示与培训中心</strong>，从"产品出海"向"技术出海、服务出海"升级。中国—东盟区域医药交易（集采）平台已有356家国内药企、27家海外企业入驻，展示1121种药品、2223类耗材设备。</p>
+                
+                <div class="source">来源：<a href="http://gx.people.com.cn/n2/2026/0420/c179430-41557361.html">人民网</a>、<a href="http://wsb.gxzf.gov.cn/yhjw_48207/gxydm_48209/t27483961.shtml">广西外事办公室</a></div>
+                
+                <h3>3. 科技/AI出海：模数计划赋能，追觅高调全球化</h3>
+                
+                <p><strong>北京"模数出海计划"打造AI出海新范式：</strong>该计划旨在为中国人工智能企业量身打造高效、低成本的出海路径，通过资金支持、资源对接与全周期服务，全方位助力企业开拓全球市场。</p>
+                
+                <ul>
+                    <li><strong>重点展会：</strong>组织企业参与俄罗斯国际电子元器件暨设备展览会（2026年4月14-16日）、中东消费电子及通讯展（GITEX，2026年12月）等</li>
+                    <li><strong>服务内容：</strong>海外实地考察、展会一站式代办、政策申请辅导、数据跨境合规支持、跨境贸易全流程代理</li>
+                    <li><strong>出海模式：</strong>"搭船出海"，整合龙头企业资源，带动中小企业协同出海</li>
+                </ul>
+                
+                <p><strong>追觅科技全球化高调推进：</strong>成立九年的追觅科技2026年比较高调，年初相继亮相CES和"超级碗"30秒黄金时段电视广告，成为央视春晚智能科技生态战略合作伙伴，提出"人车家天地芯"智能生态体系，覆盖个人、家庭、汽车、低空、太空、算力的全场景科技生态。</p>
+                
+                <div class="source">来源：<a href="https://www.beijing.gov.cn/ywdt/gzdt/202601/t20260120_4448587.html">北京市政府网</a>、<a href="https://weekly.caixin.com/2026-04-25/102437811.html">财新周刊</a></div>
+                
+                <h3>4. 汽车出海：海外成增量关键，但准入门槛抬升</h3>
+                
+                <p>海外市场是多家车企的关键看点。2025年中国首次超越日本成为全球第一大汽车出口国，2024年和2025年领先优势不断扩大。</p>
+                
+                <h4>出海成绩</h4>
+                <ul>
+                    <li><strong>奇瑞汽车：</strong>2025年海外营收同比提升56%至1574.2亿元，在总营收中占比52%；出口量同比上涨33.2%至129.4万辆</li>
+                    <li><strong>比亚迪：</strong>2025年海外销量首次超过百万辆，弥补国内销量下滑缺口，实现销量正增长</li>
+                </ul>
+                
+                <h4>挑战加剧</h4>
+                <p>中国车企在海外面临的准入门槛不断抬升。欧盟在2024年10月针对中国产电动汽车加征反补贴关税，又在2026年3月发布《工业加速法案》提案，拟对中企在欧盟投资设置若干壁垒。</p>
+                
+                <div class="source">来源：<a href="https://weekly.caixin.com/2026-04-18/102435444.html">财新周刊</a></div>
+                
+                <h3>5. 光伏出海：从"追市场"到"定规则"</h3>
+                
+                <p>2026年4月1日起，光伏产品增值税出口退税正式取消。中国光伏行业协会解读称，取消出口退税有助于推动国外市场价格理性回归，降低贸易摩擦风险。</p>
+                
+                <p><strong>产业地位：</strong>到2025年，中国多晶硅、硅片、电池、组件产能全球占比分别达<strong>96.0%、96.2%、91.3%、80.1%</strong>。这不是"竞争优势"，而是"无可替代"——任何国家想摆脱中国光伏，其能源转型计划都将直接瘫痪。</p>
+                
+                <p><strong>市场响应：</strong>据《日本经济新闻》2026年4月8日报道，针对4月以后出货的产品，中国光伏面板企业联袂上调日本国内销售价格，最高涨幅达三成，晶科能源、隆基绿能、天合光能等均在涨价之列。</p>
+                
+                <div class="source">来源：<a href="https://user.guancha.cn/main/content?id=1636527">观察者网</a></div>
+                
+                <h3>6. 一带一路项目周报（4月11日-4月17日）</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>项目</th>
+                            <th>地点</th>
+                            <th>内容</th>
+                            <th>企业</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>阿雷诺尔钼矿项目</td>
+                            <td>蒙古国</td>
+                            <td>中标</td>
+                            <td>中铁九局</td>
+                        </tr>
+                        <tr>
+                            <td>扶南德佐综合水利项目第二阶段</td>
+                            <td>柬埔寨</td>
+                            <td>开工仪式</td>
+                            <td>中交集团</td>
+                        </tr>
+                        <tr>
+                            <td>奥博罗马大桥项目</td>
+                            <td>尼日利亚</td>
+                            <td>竣工</td>
+                            <td>中国土木</td>
+                        </tr>
+                        <tr>
+                            <td>辛克雷水电站</td>
+                            <td>厄瓜多尔</td>
+                            <td>最终移交</td>
+                            <td>中国电建</td>
+                        </tr>
+                        <tr>
+                            <td>上达岱抽水蓄能电站</td>
+                            <td>柬埔寨</td>
+                            <td>开工</td>
+                            <td>中国重机、二重重装、南方电网</td>
+                        </tr>
+                        <tr>
+                            <td>北部互联互通清洁能源基地一期</td>
+                            <td>老挝</td>
+                            <td>投运（100万千瓦光伏）</td>
+                            <td>中广核</td>
+                        </tr>
+                        <tr>
+                            <td>米尔内1吉瓦风电项目</td>
+                            <td>哈萨克斯坦</td>
+                            <td>建设启动</td>
+                            <td>上海电气</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>中欧班列：</strong>今年一季度累计开行5460列，发送货物54.6万标箱，同比分别增长29%、22%。</p>
+                
+                <div class="source">来源：<a href="https://www.yidaiyilu.gov.cn/list/w/xmdt">中国一带一路网</a></div>
+                
+                <hr>
+                
+                <h2>二、出海政策</h2>
+                
+                <h3>1. 中国政策动态</h3>
+                
+                <h4>（1）出口退税政策调整</h4>
+                <ul>
+                    <li><strong>光伏产品：</strong>2026年4月1日起，增值税出口退税正式取消</li>
+                    <li><strong>电池产品：</strong>2026年4月1日至12月31日退税率由9%降至6%，2027年1月1日起全面取消</li>
+                </ul>
+                <p><strong>政策意图：</strong>不再补贴海外，推动国外市场价格理性回归，整治"内卷式"竞争，引导产业结构优化升级。</p>
+                
+                <h4>（2）2026年外商投资准入负面清单</h4>
+                <ul>
+                    <li>管理措施缩减至<strong>40条</strong></li>
+                    <li>制造业领域限制措施"清零"</li>
+                    <li>服务业扩大开放试点加快推进</li>
+                    <li>《鼓励外商投资产业目录（2025年版）》总条目1679条，净增205条</li>
+                </ul>
+                
+                <div class="source">来源：<a href="https://cj.sina.com.cn/articles/view/7857201856/1d45362c001902qoys">新浪财经</a></div>
+                
+                <h4>（3）对外投资数据（2026年1-2月）</h4>
+                <ul>
+                    <li>全行业对外直接投资2001.5亿元人民币，同比增长7.4%（美元计286.8亿美元，增长29%）</li>
+                    <li>对共建"一带一路"国家非金融类直接投资406.9亿元人民币，同比增长2.7%</li>
+                    <li>对外承包工程完成营业额1575.8亿元人民币，同比增长19.7%</li>
+                </ul>
+                
+                <div class="source">来源：<a href="https://www.mofcom.gov.cn/tjsj/gwjjhztj/art/2026/art_71e49586520846ab8d324d15dbe96ec1.html">商务部</a></div>
+                
+                <h3>2. 海外政策变化</h3>
+                
+                <h4>（1）欧盟：《工业加速器法案》进入立法审议</h4>
+                <p>2026年3月，《工业加速器法案》带着<strong>强制技术转让条款</strong>进入立法审议。该法案拟对中企在欧盟投资设置若干壁垒。</p>
+                
+                <h4>（2）欧盟：科研领域"脱钩"加速</h4>
+                <p>2026年4月3日，欧盟正式宣布自2026年起将中国科研机构排除在"地平线欧洲"计划的<strong>人工智能、量子技术、半导体、生物技术</strong>等核心领域之外。中国机构目前仅能参与气候、生物多样性、农业等非敏感议题。</p>
+                
+                <h4>（3）美国：FCC拟扩大中国电信企业禁令</h4>
+                <p>当地时间2026年4月9日，美国联邦通信委员会（FCC）发布拟议规则制定通知，以国家安全为由收紧《通信法》第214条国内州际电信服务一揽子授权监管。</p>
+                <ul>
+                    <li>可能禁止三家中国大型电信公司在美国运营数据中心</li>
+                    <li>可能禁止其他电信运营商与其进行互联</li>
+                    <li>拟禁止电信运营商与使用华为、中兴等设备的公司互联互通</li>
+                    <li>FCC计划在<strong>4月30日</strong>会议上对该提案进行初步表决</li>
+                </ul>
+                
+                <div class="source">来源：<a href="https://commerce.sz.gov.cn/attachment/1/1705/1705542/12743807.pdf">深圳市商务局</a></div>
+                
+                <h4>（4）马来西亚：外资准入大幅放宽</h4>
+                <p>2026年马来西亚外资政策核心聚焦<strong>行业准入限制放宽</strong>、审批流程简化与优惠政策加码：</p>
+                <ul>
+                    <li><strong>制造业：</strong>全面放开100%外资持股，取消出口比例要求</li>
+                    <li><strong>数字经济：</strong>柔佛-新加坡经济特区（JS-SEZ）允许100%外资持股，实缴资本达500万马币可申请15年企业所得税减免</li>
+                    <li><strong>高端服务业：</strong>物流取消30%本地股权要求，医疗健康外资持股上限从70%提升至80%</li>
+                </ul>
+                
+                <div class="source">来源：<a href="https://www.sohu.com/a/981002401_759211">搜狐</a></div>
+                
+                <h4>（5）纳斯达克：拟提高中概股上市门槛</h4>
+                <p>2025年9月，纳斯达克提议修改上市标准，提高IPO阶段最低公众持股量规模和募资金额门槛，拟推中国境内公司识别新标准，适用更严格的上市要求。</p>
+                
+                <div class="source">来源：<a href="http://mp.weixin.qq.com/s?__biz=MzkxNTc2MDU3Ng==&mid=2247484993">微信</a></div>
+                
+                <hr>
+                
+                <h2>三、建议洞察</h2>
+                
+                <h3>1. 趋势判断：出海进入3.0阶段</h3>
+                
+                <p>中国企业出海正在经历从"产品出海"（1.0）到"产能出海"（2.0），再到"规则出海"（3.0）的跃迁：</p>
+                <ul>
+                    <li><strong>1.0阶段：</strong>产品出口，依托成本优势抢占市场</li>
+                    <li><strong>2.0阶段：</strong>产能外迁，规避关税壁垒，本地化生产</li>
+                    <li><strong>3.0阶段：</strong>技术授权、标准输出、服务出海，参与规则制定</li>
+                </ul>
+                <p><strong>案例：</strong>防城港国际医学开放试验区推动"技术出海、服务出海"，宁德时代与福特合作采用"技术许可"模式，都是3.0阶段的典型探索。</p>
+                
+                <h3>2. 区域策略：多元布局对冲风险</h3>
+                
+                <p><strong>东南亚：</strong>马来西亚、印尼、越南成为制造业出海首选，政策红利窗口期仍在，但需关注政局稳定性。</p>
+                
+                <p><strong>中东：</strong>沙特、埃及、阿联酋加速能源转型，储能、光伏需求旺盛，适合"战略合作+本地化生产"模式切入。</p>
+                
+                <p><strong>欧洲：</strong>准入门槛持续抬升，需审慎评估《工业加速器法案》《外国补贴条例》等合规风险，考虑技术授权等轻资产模式。</p>
+                
+                <p><strong>一带一路沿线：</strong>基建、能源项目机会明确，但需关注地缘政治风险和支付能力。</p>
+                
+                <h3>3. 合规建议：构建风险防控体系</h3>
+                
+                <h4>（1）关注政策窗口期</h4>
+                <ul>
+                    <li>马来西亚外资准入放宽、RCEP深化实施等红利窗口有限，建议加速布局</li>
+                    <li>欧盟《工业加速器法案》、美国FCC禁令等政策落地前，评估既有投资影响</li>
+                </ul>
+                
+                <h4>（2）供应链安全</h4>
+                <ul>
+                    <li>从"芯片溯源"入手，评估核心产品供应链风险</li>
+                    <li>平衡"中国+1"布局与供应链效率</li>
+                </ul>
+                
+                <h4>（3）数据合规</h4>
+                <ul>
+                    <li>欧盟GDPR、美国CLOUD Act等数据监管趋严</li>
+                    <li>关注数据跨境传输合规要求</li>
+                </ul>
+                
+                <h3>4. 行业机会</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>行业</th>
+                            <th>机会点</th>
+                            <th>风险提示</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>储能</td>
+                            <td>欧洲、中东、东南亚需求爆发，建厂享受本地化红利</td>
+                            <td>出口退税取消，需重塑成本优势</td>
+                        </tr>
+                        <tr>
+                            <td>医疗器械</td>
+                            <td>东南亚注册路径清晰，防城港等平台赋能</td>
+                            <td>各国注册标准差异大，周期长</td>
+                        </tr>
+                        <tr>
+                            <td>AI/科技</td>
+                            <td>中东、东欧市场潜力大，模数出海计划支持</td>
+                            <td>欧盟科研"脱钩"，技术封锁加剧</td>
+                        </tr>
+                        <tr>
+                            <td>汽车</td>
+                            <td>海外增量市场明确，品牌出海窗口期</td>
+                            <td>欧盟反补贴关税，准入门槛抬升</td>
+                        </tr>
+                        <tr>
+                            <td>光伏</td>
+                            <td>全球能源转型刚需，定价权在手</td>
+                            <td>贸易摩擦风险，海外建厂需谨慎</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <hr>
+                
+                <h2>四、今日重点数据</h2>
+                
+                <ul>
+                    <li><strong>储能订单（Q1）：</strong>中企海外订单超120笔，总容量超100GWh</li>
+                    <li><strong>医疗器械出海：</strong>防城港试验区累计助力74件产品完成海外注册</li>
+                    <li><strong>对外投资（1-2月）：</strong>全行业同比增长7.4%，对"一带一路"国家增长2.7%</li>
+                    <li><strong>中欧班列（Q1）：</strong>开行5460列，同比增长29%</li>
+                    <li><strong>光伏产能全球占比：</strong>多晶硅96%、硅片96.2%、电池91.3%、组件80.1%</li>
+                </ul>
+            </div>
+            
+            <div class="article-footer">
+                <p><em>本日报基于公开信息整理，仅供参考。投资有风险，决策需谨慎。</em></p>
+                <p><strong>编辑：</strong>Millay</p>
+                <p><strong>日期：</strong>2026年4月26日</p>
+                <p><strong>来源：</strong>商务部、中国一带一路网、财新、新浪财经、人民网等</p>
+                <a href="/global-chain/" class="back-link">← 返回链·全球专栏</a>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
