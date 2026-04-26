@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供应链前沿日报 | 2026年4月27日 | AI链习生</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-gray-50 text-gray-900 antialiased;
+            }
+        }
+        @layer components {
+            .news-item {
+                @apply relative pl-6 pb-6 border-l-2 border-gray-200 last:border-0 last:pb-0;
+            }
+            .news-item::before {
+                content: '';
+                @apply absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-blue-500;
+            }
+            .tag-hot {
+                @apply inline-block px-2 py-0.5 text-xs font-semibold text-red-700 bg-red-50 rounded border border-red-200;
+            }
+            .tag-ai {
+                @apply inline-block px-2 py-0.5 text-xs font-semibold text-purple-700 bg-purple-50 rounded border border-purple-200;
+            }
+            .tag-data {
+                @apply inline-block px-2 py-0.5 text-xs font-semibold text-green-700 bg-green-50 rounded border border-green-200;
+            }
+            .risk-high {
+                @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800;
+            }
+            .risk-medium {
+                @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800;
+            }
+            .risk-low {
+                @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl font-bold text-gray-900">AI链习生</a>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="/supply-chain/" class="text-gray-600 hover:text-blue-600 transition-colors">← 返回日报列表</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">2026年4月27日</span>
+                <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">星期一</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">供应链前沿日报</h1>
+            <p class="text-xl text-blue-100 max-w-2xl">伊朗最高领袖下令海峡不得恢复战前状态，美伊对峙进入"双层封锁"新阶段；Q2存储芯片涨幅预期翻倍上调，半导体超级周期加速</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <!-- Editor Info -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">AI</div>
+                <div>
+                    <p class="font-medium text-gray-900">编辑：AI链习生</p>
+                    <p class="text-sm text-gray-500">数据截止至北京时间 7:52 AM</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-sm text-gray-500">数据来源</p>
+                <p class="text-sm font-medium text-gray-700">财新网、新浪财经、路透社、集邦咨询、海关总署</p>
+            </div>
+        </div>
+
+        <!-- Today's Highlights -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <span class="text-3xl mr-3">🔥</span>
+                今日要闻
+            </h2>
+            <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
+                <!-- News 1 -->
+                <div class="news-item">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="tag-hot">地缘冲突</span>
+                        <span class="text-sm text-gray-500">4月26日</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">伊朗最高领袖下令：霍尔木兹海峡不得恢复战前状态，4月25日仅3艘船通过</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">据伊朗方面4月26日消息，<strong>伊朗最高领袖穆杰塔巴·哈梅内伊已明确下令，霍尔木兹海峡不得恢复战前状态</strong>。这一表态将美伊对峙推向新高度——伊朗不再将海峡开放视为谈判筹码，而是将其固化为"永久性"战略资产。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">同日，伊朗伊斯兰议会国家安全和外交政策委员会主席阿齐兹公开表示，<strong>所有希望通过霍尔木兹海峡的船只必须缴费</strong>，霍尔木兹海峡已成为伊朗实力的重要支柱之一。据美方船舶追踪数据，<strong>4月25日全天仅有3艘船只通过海峡</strong>（2艘油轮和1艘游艇），流量较战前暴跌超90%。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">更值得关注的是，伊朗议员赛义迪披露，伊方已形成管理霍尔木兹海峡的<strong>综合方案</strong>：被认定为敌对国家的船只不得通过，以色列船只被绝对禁止；给伊朗造成损失的国家须先就赔偿达成协议方可获通行许可；通行费优先以里亚尔支付。该方案已提交议会国家安全委员会审议。</p>
+                    <p class="text-sm text-gray-500">来源：<a href="https://www.shipxy.com/special/hormuz" class="text-blue-600 hover:underline" target="_blank">船讯网实时航运动态</a>、<a href="https://finance.sina.com.cn/world/2026-04-24/doc-inhvpusn8202762.shtml" class="text-blue-600 hover:underline" target="_blank">新浪财经</a></p>
+                </div>
+
+                <!-- News 2 -->
+                <div class="news-item">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="tag-hot">半导体</span>
+                        <span class="text-sm text-gray-500">4月</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Q2存储芯片涨幅预期翻倍上调：DRAM环比涨51%、NAND环比涨50%，远超此前预期</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">集邦咨询（TrendForce）最新预测显示，<strong>2026年第二季度DRAM、NAND Flash价格环比涨幅将分别达到51%和50%</strong>，远高于此前6%和20%的预期。这意味着存储芯片涨价已从"温和上涨"跃升至"超级周期"加速阶段。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">核心驱动力来自三方面：AI数据中心建设带来的结构性供需失衡（单台AI服务器对DRAM和NAND需求分别是普通服务器的8倍和3倍）、上游原材料价格全面暴涨（铜涨35-40%、银涨50-200%）、全球存储巨头将80%以上先进制程产能转向高利润HBM及高端DDR5产品。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">SK海力士在投资者会议上明确表示，<strong>内存市场已转向卖方市场</strong>，公司库存仅约4周，难以满足全部客户需求。集邦咨询指出，NAND端新增产能预计要到2027年底或2028年才能大规模开出，供应紧张态势仍将持续。</p>
+                    <p class="text-sm text-gray-500">来源：<a href="https://finance.sina.com.cn/wm/2026-04-09/doc-inhtwhra2145890.shtml" class="text-blue-600 hover:underline" target="_blank">新浪财经</a>、<a href="https://www.eet-china.com/mp/a485014.html" class="text-blue-600 hover:underline" target="_blank">电子工程专辑</a></p>
+                </div>
+
+                <!-- News 3 -->
+                <div class="news-item">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="tag-hot">芯片制造</span>
+                        <span class="text-sm text-gray-500">4月21日</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">台积电CEO魏哲家：芯片短缺将延续至2027年以后，560亿美元扩产仍难解瓶颈</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">台积电在Q1财报电话会议上宣布，<strong>2026年资本支出预计达560亿美元</strong>，资金全部用于新建晶圆厂及升级现有产线。然而CEO魏哲家明确表示："新工厂建设需要两到三年，没有捷径可走。"<strong>供应短缺将持续至2027年乃至更长时间</strong>。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">博通高管近日公开证实："台积电的产能正触及上限。"短缺不仅限于半导体，还波及激光器、印刷电路板等多个领域——<strong>光收发器所用PCB交付周期已从约6周延长至6个月</strong>。台积电正全球三地同步扩产：中国台湾省、美国亚利桑那州、日本熊本，但远水难解近渴。</p>
+                    <p class="text-sm text-gray-500">来源：<a href="https://finance.sina.com.cn/roll/2026-04-21/doc-inhvhmie4956278.shtml" class="text-blue-600 hover:underline" target="_blank">新浪财经</a>、<a href="https://eu.36kr.com/zh/p/3777325354436609" class="text-blue-600 hover:underline" target="_blank">36氪</a></p>
+                </div>
+
+                <!-- News 4 -->
+                <div class="news-item">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="tag-hot">关税政策</span>
+                        <span class="text-sm text-gray-500">4月</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">美国301关税复审在即：7月初全球关税恢复至约15%，贝森特确认暂缓期结束</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">美国财政部长贝森特近日确认，<strong>2026年7月初美国将把全球关税恢复到此前更高水平（约15%）</strong>，目前10%的低税率暂缓期将结束。这意味着企业需在6月底前完成关键进口布局，否则将面临显著成本上升。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">同时，5月美国贸易代表办公室（USTR）将启动对现有301关税的法定四年复审，7月可能将贸易摩擦延伸至航空制造等高端产业领域。值得关注的是，美国最高法院近期以6:3裁定特朗普的IEEPA关税权力违宪，直接动摇了其过去两年的贸易政策根基。</p>
+                    <p class="text-sm text-gray-500">来源：<a href="https://pdf.dfcfw.com/pdf/H3_AP202604211821367286_1.pdf" class="text-blue-600 hover:underline" target="_blank">每日早盘观察</a></p>
+                </div>
+
+                <!-- News 5 -->
+                <div class="news-item">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="tag-hot">外贸数据</span>
+                        <span class="text-sm text-gray-500">4月14日</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">中国一季度外贸进出口11.84万亿元创历史新高，同比增长15%</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">海关总署数据显示，<strong>2026年一季度我国货物贸易进出口11.84万亿元，同比增长15%</strong>，为历史同期首次突破11万亿元。其中出口6.85万亿元，增长11.9%；进口4.99万亿元，增长19.6%。国际航线货邮运输量完成110.5万吨，同比增长17.6%；中欧班列累计开行5460列，发送货物54.6万标箱，同比分别增长29%、22%。</p>
+                    <p class="text-sm text-gray-500">来源：<a href="http://www.customs.gov.cn/customs/xwfb34/302330/hgzs2025nqnjckqkxwfbh/index.html" class="text-blue-600 hover:underline" target="_blank">海关总署</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI + Supply Chain -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <span class="text-3xl mr-3">🤖</span>
+                AI + 供应链动态
+            </h2>
+            <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
+                <div class="news-item">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="tag-ai">智能体应用</span>
+                        <span class="text-sm text-gray-500">4月</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">微软Dynamics 365正式嵌入"供应链智能体"，AI Agent从辅助走向自主决策</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">2026年4月起，微软Dynamics 365 Supply Chain Management将首次嵌入具备<strong>自主目标分解、跨系统推理与闭环执行</strong>能力的"供应链智能体"（Supply Chain Agent）。这是从单点流程自动化到"数字孪生+意图驱动"架构的范式迁移。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">据Gartner最新评估，到2027年，部署AI代理的企业在供应链中断响应速度上将比传统系统快<strong>4.8倍</strong>，平均缩短订单交付周期<strong>22.3%</strong>。目前46%的组织已在供应链运营中实施AI解决方案，77%的企业正在使用或探索AI技术。</p>
+                    <p class="text-sm text-gray-500">来源：<a href="https://news.yrules.com/archives/8402" class="text-blue-600 hover:underline" target="_blank">YRules News</a></p>
+                </div>
+
+                <div class="news-item">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="tag-ai">海外仓智能化</span>
+                        <span class="text-sm text-gray-500">4月</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">磅旗科技亮相MODEX 2026：中国AI仓储方案征战全球顶级赛场</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">美国东部时间4月13日，全球顶级物料搬运与供应链技术盛会MODEX 2026在亚特兰大启幕。磅旗科技携<strong>全栈式AI驱动仓储自动化解决方案</strong>亮相，面向全球首发海外仓专属智慧物流方案，并在现场首次展出数字孪生系统，构建与物理工厂1:1映射的虚拟产线。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">真实项目验证显示，部署磅旗方案后客户<strong>仓储空间利用率提升40%以上，拣选效率最高提升300%，整体人工成本降低可达50%</strong>。其ADS系统可在单一工厂实现7个品牌、超230台设备同图混跑，将设备闲置率降低40%，货物周转效率提升35%。</p>
+                    <p class="text-sm text-gray-500">来源：<a href="https://www.ebrun.com/20260415/656249.shtml" class="text-blue-600 hover:underline" target="_blank">亿邦动力</a></p>
+                </div>
+
+                <div class="news-item">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="tag-ai">供应链数字化</span>
+                        <span class="text-sm text-gray-500">4月</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">《2026全球数智供应链发展报告》发布：智能采购成出海首选突破点</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">报告指出，<strong>智能采购有望成为供应链全球化首选突破点</strong>。通过部署物联网传感器、自主移动机器人（AMR）和智能分拣系统，海外仓可实现从收货、上架、拣选到打包出库的全流程自动化。AI算法可智能预测各仓优化库存水平、自动触发补货指令，并动态规划最经济的仓间调拨与末端配送路径。</p>
+                    <p class="text-sm text-gray-500">来源：<a href="https://pdf.dfcfw.com/pdf/H3_AP202604191821319666_1.pdf" class="text-blue-600 hover:underline" target="_blank">2026全球数智供应链发展报告</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Procurement Intelligence -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <span class="text-3xl mr-3">📊</span>
+                采购情报
+            </h2>
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <h4 class="font-bold text-blue-900 mb-2">存储芯片</h4>
+                        <p class="text-sm text-blue-800 mb-2">Q2 DRAM合约价环比涨幅 51%</p>
+                        <p class="text-sm text-blue-800 mb-2">Q2 NAND Flash环比涨幅 50%</p>
+                        <p class="text-sm text-blue-800">HBM高带宽内存缺口超50%</p>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-4">
+                        <h4 class="font-bold text-purple-900 mb-2">模拟/功率芯片</h4>
+                        <p class="text-sm text-purple-800 mb-2">TI：涨幅 15-85%（工控类最高）</p>
+                        <p class="text-sm text-purple-800 mb-2">意法半导体：4月26日起涨 10-18%</p>
+                        <p class="text-sm text-purple-800">英飞凌：功率器件全面提价</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4">
+                        <h4 class="font-bold text-green-900 mb-2">原材料</h4>
+                        <p class="text-sm text-green-800 mb-2">铜价：涨 35-40%（引线框架、基板）</p>
+                        <p class="text-sm text-green-800 mb-2">银价：涨 50-200%（封装键合）</p>
+                        <p class="text-sm text-green-800">布伦特原油：103-105美元/桶</p>
+                    </div>
+                    <div class="bg-orange-50 rounded-lg p-4">
+                        <h4 class="font-bold text-orange-900 mb-2">晶圆代工/封装</h4>
+                        <p class="text-sm text-orange-800 mb-2">晶合集成：6月1日起涨 10%</p>
+                        <p class="text-sm text-orange-800 mb-2">台积电：2nm/3nm产能已满至2027年</p>
+                        <p class="text-sm text-orange-800">PCB交付周期：6周→6个月</p>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-200 pt-4">
+                    <h4 class="font-bold text-gray-900 mb-3">💡 采购策略建议</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">▸</span>
+                            <span><strong>存储芯片：</strong>Q2涨幅预期翻倍上调至50%以上，涨价周期或延续至2027年。建议与核心供应商签订18-24个月长期协议锁定价格，优先保障HBM、DDR5、企业级SSD等关键物料安全库存</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">▸</span>
+                            <span><strong>芯片代工：</strong>台积电产能已满至2027年，博通、英伟达、苹果等大客户已排队锁产能。中小企业应寻找联电、世界先进、力积电等二线代工作为备选，或转向国内中芯国际、晶合集成</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">▸</span>
+                            <span><strong>国产替代窗口：</strong>海外芯片（TI/ST/NXP）暴涨+交期拉长至6个月，国产兆易创新（MCU）、瑞芯微（RK3588）、峰岹（驱动）、士兰微（功率）订单暴增。当前是切换国产方案的关键窗口期</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">▸</span>
+                            <span><strong>关税对冲：</strong>7月初美国全球关税恢复至约15%，建议6月底前完成关键进口备货。同时关注301关税复审动态，航空制造等高端产业可能成为新目标</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Trends -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <span class="text-3xl mr-3">📈</span>
+                行业趋势分析
+            </h2>
+            <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">全球半导体供应链进入"超级周期"加速阶段，涨价从存储蔓延至全产业链</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">2026年4月被称为全球半导体"涨价日"——<strong>德州仪器、恩智浦、意法半导体、安森美、MPS、AOS等国际巨头齐刷刷上调产品价格</strong>，涨幅从15%到85%不等。六家台系芯片厂商（矽创、奕力、联咏、天钰、瑞鼎、敦泰）计划上调报价，部分涨幅最高达20%。国内晶合集成宣布6月1日起涨价10%。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">与以往单一周期波动不同，本轮涨价是<strong>AI算力需求爆发、上游原材料成本飙升与地缘局势扰动供应链</strong>三重因素叠加的结果。中信证券分析师判断，存储仍处于超级景气周期前中段，供需紧张格局至少持续至2027年。国产化率有望从2022年的18%提升至2026年的35%，带来翻倍级增长空间。</p>
+                </div>
+
+                <div class="border-t border-gray-200 pt-4">
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">霍尔木兹海峡"双层封锁"固化，全球航运面临结构性重构</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">当前海峡呈现<strong>美伊"双层封锁"格局</strong>：伊朗方面要求所有船只缴费并获得许可方可通过，禁止敌对国家（尤其是以色列）船只通行；美国海军则封锁所有进出伊朗港口的海上通道，拦截与伊朗有关的油轮。4月25日仅3艘船只通过，通行量较战前暴跌超90%。</p>
+                    <p class="text-gray-700 leading-relaxed mb-3">国际航空运输协会（IATA）警告，<strong>欧洲可能在5月底开始出现航班因燃油短缺而取消的情况</strong>。国际能源署署长比罗尔表示，欧洲航空燃油储备"可能只剩约六周"。美国军事专家派恩警告，美方试图拦截并搜查来自印度、俄罗斯和中国的船只，可能导致海上直接冲突并蔓延至东亚、南亚或西太平洋。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <span class="text-3xl mr-3">🗓️</span>
+                近期重要行业会议
+            </h2>
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="bg-yellow-100 text-yellow-800 rounded-lg px-3 py-2 text-center min-w-[80px]">
+                            <p class="text-xs font-semibold">关注</p>
+                            <p class="text-lg font-bold">5月</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">美国301关税法定四年复审启动</h4>
+                            <p class="text-sm text-gray-600 mt-1">USTR将启动对现有301关税的法定复审，可能将贸易摩擦延伸至航空制造等高端产业领域，企业需提前评估供应链布局</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="bg-red-100 text-red-800 rounded-lg px-3 py-2 text-center min-w-[80px]">
+                            <p class="text-xs font-semibold">关键节点</p>
+                            <p class="text-lg font-bold">7月初</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">美国全球关税恢复至约15%</h4>
+                            <p class="text-sm text-gray-600 mt-1">贝森特确认10%低税率暂缓期结束，全球关税恢复至更高水平。企业需在6月底前完成关键进口备货</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="bg-green-100 text-green-800 rounded-lg px-3 py-2 text-center min-w-[80px]">
+                            <p class="text-xs font-semibold">即将举行</p>
+                            <p class="text-lg font-bold">7/9-11</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">GLE2026全球（杭州）物流与供应链博览会</h4>
+                            <p class="text-sm text-gray-600 mt-1">杭州大会展中心 | 聚焦AI科技、跨境物流、海外仓，预计吸引1000+参展商、10万+专业观众</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Alerts -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <span class="text-3xl mr-3">⚠️</span>
+                风险提示
+            </h2>
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <span class="risk-high">高风险</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">霍尔木兹海峡"永久性"收费化风险</h4>
+                            <p class="text-sm text-gray-600 mt-1">伊朗最高领袖下令海峡不得恢复战前状态，意味着收费通行可能长期化。4月25日仅3艘船通过，全球约20%石油运输受影响。若全面封锁，全球原油供应将出现1300万桶/日缺口，油价可能飙升至200美元/桶以上。欧洲航空燃油储备仅剩约六周，5月底可能出现航班取消潮。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <span class="risk-high">高风险</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">半导体涨价周期延长至2027年</h4>
+                            <p class="text-sm text-gray-600 mt-1">Q2存储芯片涨幅预期翻倍至50%以上，台积电产能已满至2027年。短缺从半导体蔓延至PCB、激光器等配套领域，交付周期从6周延长至6个月。中小厂商面临"拿不到货、扛不住价"的出局风险。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <span class="risk-high">高风险</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">美伊海上冲突升级可能引发大国对抗</h4>
+                            <p class="text-sm text-gray-600 mt-1">美国军事专家警告，美方拦截并搜查来自印度、俄罗斯和中国的船只寻找"违禁"石油，可能导致海上直接冲突并蔓延至东亚、南亚或西太平洋。4月24日特朗普下令美军对霍尔木兹海峡布设水雷的伊朗船只直接开火，对峙态势持续加剧。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <span class="risk-medium">中风险</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">7月初美国关税恢复推升进口成本</h4>
+                            <p class="text-sm text-gray-600 mt-1">10%低税率暂缓期结束，全球关税恢复至约15%。叠加301关税复审可能加码，对华总体关税率或进一步升高。企业需在6月底前完成关键备货，并重新评估供应链区域布局。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <span class="risk-low">低风险</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">中国外贸基本面韧性较强</h4>
+                            <p class="text-sm text-gray-600 mt-1">一季度进出口创历史新高，市场多元化巩固，跨境电商等新动能发力。中欧班列、国际航空货运成为海运替代通道。但需关注高油价对进口成本的推升效应。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Quote -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-indigo-600 to-blue-700 rounded-lg shadow-lg p-8 text-white">
+                <div class="flex items-start space-x-4">
+                    <span class="text-4xl">💡</span>
+                    <div>
+                        <p class="text-lg italic leading-relaxed mb-3">"当伊朗最高领袖说'海峡不得恢复战前状态'，他不是在谈判，而是在改写全球能源运输的规则。这不是暂时的危机，而是结构性的重构。供应链管理者必须接受一个事实：霍尔木兹海峡的'免费通行'时代可能已经结束。"</p>
+                        <p class="text-sm text-blue-200">— 行业观察，2026年4月27日</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back Link -->
+        <div class="text-center">
+            <a href="/supply-chain/" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                返回日报列表
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 mt-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p>AI链习生 | 洞察 · 思考 · 实践</p>
+            <p class="text-sm mt-2">数据仅供参考，投资决策请以实际情况为准</p>
+        </div>
+    </footer>
+</body>
+</html>
