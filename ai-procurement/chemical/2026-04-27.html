@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化工原料采购情报 | 2026年4月27日</title>
+    <meta name="description" content="2026年4月27日化工原料市场价格情报、采购价格指数与趋势分析。覆盖苯乙烯、甲醇、丙烯酸、纯苯、乙二醇等核心化工产品。今日化工大宗品整体趋稳，部分品种继续下探，醋酸单日暴跌9.29%。">
+    <meta name="keywords" content="化工原料,采购价格,市场行情,苯乙烯,甲醇,丙烯酸,纯苯,乙二醇,隆众资讯,生意社">
+    <meta name="author" content="Millay">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .article-header {
+            background: linear-gradient(135deg, #0d4a3c 0%, #051c2c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .article-header-content { max-width: 1200px; margin: 0 auto; }
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        .article-meta span { display: flex; align-items: center; gap: 0.5rem; }
+        .article-title { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.3; }
+        .article-subtitle { font-size: 1.125rem; opacity: 0.9; max-width: 800px; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        .summary-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .summary-box h3 { font-size: 1.125rem; margin-bottom: 1rem; color: var(--primary); }
+        .summary-box ul { padding-left: 1.2rem; }
+        .summary-box li { margin-bottom: 0.5rem; color: var(--text-secondary); }
+        .section { margin: 3rem 0; }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+        }
+        .data-table th {
+            background: var(--bg-light);
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+        .data-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .data-table tr:hover td { background: var(--bg-light); }
+        .price-up { color: #d32f2f; font-weight: 600; }
+        .price-down { color: #388e3c; font-weight: 600; }
+        .price-stable { color: var(--text-muted); }
+        .highlight-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+        }
+        .highlight-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .disclaimer {
+            background: var(--bg-light);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        .market-analysis {
+            background: var(--bg-light);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+        .market-analysis h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .market-analysis p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+        footer {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumb" style="color: rgba(255,255,255,0.8); margin: 0 0 1.5rem; padding: 0;">
+                <a href="/" style="color: rgba(255,255,255,0.9);">首页</a> / <a href="/ai-procurement/" style="color: rgba(255,255,255,0.9);">AI采购情报</a> / <a href="./" style="color: rgba(255,255,255,0.9);">化学原料</a>
+            </div>
+            <div class="article-meta">
+                <span>📅 2026年4月27日</span>
+                <span>⏰ 每日 10:00 更新</span>
+                <span>📊 覆盖 10+ 品种</span>
+            </div>
+            <h1 class="article-title">化工原料采购情报</h1>
+            <p class="article-subtitle">化工原料市场价格情报、采购价格指数与趋势分析。覆盖苯乙烯、甲醇、丙烯酸、纯苯、乙二醇等核心化工产品。</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="summary-box">
+            <h3>📌 今日要点</h3>
+            <ul>
+                <li>化工大宗品整体趋稳，多数品种价格维持不变（据生意社4月24日数据）</li>
+                <li>醋酸价格暴跌9.29%至3,417元/吨，跌幅居首</li>
+                <li>丙烯酸跌至11,983元/吨（-2.71%），溴素跌至39,400元/吨（-4.83%）</li>
+                <li>丁二烯继续回落至13,100元/吨（-1.26%）</li>
+                <li>乙二醇、TDI、PX等品种价格持稳</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📊 核心产品价格监测（2026年4月24日）</h2>
+
+            <h3 style="font-size: 1.25rem; margin: 1.5rem 0 1rem; color: var(--primary);">基础化工原料</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>4月23日价格</th>
+                        <th>4月24日价格</th>
+                        <th>日涨跌</th>
+                        <th>同比涨跌</th>
+                        <th>单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>醋酸</strong></td>
+                        <td>3,767</td>
+                        <td>3,417</td>
+                        <td class="price-down">-9.29%</td>
+                        <td class="price-up">+22.02%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>溴素</strong></td>
+                        <td>41,400</td>
+                        <td>39,400</td>
+                        <td class="price-down">-4.83%</td>
+                        <td class="price-up">+51.54%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>三聚氰胺</strong></td>
+                        <td>7,775</td>
+                        <td>7,450</td>
+                        <td class="price-down">-4.18%</td>
+                        <td class="price-up">+25.21%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>醋酐</strong></td>
+                        <td>6,038</td>
+                        <td>5,850</td>
+                        <td class="price-down">-3.11%</td>
+                        <td class="price-up">+23.48%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>甲基丙二醇</strong></td>
+                        <td>14,500</td>
+                        <td>14,067</td>
+                        <td class="price-down">-2.99%</td>
+                        <td class="price-down">-2.99%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>冰晶石</strong></td>
+                        <td>8,450</td>
+                        <td>8,200</td>
+                        <td class="price-down">-2.96%</td>
+                        <td class="price-down">-1.50%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>丙烯酸</strong></td>
+                        <td>12,317</td>
+                        <td>11,983</td>
+                        <td class="price-down">-2.71%</td>
+                        <td class="price-up">+58.37%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>甲酸钾</strong></td>
+                        <td>7,000</td>
+                        <td>6,850</td>
+                        <td class="price-down">-2.14%</td>
+                        <td class="price-down">-2.14%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>醋酸乙酯</strong></td>
+                        <td>6,800</td>
+                        <td>6,683</td>
+                        <td class="price-down">-1.72%</td>
+                        <td class="price-up">+20.78%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>正丁醇（工业级）</strong></td>
+                        <td>8,100</td>
+                        <td>7,967</td>
+                        <td class="price-down">-1.65%</td>
+                        <td class="price-up">+25.46%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>环氧氯丙烷</strong></td>
+                        <td>13,500</td>
+                        <td>13,300</td>
+                        <td class="price-down">-1.48%</td>
+                        <td class="price-up">+41.49%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>丁二烯</strong></td>
+                        <td>13,267</td>
+                        <td>13,100</td>
+                        <td class="price-down">-1.26%</td>
+                        <td class="price-up">+55.89%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>磷酸</strong></td>
+                        <td>8,640</td>
+                        <td>8,540</td>
+                        <td class="price-down">-1.16%</td>
+                        <td class="price-up">+24.13%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>异辛醇</strong></td>
+                        <td>9,233</td>
+                        <td>9,133</td>
+                        <td class="price-down">-1.08%</td>
+                        <td class="price-up">+22.87%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>黄磷</strong></td>
+                        <td>29,106</td>
+                        <td>28,873</td>
+                        <td class="price-down">-0.80%</td>
+                        <td class="price-up">+16.91%</td>
+                        <td>元/吨</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="font-size: 1.25rem; margin: 1.5rem 0 1rem; color: var(--primary);">价格持平品种</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>价格</th>
+                        <th>同比涨跌</th>
+                        <th>单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>乙二醇</td>
+                        <td>5,058</td>
+                        <td class="price-up">+16.28%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>TDI</td>
+                        <td>17,833</td>
+                        <td class="price-up">+69.84%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>PX（对二甲苯）</td>
+                        <td>9,600</td>
+                        <td class="price-up">+41.18%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>间二甲苯</td>
+                        <td>9,800</td>
+                        <td class="price-up">+8.49%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>炭黑</td>
+                        <td>8,460</td>
+                        <td class="price-up">+8.32%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>甲醛</td>
+                        <td>1,400</td>
+                        <td class="price-up">+19.15%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>液氨</td>
+                        <td>2,823</td>
+                        <td class="price-up">+7.62%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>轻质纯碱</td>
+                        <td>1,222</td>
+                        <td class="price-down">-12.71%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>有机硅DMC</td>
+                        <td>14,700</td>
+                        <td class="price-up">+24.58%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>环氧树脂</td>
+                        <td>18,200</td>
+                        <td class="price-up">+33.17%</td>
+                        <td>元/吨</td>
+                    </tr>
+                    <tr>
+                        <td>R134a（制冷剂）</td>
+                        <td>60,667</td>
+                        <td class="price-up">+40.54%</td>
+                        <td>元/吨</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>📈 重点品种分析</h2>
+
+            <div class="highlight-card">
+                <h3>🧪 醋酸</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    今日醋酸价格暴跌9.29%至<strong>3,417元/吨</strong>，创近期最大单日跌幅。尽管同比仍有22.02%的涨幅，但短期回调压力明显。主要原因：下游需求跟进不足，厂家库存压力增加，部分企业降价出货。预计短期醋酸价格或继续承压。
+                </p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">数据来源：生意社大宗商品涨跌榜 2026-04-24</p>
+            </div>
+
+            <div class="highlight-card">
+                <h3>🔥 溴素</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    溴素价格继续下探，跌幅4.83%至<strong>39,400元/吨</strong>。此前一周溴素价格已从41,400元/吨跌至39,400元/吨，累计跌幅近5%。听闻中央环保组再次到山东，部分溴素厂家可能受到影响，但下游中间体部分厂家停产，要货量有限，供需双弱格局下价格承压。
+                </p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">数据来源：生意社大宗商品涨跌榜 2026-04-24</p>
+            </div>
+
+            <div class="highlight-card">
+                <h3>💧 乙二醇</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    乙二醇价格稳定在<strong>5,058元/吨</strong>，同比涨幅16.28%。隆众资讯显示，国内一供应商乙二醇2026年4月挂牌价格已上调。当前乙二醇市场供需基本面尚可，下游聚酯开工率维持高位，对乙二醇需求形成支撑。预计短期乙二醇价格或维持震荡整理。
+                </p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">数据来源：生意社、隆众资讯 2026-04-24</p>
+            </div>
+
+            <div class="highlight-card">
+                <h3>🧴 丙烯酸</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    丙烯酸价格跌至<strong>11,983元/吨</strong>（-2.71%），同比仍有58.37%的较大涨幅。此前丙烯酸乳液市场受成本带动大幅冲高后，因出货欠佳难以维持高价，随着原料价格开启下跌时及时跟随下落。短期丙烯酸市场或维持偏弱整理。
+                </p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">数据来源：生意社大宗商品涨跌榜 2026-04-24</p>
+            </div>
+
+            <div class="highlight-card">
+                <h3>🔋 碳酸锂（工业级）</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    工业级碳酸锂价格维持在<strong>167,000元/吨</strong>，同比暴涨145.47%。碳酸锂作为新能源电池核心原材料，价格波动对下游产业链影响显著。当前价格已处于历史相对高位区间，需关注盐湖提锂产能释放及下游需求变化。
+                </p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">数据来源：生意社大宗商品涨跌榜 2026-04-24</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📰 行业要闻</h2>
+
+            <div class="highlight-card">
+                <h3>📌 丁二烯涨至9年来高点，一次性手套悄然涨价</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    据中财网2026年4月17日报道，全球原油供应紧张下，更多下游产业供应链被波及。丁腈手套主要原材料丁二烯价格快速上行，一季度中国丁二烯山东市场均价在12,051元/吨，环比抬升55.19%。隆众资讯数据显示，海外部分丁腈胶乳装置降负检修，导致东南亚市场丁腈胶乳供应偏紧，3.5g一次性丁腈手套中国市场新单价格推涨至28-30美元/箱。
+                </p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">来源：中财网 2026-04-17 | 隆众资讯</p>
+            </div>
+
+            <div class="highlight-card">
+                <h3>📌 超高分子量聚乙烯（UHMWPE）价格大涨</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    据搜狐财经2026年4月15日报道，中高端原料短缺，下游成品积极跟涨，超高分子量聚乙烯市场价格大涨。7μm湿法隔膜报价上调1.2%至0.86元/平方米。3月下游需求回暖趋势明显，行业库存处于历史低位，市场整体呈现紧平衡状态。近期国内超高分子量聚乙烯成本12,600元/吨，环比+32%；利润-204元/吨，环比-110%。
+                </p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">来源：搜狐财经 2026-04-15 | 隆众资讯</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 采购建议</h2>
+            <div class="market-analysis">
+                <h4>短期策略（1-2周）</h4>
+                <p>
+                    <strong>醋酸：</strong>价格快速下跌，建议观望为主，等待底部企稳信号。当前3,417元/吨已接近近期低位，但库存压力仍在，不建议急于抄底。<br><br>
+                    <strong>丙烯酸：</strong>偏弱整理格局，建议按需采购，避免大量囤货。关注下游涂料、胶粘剂行业开工率变化。<br><br>
+                    <strong>乙二醇：</strong>价格持稳，下游聚酯需求尚可，建议维持正常采购节奏。<br><br>
+                    <strong>溴素：</strong>供需双弱，价格承压，建议按需采购，关注山东环保督查后续影响。
+                </p>
+            </div>
+
+            <div class="market-analysis">
+                <h4>中期策略（1-3个月）</h4>
+                <p>
+                    <strong>碳酸锂：</strong>价格处于高位，同比涨幅145%，建议密切关注盐湖提锂产能释放进度及新能源车销量数据，高位品种需谨慎。<br><br>
+                    <strong>TDI/MDI：</strong>TDI价格17,833元/吨持稳，同比涨幅69.84%，聚氨酯产业链整体偏强，建议关注下游家具、汽车座椅行业需求。<br><br>
+                    <strong>纯苯/苯乙烯：</strong>纯苯前期跌幅较大（同比-27.17%），近期有所企稳，建议关注炼厂检修计划及下游苯乙烯装置开工情况。
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 采购价格指数</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>指数名称</th>
+                        <th>当前值</th>
+                        <th>环比变化</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>生意社化工指数（BPI）</td>
+                        <td>1,074</td>
+                        <td>持平</td>
+                        <td>化工行业综合景气指数</td>
+                    </tr>
+                    <tr>
+                        <td>甲醇产业链指数</td>
+                        <td>105.84</td>
+                        <td>持稳</td>
+                        <td>甲醇及下游产品综合指数</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="disclaimer">
+            <p><strong>📋 免责声明：</strong>本页面信息来源于公开市场数据（生意社、隆众资讯等），仅供参考。化工原料价格波动受多种因素影响，实际采购价格请以供应商报价为准。投资有风险，决策需谨慎。</p>
+            <p style="margin-top: 0.5rem;"><strong>📬 合作联系：</strong>如有数据合作或定制分析需求，欢迎联系。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>
