@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仪器设备市场情报 | 2026年4月30日</title>
+    <meta name="description" content="2026年4月30日分析测试仪器设备中标价格情报与市场动态">
+    <style>
+        :root {
+            --primary: #051c2c;
+            --accent: #2251ff;
+            --text: #051c2c;
+            --text-secondary: #5a6872;
+            --text-muted: #8a96a0;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e8eaed;
+            --shadow: rgba(5, 28, 44, 0.08);
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --success: #34a853;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d3a5c 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            margin-top: 72px;
+        }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.125rem; opacity: 0.9; max-width: 600px; }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .card p { color: var(--text-secondary); margin-bottom: 0.75rem; }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .tag-blue { background: #e8f0fe; color: #1967d2; }
+        .tag-green { background: #e6f4ea; color: #188038; }
+        .tag-red { background: #fce8e6; color: #c5221f; }
+        .tag-yellow { background: #fef3e8; color: #b06000; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.875rem;
+        }
+        td { font-size: 0.9375rem; }
+        .price-up { color: var(--danger); font-weight: 600; }
+        .price-down { color: var(--success); font-weight: 600; }
+        .price-flat { color: var(--text-muted); }
+        .highlight {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .notice {
+            background: #e8f0fe;
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+        }
+        .notice p { color: var(--text-secondary); margin: 0; }
+        .source {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .source a { color: var(--accent); text-decoration: none; }
+        footer {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AI链习生</a>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/supply-chain/">供应链前沿</a></li>
+                <li><a href="/ai-learning/">AI学习应用</a></li>
+                <li><a href="/ai-procurement/">AI采购情报</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🔬 仪器设备市场情报</h1>
+            <p>2026年4月30日 | 分析测试设备中标价格情报与市场动态</p>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/ai-procurement/">AI采购情报</a> / <a href="./">仪器设备</a> / 2026-04-30
+    </div>
+
+    <div class="container">
+        <div class="notice">
+            <p><strong>📌 数据说明：</strong>今日（4月30日）政府采购平台及分析测试百科网暂未发布新的仪器设备中标公告。以下为市场动态观察及历史中标记录汇总。</p>
+        </div>
+
+        <h2 class="section-title">📊 今日市场动态（2026-04-30）</h2>
+        <div class="card">
+            <h3>市场观察</h3>
+            <p>截至今日上午，主要政府采购平台（中国政府采购网、各省公共资源交易中心）暂无新的分析测试仪器设备中标公告发布。临近五一假期，政府及事业单位采购节奏放缓属于正常季节性现象。</p>
+            <p>近期市场延续以下趋势：</p>
+            <div style="margin-top: 1rem;">
+                <span class="tag tag-blue">高校设备更新</span>
+                <span class="tag tag-blue">质谱仪需求旺盛</span>
+                <span class="tag tag-green">国产替代加速</span>
+                <span class="tag tag-yellow">节前采购放缓</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>行业热点</h3>
+            <p><strong>国产仪器进展：</strong>德米特质谱仪近2个月连续中标4省三甲医院，合计金额536万元，国产质谱仪在医疗检测领域渗透率持续提升。（来源：IVD招采通）</p>
+            <p><strong>2025上半年数据回顾：</strong>据化工仪器网统计，2025年1-6月中国政府采购网上色谱仪中标数量总计500台/套，中标总金额2.43亿元。其中国产色谱仪中标195台/套，中标金额6634万元，占比约27%。（来源：化工仪器网）</p>
+            <p><strong>离子色谱仪市场：</strong>2025年上半年离子色谱仪中标74台/套，总金额4769万元。国产离子色谱仪中标42台/套，金额1926万元，占比约40%，国产替代进展明显。（来源：化工仪器网）</p>
+        </div>
+
+        <h2 class="section-title">🏷️ 历史中标记录汇总</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>采购单位</th>
+                    <th>设备名称</th>
+                    <th>中标品牌</th>
+                    <th>中标金额</th>
+                    <th>日期</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>广西智慧农业与生物育种</td>
+                    <td>液相色谱串联三重四极杆线性离子阱质谱仪</td>
+                    <td>待公布</td>
+                    <td class="price-up">515万（预算）</td>
+                    <td>2026-04-29</td>
+                </tr>
+                <tr>
+                    <td>中国汽车工程研究院</td>
+                    <td>质谱联用仪</td>
+                    <td>待公布</td>
+                    <td class="price-up">待公布</td>
+                    <td>2026-04-29</td>
+                </tr>
+                <tr>
+                    <td>浙江方圆检测集团</td>
+                    <td>液相色谱串联质谱仪</td>
+                    <td>安益谱</td>
+                    <td class="price-up">230万</td>
+                    <td>2026-04-28</td>
+                </tr>
+                <tr>
+                    <td>浙江方圆检测集团</td>
+                    <td>离子色谱仪</td>
+                    <td>盛瀚</td>
+                    <td class="price-up">18万</td>
+                    <td>2026-04-28</td>
+                </tr>
+                <tr>
+                    <td>浙江方圆检测集团</td>
+                    <td>原子荧光光谱仪</td>
+                    <td>海光</td>
+                    <td class="price-up">14.98万</td>
+                    <td>2026-04-28</td>
+                </tr>
+                <tr>
+                    <td>深圳理工大学</td>
+                    <td>液相色谱仪/质谱仪</td>
+                    <td>安捷伦</td>
+                    <td class="price-up">73万</td>
+                    <td>2026-04-27</td>
+                </tr>
+                <tr>
+                    <td>杨凌职业技术学院</td>
+                    <td>液相色谱质谱仪</td>
+                    <td>安捷伦</td>
+                    <td class="price-up">152万</td>
+                    <td>2026-04-27</td>
+                </tr>
+                <tr>
+                    <td>片仔癀药业</td>
+                    <td>液质联用仪</td>
+                    <td>岛津</td>
+                    <td class="price-up">689万</td>
+                    <td>2026-04-26</td>
+                </tr>
+                <tr>
+                    <td>自然资源部</td>
+                    <td>拉曼光谱仪</td>
+                    <td>待公布</td>
+                    <td class="price-up">498万（预算）</td>
+                    <td>2026-04-26</td>
+                </tr>
+                <tr>
+                    <td>茂名炼油</td>
+                    <td>在线质谱仪</td>
+                    <td>待公布</td>
+                    <td class="price-up">待公布</td>
+                    <td>2026-04-23</td>
+                </tr>
+                <tr>
+                    <td>上海新材料研究院</td>
+                    <td>液相色谱-高分辨质谱仪</td>
+                    <td>沃特斯（英国）</td>
+                    <td class="price-up">待公布</td>
+                    <td>2026-04-24</td>
+                </tr>
+                <tr>
+                    <td>哈尔滨医科大学</td>
+                    <td>全国重点实验室设备升级</td>
+                    <td>多家</td>
+                    <td class="price-up">7248万</td>
+                    <td>2026-04-20</td>
+                </tr>
+                <tr>
+                    <td>东南大学</td>
+                    <td>质谱仪</td>
+                    <td>江苏康沁原</td>
+                    <td class="price-up">234万</td>
+                    <td>2026-04-19</td>
+                </tr>
+                <tr>
+                    <td>汕头大学</td>
+                    <td>三重四极杆气相色谱质谱联用仪</td>
+                    <td>广州广电国际</td>
+                    <td class="price-up">148万</td>
+                    <td>2025-12</td>
+                </tr>
+                <tr>
+                    <td>南京大学</td>
+                    <td>液相色谱仪-电感耦合等离子体质谱仪</td>
+                    <td>江苏海外集团</td>
+                    <td class="price-up">139万</td>
+                    <td>2024-12</td>
+                </tr>
+                <tr>
+                    <td>华中科技大学</td>
+                    <td>超高效液相色谱仪串联四极杆质谱仪</td>
+                    <td>武汉贝徕美</td>
+                    <td class="price-up">548.68万</td>
+                    <td>2025-01</td>
+                </tr>
+                <tr>
+                    <td>德米特（多省三甲）</td>
+                    <td>液相色谱串联质谱系统</td>
+                    <td>德米特</td>
+                    <td class="price-up">536万（4台合计）</td>
+                    <td>近期</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title" style="margin-top: 2rem;">📈 价格趋势分析</h2>
+        <div class="card">
+            <h3>主要设备类型价格区间（近期中标统计）</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>设备类型</th>
+                        <th>价格区间</th>
+                        <th>趋势</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>液相色谱仪（LC）</td>
+                        <td>50-150万元</td>
+                        <td class="price-flat">→ 稳定</td>
+                    </tr>
+                    <tr>
+                        <td>液相色谱-质谱联用仪（LC-MS）</td>
+                        <td>150-550万元</td>
+                        <td class="price-flat">→ 稳定</td>
+                    </tr>
+                    <tr>
+                        <td>气相色谱-质谱联用仪（GC-MS）</td>
+                        <td>100-400万元</td>
+                        <td class="price-flat">→ 稳定</td>
+                    </tr>
+                    <tr>
+                        <td>离子色谱仪（IC）</td>
+                        <td>15-80万元</td>
+                        <td class="price-flat">→ 稳定</td>
+                    </tr>
+                    <tr>
+                        <td>原子荧光光谱仪（AFS）</td>
+                        <td>10-20万元</td>
+                        <td class="price-flat">→ 稳定</td>
+                    </tr>
+                    <tr>
+                        <td>拉曼光谱仪</td>
+                        <td>200-500万元</td>
+                        <td class="price-flat">→ 稳定</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>💡 采购建议</h3>
+            <p>1. <strong>节前窗口期：</strong>五一假期前后政府采购活动进入传统淡季，预计5月6日后将迎来新的采购公告集中发布期。</p>
+            <p>2. <strong>国产替代关注：</strong>德米特、安益谱、盛瀚、海光等国产品牌近期中标活跃，性价比优势明显，建议关注国产设备技术参数与进口品牌的差异。</p>
+            <p>3. <strong>高校采购：</strong>高校设备更新需求持续旺盛，第二季度通常为高校采购旺季，建议密切关注各高校招标公告。</p>
+        </div>
+
+        <div class="source">
+            <p><strong>数据来源：</strong></p>
+            <p>• <a href="https://www.antpedia.com" target="_blank">分析测试百科网</a> — 中国领先的分析测试行业门户网站</p>
+            <p>• <a href="https://www.ccgp.gov.cn" target="_blank">中国政府采购网</a> — 全国政府采购信息发布平台</p>
+            <p>• <a href="https://www.chem17.com" target="_blank">化工仪器网</a> — 仪器仪表行业媒体</p>
+            <p style="margin-top: 1rem; font-size: 0.8125rem;">免责声明：本内容仅供参考，具体价格信息请以官方发布为准。今日未获取到新的中标公告，数据汇总截至2026-04-30 09:53。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 AI链习生 · 数据驱动决策</p>
+    </footer>
+</body>
+</html>
